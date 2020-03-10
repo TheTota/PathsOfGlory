@@ -67,26 +67,29 @@ TODO when the project is more clearly defined
 ## What sets this project apart?
 - Its fun gameplay mechanics
 - The unique visual style
+- it's gameplay based on a revisited shifumi
+- a little bit of rng with a lot of strategy.
 
 ### Core Gameplay Mechanics (Detailed)
 - Pick an AI commander to fight against
 - Unlock new commanders
 - Fight against AI commanders 
 - Use SHIFUMI inspired mechanics during fights
-TODO: Add details
+- read the opponent's way of playing to increase the chances of winning
+- 15 Rounds/ 15 units (3 of each type)
+- at each round choose what unit you want to deploy
+- each unit type looses and wins against 2 units types.
 
 ## Story and Gameplay
 
 ### Story (Brief)
-No story for the game.
+- See elevator speech
 
 ### Story (Detailed)
-No story for the game.
+- See elevator speech
 
 ### Gameplay (Brief)
-- Browse the cube by spinning it around in any direction
-- Once a problem has been identified, touch it to open a mini puzzle
-- TODO: To solve the mini puzzle...
+- 
 
 ### Gameplay (Detailed)
 TODO: once clearly defined
@@ -107,4 +110,4 @@ TODO: once clearly defined
   - Gameplay feedbacks
 
 ## Schedule
-- TODO: determine phases of the game dev
+- https://trello.com/b/ZngP4GaM/projet-shifumi
