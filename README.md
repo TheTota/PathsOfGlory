@@ -31,7 +31,7 @@ Revision: 10/03/2020
       - Works for free
     - Alex TOMASIA : 
       - Programming, Game design, Sound Design
-      - Works for free
+      - Works for fun
     - Océane CARPENTIER : 
       - 2D Graphics, UI, Level Design
       - Works for free
@@ -52,7 +52,8 @@ Revision: 10/03/2020
 [Influences & Benchmark Document](https://docs.google.com/document/d/1-crH3qDEdT_eW-AlxJtIj2H0OhJSgdSDaQBnwu1a2KQ/edit?usp=sharing)
 
 ### The elevator Pitch
-__FR:__ 
+__FR:__ Vous êtes un général neophyte et vous aspirez a devenir le plus grand commandant de tous les temps. Pour cela vous allez devoir 
+defier un par un tous les plus puissants généraux du monde. Vous disposez d'une armée que vous allez devoir commander intélligement en déployant les bonnes unités au bon moment afin de contrer vos ennemis et triompher de la bataille.
 
 __EN:__ aaaa
 
