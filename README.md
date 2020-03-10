@@ -52,11 +52,11 @@ Revision: 10/03/2020
 [Influences & Benchmark Document](https://docs.google.com/document/d/1-crH3qDEdT_eW-AlxJtIj2H0OhJSgdSDaQBnwu1a2KQ/edit?usp=sharing)
 
 ### The elevator Pitch
-__FR:__ Vous êtes un général neophyte et vous aspirez a devenir le plus grand commandant de tous les temps. Pour cela vous allez devoir 
+__FR:__ Vous êtes un général néophyte et vous aspirez a devenir le plus grand commandant de tous les temps. Pour cela vous allez devoir 
 defier un par un tous les plus puissants généraux du monde. Vous disposez d'une armée que vous allez devoir commander intélligement en déployant les bonnes unités au bon moment afin de contrer vos ennemis et triompher de la bataille.
 Vous devrez biensur faire vos preuves avec les petits généraux avant de pouvoir pretendre affronter les grands seigneurs de guerre.
 
-__EN:__ aaaa
+__EN:__ You are neophyte general and you have plans to become the greatest commander of all times. For that you shall challenge one by one the most powerfull world generals. You own an army that you will need to cleaverly manage by deploying the right units at the right time in order to counter your enemies and triumph the battle. You will of course have to prove yourself first by fighting little generals before challenging the greatest warlords.
 
 ### Project Description (Brief)
 TODO when the project is more clearly defined
