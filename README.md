@@ -54,6 +54,7 @@ Revision: 10/03/2020
 ### The elevator Pitch
 __FR:__ Vous êtes un général neophyte et vous aspirez a devenir le plus grand commandant de tous les temps. Pour cela vous allez devoir 
 defier un par un tous les plus puissants généraux du monde. Vous disposez d'une armée que vous allez devoir commander intélligement en déployant les bonnes unités au bon moment afin de contrer vos ennemis et triompher de la bataille.
+Vous devrez biensur faire vos preuves avec les petits généraux avant de pouvoir pretendre affronter les grands seigneurs de guerre.
 
 __EN:__ aaaa
 
