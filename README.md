@@ -1,58 +1,60 @@
 # ProjetSHIFUMI
-Unity 2019.3.1f1
+__Unity 2019.3.1f1__
 
-Revision: 22/02/2020
+Revision: 10/03/2020
 
 ## Game Design Document
 
-### Theme / Setting / Genre
-- Action, Survival, Mobile
+### Theme / Genre
+- Strategy, Medieval-Fantasy
 
 ### Core Gameplay Mechanics Brief
-- Browse cube for problems 
-- Solve problem by resolving a quick puzzle
+- Pick an AI commander to fight against
+- Unlock new commanders
+- Fight against AI commanders 
+- Use SHIFUMI inspired mechanics during fights
 
 ### Targeted platforms
-- Android
-- IOS (later)
+- PC Windows (for the "school" scope of the project)
+- Android, Mac, Linux are future possibilities (later)
 
 ### Monetization model (Brief/Document)
-- Ad Driven, with possibility to pay to remove the Ads
 - TODO: link a monetization document
 
 ### Project Scope
 - Game Time Scale :
-  - From Feb 2020 to max July 2020 (5 months)
+  - Mars 2020 à Juin 2020 (4 months)
 - Team :
   - Core Team : 
     - Thomas CIANFARANI : 
       - Game design, Programming, Project managment
       - Works for free
-    - Arnaud ELOI : 
+    - Alex TOMASIA : 
       - Programming, Game design, Sound Design
       - Works for free
-    - Mansour EL HADJ : 
-      - Level design, 3D Graphics, Animation
+    - Océane CARPENTIER : 
+      - 2D Graphics, UI, Level Design
       - Works for free
-    - Maria RUZZANTE : 
-      - 2D Graphics, UI, Level design
+    - Vanessa ASEJO CASPILLO : 
+      - 2D Graphics, UI, Level Design
       - Works for free
   - Marketing Team : none
 - Licenses / Hardware / Other Costs :
   - Free softwares
   - Personnal hardwares
   - Other costs specified above
-- Total costs => 50€ to 100€ : 
+- Total costs => 0€ : 
   - Everybody works for free during free time
-  - Assets costs 
-  - Shipping costs 
+  - Assets are created by ourselves
+  - Shipping costs are to be determined
 
 ### Influences (Brief)
-- Game Jam Theme : 
-  - "Repair" theme of Global Game Jam 2020 inspired the idea of "browsing and fixing".
+[Influences & Benchmark Document](https://docs.google.com/document/d/1-crH3qDEdT_eW-AlxJtIj2H0OhJSgdSDaQBnwu1a2KQ/edit?usp=sharing)
 
 ### The elevator Pitch
-Chunks is a mobile action game that was initially created during the Global Game Jam, of which the theme was "Repair". The game is about identifying and fixing problems at an increased pace to try beating your previous high score. Concretely, the player browses through a cube made of 6 unique faces that each have their own ecosystem and events that will have to be fixed, in order to keep the cube alive for as long as possible.
+__FR:__ 
+
+__EN:__ aaaa
 
 ### Project Description (Brief)
 TODO when the project is more clearly defined
@@ -61,13 +63,15 @@ TODO when the project is more clearly defined
 TODO when the project is more clearly defined
 
 ## What sets this project apart?
-- Its unique Gameplay and Universe
+- Its fun gameplay mechanics
+- The unique visual style
 
 ### Core Gameplay Mechanics (Detailed)
-- Browse cube for problems 
-  - TODO: details, how it works
-- Solve problem by resolving a quick puzzle
-  - TODO: details, how it works
+- Pick an AI commander to fight against
+- Unlock new commanders
+- Fight against AI commanders 
+- Use SHIFUMI inspired mechanics during fights
+TODO: Add details
 
 ## Story and Gameplay
 
