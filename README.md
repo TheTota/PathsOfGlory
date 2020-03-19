@@ -18,8 +18,13 @@ Revision: 10/03/2020
 - PC Windows (for the "school" scope of the project)
 - Android, Mac, Linux are future possibilities (later)
 
+### The elevator Pitch
+__FR:__ Vous êtes un général néophyte et aspirez à devenir le plus grand commandant de tous les temps. Pour cela vous allez devoir défier un par un tous les plus puissants généraux du monde, chacun utilisant une stratégie de combat différente. 
+Vous disposez d'une armée que vous allez devoir commander intelligemment en déployant les bonnes unités au bon moment afin de contrer vos ennemis et triompher de la bataille. Il sera impossible de vaincre sans connaître son adversaire et savoir le vaincre.
+Chaque commandant vaincu permettra d’accéder au suivant, et de débloquer un de ses traits d’apparence pour personnaliser votre propre commandant.
+
 ### Monetization model (Brief/Document)
-- TODO: link a monetization document
+- No monetization for this project.
 
 ### Project Scope
 - Game Time Scale :
@@ -28,41 +33,19 @@ Revision: 10/03/2020
   - Core Team : 
     - Thomas CIANFARANI : 
       - Game design, Programming, Project managment
-      - Works for free
     - Alex TOMASIA : 
       - Programming, Game design, Sound Design
-      - Works for fun
     - Océane CARPENTIER : 
       - 2D Graphics, UI, Level Design
-      - Works for free
     - Vanessa ASEJO CASPILLO : 
       - 2D Graphics, UI, Level Design
-      - Works for free
   - Marketing Team : none
 - Licenses / Hardware / Other Costs :
-  - Free softwares
-  - Personnal hardwares
-  - Other costs specified above
+  - Free softwares, personnal hardwares, other costs specified above
 - Total costs => 0€ : 
   - Everybody works for free during free time
   - Assets are created by ourselves
   - Shipping costs are to be determined
-
-### Influences (Brief)
-[Influences & Benchmark Document](https://docs.google.com/document/d/1-crH3qDEdT_eW-AlxJtIj2H0OhJSgdSDaQBnwu1a2KQ/edit?usp=sharing)
-
-### The elevator Pitch
-__FR:__ Vous êtes un général néophyte et vous aspirez a devenir le plus grand commandant de tous les temps. Pour cela vous allez devoir 
-defier un par un tous les plus puissants généraux du monde. Vous disposez d'une armée que vous allez devoir commander intélligement en déployant les bonnes unités au bon moment afin de contrer vos ennemis et triompher de la bataille.
-Vous devrez biensur faire vos preuves avec les petits généraux avant de pouvoir pretendre affronter les grands seigneurs de guerre.
-
-__EN:__ You are neophyte general and you have plans to become the greatest commander of all times. For that you shall challenge one by one the most powerfull world generals. You own an army that you will need to cleaverly manage by deploying the right units at the right time in order to counter your enemies and triumph the battle. You will of course have to prove yourself first by fighting little generals before challenging the greatest warlords.
-
-### Project Description (Brief)
-TODO when the project is more clearly defined
-
-### Project Description (Detailed)
-TODO when the project is more clearly defined
 
 ## What sets this project apart?
 - Its fun gameplay mechanics
@@ -70,44 +53,31 @@ TODO when the project is more clearly defined
 - it's gameplay based on a revisited shifumi
 - a little bit of rng with a lot of strategy.
 
-### Core Gameplay Mechanics (Detailed)
-- Pick an AI commander to fight against
-- Unlock new commanders
-- Fight against AI commanders 
-- Use SHIFUMI inspired mechanics during fights
-- read the opponent's way of playing to increase the chances of winning
-- 15 Rounds/ 15 units (3 of each type)
-- at each round choose what unit you want to deploy
-- each unit type looses and wins against 2 units types.
+### Influences (Brief)
+[Influences & Benchmark Document](https://docs.google.com/document/d/1-crH3qDEdT_eW-AlxJtIj2H0OhJSgdSDaQBnwu1a2KQ/edit?usp=sharing)
 
-## Story and Gameplay
+## Project Management
+The team handles the project management in an agile way. 
+In order to frame the project, a [framing note was produced](https://drive.google.com/open?id=1mpFE1mIpjPZUIwD8UBqiVdZRvWzsNZauB2fJgxQYyAI).
 
-### Story (Brief)
-- See elevator speech
+A [story mapping document](https://drive.google.com/open?id=1h6B3hbMEDTCpLV9RywwvtBfZjMTYtnd_) has been created, by finding the main parts the game and then, listing every task that need to be done in order to have that part functional.
 
-### Story (Detailed)
-- See elevator speech
+This document allowed us to populate a Trello, ou main project management tool, and then separate 2 releases for the game : https://trello.com/b/ZngP4GaM/projet-shifumi
 
-### Gameplay (Brief)
-- 
+## Game Design 
+In order to try to represent the core gameplay of the game, we have produced [a Machination simulation](https://my.machinations.io/public/ProjetSHIFUMI/0651972a0f51ac21fd7ba40965e5c5c2a).
 
-### Gameplay (Detailed)
-TODO: once clearly defined
+The course of a game session has also been detailed in two graphs : [one for the global game session](https://drive.google.com/open?id=1vRVXUPMyUZ4WAejKYIXSuMSEW-ttcn9lvhnG57Pfd9U) and [one for the battle between 2 commanders](https://drive.google.com/open?id=1dB4Qq0RvMAbNaCA2h8nI35nUUor2XsomwsM0nOIkmGc).
 
-## Assets Needed
-- 2D : 
-  - UI components
-  - Eventual sprites
-  - Shipping and public content
-- 3D : 
-  - Assets for environments
-  - Custom assets for interactions and players feedback
-- Sound :
-  - Game theme song
-  - SFX
-- Animation : 
-  - Events
-  - Gameplay feedbacks
+[Mock-ups of every screen/scene in the game](https://docs.google.com/presentation/d/1whwf8nXBDh-ruXfuVOuuh-tt44wDkOGrM6CVFB8r3_E/edit?usp=sharing) have been made, with details on each interaction and part of each screen.
 
-## Schedule
-- https://trello.com/b/ZngP4GaM/projet-shifumi
+## Specifications
+The game is developed using Unity and C#. 
+
+The software architecture is represented by the following [UML Class Diagram](https://drive.google.com/open?id=1ec-jPSo0AoCFOhxd-M9d9GBvd3pWzxEw).
+
+The game involves multiple AIs, which have been described in [this document](https://docs.google.com/document/d/1JpFbyNKKNKvEko_quFVEpfWLAMduVy6Ot2vuYnp00q0/edit?usp=sharing).
+
+A global documentation on how to work on the project, including standards for C# and Unity is available [here](https://docs.google.com/document/d/1c3gdonlgpiQUbDWUbcjDWGp4pI7WOd6RJLjS1FkIRe8/edit?usp=sharing).
+
+In order to keep the game functional over the course of the development, some instructions on tests and code reviews are given in [this document](https://docs.google.com/document/d/1MqU-DjhuPxP0_4Qps-JbGWbLiwnjehxkK3N7ksPPYJ0/edit?usp=sharing).
