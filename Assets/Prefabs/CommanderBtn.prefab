@@ -428,6 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 8634914010330975840}
   btn: {fileID: 8634914010330975843}
+  face: {fileID: 8634914009663077175}
   hair: {fileID: 8634914010082262118}
   eyes: {fileID: 8634914010248957782}
   mouth: {fileID: 8634914009921932762}

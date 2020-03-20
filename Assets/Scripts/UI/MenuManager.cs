@@ -67,7 +67,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     private void RenderPlayerPortrait()
     {
-        playerPortrait.GetComponent<PortraitRenderer>().RenderPortrait(GameManager.Instance.Player.Color, OpenPortraitCustomizer, GameManager.Instance.Player.Portrait);
+        playerPortrait.GetComponent<PortraitRenderer>().RenderPortrait(GameManager.Instance.Player.Color, OpenPortraitCustomizer, GameManager.Instance.Player.Portrait, false);
     }
 
     /// <summary>
@@ -78,7 +78,7 @@ public class MenuManager : MonoBehaviour
         foreach (var commander in GameManager.Instance.Enemies)
         {
             GameObject instanciatedCommander = Instantiate(this.commanderPortraitPrefab, this.commandersGrid);
-            instanciatedCommander.GetComponent<PortraitRenderer>().RenderPortrait(commander.Color, () => StartBattle(commander), commander.Portrait);
+            instanciatedCommander.GetComponent<PortraitRenderer>().RenderPortrait(commander.Color, () => StartBattle(commander), commander.Portrait, commander.Locked);
         }
     }
 
