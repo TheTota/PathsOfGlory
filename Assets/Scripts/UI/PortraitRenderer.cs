@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class PortraitRenderer : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class PortraitRenderer : MonoBehaviour
     private Image eyes;
     [SerializeField]
     private Image mouth;
+    [SerializeField]
+    private TextMeshProUGUI winsText;
+    [SerializeField]
+    private TextMeshProUGUI lossText;
 
     /// <summary>
     /// Renders the portrait with the given values.
@@ -27,27 +32,37 @@ public class PortraitRenderer : MonoBehaviour
     /// <param name="hairSprite"></param>
     /// <param name="eyesSprite"></param>
     /// <param name="mouthSprite"></param>
-    public void RenderPortrait(Color commanderColor, UnityAction onClickAction, Portrait portrait, bool locked)
+    public void RenderPortrait(Commander commander, UnityAction onClickAction)
     {
         // Color portrait
-        if (!locked)
+        if (!commander.Locked) // if unlocked
         {
-            background.color = commanderColor;
+            background.color = commander.Color;
+            if (commander.WinsCount != 0 || commander.LossesCount != 0)
+            {
+                winsText.gameObject.SetActive(true);
+                lossText.gameObject.SetActive(true);
+                winsText.text = "W" + commander.WinsCount;
+                lossText.text = "L" + commander.LossesCount;
+            }
         }
-        else
+        else // if locked
         {
             background.color = new Color(.5f, .5f, .5f);
+            winsText.gameObject.SetActive(false);
+            lossText.gameObject.SetActive(false);
         }
 
         // Button
         btn.onClick.AddListener(onClickAction);
-        btn.interactable = !locked;
+        btn.interactable = !commander.Locked;
 
         // Face attributes
-        hair.sprite = portrait.Hair.sprite;
-        eyes.sprite = portrait.Eye.sprite;
-        mouth.sprite = portrait.Mouth.sprite;
+        hair.sprite = commander.Portrait.Hair.sprite;
+        eyes.sprite = commander.Portrait.Eye.sprite;
+        mouth.sprite = commander.Portrait.Mouth.sprite;
 
-        face.SetActive(!locked);
+        // hide the face if commander is locked
+        face.SetActive(!commander.Locked);
     }
 }

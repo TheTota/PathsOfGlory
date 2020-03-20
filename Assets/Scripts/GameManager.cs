@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void InitPlayer()
     {
-        Player = new Commander(new Color(.2f, .6f, .86f), PortraitGenerator.Instance.GenerateRandomPlayerPortrait());
+        Player = new Commander(new Color(.2f, .6f, .86f), PortraitGenerator.Instance.GenerateRandomPlayerPortrait(), false);
     }
 
     private void InitEnemies()
