@@ -8,12 +8,16 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject titleUI;
-
     [SerializeField]
     private GameObject mainMenuUI;
-
     [SerializeField]
     private GameObject portraitCustomizerPopup;
+
+    [SerializeField]
+    private GameObject commanderPortraitPrefab;
+
+    [SerializeField]
+    private RectTransform playerPortrait;
 
     private bool isInTitleScreen;
 
@@ -60,7 +64,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     private void RenderPlayerPortrait()
     {
-        Debug.Log("TODO: render player portrait");
+        playerPortrait.GetComponent<PortraitRenderer>().RenderPortrait(GameManager.Instance.Player.Color, OpenPortraitCustomizer, GameManager.Instance.Player.Portrait);
     }
 
     /// <summary>
@@ -74,7 +78,7 @@ public class MenuManager : MonoBehaviour
     /// <summary>
     /// Opens the popup to customize the commander of the player.
     /// </summary>
-    public void OpenPortraitCustomizer()
+    private void OpenPortraitCustomizer()
     {
         Debug.Log("TODO: open portrait customizer");
     }

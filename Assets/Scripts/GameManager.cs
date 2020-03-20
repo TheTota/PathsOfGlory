@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (!Instance)
         {
             Instance = this;
         }
@@ -22,7 +23,18 @@ public class GameManager : MonoBehaviour
 
     public void InitGame()
     {
-        Debug.Log("TODO: Init the game");
+        // TODO: CHECK SAVES
+        InitPlayer();
+        InitEnemies();
     }
 
+    private void InitPlayer()
+    {
+        Player = new Commander(new Color(.2f, .6f, .86f), PortraitGenerator.Instance.GenerateRandomPlayerPortrait());
+    }
+
+    private void InitEnemies()
+    {
+        Debug.Log("TODO: init enemies");
+    }
 }
