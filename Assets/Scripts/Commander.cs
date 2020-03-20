@@ -10,6 +10,7 @@ public class Commander
     public Color Color { get; set; }
     public Portrait Portrait { get; set; }
 
+    // TODO: perhaps add an enum for the associated AI
 
     public Commander(Color color, Portrait portrait)
     {
@@ -20,7 +21,16 @@ public class Commander
         Portrait = portrait;
     }
 
-    public Commander(bool locked, int victoryCount, int lossCount, Color color, Portrait portrait)
+    public Commander(Color color, Portrait portrait, bool locked)
+    {
+        Locked = locked;
+        VictoryCount = 0;
+        LossCount = 0;
+        Color = color;
+        Portrait = portrait;
+    }
+
+    public Commander(Color color, Portrait portrait, bool locked, int victoryCount, int lossCount)
     {
         Locked = locked;
         VictoryCount = victoryCount;

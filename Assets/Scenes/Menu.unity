@@ -714,7 +714,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -53.69995, y: -53.5}
+  m_AnchoredPosition: {x: -53.699707, y: -53.5}
   m_SizeDelta: {x: 41.17, y: 41.06}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &902410818
@@ -993,6 +993,7 @@ MonoBehaviour:
   commanderPortraitPrefab: {fileID: 8634914010330975845, guid: 7e74bcbdee3a70943a70fb029a269568,
     type: 3}
   playerPortrait: {fileID: 1189312190}
+  commandersGrid: {fileID: 1414712318}
 --- !u!1001 &1189312189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1152,6 +1153,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246dfc4afc19418458110aa20e364d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCommandersElements:
+  - {fileID: 11400000, guid: 4b408c0d1255b0c499d667dd9b6821c2, type: 2}
+  - {fileID: 11400000, guid: d2e234e07aba2f14bb56309c20008ee1, type: 2}
+  - {fileID: 11400000, guid: a68706a30dc5e0a468a95ee243195959, type: 2}
+  - {fileID: 11400000, guid: 82992ea99865f8147b5f7df64437d464, type: 2}
+  - {fileID: 11400000, guid: 29cd49b2a2d125646a394bc8c2659953, type: 2}
+  - {fileID: 11400000, guid: 7a48ace0d06e82a42875b73dd5b2f3cc, type: 2}
+  - {fileID: 11400000, guid: c9161e350ef11b94b9c10d83fc3d5278, type: 2}
+  - {fileID: 11400000, guid: 9475d6f6ade834949978241ec9036e99, type: 2}
+  - {fileID: 11400000, guid: e5546fb9456d25944b79494e41bff1cf, type: 2}
+  - {fileID: 11400000, guid: 2fa1a56a9e5f83e4eb8c08d8885342ae, type: 2}
 --- !u!4 &1376185628
 Transform:
   m_ObjectHideFlags: 0

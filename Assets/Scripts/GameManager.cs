@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Mettre dans l'ordre de difficulté")]
+    /// <summary>
+    /// Elements qui définissent les différents commandants à créer si pas de sauvegardes préalables.
+    /// Les commandants sont indexés dans le tableau par ordre de difficulté (index 0 = easy, 9 = max difficulty).
+    /// </summary>
+    [SerializeField]
+    private CommanderElement[] enemyCommandersElements;
+
     public static GameManager Instance { get; set; }
-
     public Commander Player { get; set; }
-
     public Commander[] Enemies { get; set; }
 
     private void Awake()
@@ -23,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void InitGame()
     {
-        // TODO: CHECK SAVES
+        // TODO: CHECK SAVES <==
         InitPlayer();
         InitEnemies();
     }
@@ -35,6 +41,12 @@ public class GameManager : MonoBehaviour
 
     private void InitEnemies()
     {
-        Debug.Log("TODO: init enemies");
+        int amountOfCommanders = enemyCommandersElements.Length;
+
+        Enemies = new Commander[amountOfCommanders];
+        for (int i = 0; i < amountOfCommanders; i++)
+        {
+            Enemies[i] = new Commander(enemyCommandersElements[i].Color, PortraitGenerator.Instance.GenerateRandomAIPortrait(), enemyCommandersElements[i].Locked);
+        }
     }
 }

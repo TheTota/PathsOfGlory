@@ -18,6 +18,9 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField]
     private RectTransform playerPortrait;
+    [SerializeField]
+    private RectTransform commandersGrid;
+
 
     private bool isInTitleScreen;
 
@@ -72,7 +75,11 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     private void RenderCommandersGrid()
     {
-        Debug.Log("TODO: render commanders grid");
+        foreach (var commander in GameManager.Instance.Enemies)
+        {
+            GameObject instanciatedCommander = Instantiate(this.commanderPortraitPrefab, this.commandersGrid);
+            instanciatedCommander.GetComponent<PortraitRenderer>().RenderPortrait(commander.Color, () => StartBattle(commander), commander.Portrait);
+        }
     }
 
     /// <summary>
