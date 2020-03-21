@@ -126,7 +126,7 @@ public class PortraitCustomizer : MonoBehaviour
     /// </summary>
     public void PrevHair()
     {
-        GameManager.Instance.Player.Portrait.Hair = PreviousElement(PortraitGenerator.Instance.GetUnlockedHair(), ref currentHairIndex);
+        GameManager.Instance.Player.Portrait.Hair = GetPreviousElement(PortraitGenerator.Instance.GetUnlockedHair(), ref currentHairIndex);
     }
 
     /// <summary>
@@ -142,7 +142,7 @@ public class PortraitCustomizer : MonoBehaviour
     /// </summary>
     public void PrevEyes()
     {
-        GameManager.Instance.Player.Portrait.Eyes = PreviousElement(PortraitGenerator.Instance.GetUnlockedEyes(), ref currentEyesIndex);
+        GameManager.Instance.Player.Portrait.Eyes = GetPreviousElement(PortraitGenerator.Instance.GetUnlockedEyes(), ref currentEyesIndex);
     }
 
     /// <summary>
@@ -158,7 +158,7 @@ public class PortraitCustomizer : MonoBehaviour
     /// </summary>
     public void PrevMouth()
     {
-        GameManager.Instance.Player.Portrait.Mouth = PreviousElement(PortraitGenerator.Instance.GetUnlockedMouth(), ref currentMouthIndex);
+        GameManager.Instance.Player.Portrait.Mouth = GetPreviousElement(PortraitGenerator.Instance.GetUnlockedMouth(), ref currentMouthIndex);
     }
 
     /// <summary>
@@ -190,7 +190,7 @@ public class PortraitCustomizer : MonoBehaviour
     /// <param name="unlockedElements">List of portrait elements, example: the list of unlocked hair.</param>
     /// <param name="index">Index used to browse</param>
     /// <returns>The previous portrait element in the list.</returns>
-    private PortraitElement PreviousElement(PortraitElement[] unlockedElements, ref int index)
+    private PortraitElement GetPreviousElement(PortraitElement[] unlockedElements, ref int index)
     {
         PortraitElement elementToChange;
         if (index - 1 >= 0) // if we're browsing the available cuts and havent reached end of the list
