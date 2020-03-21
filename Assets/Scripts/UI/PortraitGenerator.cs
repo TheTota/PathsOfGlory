@@ -34,11 +34,7 @@ public class PortraitGenerator : MonoBehaviour
     /// <returns></returns>
     public Portrait GenerateRandomPlayerPortrait()
     {
-        PortraitElement[] unlockedHair = availableHair.Where(x => !x.locked).ToArray();
-        PortraitElement[] unlockedEyes = availableEyes.Where(x => !x.locked).ToArray();
-        PortraitElement[] unlockedMouth = availableMouth.Where(x => !x.locked).ToArray();
-
-        return GeneratePortrait(unlockedHair, unlockedEyes, unlockedMouth);
+        return GeneratePortrait(GetUnlockedHair(), GetUnlockedEyes(), GetUnlockedMouth());
     }
 
     /// <summary>
@@ -51,5 +47,32 @@ public class PortraitGenerator : MonoBehaviour
     private Portrait GeneratePortrait(PortraitElement[] hairPool, PortraitElement[] eyesPool, PortraitElement[] mouthPool)
     {
         return new Portrait(hairPool[Random.Range(0, hairPool.Length)], eyesPool[Random.Range(0, eyesPool.Length)], mouthPool[Random.Range(0, mouthPool.Length)]);
+    }
+
+    /// <summary>
+    /// Returns the available unlocked hair.
+    /// </summary>
+    /// <returns></returns>
+    public PortraitElement[] GetUnlockedHair()
+    {
+        return availableHair.Where(x => !x.locked).ToArray();
+    }
+
+    /// <summary>
+    /// Returns the available unlocked eyes.
+    /// </summary>
+    /// <returns></returns>
+    public PortraitElement[] GetUnlockedEyes()
+    {
+        return availableEyes.Where(x => !x.locked).ToArray();
+    }
+
+    /// <summary>
+    /// Returns the available unlocked mouth.
+    /// </summary>
+    /// <returns></returns>
+    public PortraitElement[] GetUnlockedMouth()
+    {
+        return availableMouth.Where(x => !x.locked).ToArray();
     }
 }

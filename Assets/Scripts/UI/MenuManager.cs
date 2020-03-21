@@ -65,7 +65,7 @@ public class MenuManager : MonoBehaviour
     /// <summary>
     /// Renders the portrait of the player, based on the player commander declared in the game manager.
     /// </summary>
-    private void RenderPlayerPortrait()
+    public void RenderPlayerPortrait()
     {
         playerPortrait.GetComponent<PortraitRenderer>().RenderPortrait(GameManager.Instance.Player, OpenPortraitCustomizer);
     }
@@ -87,15 +87,8 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     private void OpenPortraitCustomizer()
     {
-        Debug.Log("TODO: open portrait customizer");
-    }
-
-    /// <summary>
-    /// Closes the popup to customize the commander of the player.
-    /// </summary>
-    public void ClosePortraitCustomize()
-    {
-        Debug.Log("TODO: close portrait customizer");
+        this.portraitCustomizerPopup.SetActive(true);
+        this.mainMenuUI.SetActive(false);
     }
 
     /// <summary>
