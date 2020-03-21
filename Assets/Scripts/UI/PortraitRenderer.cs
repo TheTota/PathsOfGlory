@@ -59,7 +59,7 @@ public class PortraitRenderer : MonoBehaviour
 
         // Face attributes
         hair.sprite = commander.Portrait.Hair.sprite;
-        eyes.sprite = commander.Portrait.Eye.sprite;
+        eyes.sprite = commander.Portrait.Eyes.sprite;
         mouth.sprite = commander.Portrait.Mouth.sprite;
 
         // hide the face if commander is locked
