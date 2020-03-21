@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A commander's portrait, in 1 var instead of many.
+/// </summary>
 public class Portrait
 {
     public PortraitElement Hair { get; set; }

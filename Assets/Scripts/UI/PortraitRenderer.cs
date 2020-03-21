@@ -5,8 +5,12 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Allows to render a given commander's portrait graphically.
+/// </summary>
 public class PortraitRenderer : MonoBehaviour
 {
+    // Every UI portrait attribute to render
     [SerializeField]
     private Image background;
     [SerializeField]

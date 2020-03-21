@@ -4,6 +4,10 @@ using UnityEngine;
 using TMPro;
 using System;
 
+/// <summary>
+/// Handles the main menu interactions and behaviours. 
+/// Does not handle the portrait customization interactions, although it allows to open the popup.
+/// </summary>
 public class MenuManager : MonoBehaviour
 {
     [SerializeField]
@@ -20,7 +24,6 @@ public class MenuManager : MonoBehaviour
     private RectTransform playerPortrait;
     [SerializeField]
     private RectTransform commandersGrid;
-
 
     private bool isInTitleScreen;
 
@@ -45,7 +48,6 @@ public class MenuManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
-        // TODO: save stuff?
     }
 
     /// <summary>

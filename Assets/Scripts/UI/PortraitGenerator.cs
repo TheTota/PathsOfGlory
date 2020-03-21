@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Stores all the available portrait elements and also allows to generate random portraits.
+/// </summary>
 public class PortraitGenerator : MonoBehaviour
 {
     public static PortraitGenerator Instance { get; set; }
 
+    // Every graphical portrait element created
     public PortraitElement[] availableHair;
     public PortraitElement[] availableEyes;
     public PortraitElement[] availableMouth;

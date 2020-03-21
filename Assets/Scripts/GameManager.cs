@@ -3,17 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Game Manager 
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     [Header("Mettre dans l'ordre de difficulté")]
     /// <summary>
-    /// Elements qui définissent les différents commandants à créer si pas de sauvegardes préalables.
-    /// Les commandants sont indexés dans le tableau par ordre de difficulté (index 0 = easy, 9 = max difficulty).
+    /// Elements that define the commanders. Used for initialisation purposes (index 0 = easy, 9 = max difficulty).
     /// </summary>
     [SerializeField]
     private CommanderElement[] enemyCommandersElements;
 
     public static GameManager Instance { get; set; }
+
+    // Commanders references
     public Commander Player { get; set; }
     public Commander[] Enemies { get; set; }
 
@@ -37,6 +41,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Inits the player.
+    /// </summary>
     public void InitGame()
     {
         InitPlayer();
@@ -87,6 +94,7 @@ public class GameManager : MonoBehaviour
         int amountOfCommanders = enemyCommandersElements.Length;
         Enemies = new Commander[amountOfCommanders];
 
+        // Go through each commander and init them
         for (int i = 0; i < amountOfCommanders; i++)
         {
             Portrait portrait;
