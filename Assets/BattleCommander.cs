@@ -22,7 +22,7 @@ public class BattleCommander : MonoBehaviour
     /// <summary>
     /// Gives the unit played for a round n at the index n-1.
     /// </summary>
-    public UnitType[] playsHistory { get; set; }
+    public List<UnitType> PlaysHistory { get; set; }
 
     /// <summary>
     /// Inits a battle commander at the beginning of the battle.
@@ -30,10 +30,9 @@ public class BattleCommander : MonoBehaviour
     /// <param name="c"></param>
     public void Init(Commander c)
     {
+        PlaysHistory = new List<UnitType>();
+
         this.Commander = c;
-        if (this.portraitRenderer != null)
-        {
-            this.portraitRenderer.RenderPortrait(c);
-        }
+        this.portraitRenderer.RenderPortrait(c);
     }
 }
