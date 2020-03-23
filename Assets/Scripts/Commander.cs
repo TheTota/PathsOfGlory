@@ -18,23 +18,25 @@ public class Commander
     public Color Color { get; set; }
     public Portrait Portrait { get; set; }
 
-    // TODO: perhaps add an enum for the associated AI
+    public AIType AiType { get; set; }
 
-    public Commander(Color color, Portrait portrait, bool locked)
+    public Commander(Color color, Portrait portrait, bool locked, AIType ai = AIType.NONE)
     {
         Locked = locked;
         WinsCount = 0;
         LossesCount = 0;
         Color = color;
         Portrait = portrait;
+        AiType = ai;
     }
 
-    public Commander(Color color, Portrait portrait, bool locked, int victoryCount, int lossCount)
+    public Commander(Color color, Portrait portrait, AIType ai, bool locked, int victoryCount, int lossCount)
     {
         Locked = locked;
         WinsCount = victoryCount;
         LossesCount = lossCount;
         Color = color;
         Portrait = portrait;
+        AiType = ai;
     }
 }

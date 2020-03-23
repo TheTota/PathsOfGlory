@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("enemy_" + i + "_losses", lossesCount);
             }
 
-            Enemies[i] = new Commander(enemyCommandersElements[i].Color, portrait, locked, winsCount, lossesCount);
+            Enemies[i] = new Commander(enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount);
         }
 
         // if we didnt have saves before, now we do

@@ -3,15 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Inits and manages the course of a battle!
+/// </summary>
 public class BattleManager : MonoBehaviour
 {
+    // Player data
     [SerializeField]
     private PortraitRenderer playerPR;
     public BattleCommander PlayerBC { get; set; }
 
+    // Enemy data
     [SerializeField]
     private PortraitRenderer enemyPR;
     public BattleCommander EnemyBC { get; set; }
+
+    public AI ai;
 
     // Start is called before the first frame update
     void Awake()

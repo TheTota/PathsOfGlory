@@ -11,5 +11,5 @@ public class CommanderElement : ScriptableObject
 {
     public bool Locked;
     public Color Color;
-    // TODO: add AI enum i guess
+    public AIType AiType;
 }

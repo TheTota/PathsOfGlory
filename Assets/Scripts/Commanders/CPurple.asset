@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locked: 1
   Color: {r: 0.5568628, g: 0.26666668, b: 0.6784314, a: 1}
+  AiType: 6
