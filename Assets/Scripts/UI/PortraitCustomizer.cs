@@ -94,7 +94,7 @@ public class PortraitCustomizer : MonoBehaviour
     /// </summary>
     public void RenderPlayerPortrait()
     {
-        portraitRenderer.RenderPortrait(GameManager.Instance.Player, null);
+        portraitRenderer.RenderPortrait(GameManager.Instance.Player);
     }
 
     /// <summary>

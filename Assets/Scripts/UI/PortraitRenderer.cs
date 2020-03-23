@@ -36,7 +36,7 @@ public class PortraitRenderer : MonoBehaviour
     /// <param name="hairSprite"></param>
     /// <param name="eyesSprite"></param>
     /// <param name="mouthSprite"></param>
-    public void RenderPortrait(Commander commander, UnityAction onClickAction)
+    public void RenderPortrait(Commander commander, UnityAction onClickAction = null)
     {
         // Color portrait
         if (!commander.Locked) // if unlocked

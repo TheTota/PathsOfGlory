@@ -80,7 +80,7 @@ public class MenuManager : MonoBehaviour
         foreach (var commander in GameManager.Instance.Enemies)
         {
             GameObject instanciatedCommander = Instantiate(this.commanderPortraitPrefab, this.commandersGrid);
-            instanciatedCommander.GetComponent<PortraitRenderer>().RenderPortrait(commander, () => StartBattle(commander));
+            instanciatedCommander.GetComponent<PortraitRenderer>().RenderPortrait(commander, () => StartBattleBtn(commander));
         }
     }
 
@@ -97,8 +97,8 @@ public class MenuManager : MonoBehaviour
     /// Starts a battle against the enemy commander given in parameters.
     /// </summary>
     /// <param name="enemyCommander"></param>
-    public void StartBattle(Commander enemyCommander)
+    public void StartBattleBtn(Commander enemyCommander)
     {
-        Debug.Log("TODO: start battle");
+        GameManager.Instance.StartBattle(enemyCommander);
     }
 }

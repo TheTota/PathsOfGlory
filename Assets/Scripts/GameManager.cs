@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Game Manager 
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
     // Commanders references
     public Commander Player { get; set; }
     public Commander[] Enemies { get; set; }
+
+    // Commandant que l'on est sur le point d'affronter
+    public Commander BattledCommander { get; set; }
 
     private void Awake()
     {
@@ -40,6 +44,17 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.DeleteAll();
         }
     }
+
+    /// <summary>
+    /// Starts the battle against the given commander.
+    /// </summary>
+    /// <param name="enemyCommander"></param>
+    public void StartBattle(Commander enemyCommander)
+    {
+        this.BattledCommander = enemyCommander;
+        SceneManager.LoadScene("Battle");
+    }
+
 
     /// <summary>
     /// Inits the player.
