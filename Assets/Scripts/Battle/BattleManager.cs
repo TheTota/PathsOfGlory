@@ -70,11 +70,21 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI timerText;
 
+    [Header("Units Fight")]
+    [SerializeField]
+    private TextMeshProUGUI playerUnitText;
+    [SerializeField]
+    private TextMeshProUGUI enemyUnitText;
+
     // Player units pick
     private bool playerAllowedToPick;
-    private UnitType playerPickedUnit;
     private bool playerHasPicked;
 
+    // Picked units
+    private UnitType playerPickedUnit;
+    private UnitType aiPickedUnit;
+
+    // Timer logic & display
     private float pickTimer;
     private float remainingTime;
 
@@ -192,7 +202,6 @@ public class BattleManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Battle()
     {
-        Debug.Log("The battle... begins!");
         while (CurrentRound <= MAX_ROUNDS)
         {
             roundText.text = "Manche : " + CurrentRound + " / " + MAX_ROUNDS;
@@ -219,23 +228,45 @@ public class BattleManager : MonoBehaviour
             PlayerBC.Army.RemoveUnitFromStock(playerPickedUnit);
 
             // Make AI Pick
-            UnitType aiPick = ai.PickUnit();
-            EnemyBC.Army.RemoveUnitFromStock(aiPick);
+            aiPickedUnit = ai.PickUnit();
+            EnemyBC.Army.RemoveUnitFromStock(aiPickedUnit);
 
             // Fight the units
-            BattleCommander winner = GetWinnerFromUnitsFight(aiPick);
+            BattleCommander winner = GetWinnerFromUnitsFight();
 
-            // TODO: play fight animation 
+            DisplayBattlingUnits(true); // TODO: play fight animation instead
             yield return new WaitForSeconds(2f);
+            DisplayBattlingUnits(false);
 
             // Update score
-            winner.Score += scoreDefinitionTable[CurrentRound - 1];
-            UpdateScoreUI();
+            if (winner)
+            {
+                winner.Score += scoreDefinitionTable[CurrentRound - 1];
+                UpdateScoreUI();
+            }
 
             CurrentRound++;
         }
 
         HandleWinner();
+    }
+
+    /// <summary>
+    /// Display the battling units temporarly by just showing a text with the name of the units called into the battle.
+    /// </summary>
+    /// <param name="v"></param>
+    private void DisplayBattlingUnits(bool v)
+    {
+        if (v)
+        {
+            this.playerUnitText.text = playerPickedUnit.ToString();
+            this.enemyUnitText.text = aiPickedUnit.ToString();
+        }
+        else
+        {
+            this.playerUnitText.text = "";
+            this.enemyUnitText.text = "";
+        }
     }
 
     /// <summary>
@@ -384,19 +415,23 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     /// <param name="aiPick"></param>
     /// <returns></returns>
-    private BattleCommander GetWinnerFromUnitsFight(UnitType aiPick)
+    private BattleCommander GetWinnerFromUnitsFight()
     {
-        Debug.Log("FIGHT : (PLAYER) " + playerPickedUnit + " vs " + aiPick + "(AI)");
-
-        // Check who won the fight and return the BC
-        if ((playerPickedUnit == UnitType.Knights && (aiPick == UnitType.Archers || aiPick == UnitType.Mages))
-         || (playerPickedUnit == UnitType.Archers && (aiPick == UnitType.Mages || aiPick == UnitType.Spearmen))
-         || (playerPickedUnit == UnitType.Mages && (aiPick == UnitType.Spearmen || aiPick == UnitType.Shields))
-         || (playerPickedUnit == UnitType.Spearmen && (aiPick == UnitType.Shields || aiPick == UnitType.Knights))
-         || (playerPickedUnit == UnitType.Shields && (aiPick == UnitType.Knights || aiPick == UnitType.Archers)))
+        // DRAW
+        if (playerPickedUnit == aiPickedUnit)
+        {
+            return null;
+        }
+        // PLAYER WINS
+        else if ((playerPickedUnit == UnitType.Knights && (aiPickedUnit == UnitType.Archers || aiPickedUnit == UnitType.Mages))
+         || (playerPickedUnit == UnitType.Archers && (aiPickedUnit == UnitType.Mages || aiPickedUnit == UnitType.Spearmen))
+         || (playerPickedUnit == UnitType.Mages && (aiPickedUnit == UnitType.Spearmen || aiPickedUnit == UnitType.Shields))
+         || (playerPickedUnit == UnitType.Spearmen && (aiPickedUnit == UnitType.Shields || aiPickedUnit == UnitType.Knights))
+         || (playerPickedUnit == UnitType.Shields && (aiPickedUnit == UnitType.Knights || aiPickedUnit == UnitType.Archers)))
         {
             return PlayerBC;
         }
+        // AI WINS
         else
         {
             return EnemyBC;

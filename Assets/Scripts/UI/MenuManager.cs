@@ -48,6 +48,7 @@ public class MenuManager : MonoBehaviour
         {
             GoToMainMenu();
             isInTitleScreen = false;
+            GameManager.Instance.GameHasBeenInit = true;
         }
     }
 

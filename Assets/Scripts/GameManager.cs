@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
         else
         {
             _instance = this;
-            GameHasBeenInit = false;
             InitGame();
 
             DontDestroyOnLoad(gameObject);
@@ -69,7 +68,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Battle");
     }
 
-
     /// <summary>
     /// Inits the player.
     /// </summary>
@@ -77,7 +75,6 @@ public class GameManager : MonoBehaviour
     {
         InitPlayer();
         InitEnemies();
-        GameHasBeenInit = true;
     }
 
     /// <summary>
