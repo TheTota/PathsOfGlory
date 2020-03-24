@@ -14,11 +14,6 @@ public class BattleCommander : MonoBehaviour
 
     public Army Army { get; set; }
 
-    public UnitType ChosenUnit { get; set; }
-
-    [SerializeField]
-    private PortraitRenderer portraitRenderer;
-
     /// <summary>
     /// Gives the unit played for a round n at the index n-1.
     /// </summary>
@@ -31,8 +26,6 @@ public class BattleCommander : MonoBehaviour
     public void Init(Commander c)
     {
         PlaysHistory = new List<UnitType>();
-
         this.Commander = c;
-        this.portraitRenderer.RenderPortrait(c);
     }
 }
