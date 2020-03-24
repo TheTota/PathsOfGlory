@@ -42,10 +42,29 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private Image scoreSliderEnemyImg;
 
+    // unit pick popup 
+    [SerializeField]
+    private GameObject unitPickPopup;
+    [SerializeField]
+    private Button knightsBtn;
+    [SerializeField]
+    private Button shieldsBtn;
+    [SerializeField]
+    private Button spearmenBtn;
+    [SerializeField]
+    private Button magesBtn;
+    [SerializeField]
+    private Button archersBtn;
+    [SerializeField]
+    private TextMeshProUGUI timerText;
+
     // Player units pick
     private bool playerAllowedToPick;
     private UnitType playerPickedUnit;
     private bool playerHasPicked;
+
+    private float pickTimer;
+    private float remainingTime;
 
     // Start is called before the first frame update
     void Awake()
@@ -59,6 +78,9 @@ public class BattleManager : MonoBehaviour
         if (playerAllowedToPick)
         {
             PlayerKeyboardPick();
+            
+            remainingTime = Mathf.Clamp(pickTimer - Time.time, 0f, ai.SecondsBeforeAction);
+            timerText.text = remainingTime.ToString("#.##") + "s";
         }
     }
 
@@ -67,23 +89,23 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void PlayerKeyboardPick()
     {
-        if (Input.GetKeyDown(KeyCode.A) && PlayerBC.Army.HasStockOf(UnitType.Knights))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             SetPlayerPickedUnit(UnitType.Knights);
         }
-        else if (Input.GetKeyDown(KeyCode.Z) && PlayerBC.Army.HasStockOf(UnitType.Shields))
+        else if (Input.GetKeyDown(KeyCode.Z))
         {
             SetPlayerPickedUnit(UnitType.Shields);
         }
-        else if (Input.GetKeyDown(KeyCode.E) && PlayerBC.Army.HasStockOf(UnitType.Spearmen))
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             SetPlayerPickedUnit(UnitType.Spearmen);
         }
-        else if (Input.GetKeyDown(KeyCode.R) && PlayerBC.Army.HasStockOf(UnitType.Mages))
+        else if (Input.GetKeyDown(KeyCode.R))
         {
             SetPlayerPickedUnit(UnitType.Mages);
         }
-        else if (Input.GetKeyDown(KeyCode.T) && PlayerBC.Army.HasStockOf(UnitType.Archers))
+        else if (Input.GetKeyDown(KeyCode.T))
         {
             SetPlayerPickedUnit(UnitType.Archers);
         }
@@ -93,10 +115,13 @@ public class BattleManager : MonoBehaviour
     /// Sets the unit picked by the player.
     /// </summary>
     /// <param name="ut"></param>
-    private void SetPlayerPickedUnit(UnitType ut)
+    public void SetPlayerPickedUnit(UnitType ut)
     {
-        playerPickedUnit = ut;
-        playerHasPicked = true;
+        if (PlayerBC.Army.HasStockOf(ut))
+        {
+            playerPickedUnit = ut;
+            playerHasPicked = true;
+        }
     }
 
     /// <summary>
@@ -138,6 +163,9 @@ public class BattleManager : MonoBehaviour
         // Init score slider
         InitScoreSlider();
 
+        // Init popup 
+        InitUnitPickPopup();
+
         // Init AI for the battle
         InitAI(EnemyBC.Commander.AiType);
 
@@ -157,13 +185,17 @@ public class BattleManager : MonoBehaviour
             roundText.text = "Manche : " + CurrentRound + " / " + MAX_ROUNDS;
 
             // Allow the player to pick
+            pickTimer = Time.time + ai.SecondsBeforeAction;
+            remainingTime = ai.SecondsBeforeAction;
             playerAllowedToPick = true;
+            UpdateAndShowUnitPickPopup();
 
             // After some time, get the AI pick 
-            yield return new WaitForSeconds(ai.SecondsBeforeAction);
+            yield return new WaitUntil(() => remainingTime == 0f);
 
             // Handle Player pick
             playerAllowedToPick = false;
+            unitPickPopup.SetActive(false);
             if (!playerHasPicked)
             {
                 Debug.Log("Player didn't pick or tried to pick something out of stock, sending random available unit");
@@ -178,6 +210,11 @@ public class BattleManager : MonoBehaviour
 
             // Fight the units
             BattleCommander winner = GetWinnerFromUnitsFight(aiPick);
+
+            // TODO: play fight animation 
+            yield return new WaitForSeconds(2f);
+
+            // Update score
             winner.Score += scoreDefinitionTable[CurrentRound - 1];
             UpdateScoreSlider();
 
@@ -211,6 +248,53 @@ public class BattleManager : MonoBehaviour
             this.scoreSlider.value = (float)PlayerBC.Score / ((float)PlayerBC.Score + (float)EnemyBC.Score);
         }
     }
+
+    /// <summary>
+    /// Inits the units pick popup mostly by assigning actions on btns.
+    /// </summary>
+    private void InitUnitPickPopup()
+    {
+        unitPickPopup.SetActive(false);
+
+        // init btns actions
+        knightsBtn.onClick.AddListener(() => SetPlayerPickedUnit(UnitType.Knights));
+        shieldsBtn.onClick.AddListener(() => SetPlayerPickedUnit(UnitType.Shields));
+        spearmenBtn.onClick.AddListener(() => SetPlayerPickedUnit(UnitType.Spearmen));
+        magesBtn.onClick.AddListener(() => SetPlayerPickedUnit(UnitType.Mages));
+        archersBtn.onClick.AddListener(() => SetPlayerPickedUnit(UnitType.Archers));
+    }
+
+    /// <summary>
+    /// Updates values in the popup and displays it 
+    /// </summary>
+    private void UpdateAndShowUnitPickPopup()
+    {
+        // update values
+        UpdateUnitBtn(knightsBtn, UnitType.Knights, "Chevaliers");
+        UpdateUnitBtn(shieldsBtn, UnitType.Shields, "Boucliers");
+        UpdateUnitBtn(spearmenBtn, UnitType.Spearmen, "Lanciers");
+        UpdateUnitBtn(magesBtn, UnitType.Mages, "Mages");
+        UpdateUnitBtn(archersBtn, UnitType.Archers, "Archers");
+
+        // display it!
+        this.unitPickPopup.SetActive(true);
+    }
+
+    /// <summary>
+    /// Updates a given button depending on the stock of the unit.
+    /// </summary>
+    /// <param name="btn"></param>
+    /// <param name="ut"></param>
+    /// <param name="lbl"></param>
+    private void UpdateUnitBtn(Button btn, UnitType ut, string lbl)
+    {
+        if (PlayerBC.Army.unitsStock[ut] == 0)
+        {
+            btn.interactable = false;
+        }
+        btn.GetComponentInChildren<TextMeshProUGUI>().text = lbl + "\n(" + PlayerBC.Army.unitsStock[ut] + ")";
+    }
+
 
     /// <summary>
     /// Fights units and gets the winner of the fight.

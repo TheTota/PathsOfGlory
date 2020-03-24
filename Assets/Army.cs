@@ -81,6 +81,6 @@ public class Army
         }
 
         // return a random unit from available ones
-        return availableUnits[UnityEngine.Random.Range(0, availableUnits.Count - 1)];
+        return availableUnits[UnityEngine.Random.Range(0, availableUnits.Count)];
     }
 }
