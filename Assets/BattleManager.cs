@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Inits and manages the course of a battle!
@@ -33,6 +34,8 @@ public class BattleManager : MonoBehaviour
 
     // score
     private int[] scoreDefinitionTable;
+    [SerializeField]
+    private Slider scoreSlider;
 
     // Player units pick
     private bool playerAllowedToPick;
@@ -142,7 +145,7 @@ public class BattleManager : MonoBehaviour
         Debug.Log("The battle... begins!");
         while (CurrentRound <= MAX_ROUNDS)
         {
-            roundText.text = "Manche : " + CurrentRound;
+            roundText.text = "Manche : " + CurrentRound + " / " + MAX_ROUNDS;
 
             // Allow the player to pick
             playerAllowedToPick = true;
@@ -167,13 +170,27 @@ public class BattleManager : MonoBehaviour
             // Fight the units
             BattleCommander winner = GetWinnerFromUnitsFight(aiPick);
             winner.Score += scoreDefinitionTable[CurrentRound - 1];
-
-            Debug.Log("SCORES (PLAYER) " + PlayerBC.Score + " & " + EnemyBC.Score + "(AI)");
+            UpdateScoreSlider();
 
             CurrentRound++;
         }
 
         HandleWinner();
+    }
+
+    /// <summary>
+    /// Updates the score slider to represent the current score (called balance) of the battle.
+    /// </summary>
+    private void UpdateScoreSlider()
+    {
+        if (PlayerBC.Score == 0 && EnemyBC.Score == 0)
+        {
+            this.scoreSlider.value = .5f;
+        }
+        else
+        {
+            this.scoreSlider.value = (float)PlayerBC.Score / ((float)PlayerBC.Score + (float)EnemyBC.Score);
+        }
     }
 
     /// <summary>
