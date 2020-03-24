@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -235,6 +236,15 @@ public class BattleManager : MonoBehaviour
         }
 
         HandleWinner();
+    }
+
+    /// <summary>
+    /// Leave battle before it's actually over.
+    /// </summary>
+    public void Surrender()
+    {
+        EnemyBC.Commander.LossesCount++;
+        SceneManager.LoadScene("Menu");
     }
 
     /// <summary>

@@ -16,7 +16,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private CommanderElement[] enemyCommandersElements;
 
-    public static GameManager Instance { get; set; }
+    private static GameManager _instance;
+
+    public static GameManager Instance
+    {
+        get { return _instance; }
+    }
 
     // Commanders references
     public Commander Player { get; set; }
@@ -25,14 +30,23 @@ public class GameManager : MonoBehaviour
     // Commandant que l'on est sur le point d'affronter
     public Commander BattledCommander { get; set; }
 
+    public bool GameHasBeenInit { get; set; }
+
     private void Awake()
     {
-        if (!Instance)
+        // init singleton
+        if (_instance != null && _instance != this)
         {
-            Instance = this;
+            Destroy(this.gameObject);
         }
+        else
+        {
+            _instance = this;
+            GameHasBeenInit = false;
+            InitGame();
 
-        InitGame();
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     private void Update()
@@ -63,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         InitPlayer();
         InitEnemies();
+        GameHasBeenInit = true;
     }
 
     /// <summary>
@@ -173,7 +188,7 @@ public class GameManager : MonoBehaviour
         bool unlockedSomebody = false;
         for (int i = 0; i < Enemies.Length; i++)
         {
-            if (Enemies[i].Locked && !unlockedSomebody) 
+            if (Enemies[i].Locked && !unlockedSomebody)
             {
                 Enemies[i].Locked = false;
                 unlockedSomebody = true;

@@ -27,9 +27,18 @@ public class MenuManager : MonoBehaviour
 
     private bool isInTitleScreen;
 
-    private void Awake()
+    private void Start()
     {
-        isInTitleScreen = true;
+        // skip title screen if not first time on scene
+        if (GameManager.Instance.GameHasBeenInit) 
+        {
+            GoToMainMenu();
+            isInTitleScreen = false;
+        }
+        else
+        {
+            isInTitleScreen = true;
+        }
     }
 
     private void Update()
