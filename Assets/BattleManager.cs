@@ -90,7 +90,7 @@ public class BattleManager : MonoBehaviour
         if (playerAllowedToPick)
         {
             PlayerKeyboardPick();
-            
+
             remainingTime = Mathf.Clamp(pickTimer - Time.time, 0f, ai.SecondsBeforeAction);
             timerText.text = remainingTime.ToString("0.#0") + "s";
         }
@@ -244,6 +244,15 @@ public class BattleManager : MonoBehaviour
     public void Surrender()
     {
         EnemyBC.Commander.LossesCount++;
+        ReturnToMainMenu();
+    }
+
+    /// <summary>
+    /// Returns to main menu and saves the stats of the AI.
+    /// </summary>
+    private void ReturnToMainMenu()
+    {
+        EnemyBC.Commander.SaveStats();
         SceneManager.LoadScene("Menu");
     }
 
@@ -412,6 +421,7 @@ public class BattleManager : MonoBehaviour
             Debug.Log("Player lost or drew the battle.");
             EnemyBC.Commander.LossesCount++;
         }
+        ReturnToMainMenu(); // TODO: Replace with battle recap
     }
 
     /// <summary>

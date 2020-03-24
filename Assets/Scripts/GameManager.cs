@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("enemy_" + i + "_losses", lossesCount);
             }
 
-            Enemies[i] = new Commander(enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount);
+            Enemies[i] = new Commander(i, enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount);
         }
 
         // if we didnt have saves before, now we do
@@ -191,6 +191,7 @@ public class GameManager : MonoBehaviour
             if (Enemies[i].Locked && !unlockedSomebody)
             {
                 Enemies[i].Locked = false;
+                Enemies[i].SaveStats();
                 unlockedSomebody = true;
             }
         }

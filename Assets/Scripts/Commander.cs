@@ -20,6 +20,11 @@ public class Commander
 
     public AIType AiType { get; set; }
 
+    /// <summary>
+    /// Used to save stats.
+    /// </summary>
+    private int commanderIndex; 
+
     public Commander(Color color, Portrait portrait, bool locked, AIType ai = AIType.NONE)
     {
         Locked = locked;
@@ -30,7 +35,7 @@ public class Commander
         AiType = ai;
     }
 
-    public Commander(Color color, Portrait portrait, AIType ai, bool locked, int victoryCount, int lossCount)
+    public Commander(int index, Color color, Portrait portrait, AIType ai, bool locked, int victoryCount, int lossCount)
     {
         Locked = locked;
         WinsCount = victoryCount;
@@ -38,5 +43,16 @@ public class Commander
         Color = color;
         Portrait = portrait;
         AiType = ai;
+        commanderIndex = index;
+    }
+
+    /// <summary>
+    /// Saves : lock status, wins count, losses count.
+    /// </summary>
+    public void SaveStats()
+    {
+        PlayerPrefs.SetInt("enemy_" + commanderIndex + "_locked", Locked ? 1 : 0);
+        PlayerPrefs.SetInt("enemy_" + commanderIndex + "_wins", WinsCount);
+        PlayerPrefs.SetInt("enemy_" + commanderIndex + "_losses", LossesCount);
     }
 }
