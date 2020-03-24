@@ -36,7 +36,8 @@ public class BattleManager : MonoBehaviour
 
     // Player units pick
     private bool playerAllowedToPick;
-    private UnitType? playerPickedUnit;
+    private UnitType playerPickedUnit;
+    private bool playerHasPicked;
 
     // Start is called before the first frame update
     void Awake()
@@ -53,28 +54,41 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Let the player pick a unit with the keyboard.
+    /// </summary>
     private void PlayerKeyboardPick()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && PlayerBC.Army.HasStockOf(UnitType.Knights))
         {
-            playerPickedUnit = UnitType.Knights;
+            SetPlayerPickedUnit(UnitType.Knights);
         }
-        else if (Input.GetKeyDown(KeyCode.Z))
+        else if (Input.GetKeyDown(KeyCode.Z) && PlayerBC.Army.HasStockOf(UnitType.Shields))
         {
-            playerPickedUnit = UnitType.Shields;
+            SetPlayerPickedUnit(UnitType.Shields);
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E) && PlayerBC.Army.HasStockOf(UnitType.Spearmen))
         {
-            playerPickedUnit = UnitType.Spearmen;
+            SetPlayerPickedUnit(UnitType.Spearmen);
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.R) && PlayerBC.Army.HasStockOf(UnitType.Mages))
         {
-            playerPickedUnit = UnitType.Mages;
+            SetPlayerPickedUnit(UnitType.Mages);
         }
-        else if (Input.GetKeyDown(KeyCode.T))
+        else if (Input.GetKeyDown(KeyCode.T) && PlayerBC.Army.HasStockOf(UnitType.Archers))
         {
-            playerPickedUnit = UnitType.Archers;
+            SetPlayerPickedUnit(UnitType.Archers);
         }
+    }
+
+    /// <summary>
+    /// Sets the unit picked by the player.
+    /// </summary>
+    /// <param name="ut"></param>
+    private void SetPlayerPickedUnit(UnitType ut)
+    {
+        playerPickedUnit = ut;
+        playerHasPicked = true;
     }
 
     /// <summary>
@@ -93,7 +107,6 @@ public class BattleManager : MonoBehaviour
             scoreDefinitionTable[i] = rs;
         }
     }
-
 
     /// <summary>
     /// Initialise et démarre une bataille entre 2 commandants.
@@ -129,7 +142,6 @@ public class BattleManager : MonoBehaviour
         Debug.Log("The battle... begins!");
         while (CurrentRound <= MAX_ROUNDS)
         {
-            playerPickedUnit = null;
             roundText.text = "Manche : " + CurrentRound;
 
             // Allow the player to pick
@@ -137,8 +149,20 @@ public class BattleManager : MonoBehaviour
 
             // After some time, get the AI pick 
             yield return new WaitForSeconds(ai.SecondsBeforeAction);
+
+            // Handle Player pick
             playerAllowedToPick = false;
+            if (!playerHasPicked)
+            {
+                Debug.Log("Player didn't pick or tried to pick something out of stock, sending random available unit");
+                this.playerPickedUnit = PlayerBC.Army.GetRandomAvailableUnit();
+            }
+            playerHasPicked = false;
+            PlayerBC.Army.RemoveUnitFromStock(playerPickedUnit);
+
+            // Make AI Pick
             UnitType aiPick = ai.PickUnit();
+            EnemyBC.Army.RemoveUnitFromStock(aiPick);
 
             // Fight the units
             BattleCommander winner = GetWinnerFromUnitsFight(aiPick);
@@ -160,25 +184,18 @@ public class BattleManager : MonoBehaviour
     private BattleCommander GetWinnerFromUnitsFight(UnitType aiPick)
     {
         Debug.Log("FIGHT : (PLAYER) " + playerPickedUnit + " vs " + aiPick + "(AI)");
-        if (playerPickedUnit != null)
+
+        // Check who won the fight and return the BC
+        if ((playerPickedUnit == UnitType.Knights && (aiPick == UnitType.Archers || aiPick == UnitType.Mages))
+         || (playerPickedUnit == UnitType.Archers && (aiPick == UnitType.Mages || aiPick == UnitType.Spearmen))
+         || (playerPickedUnit == UnitType.Mages && (aiPick == UnitType.Spearmen || aiPick == UnitType.Shields))
+         || (playerPickedUnit == UnitType.Spearmen && (aiPick == UnitType.Shields || aiPick == UnitType.Knights))
+         || (playerPickedUnit == UnitType.Shields && (aiPick == UnitType.Knights || aiPick == UnitType.Archers)))
         {
-            // Check who won the fight and return the BC
-            if ((playerPickedUnit == UnitType.Knights && (aiPick == UnitType.Archers || aiPick == UnitType.Mages))
-             || (playerPickedUnit == UnitType.Archers && (aiPick == UnitType.Mages || aiPick == UnitType.Spearmen))
-             || (playerPickedUnit == UnitType.Mages && (aiPick == UnitType.Spearmen || aiPick == UnitType.Shields))
-             || (playerPickedUnit == UnitType.Spearmen && (aiPick == UnitType.Shields || aiPick == UnitType.Knights))
-             || (playerPickedUnit == UnitType.Shields && (aiPick == UnitType.Knights || aiPick == UnitType.Archers)))
-            {
-                return PlayerBC;
-            }
-            else
-            {
-                return EnemyBC;
-            }
+            return PlayerBC;
         }
         else
         {
-            Debug.Log("Player didn't pick, he loses");
             return EnemyBC;
         }
     }
@@ -191,10 +208,15 @@ public class BattleManager : MonoBehaviour
         if (PlayerBC.Score > EnemyBC.Score)
         {
             Debug.Log("Player won the battle.");
+            // Unlock next commander
+            GameManager.Instance.UnlockNextCommander();
+            // Update wins against this commander
+            EnemyBC.Commander.WinsCount++;
         }
         else
         {
             Debug.Log("Player lost or drew the battle.");
+            EnemyBC.Commander.LossesCount++;
         }
     }
 

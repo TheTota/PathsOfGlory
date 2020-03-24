@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
@@ -28,6 +29,8 @@ public class Army
     /// </summary>
     public Army()
     {
+        unitsStock = new Dictionary<UnitType, int>();
+
         unitsStock.Add(UnitType.Knights, INITIAL_STOCK_OF_EACH);
         unitsStock.Add(UnitType.Shields, INITIAL_STOCK_OF_EACH);
         unitsStock.Add(UnitType.Spearmen, INITIAL_STOCK_OF_EACH);
@@ -49,5 +52,35 @@ public class Army
         {
             throw new System.Exception("trying to remove a unit from a stock already empty");
         }
+    }
+
+    /// <summary>
+    /// Returns whether the player has at least 1 unit of the given unit type.
+    /// </summary>
+    /// <param name="ut"></param>
+    /// <returns></returns>
+    public bool HasStockOf(UnitType ut)
+    {
+        return unitsStock[ut] > 0;
+    }
+
+    /// <summary>
+    /// Returns a random available (got stock of it) unit.
+    /// </summary>
+    /// <returns></returns>
+    public UnitType GetRandomAvailableUnit()
+    {
+        // Get the available units
+        List<UnitType> availableUnits = new List<UnitType>();
+        for (int i = 0; i < 5; i++)
+        {
+            if (HasStockOf((UnitType)i))
+            {
+                availableUnits.Add((UnitType)i);
+            }
+        }
+
+        // return a random unit from available ones
+        return availableUnits[UnityEngine.Random.Range(0, availableUnits.Count - 1)];
     }
 }

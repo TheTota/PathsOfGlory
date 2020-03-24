@@ -27,5 +27,7 @@ public class BattleCommander : MonoBehaviour
     {
         PlaysHistory = new List<UnitType>();
         this.Commander = c;
+        this.Army = new Army();
+        this.Score = 0;
     }
 }

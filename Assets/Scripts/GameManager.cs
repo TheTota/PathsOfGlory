@@ -164,4 +164,25 @@ public class GameManager : MonoBehaviour
             Debug.Log("Enemy commanders loaded.");
         }
     }
+
+    /// <summary>
+    /// Unlocks the next commander on the list, if there is still some to be unlocked.
+    /// </summary>
+    public void UnlockNextCommander()
+    {
+        bool unlockedSomebody = false;
+        for (int i = 0; i < Enemies.Length; i++)
+        {
+            if (Enemies[i].Locked && !unlockedSomebody) 
+            {
+                Enemies[i].Locked = false;
+                unlockedSomebody = true;
+            }
+        }
+
+        if (!unlockedSomebody)
+        {
+            Debug.Log("Every commander has been unlocked already.");
+        }
+    }
 }
