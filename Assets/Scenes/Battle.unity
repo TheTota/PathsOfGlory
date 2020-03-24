@@ -1305,6 +1305,7 @@ MonoBehaviour:
   scoreSlider: {fileID: 921906362}
   scoreSliderPlayerImg: {fileID: 508664966}
   scoreSliderEnemyImg: {fileID: 229792232}
+  eventSystem: {fileID: 0}
   unitPickPopup: {fileID: 1637009233}
   knightsBtn: {fileID: 1511450780}
   shieldsBtn: {fileID: 500469309}

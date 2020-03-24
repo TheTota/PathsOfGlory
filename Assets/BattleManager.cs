@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
@@ -43,6 +44,9 @@ public class BattleManager : MonoBehaviour
     private Image scoreSliderEnemyImg;
 
     // unit pick popup 
+    [Header("Unit Pick Popup")]
+    [SerializeField]
+    private EventSystem eventSystem;
     [SerializeField]
     private GameObject unitPickPopup;
     [SerializeField]
@@ -80,7 +84,7 @@ public class BattleManager : MonoBehaviour
             PlayerKeyboardPick();
             
             remainingTime = Mathf.Clamp(pickTimer - Time.time, 0f, ai.SecondsBeforeAction);
-            timerText.text = remainingTime.ToString("#.##") + "s";
+            timerText.text = remainingTime.ToString("0.#0") + "s";
         }
     }
 
@@ -91,23 +95,23 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            SetPlayerPickedUnit(UnitType.Knights);
+            ExecuteEvents.Execute(knightsBtn.gameObject, new BaseEventData(eventSystem), ExecuteEvents.submitHandler);
         }
         else if (Input.GetKeyDown(KeyCode.Z))
         {
-            SetPlayerPickedUnit(UnitType.Shields);
+            ExecuteEvents.Execute(shieldsBtn.gameObject, new BaseEventData(eventSystem), ExecuteEvents.submitHandler);
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            SetPlayerPickedUnit(UnitType.Spearmen);
+            ExecuteEvents.Execute(spearmenBtn.gameObject, new BaseEventData(eventSystem), ExecuteEvents.submitHandler);
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            SetPlayerPickedUnit(UnitType.Mages);
+            ExecuteEvents.Execute(magesBtn.gameObject, new BaseEventData(eventSystem), ExecuteEvents.submitHandler);
         }
         else if (Input.GetKeyDown(KeyCode.T))
         {
-            SetPlayerPickedUnit(UnitType.Archers);
+            ExecuteEvents.Execute(archersBtn.gameObject, new BaseEventData(eventSystem), ExecuteEvents.submitHandler);
         }
     }
 
@@ -122,6 +126,7 @@ public class BattleManager : MonoBehaviour
             playerPickedUnit = ut;
             playerHasPicked = true;
         }
+        ColorSelectedBtn(ut);
     }
 
     /// <summary>
@@ -275,9 +280,56 @@ public class BattleManager : MonoBehaviour
         UpdateUnitBtn(spearmenBtn, UnitType.Spearmen, "Lanciers");
         UpdateUnitBtn(magesBtn, UnitType.Mages, "Mages");
         UpdateUnitBtn(archersBtn, UnitType.Archers, "Archers");
+        ResetUnitBtnsColor();
 
         // display it!
         this.unitPickPopup.SetActive(true);
+    }
+
+    /// <summary>
+    /// Colors the selected btn and uncolors the other ones.
+    /// </summary>
+    /// <param name="ut"></param>
+    private void ColorSelectedBtn(UnitType ut)
+    {
+        // reset btn colors
+        ResetUnitBtnsColor();
+
+        // highlight clicked one
+        switch (ut)
+        {
+            case UnitType.Knights:
+                knightsBtn.gameObject.GetComponent<Image>().color = PlayerBC.Commander.Color;
+                break;
+
+            case UnitType.Shields:
+                shieldsBtn.gameObject.GetComponent<Image>().color = PlayerBC.Commander.Color;
+                break;
+
+            case UnitType.Spearmen:
+                spearmenBtn.gameObject.GetComponent<Image>().color = PlayerBC.Commander.Color;
+                break;
+
+            case UnitType.Mages:
+                magesBtn.gameObject.GetComponent<Image>().color = PlayerBC.Commander.Color;
+                break;
+
+            case UnitType.Archers:
+                archersBtn.gameObject.GetComponent<Image>().color = PlayerBC.Commander.Color;
+                break;
+
+            default:
+                throw new Exception("Couldnt highlight this button, weird UT..");
+        }
+    }
+
+    private void ResetUnitBtnsColor()
+    {
+        knightsBtn.gameObject.GetComponent<Image>().color = Color.white;
+        shieldsBtn.gameObject.GetComponent<Image>().color = Color.white;
+        spearmenBtn.gameObject.GetComponent<Image>().color = Color.white;
+        magesBtn.gameObject.GetComponent<Image>().color = Color.white;
+        archersBtn.gameObject.GetComponent<Image>().color = Color.white;
     }
 
     /// <summary>
