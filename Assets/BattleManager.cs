@@ -42,6 +42,13 @@ public class BattleManager : MonoBehaviour
     private Image scoreSliderPlayerImg;
     [SerializeField]
     private Image scoreSliderEnemyImg;
+    [SerializeField]
+    private TextMeshProUGUI playerScoreText;
+    [SerializeField]
+    private TextMeshProUGUI enemyScoreText;
+    [SerializeField]
+    private TextMeshProUGUI nextRoundValueText;
+
 
     // unit pick popup 
     [Header("Unit Pick Popup")]
@@ -166,7 +173,7 @@ public class BattleManager : MonoBehaviour
         enemyPR.RenderPortrait(EnemyBC.Commander);
 
         // Init score slider
-        InitScoreSlider();
+        InitScoreUI();
 
         // Init popup 
         InitUnitPickPopup();
@@ -188,6 +195,7 @@ public class BattleManager : MonoBehaviour
         while (CurrentRound <= MAX_ROUNDS)
         {
             roundText.text = "Manche : " + CurrentRound + " / " + MAX_ROUNDS;
+            nextRoundValueText.text = "Valeur de la manche : " + scoreDefinitionTable[CurrentRound - 1];
 
             // Allow the player to pick
             pickTimer = Time.time + ai.SecondsBeforeAction;
@@ -221,7 +229,7 @@ public class BattleManager : MonoBehaviour
 
             // Update score
             winner.Score += scoreDefinitionTable[CurrentRound - 1];
-            UpdateScoreSlider();
+            UpdateScoreUI();
 
             CurrentRound++;
         }
@@ -232,17 +240,19 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// Inits mainly the colors of the parts of the slide to match the player's.
     /// </summary>
-    private void InitScoreSlider()
+    private void InitScoreUI()
     {
         this.scoreSlider.value = .5f;
         this.scoreSliderPlayerImg.color = PlayerBC.Commander.Color;
         this.scoreSliderEnemyImg.color = EnemyBC.Commander.Color;
+        this.playerScoreText.text = PlayerBC.Score.ToString();
+        this.enemyScoreText.text = EnemyBC.Score.ToString();
     }
 
     /// <summary>
     /// Updates the score slider to represent the current score (called balance) of the battle.
     /// </summary>
-    private void UpdateScoreSlider()
+    private void UpdateScoreUI()
     {
         if (PlayerBC.Score == 0 && EnemyBC.Score == 0)
         {
@@ -251,6 +261,8 @@ public class BattleManager : MonoBehaviour
         else
         {
             this.scoreSlider.value = (float)PlayerBC.Score / ((float)PlayerBC.Score + (float)EnemyBC.Score);
+            this.playerScoreText.text = PlayerBC.Score.ToString();
+            this.enemyScoreText.text = EnemyBC.Score.ToString();
         }
     }
 
