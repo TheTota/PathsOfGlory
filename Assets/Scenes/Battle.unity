@@ -331,7 +331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.500061, y: 0}
+  m_AnchoredPosition: {x: -4.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &508664966
@@ -417,6 +417,8 @@ MonoBehaviour:
   enemyPR: {fileID: 2122098272}
   roundText: {fileID: 1289970252}
   scoreSlider: {fileID: 921906362}
+  scoreSliderPlayerImg: {fileID: 508664966}
+  scoreSliderEnemyImg: {fileID: 229792232}
 --- !u!1 &921906360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 4.762, y: 0}
+  m_AnchoredPosition: {x: 4.762085, y: 0}
   m_SizeDelta: {x: -0.486, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1872317833

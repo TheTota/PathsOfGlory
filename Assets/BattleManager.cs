@@ -34,8 +34,13 @@ public class BattleManager : MonoBehaviour
 
     // score
     private int[] scoreDefinitionTable;
+    [Header("Score Slider")]
     [SerializeField]
     private Slider scoreSlider;
+    [SerializeField]
+    private Image scoreSliderPlayerImg;
+    [SerializeField]
+    private Image scoreSliderEnemyImg;
 
     // Player units pick
     private bool playerAllowedToPick;
@@ -116,6 +121,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void InitBattle()
     {
+        // misc inits
         playerAllowedToPick = false;
         CurrentRound = 1;
 
@@ -128,6 +134,9 @@ public class BattleManager : MonoBehaviour
         EnemyBC = (BattleCommander)enemyPR.gameObject.AddComponent(typeof(BattleCommander));
         EnemyBC.Init(GameManager.Instance.BattledCommander);
         enemyPR.RenderPortrait(EnemyBC.Commander);
+
+        // Init score slider
+        InitScoreSlider();
 
         // Init AI for the battle
         InitAI(EnemyBC.Commander.AiType);
@@ -176,6 +185,16 @@ public class BattleManager : MonoBehaviour
         }
 
         HandleWinner();
+    }
+
+    /// <summary>
+    /// Inits mainly the colors of the parts of the slide to match the player's.
+    /// </summary>
+    private void InitScoreSlider()
+    {
+        this.scoreSlider.value = .5f;
+        this.scoreSliderPlayerImg.color = PlayerBC.Commander.Color;
+        this.scoreSliderEnemyImg.color = EnemyBC.Commander.Color;
     }
 
     /// <summary>
