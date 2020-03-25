@@ -516,6 +516,7 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case AIType.Throwback:
+                ai = new AIThrowback(this);
                 break;
 
             case AIType.SmartHuman:
