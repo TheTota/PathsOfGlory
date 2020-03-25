@@ -30,4 +30,13 @@ public class BattleCommander : MonoBehaviour
         this.Army = new Army();
         this.Score = 0;
     }
+
+    /// <summary>
+    /// Adds a unit to the BC's plays history.
+    /// </summary>
+    /// <param name="playerPickedUnit"></param>
+    public void AddToPlaysHistory(UnitType playerPickedUnit)
+    {
+        this.PlaysHistory.Add(playerPickedUnit);
+    }
 }

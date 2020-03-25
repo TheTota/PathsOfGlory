@@ -39,6 +39,76 @@ public class Army
     }
 
     /// <summary>
+    /// Returns the counters of the given unit.
+    /// </summary>
+    /// <param name="ut"></param>
+    /// <returns></returns>
+    public List<UnitType> GetAvailableCounters(UnitType ut)
+    {
+        List<UnitType> availableCounters;
+
+        // Add counters
+        switch (ut)
+        {
+            case UnitType.Knights:
+                availableCounters = new List<UnitType>() { UnitType.Spearmen, UnitType.Shields };
+                break;
+
+            case UnitType.Shields:
+                availableCounters = new List<UnitType>() { UnitType.Mages, UnitType.Spearmen };
+                break;
+
+            case UnitType.Spearmen:
+                availableCounters = new List<UnitType>() { UnitType.Archers, UnitType.Mages };
+                break;
+
+            case UnitType.Mages:
+                availableCounters = new List<UnitType>() { UnitType.Knights, UnitType.Archers };
+                break;
+
+            case UnitType.Archers:
+                availableCounters = new List<UnitType>() { UnitType.Shields, UnitType.Knights };
+                break;
+
+            default:
+                throw new Exception("Cant identify the unit type");
+        }
+
+        // Filter with stock availability
+        // Knights
+        if (availableCounters.Contains(UnitType.Knights) && unitsStock[UnitType.Knights] == 0)
+        {
+            availableCounters.Remove(UnitType.Knights);
+        }
+        
+        // Shields
+        if (availableCounters.Contains(UnitType.Shields) && unitsStock[UnitType.Shields] == 0)
+        {
+            availableCounters.Remove(UnitType.Shields);
+        }
+
+        // Spearmen
+        if (availableCounters.Contains(UnitType.Spearmen) && unitsStock[UnitType.Spearmen] == 0)
+        {
+            availableCounters.Remove(UnitType.Spearmen);
+        }
+
+        // Mages
+        if (availableCounters.Contains(UnitType.Mages) && unitsStock[UnitType.Mages] == 0)
+        {
+            availableCounters.Remove(UnitType.Mages);
+        }
+
+        // Archers
+        if (availableCounters.Contains(UnitType.Archers) && unitsStock[UnitType.Archers] == 0)
+        {
+            availableCounters.Remove(UnitType.Archers);
+        }
+
+        return availableCounters;
+    }
+
+    /// <summary>
     /// Removes a unit of the given type from the stock, if stock isn't empty.
     /// </summary>
     /// <param name="ut">Type of unit to remove from stock.</param>
@@ -50,7 +120,7 @@ public class Army
         }
         else
         {
-            throw new System.Exception("trying to remove a unit from a stock already empty");
+            throw new System.Exception("Trying to remove a unit from a stock already empty : " + ut);
         }
     }
 

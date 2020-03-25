@@ -225,10 +225,12 @@ public class BattleManager : MonoBehaviour
                 this.playerPickedUnit = PlayerBC.Army.GetRandomAvailableUnit();
             }
             playerHasPicked = false;
+            PlayerBC.AddToPlaysHistory(playerPickedUnit);
             PlayerBC.Army.RemoveUnitFromStock(playerPickedUnit);
 
             // Make AI Pick
             aiPickedUnit = ai.PickUnit();
+            EnemyBC.AddToPlaysHistory(aiPickedUnit);
             EnemyBC.Army.RemoveUnitFromStock(aiPickedUnit);
 
             // Fight the units
@@ -446,8 +448,11 @@ public class BattleManager : MonoBehaviour
         if (PlayerBC.Score > EnemyBC.Score)
         {
             Debug.Log("Player won the battle.");
-            // Unlock next commander
-            GameManager.Instance.UnlockNextCommander();
+            // Unlock next commander, if first time we beat this AI
+            if (EnemyBC.Commander.WinsCount == 0)
+            {
+                GameManager.Instance.UnlockNextCommander();
+            }
             // Update wins against this commander
             EnemyBC.Commander.WinsCount++;
         }
@@ -484,9 +489,11 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case AIType.SelfCounter:
+                ai = new AISelfCounter(this);
                 break;
 
             case AIType.PlayerCounter:
+                ai = new AICounterPlayer(this);
                 break;
 
             case AIType.CommonHuman:
