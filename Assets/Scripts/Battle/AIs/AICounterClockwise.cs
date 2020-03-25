@@ -7,18 +7,18 @@ public class AICounterClockwise : AI
     private int counterClockwiseIndex;
 
     /// <summary>
-    /// Inits theAI.
+    /// Inits the AI.
     /// </summary>
     /// <param name="bm"></param>
     public AICounterClockwise(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 5f;
+        base.SecondsBeforeAction = 10f;
         counterClockwiseIndex = 4;
     }
 
     /// <summary>
-    /// Picks a unit in the clockwise order, starting by the 1rst one.
+    /// Picks a unit in the counter-clockwise order, starting by the last one.
     /// </summary>
     /// <returns></returns>
     public override UnitType PickUnit()

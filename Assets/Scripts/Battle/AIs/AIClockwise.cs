@@ -7,13 +7,13 @@ public class AIClockwise : AI
     private int clockwiseIndex;
 
     /// <summary>
-    /// Inits theAI.
+    /// Inits the AI.
     /// </summary>
     /// <param name="bm"></param>
     public AIClockwise(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 5f;
+        base.SecondsBeforeAction = 10f;
         clockwiseIndex = 0;
     }
 

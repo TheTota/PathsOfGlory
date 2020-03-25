@@ -475,10 +475,12 @@ public class BattleManager : MonoBehaviour
                 ai = new AICounterClockwise(this);
                 break;
 
-            case AIType.Drunk:
+            case AIType.DrunkResilient:
+                ai = new AIDrunkResilient(this);
                 break;
 
-            case AIType.DrunkResilient:
+            case AIType.Drunk:
+                ai = new AIDrunk(this);
                 break;
 
             case AIType.SelfCounter:
