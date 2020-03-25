@@ -88,6 +88,11 @@ public class BattleManager : MonoBehaviour
     private float pickTimer;
     private float remainingTime;
 
+    /// <summary>
+    /// Gives the BC that won the round n at the index n-1.
+    /// </summary>
+    public List<BattleCommander> RoundsWinnersHistory { get; set; }
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -172,6 +177,7 @@ public class BattleManager : MonoBehaviour
         // misc inits
         playerAllowedToPick = false;
         CurrentRound = 1;
+        RoundsWinnersHistory = new List<BattleCommander>();
 
         // Init Player
         PlayerBC = (BattleCommander)playerPR.gameObject.AddComponent(typeof(BattleCommander));
@@ -244,7 +250,12 @@ public class BattleManager : MonoBehaviour
             if (winner)
             {
                 winner.Score += scoreDefinitionTable[CurrentRound - 1];
+                RoundsWinnersHistory.Add(winner);
                 UpdateScoreUI();
+            }
+            else
+            {
+                RoundsWinnersHistory.Add(null);
             }
 
             CurrentRound++;
@@ -497,6 +508,7 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case AIType.CommonHuman:
+                ai = new AICommonHuman(this);
                 break;
 
             case AIType.PlayerStock:
