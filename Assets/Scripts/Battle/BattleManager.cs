@@ -520,6 +520,7 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case AIType.SmartHuman:
+                ai = new AISmartHuman(this);
                 break;
 
             default:
