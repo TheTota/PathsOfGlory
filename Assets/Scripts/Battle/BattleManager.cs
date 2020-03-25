@@ -512,6 +512,7 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case AIType.PlayerStock:
+                ai = new AIPlayerStock(this);
                 break;
 
             case AIType.Throwback:
