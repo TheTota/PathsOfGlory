@@ -472,6 +472,7 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case AIType.CounterClockwise:
+                ai = new AICounterClockwise(this);
                 break;
 
             case AIType.Drunk:
