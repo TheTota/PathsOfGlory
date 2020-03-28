@@ -34,9 +34,9 @@ public class BattleCommander : MonoBehaviour
     /// <summary>
     /// Adds a unit to the BC's plays history.
     /// </summary>
-    /// <param name="playerPickedUnit"></param>
-    public void AddToPlaysHistory(UnitType playerPickedUnit)
+    /// <param name="unit"></param>
+    public void AddToPlaysHistory(UnitType unit)
     {
-        this.PlaysHistory.Add(playerPickedUnit);
+        this.PlaysHistory.Add(unit);
     }
 }
