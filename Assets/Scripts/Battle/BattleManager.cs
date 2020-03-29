@@ -344,7 +344,6 @@ public class BattleManager : MonoBehaviour
     private void InitUnitPickPopup()
     {
         unitPickPopup.SetActive(false);
-        unitPickPopup.transform.Find("UnitPickPanel").GetComponent<Image>().color = new Color(PlayerBC.Commander.Color.r, PlayerBC.Commander.Color.g, PlayerBC.Commander.Color.b, .75f);
 
         // init btns actions
         knightsBtn.onClick.AddListener(() => SetPlayerPickedUnit(UnitType.Knights));
@@ -381,26 +380,27 @@ public class BattleManager : MonoBehaviour
         ResetUnitBtnsColor();
 
         // highlight clicked one
+        Color selectedColor = new Color(129f/255f, 206f/255f, 1f);
         switch (ut)
         {
             case UnitType.Knights:
-                knightsBtn.gameObject.GetComponent<Image>().color = PlayerBC.Commander.Color;
+                knightsBtn.gameObject.GetComponent<Image>().color = selectedColor; 
                 break;
 
             case UnitType.Shields:
-                shieldsBtn.gameObject.GetComponent<Image>().color = PlayerBC.Commander.Color;
+                shieldsBtn.gameObject.GetComponent<Image>().color = selectedColor;
                 break;
 
             case UnitType.Spearmen:
-                spearmenBtn.gameObject.GetComponent<Image>().color = PlayerBC.Commander.Color;
+                spearmenBtn.gameObject.GetComponent<Image>().color = selectedColor;
                 break;
 
             case UnitType.Mages:
-                magesBtn.gameObject.GetComponent<Image>().color = PlayerBC.Commander.Color;
+                magesBtn.gameObject.GetComponent<Image>().color = selectedColor;
                 break;
 
             case UnitType.Archers:
-                archersBtn.gameObject.GetComponent<Image>().color = PlayerBC.Commander.Color;
+                archersBtn.gameObject.GetComponent<Image>().color = selectedColor;
                 break;
 
             default:

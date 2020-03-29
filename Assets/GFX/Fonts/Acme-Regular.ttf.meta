@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c19ff7e9ef9c87a4c921903a11e66364
+guid: 8c8d1729d6721384580a06411a55a2ac
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Cocogoose Classic Trial
+  fontName: Acme
   fontNames:
-  - Cocogoose Classic Trial
+  - Acme
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
