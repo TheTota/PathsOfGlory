@@ -76,6 +76,11 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI enemyUnitText;
 
+    [Header("Plays History UI")]
+    [SerializeField]
+    private UIPlaysHistoryHandler uiPlaysHistoryHandler;
+
+
     // Player units pick
     private bool playerAllowedToPick;
     private bool playerHasPicked;
@@ -258,12 +263,14 @@ public class BattleManager : MonoBehaviour
                 RoundsWinnersHistory.Add(null);
             }
 
+            // update plays history UI
+            uiPlaysHistoryHandler.RenderPlaysHistoryUI(playerPickedUnit, aiPickedUnit, winner);
+
             CurrentRound++;
         }
 
         HandleWinner();
     }
-
     /// <summary>
     /// Display the battling units temporarly by just showing a text with the name of the units called into the battle.
     /// </summary>
