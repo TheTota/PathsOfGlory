@@ -56,6 +56,13 @@ public class UIPlaysHistoryHandler : MonoBehaviour
     /// <param name="winner">Battle commander that won the round.</param>
     public void RenderPlaysHistoryUI(UnitType playerUnit, UnitType enemyUnit, BattleCommander winner)
     {
+        // Remove old items to make room
+        if (playerPlaysHistory.childCount == 8)
+        {
+            Destroy(playerPlaysHistory.GetChild(7).gameObject);
+            Destroy(enemyPlaysHistory.GetChild(7).gameObject);
+        }
+
         // if not a draw
         if (battleManager.PlayerBC == winner || battleManager.EnemyBC == winner)
         {
@@ -84,17 +91,17 @@ public class UIPlaysHistoryHandler : MonoBehaviour
         // color depending on if win or not 
         if (isDraw)
         {
-            item.GetComponent<Image>().color = Color.grey;
+            item.GetComponent<Image>().color = new Color(.71f, .71f, .71f); // some light grey
         }
         else
         {
             if (isWinner)
             {
-                item.GetComponent<Image>().color = Color.green;
+                item.GetComponent<Image>().color = new Color(.235f, .94f, .235f); // some green
             }
             else
             {
-                item.GetComponent<Image>().color = Color.red;
+                item.GetComponent<Image>().color = new Color(.94f, .235f, .235f); // some pomegranate red
             }
         }
 

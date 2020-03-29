@@ -247,9 +247,11 @@ public class BattleManager : MonoBehaviour
             // Fight the units
             BattleCommander winner = GetWinnerFromUnitsFight();
 
+            uiPlaysHistoryHandler.gameObject.SetActive(false);
             DisplayBattlingUnits(true); // TODO: play fight animation instead
             yield return new WaitForSeconds(2f);
             DisplayBattlingUnits(false);
+            uiPlaysHistoryHandler.gameObject.SetActive(true);
 
             // Update score
             if (winner)
@@ -427,7 +429,7 @@ public class BattleManager : MonoBehaviour
         {
             btn.interactable = false;
         }
-        btn.GetComponentInChildren<TextMeshProUGUI>().text = PlayerBC.Army.unitsStock[ut].ToString(); ;
+        btn.GetComponentInChildren<TextMeshProUGUI>().text = PlayerBC.Army.unitsStock[ut].ToString();
     }
 
 
