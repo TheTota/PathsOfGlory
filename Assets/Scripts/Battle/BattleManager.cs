@@ -342,6 +342,7 @@ public class BattleManager : MonoBehaviour
     private void InitUnitPickPopup()
     {
         unitPickPopup.SetActive(false);
+        unitPickPopup.transform.Find("UnitPickPanel").GetComponent<Image>().color = new Color(PlayerBC.Commander.Color.r, PlayerBC.Commander.Color.g, PlayerBC.Commander.Color.b, .75f);
 
         // init btns actions
         knightsBtn.onClick.AddListener(() => SetPlayerPickedUnit(UnitType.Knights));
@@ -357,11 +358,11 @@ public class BattleManager : MonoBehaviour
     private void UpdateAndShowUnitPickPopup()
     {
         // update values
-        UpdateUnitBtn(knightsBtn, UnitType.Knights, "Chevaliers");
-        UpdateUnitBtn(shieldsBtn, UnitType.Shields, "Boucliers");
-        UpdateUnitBtn(spearmenBtn, UnitType.Spearmen, "Lanciers");
-        UpdateUnitBtn(magesBtn, UnitType.Mages, "Mages");
-        UpdateUnitBtn(archersBtn, UnitType.Archers, "Archers");
+        UpdateUnitBtn(knightsBtn, UnitType.Knights);
+        UpdateUnitBtn(shieldsBtn, UnitType.Shields);
+        UpdateUnitBtn(spearmenBtn, UnitType.Spearmen);
+        UpdateUnitBtn(magesBtn, UnitType.Mages);
+        UpdateUnitBtn(archersBtn, UnitType.Archers);
         ResetUnitBtnsColor();
 
         // display it!
@@ -420,13 +421,13 @@ public class BattleManager : MonoBehaviour
     /// <param name="btn"></param>
     /// <param name="ut"></param>
     /// <param name="lbl"></param>
-    private void UpdateUnitBtn(Button btn, UnitType ut, string lbl)
+    private void UpdateUnitBtn(Button btn, UnitType ut)
     {
         if (PlayerBC.Army.unitsStock[ut] == 0)
         {
             btn.interactable = false;
         }
-        btn.GetComponentInChildren<TextMeshProUGUI>().text = lbl + "\n(" + PlayerBC.Army.unitsStock[ut] + ")";
+        btn.GetComponentInChildren<TextMeshProUGUI>().text = PlayerBC.Army.unitsStock[ut].ToString(); ;
     }
 
 
