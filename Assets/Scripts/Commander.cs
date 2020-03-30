@@ -19,23 +19,24 @@ public class Commander
     public Portrait Portrait { get; set; }
 
     public AIType AiType { get; set; }
+    public PortraitElement PortraitElementToUnlock { get; set; }
 
     /// <summary>
     /// Used to save stats.
     /// </summary>
     private int commanderIndex; 
 
-    public Commander(Color color, Portrait portrait, bool locked, AIType ai = AIType.NONE)
+    public Commander(Color color, Portrait portrait, bool locked)
     {
         Locked = locked;
         WinsCount = 0;
         LossesCount = 0;
         Color = color;
         Portrait = portrait;
-        AiType = ai;
+        AiType = AIType.NONE;
     }
 
-    public Commander(int index, Color color, Portrait portrait, AIType ai, bool locked, int victoryCount, int lossCount)
+    public Commander(int index, Color color, Portrait portrait, PortraitElement portraitElementToUnlock, AIType ai, bool locked, int victoryCount, int lossCount)
     {
         Locked = locked;
         WinsCount = victoryCount;
@@ -43,6 +44,7 @@ public class Commander
         Color = color;
         Portrait = portrait;
         AiType = ai;
+        PortraitElementToUnlock = portraitElementToUnlock;
         commanderIndex = index;
     }
 

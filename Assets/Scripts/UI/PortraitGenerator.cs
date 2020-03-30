@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,7 +21,45 @@ public class PortraitGenerator : MonoBehaviour
         if (!Instance)
         {
             Instance = this;
-        }    
+        }
+    }
+
+    /// <summary>
+    /// Inits the portrait elements (whether they're locked or not) for the rest of game by loading or generating & saving.
+    /// </summary>
+    public void InitPortraitElements()
+    {
+        // Put every element in a list
+        List<PortraitElement> everyElement = new List<PortraitElement>();
+        everyElement.AddRange(availableHair);
+        everyElement.AddRange(availableEyes);
+        everyElement.AddRange(availableMouth);
+
+        // go through each element to init it 
+        for (int i = 0; i < everyElement.Count; i++)
+        {
+            // if we have saves for portrait elements 
+            if (PlayerPrefs.HasKey("portrait_elements_saves"))
+            {
+                everyElement[i].locked = PlayerPrefs.GetInt(everyElement[i].name) == 1 ? true : false;
+            }
+            else
+            {
+                int isLocked = everyElement[i].locked ? 1 : 0; 
+                PlayerPrefs.SetInt(everyElement[i].name, isLocked);
+            }
+        }
+
+        // if we didnt have saves before, now we do
+        if (!PlayerPrefs.HasKey("portrait_elements_saves"))
+        {
+            PlayerPrefs.SetInt("portrait_elements_saves", 1);
+            Debug.Log("Portrait elements initialized and saved.");
+        }
+        else
+        {
+            Debug.Log("Portrait elements loaded.");
+        }
     }
 
     /// <summary>
@@ -50,7 +89,7 @@ public class PortraitGenerator : MonoBehaviour
     /// <returns></returns>
     private Portrait GeneratePortrait(PortraitElement[] hairPool, PortraitElement[] eyesPool, PortraitElement[] mouthPool)
     {
-        return new Portrait(hairPool[Random.Range(0, hairPool.Length)], eyesPool[Random.Range(0, eyesPool.Length)], mouthPool[Random.Range(0, mouthPool.Length)]);
+        return new Portrait(hairPool[UnityEngine.Random.Range(0, hairPool.Length)], eyesPool[UnityEngine.Random.Range(0, eyesPool.Length)], mouthPool[UnityEngine.Random.Range(0, mouthPool.Length)]);
     }
 
     /// <summary>

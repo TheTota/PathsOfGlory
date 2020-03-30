@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void InitGame()
     {
+        PortraitGenerator.Instance.InitPortraitElements();
         InitPlayer();
         InitEnemies();
     }
@@ -162,7 +163,7 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("enemy_" + i + "_losses", lossesCount);
             }
 
-            Enemies[i] = new Commander(i, enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount);
+            Enemies[i] = new Commander(i, enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].PortraitElementToUnlock, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount);
         }
 
         // if we didnt have saves before, now we do
@@ -187,14 +188,21 @@ public class GameManager : MonoBehaviour
         {
             if (Enemies[i].Locked && !unlockedSomebody)
             {
-                Enemies[i].Locked = false;
+                // Unlock next commander
+                Enemies[i].Locked = false; 
                 Enemies[i].SaveStats();
+
+                // Unlock beaten commander's portrait element
+                Enemies[i-1].PortraitElementToUnlock.locked = false;
+                PlayerPrefs.SetInt(Enemies[i - 1].PortraitElementToUnlock.name, 0);
+
                 unlockedSomebody = true;
             }
         }
 
         if (!unlockedSomebody)
         {
+            // TODO: gg screen
             Debug.Log("Every commander has been unlocked already.");
         }
     }
