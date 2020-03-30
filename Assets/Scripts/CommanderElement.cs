@@ -12,4 +12,5 @@ public class CommanderElement : ScriptableObject
     public bool Locked;
     public Color Color;
     public AIType AiType;
+    public PortraitElement PortraitElementToUnlock;
 }

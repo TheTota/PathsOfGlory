@@ -15,3 +15,5 @@ MonoBehaviour:
   Locked: 1
   Color: {r: 0, g: 0.35402188, b: 0.5849056, a: 1}
   AiType: 2
+  PortraitElementToUnlock: {fileID: 11400000, guid: 9d60edea14034274998533b835cf19c1,
+    type: 2}

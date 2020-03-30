@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: mouth3
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 2a3e4c10a8273f349a0ef5cc21aef045, type: 3}
-  locked: 0
+  locked: 1

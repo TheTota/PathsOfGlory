@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf188e9fd47b9ee41af9bdb60003b6b0, type: 3}
   m_Name: hair3
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 5853a63bdec1ec54f8713b68fbab4a4f, type: 3}
-  locked: 0
+  sprite: {fileID: 21300000, guid: 9d11ac9ba348b8c48b79559fd6ac9190, type: 3}
+  locked: 1
