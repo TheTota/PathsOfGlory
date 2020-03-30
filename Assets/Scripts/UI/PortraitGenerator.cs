@@ -43,10 +43,19 @@ public class PortraitGenerator : MonoBehaviour
             {
                 everyElement[i].locked = PlayerPrefs.GetInt(everyElement[i].name) == 1 ? true : false;
             }
-            else
+            else // if we have NO saves
             {
-                int isLocked = everyElement[i].locked ? 1 : 0; 
-                PlayerPrefs.SetInt(everyElement[i].name, isLocked);
+                // on new game, unlock first element of each category
+                if (everyElement[i] == availableHair[0] || everyElement[i] == availableEyes[0] || everyElement[i] == availableMouth[0]) 
+                {
+                    everyElement[i].locked = false;
+                    PlayerPrefs.SetInt(everyElement[i].name, 0);
+                }
+                else
+                {
+                    everyElement[i].locked = true;
+                    PlayerPrefs.SetInt(everyElement[i].name, 1);
+                }
             }
         }
 
@@ -63,21 +72,37 @@ public class PortraitGenerator : MonoBehaviour
     }
 
     /// <summary>
-    /// Generates a random portrait with any of the available Portrait Elements.
-    /// </summary>
-    /// <returns></returns>
-    public Portrait GenerateRandomAIPortrait()
-    {
-        return GeneratePortrait(availableHair, availableEyes, availableMouth);
-    }
-
-    /// <summary>
     /// Generates a random portrait with the available and UNLOCKED Portraits Elements.
     /// </summary>
     /// <returns></returns>
-    public Portrait GenerateRandomPlayerPortrait()
+    public Portrait GenerateRandomPortraitFromUnlockedElements()
     {
         return GeneratePortrait(GetUnlockedHair(), GetUnlockedEyes(), GetUnlockedMouth());
+    }
+
+    /// <summary>
+    /// Generates a random portrait with the available and UNLOCKED Portraits Elements + adds the given element to the portrait.
+    /// </summary>
+    /// <returns></returns>
+    public Portrait GenerateRandomPortraitFromUnlockedElementsAndWithGivenElement(PortraitElement elt)
+    {
+        Portrait p = GenerateRandomPortraitFromUnlockedElements();
+
+        // Replace element by given one
+        if (availableHair.Contains(elt))
+        {
+            p.Hair = elt;
+        }
+        else if (availableEyes.Contains(elt))
+        {
+            p.Eyes = elt;
+        }
+        else if (availableMouth.Contains(elt))
+        {
+            p.Mouth = elt;
+        }
+
+        return p;
     }
 
     /// <summary>

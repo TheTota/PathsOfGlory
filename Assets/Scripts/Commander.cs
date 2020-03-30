@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,5 +57,9 @@ public class Commander
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_locked", Locked ? 1 : 0);
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_wins", WinsCount);
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_losses", LossesCount);
+        PlayerPrefs.SetInt("enemy_" + commanderIndex + "_portrait_hair", Array.IndexOf(PortraitGenerator.Instance.availableHair, Portrait.Hair));
+        PlayerPrefs.SetInt("enemy_" + commanderIndex + "_portrait_eyes", Array.IndexOf(PortraitGenerator.Instance.availableEyes, Portrait.Eyes));
+        PlayerPrefs.SetInt("enemy_" + commanderIndex + "_portrait_mouth", Array.IndexOf(PortraitGenerator.Instance.availableMouth, Portrait.Mouth));
+
     }
 }

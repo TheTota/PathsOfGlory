@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         }
         else // IF WE DO NOT HAVE SAVES, generate a portrait and save it 
         {
-            playerPortrait = PortraitGenerator.Instance.GenerateRandomPlayerPortrait();
+            playerPortrait = PortraitGenerator.Instance.GenerateRandomPortraitFromUnlockedElements();
 
             // save the portrait
             PlayerPrefs.SetInt("player_portrait_hair", Array.IndexOf(PortraitGenerator.Instance.availableHair, playerPortrait.Hair));
@@ -148,28 +148,21 @@ public class GameManager : MonoBehaviour
             }
             else // IF WE DO NOT HAVE SAVES, just init a new commander
             {
-                // generate and save portrait
-                portrait = PortraitGenerator.Instance.GenerateRandomAIPortrait();
-                PlayerPrefs.SetInt("enemy_" + i + "_portrait_hair", Array.IndexOf(PortraitGenerator.Instance.availableHair, portrait.Hair));
-                PlayerPrefs.SetInt("enemy_" + i + "_portrait_eyes", Array.IndexOf(PortraitGenerator.Instance.availableEyes, portrait.Eyes));
-                PlayerPrefs.SetInt("enemy_" + i + "_portrait_mouth", Array.IndexOf(PortraitGenerator.Instance.availableMouth, portrait.Mouth));
-
                 // set and save lock status
                 locked = enemyCommandersElements[i].Locked;
-                PlayerPrefs.SetInt("enemy_" + i + "_locked", locked ? 1 : 0);
-
-                // init and save w/l 
-                PlayerPrefs.SetInt("enemy_" + i + "_wins", winsCount);
-                PlayerPrefs.SetInt("enemy_" + i + "_losses", lossesCount);
+                portrait = PortraitGenerator.Instance.GenerateRandomPortraitFromUnlockedElements(); // generate tmp portrait
             }
 
             Enemies[i] = new Commander(i, enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].PortraitElementToUnlock, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount);
+            Enemies[i].SaveStats();
         }
 
         // if we didnt have saves before, now we do
         if (!PlayerPrefs.HasKey("enemies_saves"))
         {
             PlayerPrefs.SetInt("enemies_saves", 1);
+            UnlockNextCommander(); // unlocked 1rst commander 
+
             Debug.Log("Enemy commanders initialized and saved.");
         }
         else
@@ -188,13 +181,17 @@ public class GameManager : MonoBehaviour
         {
             if (Enemies[i].Locked && !unlockedSomebody)
             {
-                // Unlock next commander
-                Enemies[i].Locked = false; 
-                Enemies[i].SaveStats();
-
                 // Unlock beaten commander's portrait element
-                Enemies[i-1].PortraitElementToUnlock.locked = false;
-                PlayerPrefs.SetInt(Enemies[i - 1].PortraitElementToUnlock.name, 0);
+                if (i != 0)
+                {
+                    Enemies[i - 1].PortraitElementToUnlock.locked = false;
+                    PlayerPrefs.SetInt(Enemies[i - 1].PortraitElementToUnlock.name, 0);
+                }
+
+                // Unlock next commander
+                Enemies[i].Locked = false;
+                Enemies[i].Portrait = PortraitGenerator.Instance.GenerateRandomPortraitFromUnlockedElementsAndWithGivenElement(Enemies[i].PortraitElementToUnlock); // generate new commander's portrait from unlocked stuff
+                Enemies[i].SaveStats();
 
                 unlockedSomebody = true;
             }

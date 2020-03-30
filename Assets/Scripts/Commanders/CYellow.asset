@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: CYellow
   m_EditorClassIdentifier: 
-  Locked: 0
+  Locked: 1
   Color: {r: 0.94509804, g: 0.76862746, b: 0.05882353, a: 1}
   AiType: 1
   PortraitElementToUnlock: {fileID: 11400000, guid: 1b80c1eda3055ae4e9b4b42fd74e1169,

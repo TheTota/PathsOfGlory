@@ -42,6 +42,12 @@ public class PortraitRenderer : MonoBehaviour
         if (!commander.Locked) // if unlocked
         {
             background.color = commander.Color;
+
+            // Face attributes
+            hair.sprite = commander.Portrait.Hair.sprite;
+            eyes.sprite = commander.Portrait.Eyes.sprite;
+            mouth.sprite = commander.Portrait.Mouth.sprite;
+
             if (commander.WinsCount != 0 || commander.LossesCount != 0)
             {
                 winsText.gameObject.SetActive(true);
@@ -61,10 +67,6 @@ public class PortraitRenderer : MonoBehaviour
         btn.onClick.AddListener(onClickAction);
         btn.interactable = !commander.Locked;
 
-        // Face attributes
-        hair.sprite = commander.Portrait.Hair.sprite;
-        eyes.sprite = commander.Portrait.Eyes.sprite;
-        mouth.sprite = commander.Portrait.Mouth.sprite;
 
         // hide the face if commander is locked
         face.SetActive(!commander.Locked);
