@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
             }
 
             // Create a commander dialog from the scriptable object commander element
-            CommanderDialogs cd = new CommanderDialogs(enemyCommandersElements[i].preBattleFirstTimeLine, enemyCommandersElements[i].preBattleWonLastLines, enemyCommandersElements[i].preBattleLostLastLines, enemyCommandersElements[i].postBattleWinLines, enemyCommandersElements[i].postBattleLossLines, enemyCommandersElements[i].preUnitsFightLines, enemyCommandersElements[i].postUnitsFightLossLines, enemyCommandersElements[i].postUnitsFightWinLines, enemyCommandersElements[i].postUnitsFightDominatedLines, enemyCommandersElements[i].postUnitsFightDominatingLines);
+            CommanderDialogs cd = new CommanderDialogs(enemyCommandersElements[i].preBattleFirstTimeLine, enemyCommandersElements[i].preBattleWonLastLines, enemyCommandersElements[i].preBattleLostLastLines, enemyCommandersElements[i].postBattleWinLines, enemyCommandersElements[i].postBattleLossLines, enemyCommandersElements[i].preUnitsFightLines, enemyCommandersElements[i].postUnitsFightLossLines, enemyCommandersElements[i].postUnitsFightWinLines, enemyCommandersElements[i].postUnitsFightDrawLines);
 
             // Generate commander
             Enemies[i] = new Commander(i, enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].PortraitElementToUnlock, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount, wonLast, cd);

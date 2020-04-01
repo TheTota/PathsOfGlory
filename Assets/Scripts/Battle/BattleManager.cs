@@ -96,6 +96,8 @@ public class BattleManager : MonoBehaviour
     private float pickTimer;
     private float remainingTime;
 
+    private BattleCommander battleWinner;
+
     /// <summary>
     /// Gives the BC that won the round n at the index n-1.
     /// </summary>
@@ -186,6 +188,7 @@ public class BattleManager : MonoBehaviour
         playerAllowedToPick = false;
         CurrentRound = 1;
         RoundsWinnersHistory = new List<BattleCommander>();
+        battleWinner = null;
 
         // Init Player
         PlayerBC = (BattleCommander)playerPR.gameObject.AddComponent(typeof(BattleCommander));
@@ -251,14 +254,15 @@ public class BattleManager : MonoBehaviour
             EnemyBC.AddToPlaysHistory(aiPickedUnit);
             EnemyBC.Army.RemoveUnitFromStock(aiPickedUnit);
 
-            // Fight the units
-            BattleCommander winner = GetWinnerFromUnitsFight();
-
+            // Units fight
             uiPlaysHistoryHandler.gameObject.SetActive(false);
+            BattleCommander winner = GetWinnerFromUnitsFight();
+            // AI speaks before units fight
+            yield return StartCoroutine(DisplayPreUnitsFightLine());
+
             DisplayBattlingUnits(true); // TODO: play fight animation instead
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f); // TIME OF UNITS FIGHT ANIM
             DisplayBattlingUnits(false);
-            uiPlaysHistoryHandler.gameObject.SetActive(true);
 
             // Update score
             if (winner)
@@ -272,18 +276,27 @@ public class BattleManager : MonoBehaviour
                 RoundsWinnersHistory.Add(null);
             }
 
+            // AI speaks after units fight
+            yield return StartCoroutine(DisplayPostUnitsFightLine(winner));
+
             // update plays history UI
+            uiPlaysHistoryHandler.gameObject.SetActive(true);
             uiPlaysHistoryHandler.RenderPlaysHistoryUI(playerPickedUnit, aiPickedUnit, winner);
 
             CurrentRound++;
         }
 
-        HandleWinner();
+        battleWinner = GetAndHandleWinner();
+        yield return StartCoroutine(DisplayPostBattleLine());
+        ReturnToMainMenu(); // TODO: Replace with battle recap
     }
 
+    #region Dialogs
+    /// <summary>
+    /// Displays a pre battle line (at the beginning of the battle).
+    /// </summary>
     private IEnumerator DisplayPreBattleLine()
     {
-        Debug.Log("Displaying pre battle line : EnemyBC.Commander.WonLastFightAgainstPlayer = " + EnemyBC.Commander.WonLastFightAgainstPlayer);
         // Commandant jamais affronté
         if (EnemyBC.Commander.LossesCount == 0 && EnemyBC.Commander.WinsCount == 0)
         {
@@ -302,6 +315,60 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays a post battle line (at the end of the battle).
+    /// </summary>
+    private IEnumerator DisplayPostBattleLine()
+    {
+        // Victoire de l'IA
+        if (battleWinner == EnemyBC)
+        {
+            // display random post battle line for AI win
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostBattleWinLine(), 2f));
+        }
+        else
+        {
+            //display random post battle line for AI loss
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostBattleLossLine(), 2f));
+        }
+    }
+
+    /// <summary>
+    /// Displays a line just before the units are revealed and fight.
+    /// </summary>
+    private IEnumerator DisplayPreUnitsFightLine()
+    {
+        yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPreUnitsFightLine(), 2f));
+    }
+
+    /// <summary>
+    /// Displays a line after the units have fought and a winner is visible.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator DisplayPostUnitsFightLine(BattleCommander w)
+    {
+        // ai wins
+        if (w == EnemyBC)
+        {
+            // display random post units fight line for AI win
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightWinLine(), 2f));
+        }
+        else if (w == PlayerBC) // ai loses
+        {
+            // display random post units fight line for AI loss
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightLossLine(), 2f));
+        }
+        else // draw
+        {
+            // display random post units fight line for draw result
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightDrawLine(), 2f));
+        }
+    }
+    #endregion
+
+    /// <summary>
+    /// Displays given line on screen for the given amount of seconds.
+    /// </summary>
     private IEnumerator DisplayReactionLine(string line, float secondsOnScreen)
     {
         enemyDialogText.text = line;
@@ -503,7 +570,7 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// Handles winner based on BC scores.
     /// </summary>
-    private void HandleWinner()
+    private BattleCommander GetAndHandleWinner()
     {
         if (PlayerBC.Score > EnemyBC.Score)
         {
@@ -516,14 +583,17 @@ public class BattleManager : MonoBehaviour
             // Update wins against this commander
             EnemyBC.Commander.WinsCount++;
             EnemyBC.Commander.WonLastFightAgainstPlayer = false;
+
+            return PlayerBC;
         }
         else
         {
             Debug.Log("Player lost or drew the battle.");
             EnemyBC.Commander.LossesCount++;
             EnemyBC.Commander.WonLastFightAgainstPlayer = true;
+
+            return EnemyBC;
         }
-        ReturnToMainMenu(); // TODO: Replace with battle recap
     }
 
     /// <summary>

@@ -42,9 +42,6 @@ public class CommanderElement : ScriptableObject
     /// <summary>Fin affrontement unités - A gagné</summary>
     public string[] postUnitsFightWinLines;
 
-    /// <summary>Fin affrontement unités - A perdu et est dominé</summary>
-    public string[] postUnitsFightDominatedLines;
-
-    /// <summary>Fin affrontement unités - A gagné et domine</summary>
-    public string[] postUnitsFightDominatingLines;
+    /// <summary>Fin affrontement unités - Egalité</summary>
+    public string[] postUnitsFightDrawLines;
 }

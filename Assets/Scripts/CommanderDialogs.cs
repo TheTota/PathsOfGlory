@@ -23,12 +23,10 @@ public class CommanderDialogs
     public string[] postUnitsFightLossLines;
     /// <summary>Fin affrontement unités - A gagné</summary>
     public string[] postUnitsFightWinLines;
-    /// <summary>Fin affrontement unités - A perdu et est dominé</summary>
-    public string[] postUnitsFightDominatedLines;
-    /// <summary>Fin affrontement unités - A gagné et domine</summary>
-    public string[] postUnitsFightDominatingLines;
+    /// <summary>Fin affrontement unités - Egalité</summary>
+    public string[] postUnitsFightDrawLines;
 
-    public CommanderDialogs(string preBattleFirstTimeLine, string[] preBattleWonLastLines, string[] preBattleLostLastLines, string[] postBattleWinLines, string[] postBattleLossLines, string[] preUnitsFightLines, string[] postUnitsFightLossLines, string[] postUnitsFightWinLines, string[] postUnitsFightDominatedLines, string[] postUnitsFightDominatingLines)
+    public CommanderDialogs(string preBattleFirstTimeLine, string[] preBattleWonLastLines, string[] preBattleLostLastLines, string[] postBattleWinLines, string[] postBattleLossLines, string[] preUnitsFightLines, string[] postUnitsFightLossLines, string[] postUnitsFightWinLines, string[] postUnitsFightDrawLines)
     {
         this.preBattleFirstTimeLine = preBattleFirstTimeLine;
         this.preBattleWonLastLines = preBattleWonLastLines;
@@ -41,8 +39,7 @@ public class CommanderDialogs
 
         this.postUnitsFightLossLines = postUnitsFightLossLines;
         this.postUnitsFightWinLines = postUnitsFightWinLines;
-        this.postUnitsFightDominatedLines = postUnitsFightDominatedLines;
-        this.postUnitsFightDominatingLines = postUnitsFightDominatingLines;
+        this.postUnitsFightDrawLines = postUnitsFightDrawLines;
     }
 
     internal string GetRandomPreBattleWonLastLine()
@@ -53,5 +50,35 @@ public class CommanderDialogs
     internal string GetRandomPreBattleLostLastLine()
     {
         return preBattleLostLastLines[Random.Range(0, preBattleLostLastLines.Length)];
+    }
+
+    internal string GetRandomPostBattleWinLine()
+    {
+        return postBattleWinLines[Random.Range(0, postBattleWinLines.Length)];
+    }
+
+    internal string GetRandomPostBattleLossLine()
+    {
+        return postBattleLossLines[Random.Range(0, postBattleLossLines.Length)];
+    }
+
+    internal string GetRandomPreUnitsFightLine()
+    {
+        return preUnitsFightLines[Random.Range(0, preUnitsFightLines.Length)];
+    }
+
+    internal string GetRandomPostUnitsFightWinLine()
+    {
+        return postUnitsFightWinLines[Random.Range(0, postUnitsFightWinLines.Length)];
+    }
+
+    internal string GetRandomPostUnitsFightLossLine()
+    {
+        return postUnitsFightLossLines[Random.Range(0, postUnitsFightLossLines.Length)];
+    }
+
+    internal string GetRandomPostUnitsFightDrawLine()
+    {
+        return postUnitsFightDrawLines[Random.Range(0, postUnitsFightDrawLines.Length)];
     }
 }

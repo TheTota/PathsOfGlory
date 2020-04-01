@@ -17,40 +17,36 @@ MonoBehaviour:
   AiType: 1
   PortraitElementToUnlock: {fileID: 11400000, guid: 1b80c1eda3055ae4e9b4b42fd74e1169,
     type: 2}
-  preBattleFirstTimeLine: SampleFirstLine
+  preBattleFirstTimeLine: first time i see you, u gon die!
   preBattleWonLastLines:
-  - SamplePreBattleWin1
-  - SamplePreBattleWin2
-  - SamplePreBattleWin3
+  - you wanna lose again?
+  - hi loser
+  - need another beating?
   preBattleLostLastLines:
-  - SamplePreBattleLoss1
-  - SamplePreBattleLoss2
-  - SamplePreBattleLoss3
+  - ok you had me last time but now im ready
+  - i wont lose this time!
+  - if u no cheat i might win this time
   postBattleWinLines:
-  - SamplePostBattleWin1
-  - SamplePostBattleWin2
-  - SamplePostBattleWin3
+  - ez win
+  - winners gotta win
+  - try again next time
   postBattleLossLines:
-  - SamplePostBattleLoss1
-  - SamplePostBattleLoss2
-  - SamplePostBattleLoss3
+  - fuck you got me
+  - i'll get you next time
+  - damn i suck
   preUnitsFightLines:
-  - SamplePreUnitsFight1
-  - SamplePreUnitsFight1
-  - SamplePreUnitsFight1
+  - prepare for this move
+  - go on boys!
+  - lessgoooo
   postUnitsFightLossLines:
-  - SamplePostUnitsFightLoss1
-  - SamplePostUnitsFightLoss2
-  - SamplePostUnitsFightLoss3
+  - my god  you fockin suck
+  - damn man
+  - retreat, retreat!!!
   postUnitsFightWinLines:
-  - SamplePostUnitsFightWin1
-  - SamplePostUnitsFightWin2
-  - SamplePostUnitsFightWin3
-  postUnitsFightDominatedLines:
-  - SamplePostUnitsFightDominated1
-  - SamplePostUnitsFightDominated2
-  - SamplePostUnitsFightDominated3
-  postUnitsFightDominatingLines:
-  - SamplePostUnitsFightDominating1
-  - SamplePostUnitsFightDominating2
-  - SamplePostUnitsFightDominating3
+  - dat way!
+  - 'nice job boys '
+  - take that bitch
+  postUnitsFightDrawLines:
+  - hmmm....
+  - really?
+  - no points for me but also none for you
