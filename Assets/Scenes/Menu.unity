@@ -1225,12 +1225,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e204e6f738e0b7d42a9bb9d7c7c85a13, type: 2}
   - {fileID: 11400000, guid: 829187e0f4e220d4cac41628c570ca30, type: 2}
   - {fileID: 11400000, guid: f01cb2926221e2a4385ce99d3141d0e4, type: 2}
+  - {fileID: 11400000, guid: 9d711e6b7cf7a7049a82ee8e137c3ef7, type: 2}
   availableEyes:
   - {fileID: 11400000, guid: 805d9eb9632bbd74f953414493d3ea2f, type: 2}
   - {fileID: 11400000, guid: 1b80c1eda3055ae4e9b4b42fd74e1169, type: 2}
   - {fileID: 11400000, guid: 568e5ce85452e7641a860980a38f7d04, type: 2}
   - {fileID: 11400000, guid: c806b437774719f4f8f629099ac0ccbb, type: 2}
-  - {fileID: 11400000, guid: 9c180a1fa5224164d9e35f6c5597e182, type: 2}
   availableMouth:
   - {fileID: 11400000, guid: c1cd3de29f1f3a04fb1c03fdf2933a54, type: 2}
   - {fileID: 11400000, guid: 19013eeac06aa1848b7f1c4b76139483, type: 2}

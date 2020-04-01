@@ -9,6 +9,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Portrait Element", menuName = "PortraitElement")]
 public class PortraitElement : ScriptableObject
 {
-    public Sprite sprite;
+    public Sprite neutralSprite;
+    public Sprite happySprite;
+    public Sprite angrySprite;
     public bool locked;
 }
