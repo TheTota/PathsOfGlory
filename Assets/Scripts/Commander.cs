@@ -15,12 +15,15 @@ public class Commander
 
     public int WinsCount { get; set; }
     public int LossesCount { get; set; }
+    public bool WonLastFightAgainstPlayer { get; set; }
 
     public Color Color { get; set; }
     public Portrait Portrait { get; set; }
 
     public AIType AiType { get; set; }
     public PortraitElement PortraitElementToUnlock { get; set; }
+
+    public CommanderDialogs Dialogs { get; set; }
 
     /// <summary>
     /// Used to save stats.
@@ -37,16 +40,19 @@ public class Commander
         AiType = AIType.NONE;
     }
 
-    public Commander(int index, Color color, Portrait portrait, PortraitElement portraitElementToUnlock, AIType ai, bool locked, int victoryCount, int lossCount)
+    public Commander(int index, Color color, Portrait portrait, PortraitElement portraitElementToUnlock, AIType ai, bool locked, int victoryCount, int lossCount, bool wonLastFight, CommanderDialogs cd)
     {
         Locked = locked;
         WinsCount = victoryCount;
         LossesCount = lossCount;
+        WonLastFightAgainstPlayer = wonLastFight;
         Color = color;
         Portrait = portrait;
         AiType = ai;
         PortraitElementToUnlock = portraitElementToUnlock;
         commanderIndex = index;
+
+        Dialogs = cd;
     }
 
     /// <summary>
@@ -57,6 +63,7 @@ public class Commander
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_locked", Locked ? 1 : 0);
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_wins", WinsCount);
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_losses", LossesCount);
+        PlayerPrefs.SetInt("enemy_" + commanderIndex + "_won_last", WonLastFightAgainstPlayer ? 1 : 0);
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_portrait_hair", Array.IndexOf(PortraitGenerator.Instance.availableHair, Portrait.Hair));
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_portrait_eyes", Array.IndexOf(PortraitGenerator.Instance.availableEyes, Portrait.Eyes));
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_portrait_mouth", Array.IndexOf(PortraitGenerator.Instance.availableMouth, Portrait.Mouth));

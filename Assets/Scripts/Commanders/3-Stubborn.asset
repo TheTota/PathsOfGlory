@@ -10,10 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
-  m_Name: CGreen
+  m_Name: 3-Stubborn
   m_EditorClassIdentifier: 
   Locked: 1
   Color: {r: 0.15294118, g: 0.68235296, b: 0.3764706, a: 1}
   AiType: 3
   PortraitElementToUnlock: {fileID: 11400000, guid: f01cb2926221e2a4385ce99d3141d0e4,
     type: 2}
+  preBattleFirstTimeLine: 
+  preBattleWonLastLines: []
+  preBattleLostLastLines: []
+  postBattleWinLines: []
+  postBattleLossLines: []
+  preUnitsFightLines: []
+  postUnitsFightLossLines: []
+  postUnitsFightWinLines: []
+  postUnitsFightDominatedLines: []
+  postUnitsFightDominatingLines: []

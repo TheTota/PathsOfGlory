@@ -128,6 +128,7 @@ public class GameManager : MonoBehaviour
             Portrait portrait;
             bool locked;
             int winsCount = 0, lossesCount = 0;
+            bool wonLast = false;
 
             // IF WE HAVE SAVES, load them
             if (PlayerPrefs.HasKey("enemies_saves"))
@@ -145,6 +146,7 @@ public class GameManager : MonoBehaviour
                 // load wins & losses count
                 winsCount = PlayerPrefs.GetInt("enemy_" + i + "_wins");
                 lossesCount = PlayerPrefs.GetInt("enemy_" + i + "_losses");
+                wonLast = PlayerPrefs.GetInt("enemy_" + i + "_won_last") == 1 ? true : false;
             }
             else // IF WE DO NOT HAVE SAVES, just init a new commander
             {
@@ -153,7 +155,11 @@ public class GameManager : MonoBehaviour
                 portrait = PortraitGenerator.Instance.GenerateRandomPortraitFromUnlockedElements(); // generate tmp portrait
             }
 
-            Enemies[i] = new Commander(i, enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].PortraitElementToUnlock, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount);
+            // Create a commander dialog from the scriptable object commander element
+            CommanderDialogs cd = new CommanderDialogs(enemyCommandersElements[i].preBattleFirstTimeLine, enemyCommandersElements[i].preBattleWonLastLines, enemyCommandersElements[i].preBattleLostLastLines, enemyCommandersElements[i].postBattleWinLines, enemyCommandersElements[i].postBattleLossLines, enemyCommandersElements[i].preUnitsFightLines, enemyCommandersElements[i].postUnitsFightLossLines, enemyCommandersElements[i].postUnitsFightWinLines, enemyCommandersElements[i].postUnitsFightDominatedLines, enemyCommandersElements[i].postUnitsFightDominatingLines);
+
+            // Generate commander
+            Enemies[i] = new Commander(i, enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].PortraitElementToUnlock, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount, wonLast, cd);
             Enemies[i].SaveStats();
         }
 

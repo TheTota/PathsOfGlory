@@ -80,6 +80,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private UIPlaysHistoryHandler uiPlaysHistoryHandler;
 
+    [Header("Reactions")]
+    [SerializeField]
+    private TextMeshProUGUI enemyDialogText;
 
     // Player units pick
     private bool playerAllowedToPick;
@@ -193,6 +196,7 @@ public class BattleManager : MonoBehaviour
         EnemyBC = (BattleCommander)enemyPR.gameObject.AddComponent(typeof(BattleCommander));
         EnemyBC.Init(GameManager.Instance.BattledCommander);
         enemyPR.RenderPortrait(EnemyBC.Commander);
+        enemyDialogText.color = EnemyBC.Commander.Color;
 
         // Init score slider
         InitScoreUI();
@@ -213,6 +217,9 @@ public class BattleManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Battle()
     {
+        yield return StartCoroutine(DisplayPreBattleLine());
+
+        // Start the battle
         while (CurrentRound <= MAX_ROUNDS)
         {
             roundText.text = "Manche : " + CurrentRound + " / " + MAX_ROUNDS;
@@ -273,6 +280,36 @@ public class BattleManager : MonoBehaviour
 
         HandleWinner();
     }
+
+    private IEnumerator DisplayPreBattleLine()
+    {
+        Debug.Log("Displaying pre battle line : EnemyBC.Commander.WonLastFightAgainstPlayer = " + EnemyBC.Commander.WonLastFightAgainstPlayer);
+        // Commandant jamais affronté
+        if (EnemyBC.Commander.LossesCount == 0 && EnemyBC.Commander.WinsCount == 0)
+        {
+            // display first fight line
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.preBattleFirstTimeLine, 2f));
+        }
+        else if (EnemyBC.Commander.WonLastFightAgainstPlayer) // commander won last fight
+        {
+            // display won last line
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPreBattleWonLastLine(), 2f));
+        }
+        else // commander lost last fight
+        {
+            // display lost last line
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPreBattleLostLastLine(), 2f));
+        }
+    }
+
+    private IEnumerator DisplayReactionLine(string line, float secondsOnScreen)
+    {
+        enemyDialogText.text = line;
+        enemyDialogText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(secondsOnScreen);
+        enemyDialogText.gameObject.SetActive(false);
+    }
+
     /// <summary>
     /// Display the battling units temporarly by just showing a text with the name of the units called into the battle.
     /// </summary>
@@ -297,6 +334,8 @@ public class BattleManager : MonoBehaviour
     public void Surrender()
     {
         EnemyBC.Commander.LossesCount++;
+        EnemyBC.Commander.WonLastFightAgainstPlayer = true;
+
         ReturnToMainMenu();
     }
 
@@ -380,11 +419,11 @@ public class BattleManager : MonoBehaviour
         ResetUnitBtnsColor();
 
         // highlight clicked one
-        Color selectedColor = new Color(129f/255f, 206f/255f, 1f);
+        Color selectedColor = new Color(129f / 255f, 206f / 255f, 1f);
         switch (ut)
         {
             case UnitType.Knights:
-                knightsBtn.gameObject.GetComponent<Image>().color = selectedColor; 
+                knightsBtn.gameObject.GetComponent<Image>().color = selectedColor;
                 break;
 
             case UnitType.Shields:
@@ -476,11 +515,13 @@ public class BattleManager : MonoBehaviour
             }
             // Update wins against this commander
             EnemyBC.Commander.WinsCount++;
+            EnemyBC.Commander.WonLastFightAgainstPlayer = false;
         }
         else
         {
             Debug.Log("Player lost or drew the battle.");
             EnemyBC.Commander.LossesCount++;
+            EnemyBC.Commander.WonLastFightAgainstPlayer = true;
         }
         ReturnToMainMenu(); // TODO: Replace with battle recap
     }

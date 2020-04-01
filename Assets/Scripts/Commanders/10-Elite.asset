@@ -10,10 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
-  m_Name: CAsphalt
+  m_Name: 10-Elite
   m_EditorClassIdentifier: 
   Locked: 1
   Color: {r: 0.20392157, g: 0.28627452, b: 0.36862746, a: 1}
   AiType: 10
   PortraitElementToUnlock: {fileID: 11400000, guid: 9d711e6b7cf7a7049a82ee8e137c3ef7,
     type: 2}
+  preBattleFirstTimeLine: 
+  preBattleWonLastLines: []
+  preBattleLostLastLines: []
+  postBattleWinLines: []
+  postBattleLossLines: []
+  preUnitsFightLines: []
+  postUnitsFightLossLines: []
+  postUnitsFightWinLines: []
+  postUnitsFightDominatedLines: []
+  postUnitsFightDominatingLines: []

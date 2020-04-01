@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
+  m_Name: 1-Teacher
+  m_EditorClassIdentifier: 
+  Locked: 1
+  Color: {r: 0.94509804, g: 0.76862746, b: 0.05882353, a: 1}
+  AiType: 1
+  PortraitElementToUnlock: {fileID: 11400000, guid: 1b80c1eda3055ae4e9b4b42fd74e1169,
+    type: 2}
+  preBattleFirstTimeLine: SampleFirstLine
+  preBattleWonLastLines:
+  - SamplePreBattleWin1
+  - SamplePreBattleWin2
+  - SamplePreBattleWin3
+  preBattleLostLastLines:
+  - SamplePreBattleLoss1
+  - SamplePreBattleLoss2
+  - SamplePreBattleLoss3
+  postBattleWinLines:
+  - SamplePostBattleWin1
+  - SamplePostBattleWin2
+  - SamplePostBattleWin3
+  postBattleLossLines:
+  - SamplePostBattleLoss1
+  - SamplePostBattleLoss2
+  - SamplePostBattleLoss3
+  preUnitsFightLines:
+  - SamplePreUnitsFight1
+  - SamplePreUnitsFight1
+  - SamplePreUnitsFight1
+  postUnitsFightLossLines:
+  - SamplePostUnitsFightLoss1
+  - SamplePostUnitsFightLoss2
+  - SamplePostUnitsFightLoss3
+  postUnitsFightWinLines:
+  - SamplePostUnitsFightWin1
+  - SamplePostUnitsFightWin2
+  - SamplePostUnitsFightWin3
+  postUnitsFightDominatedLines:
+  - SamplePostUnitsFightDominated1
+  - SamplePostUnitsFightDominated2
+  - SamplePostUnitsFightDominated3
+  postUnitsFightDominatingLines:
+  - SamplePostUnitsFightDominating1
+  - SamplePostUnitsFightDominating2
+  - SamplePostUnitsFightDominating3
