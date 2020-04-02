@@ -13,40 +13,66 @@ MonoBehaviour:
   m_Name: 1-Teacher
   m_EditorClassIdentifier: 
   Locked: 1
-  Color: {r: 0.94509804, g: 0.76862746, b: 0.05882353, a: 1}
+  Color: {r: 0, g: 0.3529412, b: 0.58431375, a: 1}
   AiType: 1
   PortraitElementToUnlock: {fileID: 11400000, guid: 1b80c1eda3055ae4e9b4b42fd74e1169,
     type: 2}
-  preBattleFirstTimeLine: first time i see you, u gon die!
+  preBattleFirstTimeLine: "Bienvenue au camps d'entrainement recrue, je vais vous
+    former \xE0 l'art du commandement."
   preBattleWonLastLines:
-  - you wanna lose again?
-  - hi loser
-  - need another beating?
+  - "Pr\xE9parez-vous recrue. N'oubliez pas qu'une fois que vous avez identifi\xE9
+    la strat\xE9gie de l'adversaire, vous serez en mesure de le contrer et le vaincre."
   preBattleLostLastLines:
-  - ok you had me last time but now im ready
-  - i wont lose this time!
-  - if u no cheat i might win this time
+  - "Vous m'avez d\xE9ja vaincu, le vrai champs de bataille vous attend... Enfin,
+    voyons si vous \xEAtes capable de me battre \xE0 nouveau."
+  - "Je vois que vous avez besoin d'un rappel des bases. Soldats, pr\xE9parez-vous
+    \xE0 la bataille !"
+  - ' Vous devriez affronter de vrais adversaires au lieu de moi en ce moment ! Hmff...'
   postBattleWinLines:
-  - ez win
-  - winners gotta win
-  - try again next time
+  - "Vous n'\xEAtes pas pr\xEAt recrue, mais pers\xE9verez. Revenez m'affronter et
+    n'oubliez pas que pour r\xE9ussir, il est primordial d'\xE9tudier son adversaire
+    et identifier sa strat\xE9gie."
   postBattleLossLines:
-  - fuck you got me
-  - i'll get you next time
-  - damn i suck
+  - "Bien jou\xE9 commandant, le vrai champs de bataille vous attend d\xE9sormais.
+    Chaque ennemi que vous vaincrez vous permettra d'en affronter un nouveau plus
+    prestigieux. Bon courage \xE0 vous !"
   preUnitsFightLines:
-  - prepare for this move
-  - go on boys!
-  - lessgoooo
+  - "Vous disposez de 5 types d'unit\xE9s qui se contrent les unes les autres en
+    suivant le sch\xE9ma strat\xE9gique \xE0 votre disposition."
+  - "Au d\xE9but de chaque bataille, vous disposez d'un stock limit\xE9 de chaque
+    type d'unit\xE9s \xE0 g\xE9rer  intelligement."
+  - "Chaque commandant que vous affronterez utilise sa propre strat\xE9gie unique
+    que vous devrez identifier afin de pouvoir la contrer."
+  - "Vous devrez affronter certains commandants plusieurs fois avant de pouvoir les
+    cerner. Faites preuve de pers\xE9v\xE9rance !"
+  - "Entre chaque affrontement d'unit\xE9s, vous avez un temps limit\xE9 pour choisir
+    qui vous enverrez sur le champs de bataille."
+  - "Une bataille est compos\xE9e de nombreuses manches, dont l'impact sur l'\xE9quilibre
+    de la bataille augmentera progressivement."
+  - "Les premi\xE8res manches n'impactent pas l'\xE9quilibre de la bataille. Servez-vous-en
+    pour commencer \xE0 \xE9tudier votre adversaire."
+  - "La plupart des commandants sont bavards et r\xE9v\xE8lent des informations utiles
+    sur leurs strat\xE9gie. Soyez \xE0 leur \xE9coute."
+  - "Vous disposez d'un rapport continu sur la bataille. La strat\xE9gie d'un adversaire
+    peut y appa\xEEtre de mani\xE8re flagrante !"
+  - "Vaincre un commandant pour la premi\xE8re fois vous permettra d'obtenir un de
+    ses traits uniques que vous pourrez utiliser pour modifier votre apparance aupr\xE8s
+    de nos mages chirurgiens."
+  - "Certains commandants basent leur strat\xE9gie sur vos actions ou pas ! Soyez
+    vigilants et exp\xE9rimentez souvent."
+  - "Les autres commandants parleront beaucoup mais tout ce qu'ils diront ne sera
+    pas forc\xE9ment utile."
   postUnitsFightLossLines:
-  - my god  you fockin suck
-  - damn man
-  - retreat, retreat!!!
+  - "Vous pouvez facilement rattraper un mauvais d\xE9but de bataille car les manches
+    finales sont les plus d\xE9cisives. N'abandonnez pas."
+  - Concentrez-vous...
+  - "Etudiez mes actions, soyez attentif au r\xE9capitulatif progressif de la bataille. "
+  - "La victoire imm\xE9diate ne sera pas toujours possible, n'ayez pas peur de perdre."
   postUnitsFightWinLines:
-  - dat way!
-  - 'nice job boys '
-  - take that bitch
+  - "Bien jou\xE9. Continuez comme \xE7a : identifier la strat\xE9gie de votre adversaire
+    et pr\xE9parer votre strat\xE9gie pour le contrer."
+  - "Vous \xEAtes sur la bonne voie. "
+  - "J'esp\xE8re qu'il s'agissait d'un choix r\xE9fl\xE9chis et strat\xE9gique !"
   postUnitsFightDrawLines:
-  - hmmm....
-  - really?
-  - no points for me but also none for you
+  - "Lorsque deux unit\xE9s identiques s'affrontent, aucune ne peut prendre le dessus
+    et l'\xE9quilibre de la bataille reste inchang\xE9."

@@ -82,6 +82,8 @@ public class BattleManager : MonoBehaviour
 
     [Header("Reactions")]
     [SerializeField]
+    private GameObject enemyDialogPanel;
+    [SerializeField]
     private TextMeshProUGUI enemyDialogText;
 
     // Player units pick
@@ -301,17 +303,17 @@ public class BattleManager : MonoBehaviour
         if (EnemyBC.Commander.LossesCount == 0 && EnemyBC.Commander.WinsCount == 0)
         {
             // display first fight line
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.preBattleFirstTimeLine, 2f));
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.preBattleFirstTimeLine));
         }
         else if (EnemyBC.Commander.WonLastFightAgainstPlayer) // commander won last fight
         {
             // display won last line
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPreBattleWonLastLine(), 2f));
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPreBattleWonLastLine()));
         }
         else // commander lost last fight
         {
             // display lost last line
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPreBattleLostLastLine(), 2f));
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPreBattleLostLastLine()));
         }
     }
 
@@ -324,12 +326,12 @@ public class BattleManager : MonoBehaviour
         if (battleWinner == EnemyBC)
         {
             // display random post battle line for AI win
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostBattleWinLine(), 2f));
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostBattleWinLine()));
         }
         else
         {
             //display random post battle line for AI loss
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostBattleLossLine(), 2f));
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostBattleLossLine()));
         }
     }
 
@@ -338,7 +340,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private IEnumerator DisplayPreUnitsFightLine()
     {
-        yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPreUnitsFightLine(), 2f));
+        yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPreUnitsFightLine()));
     }
 
     /// <summary>
@@ -351,17 +353,17 @@ public class BattleManager : MonoBehaviour
         if (w == EnemyBC)
         {
             // display random post units fight line for AI win
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightWinLine(), 2f));
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightWinLine()));
         }
         else if (w == PlayerBC) // ai loses
         {
             // display random post units fight line for AI loss
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightLossLine(), 2f));
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightLossLine()));
         }
         else // draw
         {
             // display random post units fight line for draw result
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightDrawLine(), 2f));
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightDrawLine()));
         }
     }
     #endregion
@@ -369,12 +371,12 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// Displays given line on screen for the given amount of seconds.
     /// </summary>
-    private IEnumerator DisplayReactionLine(string line, float secondsOnScreen)
+    private IEnumerator DisplayReactionLine(string line)
     {
         enemyDialogText.text = line;
-        enemyDialogText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(secondsOnScreen);
-        enemyDialogText.gameObject.SetActive(false);
+        enemyDialogPanel.SetActive(true);
+        yield return new WaitForSeconds(line.Length / 25f); // TODO: ajouter click pour passer + raccourcir les lignes du tuto
+        enemyDialogPanel.SetActive(false);
     }
 
     /// <summary>
