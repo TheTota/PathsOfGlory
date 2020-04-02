@@ -85,6 +85,8 @@ public class BattleManager : MonoBehaviour
     private GameObject enemyDialogPanel;
     [SerializeField]
     private TextMeshProUGUI enemyDialogText;
+    [SerializeField]
+    private Image enemySeal;
 
     // Player units pick
     private bool playerAllowedToPick;
@@ -194,14 +196,14 @@ public class BattleManager : MonoBehaviour
 
         // Init Player
         PlayerBC = (BattleCommander)playerPR.gameObject.AddComponent(typeof(BattleCommander));
-        PlayerBC.Init(GameManager.Instance.Player);
+        PlayerBC.Init(GameManager.Instance.Player, false);
         playerPR.RenderPortrait(PlayerBC.Commander);
 
         // Init Enemy 
         EnemyBC = (BattleCommander)enemyPR.gameObject.AddComponent(typeof(BattleCommander));
-        EnemyBC.Init(GameManager.Instance.BattledCommander);
+        EnemyBC.Init(GameManager.Instance.BattledCommander, Array.IndexOf(GameManager.Instance.Enemies, GameManager.Instance.BattledCommander) == 0);
         enemyPR.RenderPortrait(EnemyBC.Commander);
-        enemyDialogText.color = EnemyBC.Commander.Color;
+        enemySeal.color = EnemyBC.Commander.Color;
 
         // Init score slider
         InitScoreUI();
@@ -259,8 +261,6 @@ public class BattleManager : MonoBehaviour
             // Units fight
             uiPlaysHistoryHandler.gameObject.SetActive(false);
             BattleCommander winner = GetWinnerFromUnitsFight();
-            // AI speaks before units fight
-            yield return StartCoroutine(DisplayPreUnitsFightLine());
 
             DisplayBattlingUnits(true); // TODO: play fight animation instead
             yield return new WaitForSeconds(2f); // TIME OF UNITS FIGHT ANIM
@@ -278,8 +278,11 @@ public class BattleManager : MonoBehaviour
                 RoundsWinnersHistory.Add(null);
             }
 
-            // AI speaks after units fight
-            yield return StartCoroutine(DisplayPostUnitsFightLine(winner));
+            // AI speaks after units fight if it's not the final round
+            if (CurrentRound != MAX_ROUNDS)
+            {
+                yield return StartCoroutine(DisplayPostUnitsFightLine(winner));
+            }
 
             // update plays history UI
             uiPlaysHistoryHandler.gameObject.SetActive(true);
@@ -336,34 +339,34 @@ public class BattleManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Displays a line just before the units are revealed and fight.
-    /// </summary>
-    private IEnumerator DisplayPreUnitsFightLine()
-    {
-        yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPreUnitsFightLine()));
-    }
-
-    /// <summary>
     /// Displays a line after the units have fought and a winner is visible.
     /// </summary>
     /// <returns></returns>
     private IEnumerator DisplayPostUnitsFightLine(BattleCommander w)
     {
-        // ai wins
-        if (w == EnemyBC)
+        // print specific msgs for tutorial
+        if (EnemyBC.IsTutorial)
         {
-            // display random post units fight line for AI win
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightWinLine()));
+            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetNextTutorialLine()));
         }
-        else if (w == PlayerBC) // ai loses
+        else // non tutorial battle
         {
-            // display random post units fight line for AI loss
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightLossLine()));
-        }
-        else // draw
-        {
-            // display random post units fight line for draw result
-            yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightDrawLine()));
+            // ai wins
+            if (w == EnemyBC)
+            {
+                // display random post units fight line for AI win
+                yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightWinLine()));
+            }
+            else if (w == PlayerBC) // ai loses
+            {
+                // display random post units fight line for AI loss
+                yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightLossLine()));
+            }
+            else // draw
+            {
+                // display random post units fight line for draw result
+                yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostUnitsFightDrawLine()));
+            }
         }
     }
     #endregion
@@ -375,7 +378,7 @@ public class BattleManager : MonoBehaviour
     {
         enemyDialogText.text = line;
         enemyDialogPanel.SetActive(true);
-        yield return new WaitForSeconds(line.Length / 25f); // TODO: ajouter click pour passer + raccourcir les lignes du tuto
+        yield return new WaitForSeconds(line.Length / 20f); // TODO: ajouter click pour passer + noms commandants
         enemyDialogPanel.SetActive(false);
     }
 

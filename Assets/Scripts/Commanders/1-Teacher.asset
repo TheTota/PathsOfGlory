@@ -33,22 +33,21 @@ MonoBehaviour:
     n'oubliez pas que pour r\xE9ussir, il est primordial d'\xE9tudier son adversaire
     et identifier sa strat\xE9gie."
   postBattleLossLines:
-  - "Bien jou\xE9 commandant, le vrai champs de bataille vous attend d\xE9sormais.
-    Chaque ennemi que vous vaincrez vous permettra d'en affronter un nouveau plus
-    prestigieux. Bon courage \xE0 vous !"
-  preUnitsFightLines:
+  - "F\xE9licitations pour votre victoire ! Le vrai champs de bataille vous attend
+    d\xE9sormais. Chaque ennemi que vous vaincrez vous permettra d'en affronter un
+    nouveau plus prestigieux. Bonne chance commandant !"
+  postUnitsFightLossLines:
   - "Vous disposez de 5 types d'unit\xE9s qui se contrent les unes les autres en
     suivant le sch\xE9ma strat\xE9gique \xE0 votre disposition."
   - "Au d\xE9but de chaque bataille, vous disposez d'un stock limit\xE9 de chaque
     type d'unit\xE9s \xE0 g\xE9rer  intelligement."
   - "Chaque commandant que vous affronterez utilise sa propre strat\xE9gie unique
     que vous devrez identifier afin de pouvoir la contrer."
-  - "Vous devrez affronter certains commandants plusieurs fois avant de pouvoir les
-    cerner. Faites preuve de pers\xE9v\xE9rance !"
   - "Entre chaque affrontement d'unit\xE9s, vous avez un temps limit\xE9 pour choisir
     qui vous enverrez sur le champs de bataille."
   - "Une bataille est compos\xE9e de nombreuses manches, dont l'impact sur l'\xE9quilibre
     de la bataille augmentera progressivement."
+  - A la fin de la bataille, le commandant qui domine la bataille l'emporte.
   - "Les premi\xE8res manches n'impactent pas l'\xE9quilibre de la bataille. Servez-vous-en
     pour commencer \xE0 \xE9tudier votre adversaire."
   - "La plupart des commandants sont bavards et r\xE9v\xE8lent des informations utiles
@@ -56,23 +55,15 @@ MonoBehaviour:
   - "Vous disposez d'un rapport continu sur la bataille. La strat\xE9gie d'un adversaire
     peut y appa\xEEtre de mani\xE8re flagrante !"
   - "Vaincre un commandant pour la premi\xE8re fois vous permettra d'obtenir un de
-    ses traits uniques que vous pourrez utiliser pour modifier votre apparance aupr\xE8s
+    ses traits uniques que vous pourrez utiliser pour modifier votre apparence aupr\xE8s
     de nos mages chirurgiens."
-  - "Certains commandants basent leur strat\xE9gie sur vos actions ou pas ! Soyez
-    vigilants et exp\xE9rimentez souvent."
-  - "Les autres commandants parleront beaucoup mais tout ce qu'ils diront ne sera
-    pas forc\xE9ment utile."
-  postUnitsFightLossLines:
-  - "Vous pouvez facilement rattraper un mauvais d\xE9but de bataille car les manches
-    finales sont les plus d\xE9cisives. N'abandonnez pas."
-  - Concentrez-vous...
-  - "Etudiez mes actions, soyez attentif au r\xE9capitulatif progressif de la bataille. "
-  - "La victoire imm\xE9diate ne sera pas toujours possible, n'ayez pas peur de perdre."
-  postUnitsFightWinLines:
-  - "Bien jou\xE9. Continuez comme \xE7a : identifier la strat\xE9gie de votre adversaire
-    et pr\xE9parer votre strat\xE9gie pour le contrer."
-  - "Vous \xEAtes sur la bonne voie. "
-  - "J'esp\xE8re qu'il s'agissait d'un choix r\xE9fl\xE9chis et strat\xE9gique !"
-  postUnitsFightDrawLines:
+  - "Certains commandants basent leur strat\xE9gie sur vos actions, ou pas du tout
+    ! Soyez vigilants et exp\xE9rimentez avec votre adversaire."
   - "Lorsque deux unit\xE9s identiques s'affrontent, aucune ne peut prendre le dessus
     et l'\xE9quilibre de la bataille reste inchang\xE9."
+  - "La victoire imm\xE9diate ne sera pas toujours possible, n'ayez pas peur de perdre."
+  - "Je vous laisse un indice exceptionnel me concernant : je ne parle pas de ma
+    strat\xE9gie mais elle est tr\xE8s facile \xE0 identifier en regardant l'historique
+    des manches."
+  postUnitsFightWinLines: []
+  postUnitsFightDrawLines: []

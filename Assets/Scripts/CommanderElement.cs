@@ -33,9 +33,6 @@ public class CommanderElement : ScriptableObject
     public string[] postBattleLossLines;
 
     [Header("Lignes Affrontement Unites")]
-    /// <summary>Debut affrontement unités - Indices sur le comportement de l'IA</summary>
-    public string[] preUnitsFightLines;
-
     /// <summary>Fin affrontement unités - A perdu</summary>
     public string[] postUnitsFightLossLines;
 

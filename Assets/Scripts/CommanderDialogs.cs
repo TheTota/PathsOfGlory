@@ -16,9 +16,6 @@ public class CommanderDialogs
     /// <summary>Fin bataille - A perdu</summary>
     public string[] postBattleLossLines;
 
-    /// <summary>Debut affrontement unités - Indices sur le comportement de l'IA</summary>
-    public string[] preUnitsFightLines;
-
     /// <summary>Fin affrontement unités - A perdu</summary>
     public string[] postUnitsFightLossLines;
     /// <summary>Fin affrontement unités - A gagné</summary>
@@ -26,7 +23,12 @@ public class CommanderDialogs
     /// <summary>Fin affrontement unités - Egalité</summary>
     public string[] postUnitsFightDrawLines;
 
-    public CommanderDialogs(string preBattleFirstTimeLine, string[] preBattleWonLastLines, string[] preBattleLostLastLines, string[] postBattleWinLines, string[] postBattleLossLines, string[] preUnitsFightLines, string[] postUnitsFightLossLines, string[] postUnitsFightWinLines, string[] postUnitsFightDrawLines)
+    /// <summary>
+    /// Used by the tutorial guy.
+    /// </summary>
+    int dialogIndex = 0;
+
+    public CommanderDialogs(string preBattleFirstTimeLine, string[] preBattleWonLastLines, string[] preBattleLostLastLines, string[] postBattleWinLines, string[] postBattleLossLines, string[] postUnitsFightLossLines, string[] postUnitsFightWinLines, string[] postUnitsFightDrawLines)
     {
         this.preBattleFirstTimeLine = preBattleFirstTimeLine;
         this.preBattleWonLastLines = preBattleWonLastLines;
@@ -35,11 +37,14 @@ public class CommanderDialogs
         this.postBattleWinLines = postBattleWinLines;
         this.postBattleLossLines = postBattleLossLines;
 
-        this.preUnitsFightLines = preUnitsFightLines;
-
         this.postUnitsFightLossLines = postUnitsFightLossLines;
         this.postUnitsFightWinLines = postUnitsFightWinLines;
         this.postUnitsFightDrawLines = postUnitsFightDrawLines;
+    }
+
+    public void Init()
+    {
+        this.dialogIndex = 0;
     }
 
     internal string GetRandomPreBattleWonLastLine()
@@ -62,9 +67,14 @@ public class CommanderDialogs
         return postBattleLossLines[Random.Range(0, postBattleLossLines.Length)];
     }
 
-    internal string GetRandomPreUnitsFightLine()
+    /// <summary>
+    /// Used for the tutorial. To use it : fill commander element field "post units fight loss lines" with tutorial lines in the right order.
+    /// Call this function to print a line and incr the index.
+    /// </summary>
+    /// <returns></returns>
+    internal string GetNextTutorialLine()
     {
-        return preUnitsFightLines[Random.Range(0, preUnitsFightLines.Length)];
+        return postUnitsFightLossLines[dialogIndex++];
     }
 
     internal string GetRandomPostUnitsFightWinLine()

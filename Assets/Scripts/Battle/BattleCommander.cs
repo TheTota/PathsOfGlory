@@ -14,6 +14,8 @@ public class BattleCommander : MonoBehaviour
 
     public Army Army { get; set; }
 
+    public bool IsTutorial { get; set; }
+
     /// <summary>
     /// Gives the unit played for a round n at the index n-1.
     /// </summary>
@@ -23,12 +25,14 @@ public class BattleCommander : MonoBehaviour
     /// Inits a battle commander at the beginning of the battle.
     /// </summary>
     /// <param name="c"></param>
-    public void Init(Commander c)
+    public void Init(Commander c, bool isTut)
     {
         PlaysHistory = new List<UnitType>();
         this.Commander = c;
+        //this.Commander.Dialogs.Init();
         this.Army = new Army();
         this.Score = 0;
+        this.IsTutorial = isTut;
     }
 
     /// <summary>
