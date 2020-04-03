@@ -12,17 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: 2-Noob
   m_EditorClassIdentifier: 
+  commanderName: To "Be" Determined
   Locked: 1
   Color: {r: 0.9205077, g: 1, b: 0.5613208, a: 1}
   AiType: 2
   PortraitElementToUnlock: {fileID: 11400000, guid: 9d60edea14034274998533b835cf19c1,
     type: 2}
-  preBattleFirstTimeLine: 
-  preBattleWonLastLines: []
-  preBattleLostLastLines: []
-  postBattleWinLines: []
-  postBattleLossLines: []
-  preUnitsFightLines: []
-  postUnitsFightLossLines: []
-  postUnitsFightWinLines: []
-  postUnitsFightDrawLines: []
+  preBattleFirstTimeLine: TDB
+  preBattleWonLastLines:
+  - TBD
+  - TBD
+  - TBD
+  preBattleLostLastLines:
+  - TBD
+  - TBD
+  - TBD
+  postBattleWinLines:
+  - TBD
+  - TBD
+  - TBD
+  postBattleLossLines:
+  - TBD
+  - TBD
+  - TBD
+  postUnitsFightLossLines:
+  - TBD
+  - TBD
+  - TBD
+  postUnitsFightWinLines:
+  - TBD
+  - TBD
+  - TBD
+  postUnitsFightDrawLines:
+  - TBD
+  - TBD
+  - TBD

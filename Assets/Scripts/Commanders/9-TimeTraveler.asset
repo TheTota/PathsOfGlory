@@ -12,18 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: 9-TimeTraveler
   m_EditorClassIdentifier: 
+  commanderName: To "Be" Determined
   Locked: 1
   Color: {r: 0.101960786, g: 0.7372549, b: 0.6117647, a: 1}
   AiType: 9
   PortraitElementToUnlock: {fileID: 11400000, guid: e204e6f738e0b7d42a9bb9d7c7c85a13,
     type: 2}
-  preBattleFirstTimeLine: 
-  preBattleWonLastLines: []
-  preBattleLostLastLines: []
-  postBattleWinLines: []
-  postBattleLossLines: []
-  preUnitsFightLines: []
-  postUnitsFightLossLines: []
-  postUnitsFightWinLines: []
-  postUnitsFightDominatedLines: []
-  postUnitsFightDominatingLines: []
+  preBattleFirstTimeLine: TDB
+  preBattleWonLastLines:
+  - TBD
+  - TBD
+  - TBD
+  preBattleLostLastLines:
+  - TBD
+  - TBD
+  - TBD
+  postBattleWinLines:
+  - TBD
+  - TBD
+  - TBD
+  postBattleLossLines:
+  - TBD
+  - TBD
+  - TBD
+  postUnitsFightLossLines:
+  - TBD
+  - TBD
+  - TBD
+  postUnitsFightWinLines:
+  - TBD
+  - TBD
+  - TBD
+  postUnitsFightDrawLines:
+  - TBD
+  - TBD
+  - TBD

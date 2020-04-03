@@ -12,18 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: 8-Economist
   m_EditorClassIdentifier: 
+  commanderName: To "Be" Determined
   Locked: 1
   Color: {r: 0.7411765, g: 0.7647059, b: 0.78039217, a: 1}
   AiType: 8
   PortraitElementToUnlock: {fileID: 11400000, guid: 19013eeac06aa1848b7f1c4b76139483,
     type: 2}
-  preBattleFirstTimeLine: 
-  preBattleWonLastLines: []
-  preBattleLostLastLines: []
-  postBattleWinLines: []
-  postBattleLossLines: []
-  preUnitsFightLines: []
-  postUnitsFightLossLines: []
-  postUnitsFightWinLines: []
-  postUnitsFightDominatedLines: []
-  postUnitsFightDominatingLines: []
+  preBattleFirstTimeLine: TDB
+  preBattleWonLastLines:
+  - TBD
+  - TBD
+  - TBD
+  preBattleLostLastLines:
+  - TBD
+  - TBD
+  - TBD
+  postBattleWinLines:
+  - TBD
+  - TBD
+  - TBD
+  postBattleLossLines:
+  - TBD
+  - TBD
+  - TBD
+  postUnitsFightLossLines:
+  - TBD
+  - TBD
+  - TBD
+  postUnitsFightWinLines:
+  - TBD
+  - TBD
+  - TBD
+  postUnitsFightDrawLines:
+  - TBD
+  - TBD
+  - TBD
