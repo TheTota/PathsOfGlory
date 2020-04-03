@@ -87,6 +87,8 @@ public class BattleManager : MonoBehaviour
     private TextMeshProUGUI enemyDialogText;
     [SerializeField]
     private Image enemySeal;
+    [SerializeField]
+    private TextMeshProUGUI enemyNameNearSealText;
 
     // Player units pick
     private bool playerAllowedToPick;
@@ -204,6 +206,7 @@ public class BattleManager : MonoBehaviour
         EnemyBC.Init(GameManager.Instance.BattledCommander, Array.IndexOf(GameManager.Instance.Enemies, GameManager.Instance.BattledCommander) == 0);
         enemyPR.RenderPortrait(EnemyBC.Commander);
         enemySeal.color = EnemyBC.Commander.Color;
+        enemyNameNearSealText.text = EnemyBC.Commander.CommanderName;
 
         // Init score slider
         InitScoreUI();

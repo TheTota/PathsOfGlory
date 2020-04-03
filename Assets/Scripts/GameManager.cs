@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
             CommanderDialogs cd = new CommanderDialogs(enemyCommandersElements[i].preBattleFirstTimeLine, enemyCommandersElements[i].preBattleWonLastLines, enemyCommandersElements[i].preBattleLostLastLines, enemyCommandersElements[i].postBattleWinLines, enemyCommandersElements[i].postBattleLossLines, enemyCommandersElements[i].postUnitsFightLossLines, enemyCommandersElements[i].postUnitsFightWinLines, enemyCommandersElements[i].postUnitsFightDrawLines);
 
             // Generate commander
-            Enemies[i] = new Commander(i, enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].PortraitElementToUnlock, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount, wonLast, cd);
+            Enemies[i] = new Commander(i, enemyCommandersElements[i].commanderName, enemyCommandersElements[i].Color, portrait, enemyCommandersElements[i].PortraitElementToUnlock, enemyCommandersElements[i].AiType, locked, winsCount, lossesCount, wonLast, cd);
             Enemies[i].SaveStats();
         }
 

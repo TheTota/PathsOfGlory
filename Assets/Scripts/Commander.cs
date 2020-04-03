@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class Commander
 {
+    public string CommanderName { get; set; }
     /// <summary>
     /// Whether or not the commander can be battled by the player.
     /// </summary>
@@ -40,8 +41,11 @@ public class Commander
         AiType = AIType.NONE;
     }
 
-    public Commander(int index, Color color, Portrait portrait, PortraitElement portraitElementToUnlock, AIType ai, bool locked, int victoryCount, int lossCount, bool wonLastFight, CommanderDialogs cd)
+    public Commander(int index, string cName, Color color, Portrait portrait, PortraitElement portraitElementToUnlock, AIType ai, bool locked, int victoryCount, int lossCount, bool wonLastFight, CommanderDialogs cd)
     {
+        commanderIndex = index;
+
+        CommanderName = cName;
         Locked = locked;
         WinsCount = victoryCount;
         LossesCount = lossCount;
@@ -50,7 +54,6 @@ public class Commander
         Portrait = portrait;
         AiType = ai;
         PortraitElementToUnlock = portraitElementToUnlock;
-        commanderIndex = index;
 
         Dialogs = cd;
     }

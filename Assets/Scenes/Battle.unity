@@ -2480,6 +2480,7 @@ MonoBehaviour:
   enemyDialogPanel: {fileID: 1208379973}
   enemyDialogText: {fileID: 99971294}
   enemySeal: {fileID: 178626446}
+  enemyNameNearSealText: {fileID: 1298501448}
 --- !u!1 &603773664
 GameObject:
   m_ObjectHideFlags: 0

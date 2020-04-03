@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: 1-Teacher
   m_EditorClassIdentifier: 
+  commanderName: Arthur Lancien
   Locked: 1
   Color: {r: 0, g: 0.3529412, b: 0.58431375, a: 1}
   AiType: 1
