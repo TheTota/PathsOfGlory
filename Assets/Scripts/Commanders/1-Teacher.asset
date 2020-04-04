@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: 1-Teacher
   m_EditorClassIdentifier: 
-  commanderName: Arthur Lancien
+  commanderName: Arthur "l'Ancien" Warfield
   Locked: 1
   Color: {r: 0, g: 0.3529412, b: 0.58431375, a: 1}
   AiType: 1
   PortraitElementToUnlock: {fileID: 11400000, guid: 1b80c1eda3055ae4e9b4b42fd74e1169,
     type: 2}
   preBattleFirstTimeLine: "Bienvenue au camps d'entrainement recrue, je vais vous
-    former \xE0 l'art du commandement."
+    former \xE0 l'art du commandement. Que la bataille commence !"
   preBattleWonLastLines:
   - "Pr\xE9parez-vous recrue. N'oubliez pas qu'une fois que vous avez identifi\xE9
     la strat\xE9gie de l'adversaire, vous serez en mesure de le contrer et le vaincre."

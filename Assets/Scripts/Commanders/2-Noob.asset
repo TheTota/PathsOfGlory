@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: 2-Noob
   m_EditorClassIdentifier: 
-  commanderName: To "Be" Determined
+  commanderName: "J\xE9rome \"l'Horloger\" Lafaye"
   Locked: 1
   Color: {r: 0.9205077, g: 1, b: 0.5613208, a: 1}
   AiType: 2

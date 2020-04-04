@@ -38,6 +38,8 @@ public class BattleManager : MonoBehaviour
     private int[] scoreDefinitionTable;
     [Header("Score Slider")]
     [SerializeField]
+    private GameObject scoreAndRoundUI;
+    [SerializeField]
     private Slider scoreSlider;
     [SerializeField]
     private Image scoreSliderPlayerImg;
@@ -103,6 +105,11 @@ public class BattleManager : MonoBehaviour
     private float remainingTime;
 
     private BattleCommander battleWinner;
+
+    /// <summary>
+    /// Indicates whether or not the reaction line should be skipped.
+    /// </summary>
+    private bool skipReactionLine;
 
     /// <summary>
     /// Gives the BC that won the round n at the index n-1.
@@ -209,7 +216,7 @@ public class BattleManager : MonoBehaviour
         enemyNameNearSealText.text = EnemyBC.Commander.CommanderName;
 
         // Init score slider
-        InitScoreUI();
+        InitNonCommanderUI();
 
         // Init popup 
         InitUnitPickPopup();
@@ -228,6 +235,9 @@ public class BattleManager : MonoBehaviour
     private IEnumerator Battle()
     {
         yield return StartCoroutine(DisplayPreBattleLine());
+        // Display battle UI
+        uiPlaysHistoryHandler.gameObject.SetActive(true);
+        scoreAndRoundUI.SetActive(true);
 
         // Start the battle
         while (CurrentRound <= MAX_ROUNDS)
@@ -381,8 +391,27 @@ public class BattleManager : MonoBehaviour
     {
         enemyDialogText.text = line;
         enemyDialogPanel.SetActive(true);
-        yield return new WaitForSeconds(line.Length / 20f); // TODO: ajouter click pour passer + noms commandants
+
+        // Replaces WaitForSeconds, but allows to stop it with a bool condition
+        for (float timer = line.Length / 20f; timer >= 0; timer -= Time.deltaTime)
+        {
+            if (skipReactionLine)
+            {
+                skipReactionLine = false;
+                yield break;
+            }
+            yield return null;
+        }
+
         enemyDialogPanel.SetActive(false);
+    }
+
+    /// <summary>
+    /// Trigger this from click on msg panel. Hides panel and continues the battle.
+    /// </summary>
+    public void SkipReactionLine()
+    {
+        skipReactionLine = true;
     }
 
     /// <summary>
@@ -426,13 +455,18 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// Inits mainly the colors of the parts of the slide to match the player's.
     /// </summary>
-    private void InitScoreUI()
+    private void InitNonCommanderUI()
     {
         this.scoreSlider.value = .5f;
         this.scoreSliderPlayerImg.color = PlayerBC.Commander.Color;
         this.scoreSliderEnemyImg.color = EnemyBC.Commander.Color;
         this.playerScoreText.text = PlayerBC.Score.ToString();
         this.enemyScoreText.text = EnemyBC.Score.ToString();
+
+        this.uiPlaysHistoryHandler.gameObject.SetActive(false);
+
+        // hide it at the beginning
+        scoreAndRoundUI.SetActive(false);
     }
 
     /// <summary>
