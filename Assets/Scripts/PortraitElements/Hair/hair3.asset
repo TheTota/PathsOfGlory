@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf188e9fd47b9ee41af9bdb60003b6b0, type: 3}
   m_Name: hair3
   m_EditorClassIdentifier: 
-  neutralSprite: {fileID: 21300000, guid: 9d11ac9ba348b8c48b79559fd6ac9190, type: 3}
-  happySprite: {fileID: 21300000, guid: 9d11ac9ba348b8c48b79559fd6ac9190, type: 3}
-  angrySprite: {fileID: 21300000, guid: 9d11ac9ba348b8c48b79559fd6ac9190, type: 3}
+  neutralSprite: {fileID: 21300000, guid: ca58f445ea57d4a4681f058798c0035f, type: 3}
+  happySprite: {fileID: 0}
+  angrySprite: {fileID: 0}
   locked: 1

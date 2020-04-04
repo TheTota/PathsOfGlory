@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf188e9fd47b9ee41af9bdb60003b6b0, type: 3}
   m_Name: mouth2
   m_EditorClassIdentifier: 
-  neutralSprite: {fileID: 21300000, guid: 2361180d470aa3644849631a6b56f2f6, type: 3}
-  happySprite: {fileID: 0}
-  angrySprite: {fileID: 0}
+  neutralSprite: {fileID: 21300000, guid: cb3803b0977da2e41800afa39bd962d4, type: 3}
+  happySprite: {fileID: 21300000, guid: 909fc2c8afd7ae84b9facda82dbed495, type: 3}
+  angrySprite: {fileID: 21300000, guid: 83bd286ea91c17c4ba2a4229b2a646bb, type: 3}
   locked: 1

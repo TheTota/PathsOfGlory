@@ -18,8 +18,9 @@ MonoBehaviour:
   AiType: 1
   PortraitElementToUnlock: {fileID: 11400000, guid: 1b80c1eda3055ae4e9b4b42fd74e1169,
     type: 2}
-  preBattleFirstTimeLine: "Bienvenue au camps d'entrainement recrue, je vais vous
-    former \xE0 l'art du commandement. Que la bataille commence !"
+  preBattleFirstTimeLine: "Bienvenue recrue, je vais vous former \xE0 l'art du commandement.
+    Cliquer sur les messages tels que celui-ci vous permettra de les passer. Bref,
+    que la bataille commence !"
   preBattleWonLastLines:
   - "Pr\xE9parez-vous recrue. N'oubliez pas qu'une fois que vous avez identifi\xE9
     la strat\xE9gie de l'adversaire, vous serez en mesure de le contrer et le vaincre."
@@ -35,8 +36,7 @@ MonoBehaviour:
     et identifier sa strat\xE9gie."
   postBattleLossLines:
   - "F\xE9licitations pour votre victoire ! Le vrai champs de bataille vous attend
-    d\xE9sormais. Chaque ennemi que vous vaincrez vous permettra d'en affronter un
-    nouveau plus prestigieux. Bonne chance commandant !"
+    d\xE9sormais, bonne chance commandant !"
   postUnitsFightLossLines:
   - "Vous disposez de 5 types d'unit\xE9s qui se contrent les unes les autres en
     suivant le sch\xE9ma strat\xE9gique \xE0 votre disposition."
@@ -48,11 +48,12 @@ MonoBehaviour:
     qui vous enverrez sur le champs de bataille."
   - "Une bataille est compos\xE9e de nombreuses manches, dont l'impact sur l'\xE9quilibre
     de la bataille augmentera progressivement."
-  - A la fin de la bataille, le commandant qui domine la bataille l'emporte.
+  - "Une fois la derni\xE8re manche pass\xE9e, le commandant qui domine la bataille
+    l'emporte."
   - "Les premi\xE8res manches n'impactent pas l'\xE9quilibre de la bataille. Servez-vous-en
     pour commencer \xE0 \xE9tudier votre adversaire."
   - "La plupart des commandants sont bavards et r\xE9v\xE8lent des informations utiles
-    sur leurs strat\xE9gie. Soyez \xE0 leur \xE9coute."
+    sur leur strat\xE9gie. Soyez \xE0 leur \xE9coute."
   - "Vous disposez d'un rapport continu sur la bataille. La strat\xE9gie d'un adversaire
     peut y appa\xEEtre de mani\xE8re flagrante !"
   - "Vaincre un commandant pour la premi\xE8re fois vous permettra d'obtenir un de
