@@ -1,4 +1,4 @@
-# ProjetSHIFUMI
+# Paths Of Glory
 __Unity 2019.3.1f1__
 
 Revision: 10/03/2020
