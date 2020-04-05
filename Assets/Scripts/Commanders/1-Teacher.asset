@@ -15,7 +15,6 @@ MonoBehaviour:
   commanderName: Arthur "l'Ancien" Warfield
   Locked: 1
   Color: {r: 0, g: 0.3529412, b: 0.58431375, a: 1}
-  SkinTone: {r: 1, g: 0.8, b: 0.6, a: 0}
   AiType: 1
   PortraitElementToUnlock: {fileID: 11400000, guid: 1b80c1eda3055ae4e9b4b42fd74e1169,
     type: 2}

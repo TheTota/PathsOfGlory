@@ -16,6 +16,7 @@ public class PortraitCustomizer : MonoBehaviour
     private GameObject mainMenuUI;
 
     // buttons references to disable them if only 1 available hair/eyes/mouth
+    [Header("Portrait elements")]
     [SerializeField]
     private Button prevHairBtn;
     [SerializeField]
@@ -29,13 +30,26 @@ public class PortraitCustomizer : MonoBehaviour
     [SerializeField]
     private Button nextMouthBtn;
 
+    [Header("Skin tone")]
+    [SerializeField]
+    private Transform skinToneBtnParent;
+    [SerializeField]
+    private GameObject skinToneBtnPrefab;
+
     // browsing indexes
     private int currentHairIndex;
     private int currentEyesIndex;
     private int currentMouthIndex;
 
+    private bool skinTonesBtnsGenerated;
+
     private void OnEnable()
     {
+        if (!skinTonesBtnsGenerated)
+        {
+            GenerateSkinToneBtns();
+            skinTonesBtnsGenerated = true;
+        }
         RenderPlayerPortrait();
 
         // init browsing indexes
@@ -45,6 +59,30 @@ public class PortraitCustomizer : MonoBehaviour
         currentMouthIndex = Array.IndexOf(PortraitGenerator.Instance.GetUnlockedMouth(), p.Mouth);
 
         HandleButtonsAvailabilityBasedOnUnlockedElements();
+    }
+
+    /// <summary>
+    /// Generates buttons to change the skin tone of the player commander, according to a list of skin tones in the portrait generator singleton.
+    /// If 10 skin tones available ==> generates 10 btns.
+    /// </summary>
+    private void GenerateSkinToneBtns()
+    {
+        foreach (var skinTone in PortraitGenerator.Instance.availableSkinTones)
+        {
+            GameObject skinToneBtn = Instantiate(skinToneBtnPrefab, skinToneBtnParent);
+            skinToneBtn.GetComponent<Image>().color = skinTone;
+            skinToneBtn.GetComponent<Button>().onClick.AddListener(() => ChangeSkinTone(skinTone));
+        }
+    }
+
+    /// <summary>
+    /// Changes and renders the skin tone of the player to the given one.
+    /// </summary>
+    /// <param name="skinTone"></param>
+    private void ChangeSkinTone(Color skinTone)
+    {
+        GameManager.Instance.Player.Portrait.SkinTone = skinTone;
+        RenderPlayerPortrait();
     }
 
     /// <summary>
@@ -107,6 +145,7 @@ public class PortraitCustomizer : MonoBehaviour
         PlayerPrefs.SetInt("player_portrait_hair", Array.IndexOf(PortraitGenerator.Instance.availableHair, p.Hair));
         PlayerPrefs.SetInt("player_portrait_eyes", Array.IndexOf(PortraitGenerator.Instance.availableEyes, p.Eyes));
         PlayerPrefs.SetInt("player_portrait_mouth", Array.IndexOf(PortraitGenerator.Instance.availableMouth, p.Mouth));
+        PlayerPrefs.SetInt("player_portrait_skin_tone", Array.IndexOf(PortraitGenerator.Instance.availableSkinTones, p.SkinTone));
 
         // Go back to menu
         mainMenuUI.SetActive(true);
