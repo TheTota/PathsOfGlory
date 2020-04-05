@@ -55,6 +55,7 @@ public class PortraitRenderer : MonoBehaviour
             hair.sprite = commander.Portrait.Hair.neutralSprite;
             eyes.sprite = commander.Portrait.Eyes.neutralSprite;
             mouth.sprite = commander.Portrait.Mouth.neutralSprite;
+            face.GetComponent<Image>().color = commander.Portrait.SkinTone;
 
             if (commander.WinsCount != 0 || commander.LossesCount != 0)
             {

@@ -16,6 +16,8 @@ public class PortraitGenerator : MonoBehaviour
     public PortraitElement[] availableEyes;
     public PortraitElement[] availableMouth;
 
+    public Color[] availableSkinTones;
+
     private void Awake()
     {
         if (!Instance)
@@ -46,7 +48,7 @@ public class PortraitGenerator : MonoBehaviour
             else // if we have NO saves
             {
                 // on new game, unlock first element of each category
-                if (everyElement[i] == availableHair[0] || everyElement[i] == availableEyes[0] || everyElement[i] == availableMouth[0]) 
+                if (everyElement[i] == availableHair[0] || everyElement[i] == availableEyes[0] || everyElement[i] == availableMouth[0])
                 {
                     everyElement[i].locked = false;
                     PlayerPrefs.SetInt(everyElement[i].name, 0);
@@ -114,7 +116,12 @@ public class PortraitGenerator : MonoBehaviour
     /// <returns></returns>
     private Portrait GeneratePortrait(PortraitElement[] hairPool, PortraitElement[] eyesPool, PortraitElement[] mouthPool)
     {
-        return new Portrait(hairPool[UnityEngine.Random.Range(0, hairPool.Length)], eyesPool[UnityEngine.Random.Range(0, eyesPool.Length)], mouthPool[UnityEngine.Random.Range(0, mouthPool.Length)]);
+        return new Portrait(
+            hairPool[UnityEngine.Random.Range(0, hairPool.Length)],
+            eyesPool[UnityEngine.Random.Range(0, eyesPool.Length)],
+            mouthPool[UnityEngine.Random.Range(0, mouthPool.Length)],
+            availableSkinTones[UnityEngine.Random.Range(0, availableSkinTones.Length)]
+        );
     }
 
     /// <summary>

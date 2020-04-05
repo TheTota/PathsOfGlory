@@ -70,6 +70,6 @@ public class Commander
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_portrait_hair", Array.IndexOf(PortraitGenerator.Instance.availableHair, Portrait.Hair));
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_portrait_eyes", Array.IndexOf(PortraitGenerator.Instance.availableEyes, Portrait.Eyes));
         PlayerPrefs.SetInt("enemy_" + commanderIndex + "_portrait_mouth", Array.IndexOf(PortraitGenerator.Instance.availableMouth, Portrait.Mouth));
-
+        PlayerPrefs.SetInt("enemy_" + commanderIndex + "_portrait_skin_tone", Array.IndexOf(PortraitGenerator.Instance.availableSkinTones, Portrait.SkinTone));
     }
 }

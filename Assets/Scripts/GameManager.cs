@@ -92,7 +92,8 @@ public class GameManager : MonoBehaviour
             playerPortrait = new Portrait(
                 PortraitGenerator.Instance.availableHair[PlayerPrefs.GetInt("player_portrait_hair")],
                 PortraitGenerator.Instance.availableEyes[PlayerPrefs.GetInt("player_portrait_eyes")],
-                PortraitGenerator.Instance.availableMouth[PlayerPrefs.GetInt("player_portrait_mouth")]
+                PortraitGenerator.Instance.availableMouth[PlayerPrefs.GetInt("player_portrait_mouth")],
+                PortraitGenerator.Instance.availableSkinTones[PlayerPrefs.GetInt("player_portrait_skin_tone")]
             );
             Debug.Log("Player portrait loaded.");
         }
@@ -104,6 +105,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("player_portrait_hair", Array.IndexOf(PortraitGenerator.Instance.availableHair, playerPortrait.Hair));
             PlayerPrefs.SetInt("player_portrait_eyes", Array.IndexOf(PortraitGenerator.Instance.availableEyes, playerPortrait.Eyes));
             PlayerPrefs.SetInt("player_portrait_mouth", Array.IndexOf(PortraitGenerator.Instance.availableMouth, playerPortrait.Mouth));
+            PlayerPrefs.SetInt("player_portrait_skin_tone", Array.IndexOf(PortraitGenerator.Instance.availableSkinTones, playerPortrait.SkinTone));
             PlayerPrefs.SetInt("player_saves", 1); // used to check if we have saves for the player
 
             Debug.Log("Player portrait generated and saved.");
@@ -137,7 +139,8 @@ public class GameManager : MonoBehaviour
                 portrait = new Portrait(
                     PortraitGenerator.Instance.availableHair[PlayerPrefs.GetInt("enemy_" + i + "_portrait_hair")],
                     PortraitGenerator.Instance.availableEyes[PlayerPrefs.GetInt("enemy_" + i + "_portrait_eyes")],
-                    PortraitGenerator.Instance.availableMouth[PlayerPrefs.GetInt("enemy_" + i + "_portrait_mouth")]
+                    PortraitGenerator.Instance.availableMouth[PlayerPrefs.GetInt("enemy_" + i + "_portrait_mouth")],
+                    PortraitGenerator.Instance.availableSkinTones[PlayerPrefs.GetInt("enemy_" + i + "_portrait_skin_tone")]
                 );
 
                 // load lock status
