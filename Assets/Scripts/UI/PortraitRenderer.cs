@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using System;
+
+public enum PortraitMood
+{
+    Neutral,
+    Proud,
+    Angry,
+}
 
 /// <summary>
 /// Allows to render a given commander's portrait graphically.
@@ -70,5 +78,34 @@ public class PortraitRenderer : MonoBehaviour
 
         // hide the face if commander is locked
         face.SetActive(!commander.Locked);
+    }
+
+    /// <summary>
+    /// Displays a given mood on the associated portrait.
+    /// </summary>
+    /// <param name="commander"></param>
+    /// <param name="mood"></param>
+    internal void RenderMood(Commander commander, PortraitMood mood)
+    {
+        switch (mood)
+        {
+            case PortraitMood.Neutral:
+                eyes.sprite = commander.Portrait.Eyes.neutralSprite;
+                mouth.sprite = commander.Portrait.Mouth.neutralSprite;
+                break;
+
+            case PortraitMood.Proud:
+                eyes.sprite = commander.Portrait.Eyes.happySprite;
+                mouth.sprite = commander.Portrait.Mouth.happySprite;
+                break;
+
+            case PortraitMood.Angry:
+                eyes.sprite = commander.Portrait.Eyes.angrySprite;
+                mouth.sprite = commander.Portrait.Mouth.angrySprite;
+                break;
+
+            default:
+                throw new Exception("what is that mood? " + mood);
+        }
     }
 }

@@ -275,7 +275,8 @@ public class BattleManager : MonoBehaviour
             uiPlaysHistoryHandler.gameObject.SetActive(false);
             BattleCommander winner = GetWinnerFromUnitsFight();
 
-            DisplayBattlingUnits(true); // TODO: play fight animation instead
+            // TODO: play fight animation instead
+            DisplayBattlingUnits(true);
             yield return new WaitForSeconds(2f); // TIME OF UNITS FIGHT ANIM
             DisplayBattlingUnits(false);
 
@@ -291,10 +292,12 @@ public class BattleManager : MonoBehaviour
                 RoundsWinnersHistory.Add(null);
             }
 
-            // AI speaks after units fight if it's not the final round
+            // AI speaks after units fight if it's not the final round + facial reaction
             if (CurrentRound != MAX_ROUNDS)
             {
+                SetMoods(winner);
                 yield return StartCoroutine(DisplayPostUnitsFightLine(winner));
+                ResetMoods();
             }
 
             // update plays history UI
@@ -305,9 +308,40 @@ public class BattleManager : MonoBehaviour
         }
 
         battleWinner = GetAndHandleWinner();
+        SetMoods(battleWinner);
         yield return StartCoroutine(DisplayPostBattleLine());
         ReturnToMainMenu(); // TODO: Replace with battle recap
     }
+
+    #region Reaction Moods
+    /// <summary>
+    /// Resets commanders moods to neutral.
+    /// </summary>
+    private void ResetMoods()
+    {
+        enemyPR.RenderMood(EnemyBC.Commander, PortraitMood.Neutral);
+        playerPR.RenderMood(PlayerBC.Commander, PortraitMood.Neutral);
+    }
+
+    /// <summary>
+    /// Sets commanders moods depending on the result.
+    /// </summary>
+    /// <param name="enemyWon"></param>
+    /// <param name="displayMood"></param>
+    private void SetMoods(BattleCommander winner)
+    {
+        if (winner == EnemyBC) // AI won
+        {
+            enemyPR.RenderMood(EnemyBC.Commander, PortraitMood.Proud);
+            playerPR.RenderMood(PlayerBC.Commander, PortraitMood.Angry);
+        }
+        else // Player won
+        {
+            enemyPR.RenderMood(EnemyBC.Commander, PortraitMood.Angry);
+            playerPR.RenderMood(PlayerBC.Commander, PortraitMood.Proud);
+        }
+    }
+    #endregion
 
     #region Dialogs
     /// <summary>
