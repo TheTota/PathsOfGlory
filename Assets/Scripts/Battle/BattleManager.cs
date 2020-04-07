@@ -51,6 +51,8 @@ public class BattleManager : MonoBehaviour
     private TextMeshProUGUI enemyScoreText;
     [SerializeField]
     private TextMeshProUGUI nextRoundValueText;
+    [SerializeField]
+    private GameObject postBattleScreen;
 
 
     // unit pick popup 
@@ -104,7 +106,8 @@ public class BattleManager : MonoBehaviour
     private float pickTimer;
     private float remainingTime;
 
-    private BattleCommander battleWinner;
+    public BattleCommander BattleWinner { get; set; }
+    public bool UnlockedRewards { get; set; }
 
     /// <summary>
     /// Indicates whether or not the reaction line should be skipped.
@@ -201,7 +204,8 @@ public class BattleManager : MonoBehaviour
         playerAllowedToPick = false;
         CurrentRound = 1;
         RoundsWinnersHistory = new List<BattleCommander>();
-        battleWinner = null;
+        BattleWinner = null;
+        UnlockedRewards = false;
 
         // Init Player
         PlayerBC = (BattleCommander)playerPR.gameObject.AddComponent(typeof(BattleCommander));
@@ -307,10 +311,15 @@ public class BattleManager : MonoBehaviour
             CurrentRound++;
         }
 
-        battleWinner = GetAndHandleWinner();
-        SetMoods(battleWinner);
+        BattleWinner = GetAndHandleWinner();
+        SetMoods(BattleWinner);
         yield return StartCoroutine(DisplayPostBattleLine());
-        ReturnToMainMenu(); // TODO: Replace with battle recap
+
+        // Saves stats at the end of the battle
+        EnemyBC.Commander.SaveStats();
+
+        // display end battle panel that will be handled by attached script
+        postBattleScreen.SetActive(true);
     }
 
     #region Reaction Moods
@@ -373,7 +382,7 @@ public class BattleManager : MonoBehaviour
     private IEnumerator DisplayPostBattleLine()
     {
         // Victoire de l'IA
-        if (battleWinner == EnemyBC)
+        if (BattleWinner == EnemyBC)
         {
             // display random post battle line for AI win
             yield return StartCoroutine(DisplayReactionLine(EnemyBC.Commander.Dialogs.GetRandomPostBattleWinLine()));
@@ -473,15 +482,6 @@ public class BattleManager : MonoBehaviour
     {
         EnemyBC.Commander.LossesCount++;
         EnemyBC.Commander.WonLastFightAgainstPlayer = true;
-
-        ReturnToMainMenu();
-    }
-
-    /// <summary>
-    /// Returns to main menu and saves the stats of the AI.
-    /// </summary>
-    private void ReturnToMainMenu()
-    {
         EnemyBC.Commander.SaveStats();
         SceneManager.LoadScene("Menu");
     }
@@ -654,7 +654,8 @@ public class BattleManager : MonoBehaviour
             // Unlock next commander, if first time we beat this AI
             if (EnemyBC.Commander.WinsCount == 0)
             {
-                GameManager.Instance.UnlockNextCommander();
+                GameManager.Instance.UnlockRewards();
+                this.UnlockedRewards = true;
             }
             // Update wins against this commander
             EnemyBC.Commander.WinsCount++;

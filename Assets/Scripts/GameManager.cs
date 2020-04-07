@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
         if (!PlayerPrefs.HasKey("enemies_saves"))
         {
             PlayerPrefs.SetInt("enemies_saves", 1);
-            UnlockNextCommander(); // unlocked 1rst commander 
+            UnlockRewards(); // unlocked 1rst commander 
 
             Debug.Log("Enemy commanders initialized and saved.");
         }
@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Unlocks the next commander on the list, if there is still some to be unlocked.
     /// </summary>
-    public void UnlockNextCommander()
+    public void UnlockRewards()
     {
         bool unlockedSomebody = false;
         for (int i = 0; i < Enemies.Length; i++)
@@ -208,7 +208,7 @@ public class GameManager : MonoBehaviour
 
         if (!unlockedSomebody)
         {
-            // TODO: gg screen
+            // TODO: gg 
             Debug.Log("Every commander has been unlocked already.");
         }
     }

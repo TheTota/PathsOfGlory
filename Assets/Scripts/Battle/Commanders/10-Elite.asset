@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
-  m_Name: 6-Observer
+  m_Name: 10-Elite
   m_EditorClassIdentifier: 
   commanderName: To "Be" Determined
   Locked: 1
-  Color: {r: 0.5568628, g: 0.26666668, b: 0.6784314, a: 1}
-  AiType: 6
-  PortraitElementToUnlock: {fileID: 11400000, guid: 829187e0f4e220d4cac41628c570ca30,
+  Color: {r: 0.1723033, g: 0.23709506, b: 0.3018868, a: 1}
+  AiType: 10
+  PortraitElementToUnlock: {fileID: 11400000, guid: 9d711e6b7cf7a7049a82ee8e137c3ef7,
     type: 2}
   preBattleFirstTimeLine: TDB
   preBattleWonLastLines:

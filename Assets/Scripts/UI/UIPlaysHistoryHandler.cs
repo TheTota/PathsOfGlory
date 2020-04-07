@@ -19,16 +19,11 @@ public class UIPlaysHistoryHandler : MonoBehaviour
     private GameObject playsHistoryItemPrefab;
 
     [Header("Units Icons")]
-    [SerializeField]
-    private Sprite knightSprite;
-    [SerializeField]
-    private Sprite shieldsSprite;
-    [SerializeField]
-    private Sprite spearSprite;
-    [SerializeField]
-    private Sprite mageSprite;
-    [SerializeField]
-    private Sprite archerSprite;
+    public Sprite knightSprite;
+    public Sprite shieldsSprite;
+    public Sprite spearSprite;
+    public Sprite mageSprite;
+    public Sprite archerSprite;
 
     private void Start()
     {
