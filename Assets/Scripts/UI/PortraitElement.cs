@@ -12,5 +12,6 @@ public class PortraitElement : ScriptableObject
     public Sprite neutralSprite;
     public Sprite happySprite;
     public Sprite angrySprite;
+    [HideInInspector]
     public bool locked;
 }
