@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public Commander BattledCommander { get; set; }
 
     public bool GameHasBeenInit { get; set; }
+    public PortraitElement LastUnlockedPortraitElement { get; internal set; }
 
     private void Awake()
     {
@@ -195,6 +196,7 @@ public class GameManager : MonoBehaviour
                 {
                     Enemies[i - 1].PortraitElementToUnlock.locked = false;
                     PlayerPrefs.SetInt(Enemies[i - 1].PortraitElementToUnlock.name, 0);
+                    LastUnlockedPortraitElement = Enemies[i - 1].PortraitElementToUnlock;
                 }
 
                 // Unlock next commander
@@ -208,6 +210,11 @@ public class GameManager : MonoBehaviour
 
         if (!unlockedSomebody)
         {
+            // unlock last commander's portrait element 
+            Enemies[Enemies.Length - 1].PortraitElementToUnlock.locked = false;
+            PlayerPrefs.SetInt(Enemies[Enemies.Length - 1].PortraitElementToUnlock.name, 0);
+            LastUnlockedPortraitElement = Enemies[Enemies.Length - 1].PortraitElementToUnlock;
+
             // TODO: gg 
             Debug.Log("Every commander has been unlocked already.");
         }

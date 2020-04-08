@@ -82,6 +82,37 @@ public class PortraitRenderer : MonoBehaviour
     }
 
     /// <summary>
+    /// Renders 1 element on the portrait. Used to display unlocked portrait element to play post battle.
+    /// </summary>
+    /// <param name="elt"></param>
+    public void RenderElement(PortraitElement elt)
+    {
+        // if element to render is Hair
+        if (Array.IndexOf(PortraitGenerator.Instance.availableHair, elt) > -1)
+        {
+            hair.sprite = elt.neutralSprite;
+            hair.gameObject.SetActive(true);
+        }
+        // else if Eyes
+        else if (Array.IndexOf(PortraitGenerator.Instance.availableEyes, elt) > -1)
+        {
+            eyes.sprite = elt.neutralSprite;
+            eyes.gameObject.SetActive(true);
+        }
+        // else if Mouth
+        else if (Array.IndexOf(PortraitGenerator.Instance.availableMouth, elt) > -1)
+        {
+            mouth.sprite = elt.neutralSprite;
+            mouth.gameObject.SetActive(true);
+        }
+        // problem 
+        else
+        {
+            throw new Exception("Portrait element isn't referenced as an available hair/eyes/mouth.");
+        }
+    }
+
+    /// <summary>
     /// Displays a given mood on the associated portrait.
     /// </summary>
     /// <param name="commander"></param>

@@ -15,6 +15,8 @@ public class PostBattleHandler : MonoBehaviour
     private BattleManager bm;
     [SerializeField]
     private UIPlaysHistoryHandler playsHistoryHandler;
+    [SerializeField]
+    private GameObject[] uiToHide;
 
     [Header("Result")]
     [SerializeField]
@@ -49,6 +51,8 @@ public class PostBattleHandler : MonoBehaviour
 
     private void InitPostBattle()
     {
+        HideUI();
+
         // init victory/defeat text
         DisplayResultTitle();
 
@@ -57,6 +61,17 @@ public class PostBattleHandler : MonoBehaviour
 
         // display rewards
         HandleRewards();
+    }
+
+    /// <summary>
+    /// Hides the gameobjets to hide.
+    /// </summary>
+    private void HideUI()
+    {
+        foreach (var go in this.uiToHide)
+        {
+            go.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -187,8 +202,8 @@ public class PostBattleHandler : MonoBehaviour
                 // display unlocked commander
                 this.unlockedCommanderPR.RenderPortrait(GameManager.Instance.Enemies[Array.IndexOf(GameManager.Instance.Enemies, this.bm.EnemyBC.Commander) + 1]);
 
-                // TODO : display unlocked portrait element
-                //this.unlockedElementPR.
+                // display unlocked portrait element
+                this.unlockedElementPR.RenderElement(GameManager.Instance.LastUnlockedPortraitElement);
             }
             else
             {
