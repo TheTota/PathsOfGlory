@@ -72,7 +72,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private Button archersBtn;
     [SerializeField]
-    private TextMeshProUGUI timerText;
+    private TimerRenderer timerRenderer;
 
     [Header("Units Fight")]
     [SerializeField]
@@ -133,7 +133,6 @@ public class BattleManager : MonoBehaviour
             PlayerKeyboardPick();
 
             remainingTime = Mathf.Clamp(pickTimer - Time.time, 0f, ai.SecondsBeforeAction);
-            timerText.text = remainingTime.ToString("0.#0") + "s";
         }
     }
 
@@ -256,7 +255,9 @@ public class BattleManager : MonoBehaviour
             UpdateAndShowUnitPickPopup();
 
             // After some time, get the AI pick 
+            timerRenderer.StartRenderingTimer(remainingTime);
             yield return new WaitUntil(() => remainingTime == 0f);
+            timerRenderer.StopRenderingTimer(); 
 
             // Handle Player pick
             playerAllowedToPick = false;
