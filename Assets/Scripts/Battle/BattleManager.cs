@@ -79,6 +79,10 @@ public class BattleManager : MonoBehaviour
     [Header("Units Fight")]
     [SerializeField]
     private Animator unitsFightAnimator;
+    [SerializeField]
+    private Transform leftUnits;
+    [SerializeField]
+    private Transform rightUnits;
 
     [Header("Plays History UI")]
     [SerializeField]
@@ -217,6 +221,10 @@ public class BattleManager : MonoBehaviour
         enemyPR.RenderPortrait(EnemyBC.Commander);
         enemySeal.color = EnemyBC.Commander.Color;
         enemyNameNearSealText.text = EnemyBC.Commander.CommanderName;
+
+        // Init units colors 
+        InitFightingUnits(leftUnits, PlayerBC);
+        InitFightingUnits(rightUnits, EnemyBC);
 
         // Init score slider
         InitNonCommanderUI();
@@ -579,6 +587,20 @@ public class BattleManager : MonoBehaviour
         EnemyBC.Commander.WonLastFightAgainstPlayer = true;
         EnemyBC.Commander.SaveStats();
         SceneManager.LoadScene("Menu");
+    }
+
+    /// <summary>
+    /// Inits the colors of the fighting units to match the commander's color.
+    /// </summary>
+    private void InitFightingUnits(Transform unitsGrandParent, BattleCommander bc)
+    {
+        foreach (Transform unitsParent in unitsGrandParent)
+        {
+            foreach (Transform unit in unitsParent)
+            {
+                unit.Find("Body").GetComponent<Image>().color = bc.Commander.Color;
+            }
+        }
     }
 
     /// <summary>

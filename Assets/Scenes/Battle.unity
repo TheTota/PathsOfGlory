@@ -5469,6 +5469,8 @@ MonoBehaviour:
   archersBtn: {fileID: 398077995}
   timerRenderer: {fileID: 305037892}
   unitsFightAnimator: {fileID: 1463896813}
+  leftUnits: {fileID: 734929621}
+  rightUnits: {fileID: 262274274}
   uiPlaysHistoryHandler: {fileID: 1187355813}
   enemyDialogPanel: {fileID: 1208379973}
   enemyDialogText: {fileID: 99971294}
