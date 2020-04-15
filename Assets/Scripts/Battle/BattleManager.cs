@@ -33,10 +33,12 @@ public class BattleManager : MonoBehaviour
     public int CurrentRound { get; set; }
     [SerializeField]
     private TextMeshProUGUI roundText;
+    [SerializeField]
+    private GameObject unitsRecapPanel;
 
     // score
     private int[] scoreDefinitionTable;
-    [Header("Score Slider")]
+    [Header("Score")]
     [SerializeField]
     private GameObject scoreAndRoundUI;
     [SerializeField]
@@ -241,6 +243,7 @@ public class BattleManager : MonoBehaviour
         // Display battle UI
         uiPlaysHistoryHandler.gameObject.SetActive(true);
         scoreAndRoundUI.SetActive(true);
+        unitsRecapPanel.SetActive(true);
 
         // Start the battle
         while (CurrentRound <= MAX_ROUNDS)
@@ -279,6 +282,7 @@ public class BattleManager : MonoBehaviour
             // Units fight
             uiPlaysHistoryHandler.gameObject.SetActive(false);
             BattleCommander winner = GetWinnerFromUnitsFight();
+            unitsRecapPanel.SetActive(false);
 
             // TODO: play fight animation instead
             DisplayBattlingUnits(true);
@@ -308,6 +312,7 @@ public class BattleManager : MonoBehaviour
             // update plays history UI
             uiPlaysHistoryHandler.gameObject.SetActive(true);
             uiPlaysHistoryHandler.RenderPlaysHistoryUI(playerPickedUnit, aiPickedUnit, winner);
+            unitsRecapPanel.SetActive(true);
 
             CurrentRound++;
         }
