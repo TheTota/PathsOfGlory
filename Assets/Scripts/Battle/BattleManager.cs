@@ -78,9 +78,7 @@ public class BattleManager : MonoBehaviour
 
     [Header("Units Fight")]
     [SerializeField]
-    private TextMeshProUGUI playerUnitText;
-    [SerializeField]
-    private TextMeshProUGUI enemyUnitText;
+    private Animator unitsFightAnimator;
 
     [Header("Plays History UI")]
     [SerializeField]
@@ -260,7 +258,7 @@ public class BattleManager : MonoBehaviour
             // After some time, get the AI pick 
             timerRenderer.StartRenderingTimer(remainingTime);
             yield return new WaitUntil(() => remainingTime == 0f);
-            timerRenderer.StopRenderingTimer(); 
+            timerRenderer.StopRenderingTimer();
 
             // Handle Player pick
             playerAllowedToPick = false;
@@ -466,19 +464,110 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// Display the battling units temporarly by just showing a text with the name of the units called into the battle.
     /// </summary>
-    /// <param name="v"></param>
-    private void DisplayBattlingUnits(bool v)
+    /// <param name="display"></param>
+    private void DisplayBattlingUnits(bool display)
     {
-        if (v)
+        if (display)
         {
-            this.playerUnitText.text = playerPickedUnit.ToString();
-            this.enemyUnitText.text = aiPickedUnit.ToString();
+            int animToPlay = 1;//GetAnimToPlayFromFightingUnits(playerPickedUnit, aiPickedUnit);  // TODO: uncomment this when all anims are ready
+            this.unitsFightAnimator.SetInteger("AnimToPlay", animToPlay);
         }
         else
         {
-            this.playerUnitText.text = "";
-            this.enemyUnitText.text = "";
+            this.unitsFightAnimator.SetInteger("AnimToPlay", 0);
         }
+    }
+
+    /// <summary>
+    /// Returns a value between 1 and 15 (both included) determined by the fighting units.
+    /// </summary>
+    /// <param name="playerPickedUnit"></param>
+    /// <param name="aiPickedUnit"></param>
+    /// <returns></returns>
+    private int GetAnimToPlayFromFightingUnits(UnitType playerPickedUnit, UnitType aiPickedUnit)
+    {
+        switch (playerPickedUnit)
+        {
+            case UnitType.Knights:
+                if (aiPickedUnit == UnitType.Archers)
+                {
+                    return 1; // cavs VS archers
+                }
+                else if (aiPickedUnit == UnitType.Mages)
+                {
+                    return 2; // cavs VS mages
+                }
+                else if (aiPickedUnit == UnitType.Knights)
+                {
+                    return 3; // cavs VS cavs
+                }
+                break;
+
+            case UnitType.Shields:
+                if (aiPickedUnit == UnitType.Archers)
+                {
+                    return 4; // shields VS archers
+                }
+                else if (aiPickedUnit == UnitType.Knights)
+                {
+                    return 5; // shields VS knights
+                }
+                else if (aiPickedUnit == UnitType.Shields)
+                {
+                    return 6; // shields VS shields
+                }
+                break;
+
+            case UnitType.Spearmen:
+                if (aiPickedUnit == UnitType.Knights)
+                {
+                    return 7; // spear VS knights
+                }
+                else if (aiPickedUnit == UnitType.Shields)
+                {
+                    return 8; // spear VS shields
+                }
+                else if (aiPickedUnit == UnitType.Spearmen)
+                {
+                    return 9; // spear VS spear
+                }
+                break;
+
+            case UnitType.Mages:
+                if (aiPickedUnit == UnitType.Shields)
+                {
+                    return 10; // mages VS shields
+                }
+                else if (aiPickedUnit == UnitType.Spearmen)
+                {
+                    return 11; // mages VS spear
+                }
+                else if (aiPickedUnit == UnitType.Mages)
+                {
+                    return 12; // mages VS mages
+                }
+                break;
+
+            case UnitType.Archers:
+                if (aiPickedUnit == UnitType.Spearmen)
+                {
+                    return 13; // archers VS spear
+                }
+                else if (aiPickedUnit == UnitType.Mages)
+                {
+                    return 14; // archers VS mages
+                }
+                else if (aiPickedUnit == UnitType.Archers)
+                {
+                    return 15; // archers VS archers
+                }
+                break;
+
+            default:
+                throw new Exception("i dont know how this could happen but the player's picked unit UnitType doesnt exist...");
+        }
+
+        return 0;
     }
 
     /// <summary>
