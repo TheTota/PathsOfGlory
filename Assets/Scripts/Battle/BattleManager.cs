@@ -78,11 +78,7 @@ public class BattleManager : MonoBehaviour
 
     [Header("Units Fight")]
     [SerializeField]
-    private Animator unitsFightAnimator;
-    [SerializeField]
-    private Transform leftUnits;
-    [SerializeField]
-    private Transform rightUnits;
+    private UnitsFightManager unitsFightManager;
 
     [Header("Plays History UI")]
     [SerializeField]
@@ -222,10 +218,6 @@ public class BattleManager : MonoBehaviour
         enemySeal.color = EnemyBC.Commander.Color;
         enemyNameNearSealText.text = EnemyBC.Commander.CommanderName;
 
-        // Init units colors 
-        InitFightingUnits(leftUnits, PlayerBC);
-        InitFightingUnits(rightUnits, EnemyBC);
-
         // Init score slider
         InitNonCommanderUI();
 
@@ -291,9 +283,8 @@ public class BattleManager : MonoBehaviour
             unitsRecapPanel.SetActive(false);
 
             // TODO: play fight animation instead
-            DisplayBattlingUnits(true);
-            yield return new WaitForSeconds(2f); // TIME OF UNITS FIGHT ANIM
-            DisplayBattlingUnits(false);
+            this.unitsFightManager.StartUnitsFight(playerPickedUnit, aiPickedUnit);
+            yield return new WaitUntil(() => this.unitsFightManager.FightIsOver); // TODO: wait for fight to end
 
             // Update score
             if (winner)
@@ -478,11 +469,11 @@ public class BattleManager : MonoBehaviour
         if (display)
         {
             int animToPlay = 1;//GetAnimToPlayFromFightingUnits(playerPickedUnit, aiPickedUnit);  // TODO: uncomment this when all anims are ready
-            this.unitsFightAnimator.SetInteger("AnimToPlay", animToPlay);
+            //this.unitsFightAnimator.SetInteger("AnimToPlay", animToPlay);
         }
         else
         {
-            this.unitsFightAnimator.SetInteger("AnimToPlay", 0);
+            //this.unitsFightAnimator.SetInteger("AnimToPlay", 0);
         }
     }
 
