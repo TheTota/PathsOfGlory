@@ -26,20 +26,23 @@ public class UnitsFightManager : MonoBehaviour
 
     public bool FightIsOver { get; internal set; }
 
+    // store the units on the battlefield
+    public List<UnitAI> playerUnitAIs { get; set; }
+    public List<UnitAI> enemyUnitAIs { get; set; }
+
     private Camera mainCam;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         this.mainCam = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    /// <summary>
+    /// Starts a fight between 2 given units.
+    /// </summary>
+    /// <param name="playerUnit"></param>
+    /// <param name="enemyUnit"></param>
     public void StartUnitsFight(UnitType playerUnit, UnitType enemyUnit)
     {
         this.FightIsOver = false;
@@ -48,6 +51,8 @@ public class UnitsFightManager : MonoBehaviour
         int unitsAmount = 6;
         float yInc = this.maxBoundY - ((this.maxBoundY + this.minBoundY) / 2f);
         float yIncMultiplicator = 0f;
+        this.playerUnitAIs = new List<UnitAI>();
+        this.enemyUnitAIs = new List<UnitAI>();
 
         float xSpacer = Random.Range(0.2f, 0.5f);
 
@@ -60,13 +65,18 @@ public class UnitsFightManager : MonoBehaviour
                 xSpacer = Random.Range(0.2f, 0.5f);
             }
 
-            InstantiateUnit(this.bm.PlayerBC, playerUnit, yInc, yIncMultiplicator, -350f, xSpacer);
-            InstantiateUnit(this.bm.EnemyBC, enemyUnit, yInc, yIncMultiplicator, Screen.width + 200f, xSpacer);
+            this.playerUnitAIs.Add(InstantiateUnit(this.bm.PlayerBC, playerUnit, yInc, yIncMultiplicator, -350f, xSpacer));
+            this.enemyUnitAIs.Add(InstantiateUnit(this.bm.EnemyBC, enemyUnit, yInc, yIncMultiplicator, Screen.width + 200f, xSpacer));
             xSpacer = Random.Range(1.5f, 1.75f);
         }
+
+        AttributeTargets();
     }
 
-    private void InstantiateUnit(BattleCommander bc, UnitType ut, float yInc, float yIncMultiplicator, float xOffset, float xSpacer)
+    /// <summary>
+    /// Instantiates a unit and fills some of its attributes.
+    /// </summary>
+    private UnitAI InstantiateUnit(BattleCommander bc, UnitType ut, float yInc, float yIncMultiplicator, float xOffset, float xSpacer)
     {
         // determine position
         Vector3 instPos = new Vector3(this.mainCam.ScreenToWorldPoint(new Vector3(xOffset, 0f)).x + xSpacer, this.minBoundY + yInc * yIncMultiplicator, 1f);
@@ -82,8 +92,62 @@ public class UnitsFightManager : MonoBehaviour
 
         // color the sprite
         instUnit.transform.Find("Body").GetComponent<SpriteRenderer>().color = bc.Commander.Color;
+
+        // init the ai script 
+        instUnit.GetComponent<UnitAI>().Init(this, ut);
+
+        // return the instantiated GO
+        return instUnit.GetComponent<UnitAI>();
     }
 
+    /// <summary>
+    /// Attributes targets to every unit everywhere!
+    /// </summary>
+    private void AttributeTargets()
+    {
+        for (int i = 0; i < this.playerUnitAIs.Count; i++)
+        {
+            this.playerUnitAIs[i].SetTarget(this.enemyUnitAIs[i]);
+            this.enemyUnitAIs[i].SetTarget(this.playerUnitAIs[i]);
+        }
+    }
+
+    public void RemoveUnitFromList(UnitAI unit)
+    {
+        // remove unit from list
+        if (this.playerUnitAIs.Contains(unit))
+        {
+            this.playerUnitAIs.Remove(unit);
+        }
+        else if (this.enemyUnitAIs.Contains(unit))
+        {
+            this.enemyUnitAIs.Remove(unit);
+        }
+
+        // check if battle is over
+        if (this.playerUnitAIs.Count == 0 || this.enemyUnitAIs.Count == 0)
+        {
+            StartCoroutine(EndFightAfterDelay(1f));
+        }
+    }
+
+    private IEnumerator EndFightAfterDelay(float s)
+    {
+        yield return new WaitForSeconds(s);
+        this.FightIsOver = true;
+
+        // destroy every child to end the fight
+        foreach (Transform child in this.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    /// <summary>
+    /// Returns a prefab associated to a unit type.
+    /// </summary>
+    /// <param name="ut"></param>
+    /// <returns></returns>
     private GameObject GetPrefabFromUnitType(UnitType ut)
     {
         switch (ut)

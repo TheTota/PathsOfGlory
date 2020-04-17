@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Colorable
+  - Knight
+  - Spearman
+  - Shield
+  - Archer
+  - Mage
   layers:
   - Default
   - TransparentFX
