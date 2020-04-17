@@ -7107,8 +7107,8 @@ MonoBehaviour:
     type: 3}
   spearmanPrefab: {fileID: 5685010976284343507, guid: 9d566419717021a41a24473fbe673c4b,
     type: 3}
-  minBoundY: -4
-  maxBoundY: -1.9
+  minBoundY: -1.786
+  maxBoundY: -3.4
 --- !u!4 &1273028789
 Transform:
   m_ObjectHideFlags: 0
