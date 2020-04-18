@@ -57,7 +57,7 @@ public class UnitsFightManager : MonoBehaviour
         this.playerUnitAIs = new List<UnitAI>();
         this.enemyUnitAIs = new List<UnitAI>();
 
-        float xSpacer = Random.Range(0.2f, 0.5f);
+        float xSpacer = .3f;
 
         // Instantiate player units
         for (int i = 0; i < unitsAmount; i++)
@@ -65,12 +65,12 @@ public class UnitsFightManager : MonoBehaviour
             if (i != 0 && i % 2 == 0) // si i est différent de 0 et paire, on incrémente la val pour la pos sur Y 
             {
                 yIncMultiplicator++;
-                xSpacer = Random.Range(0.2f, 0.5f);
+                xSpacer = .3f;
             }
 
             this.playerUnitAIs.Add(InstantiateUnit(this.bm.PlayerBC, playerUnit, yInc, yIncMultiplicator, -350f, xSpacer, playerUnitsParent));
-            this.enemyUnitAIs.Add(InstantiateUnit(this.bm.EnemyBC, enemyUnit, yInc, yIncMultiplicator, Screen.width + 200f, xSpacer, enemyUnitsParent));
-            xSpacer = Random.Range(1.5f, 1.75f);
+            this.enemyUnitAIs.Add(InstantiateUnit(this.bm.EnemyBC, enemyUnit, yInc, yIncMultiplicator, Screen.width + 170f, xSpacer, enemyUnitsParent));
+            xSpacer = 1.6f;
         }
 
         AttributeTargets();

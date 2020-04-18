@@ -20,8 +20,6 @@ public class UnitAI : MonoBehaviour
 
     public void Die()
     {
-        // TODO: set sprite(s) to dead
-        // TODO: change rotation of gameobject?
         unitsFightMgr.RemoveUnitFromList(this);
         Destroy(this.gameObject);
     }

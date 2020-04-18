@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 7945079677721014663}
   - component: {fileID: 6711803403081106529}
   - component: {fileID: -6053127848980274202}
+  - component: {fileID: 3117007188532414088}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Mage
@@ -461,7 +462,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &-6053127848980274202
 BoxCollider2D:
@@ -476,7 +477,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.24844652, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -487,5 +488,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5734549, y: 6.6999164}
+  m_Size: {x: 3.076562, y: 6.6999164}
   m_EdgeRadius: 0
+--- !u!114 &3117007188532414088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7945079677721014662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6366ce6a12c4ae4887af23ee17f8f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 1130266806712274, guid: 39c9050ea8e2a3841b6c44d153125c77,
+    type: 3}
+  fireballPrefab: {fileID: 1130266806712274, guid: 7f575851a74ef2a4a9ab837e3dc75732,
+    type: 3}

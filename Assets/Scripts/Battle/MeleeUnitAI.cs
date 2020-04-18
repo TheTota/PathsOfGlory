@@ -4,7 +4,27 @@ using UnityEngine;
 
 public class MeleeUnitAI : UnitAI
 {
-    private float speed = 5f;
+    private const float SPEARMAN_SPEED = 5f;
+    private const float SHIELD_SPEED = 4f;
+    private const float KNIGHT_SPEED = 8f;
+
+    private float speed;
+
+    private void Awake()
+    {
+        if (ut == UnitType.Knights)
+        {
+            speed = KNIGHT_SPEED;
+        }
+        else if (ut == UnitType.Spearmen)
+        {
+            speed = SPEARMAN_SPEED;
+        }
+        else if (ut == UnitType.Shields)
+        {
+            speed = SHIELD_SPEED;
+        }
+    }
 
     private void Update()
     {
@@ -30,16 +50,6 @@ public class MeleeUnitAI : UnitAI
         }
         // Shield wins
         else if (this.transform.CompareTag("Shield") && (collision.transform.CompareTag("Knight") || collision.transform.CompareTag("Archer")))
-        {
-            collision.gameObject.GetComponent<UnitAI>().Die();
-        }
-        // Archer wins
-        else if (this.transform.CompareTag("Archer") && (collision.transform.CompareTag("Mage") || collision.transform.CompareTag("Spearman")))
-        {
-            collision.gameObject.GetComponent<UnitAI>().Die();
-        }
-        // Mage wins
-        else if (this.transform.CompareTag("Mage") && (collision.transform.CompareTag("Spearman") || collision.transform.CompareTag("Shield")))
         {
             collision.gameObject.GetComponent<UnitAI>().Die();
         }
