@@ -43,5 +43,11 @@ public class MeleeUnitAI : UnitAI
         {
             collision.gameObject.GetComponent<UnitAI>().Die();
         }
+        // DRAW
+        else if (this.transform.CompareTag(collision.transform.tag) && this.transform.parent != collision.transform.parent) 
+        {
+            collision.gameObject.GetComponent<UnitAI>().Die();
+            base.Die();
+        }
     }
 }

@@ -24,6 +24,9 @@ public class UnitsFightManager : MonoBehaviour
     [SerializeField]
     private float minBoundY, maxBoundY;
 
+    [SerializeField]
+    private Transform playerUnitsParent, enemyUnitsParent;
+
     public bool FightIsOver { get; internal set; }
 
     // store the units on the battlefield
@@ -65,8 +68,8 @@ public class UnitsFightManager : MonoBehaviour
                 xSpacer = Random.Range(0.2f, 0.5f);
             }
 
-            this.playerUnitAIs.Add(InstantiateUnit(this.bm.PlayerBC, playerUnit, yInc, yIncMultiplicator, -350f, xSpacer));
-            this.enemyUnitAIs.Add(InstantiateUnit(this.bm.EnemyBC, enemyUnit, yInc, yIncMultiplicator, Screen.width + 200f, xSpacer));
+            this.playerUnitAIs.Add(InstantiateUnit(this.bm.PlayerBC, playerUnit, yInc, yIncMultiplicator, -350f, xSpacer, playerUnitsParent));
+            this.enemyUnitAIs.Add(InstantiateUnit(this.bm.EnemyBC, enemyUnit, yInc, yIncMultiplicator, Screen.width + 200f, xSpacer, enemyUnitsParent));
             xSpacer = Random.Range(1.5f, 1.75f);
         }
 
@@ -76,18 +79,22 @@ public class UnitsFightManager : MonoBehaviour
     /// <summary>
     /// Instantiates a unit and fills some of its attributes.
     /// </summary>
-    private UnitAI InstantiateUnit(BattleCommander bc, UnitType ut, float yInc, float yIncMultiplicator, float xOffset, float xSpacer)
+    private UnitAI InstantiateUnit(BattleCommander bc, UnitType ut, float yInc, float yIncMultiplicator, float xOffset, float xSpacer, Transform parent)
     {
         // determine position
         Vector3 instPos = new Vector3(this.mainCam.ScreenToWorldPoint(new Vector3(xOffset, 0f)).x + xSpacer, this.minBoundY + yInc * yIncMultiplicator, 1f);
 
         // instantiate sprite
-        GameObject instUnit = Instantiate(GetPrefabFromUnitType(ut), instPos, Quaternion.identity, this.gameObject.transform);
+        GameObject instUnit = Instantiate(GetPrefabFromUnitType(ut), instPos, Quaternion.identity, parent);
 
         // turn sprite for the player
         if (bc == this.bm.PlayerBC)
         {
             instUnit.transform.localScale = new Vector3(-instUnit.transform.localScale.x, instUnit.transform.localScale.y, instUnit.transform.localScale.z);
+        }
+        else // reverse order in hierarchy if enemy
+        {
+            instUnit.transform.SetAsLastSibling();
         }
 
         // color the sprite
@@ -107,8 +114,16 @@ public class UnitsFightManager : MonoBehaviour
     {
         for (int i = 0; i < this.playerUnitAIs.Count; i++)
         {
-            this.playerUnitAIs[i].SetTarget(this.enemyUnitAIs[i]);
-            this.enemyUnitAIs[i].SetTarget(this.playerUnitAIs[i]);
+            if (i % 2 == 0)
+            {
+                this.playerUnitAIs[i].SetTarget(this.enemyUnitAIs[i + 1]);
+                this.enemyUnitAIs[i + 1].SetTarget(this.playerUnitAIs[i]);
+            }
+            else
+            {
+                this.playerUnitAIs[i].SetTarget(this.enemyUnitAIs[i - 1]);
+                this.enemyUnitAIs[i - 1].SetTarget(this.playerUnitAIs[i]);
+            }
         }
     }
 
@@ -137,10 +152,10 @@ public class UnitsFightManager : MonoBehaviour
         this.FightIsOver = true;
 
         // destroy every child to end the fight
-        foreach (Transform child in this.transform)
-        {
+        foreach (Transform child in this.playerUnitsParent)
             Destroy(child.gameObject);
-        }
+        foreach (Transform child in this.enemyUnitsParent)
+            Destroy(child.gameObject);
     }
 
     /// <summary>
