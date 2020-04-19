@@ -29,7 +29,7 @@ MonoBehaviour:
     voyons si vous \xEAtes capable de me battre \xE0 nouveau."
   - "Je vois que vous avez besoin d'un rappel des bases. Soldats, pr\xE9parez-vous
     \xE0 la bataille !"
-  - ' Vous devriez affronter de vrais adversaires au lieu de moi en ce moment ! Hmff...'
+  - Vous devriez affronter de vrais adversaires au lieu de moi en ce moment !
   postBattleWinLines:
   - "Vous n'\xEAtes pas pr\xEAt recrue, mais pers\xE9verez. Revenez m'affronter et
     n'oubliez pas que pour r\xE9ussir, il est primordial d'\xE9tudier son adversaire

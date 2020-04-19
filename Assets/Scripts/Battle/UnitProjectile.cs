@@ -31,7 +31,7 @@ public class UnitProjectile : MonoBehaviour
         shotTime = Time.time;
 
         // auto destroy it in a bit 
-        Destroy(this.gameObject, 2.5f);
+        Destroy(this.gameObject, 1.5f);
     }
 
     /// <summary>
