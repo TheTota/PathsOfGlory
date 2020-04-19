@@ -4,35 +4,14 @@ using UnityEngine;
 
 public class MeleeUnitAI : UnitAI
 {
-    private const float SPEARMAN_SPEED = 5f;
-    private const float SHIELD_SPEED = 4f;
-    private const float KNIGHT_SPEED = 8f;
-
-    private float speed;
-
-    private void Awake()
-    {
-        if (ut == UnitType.Knights)
-        {
-            speed = KNIGHT_SPEED;
-        }
-        else if (ut == UnitType.Spearmen)
-        {
-            speed = SPEARMAN_SPEED;
-        }
-        else if (ut == UnitType.Shields)
-        {
-            speed = SHIELD_SPEED;
-        }
-    }
-
     private void Update()
     {
         if (target != null)
         {
             // Move our position a step closer to the target.
-            float step = speed * Time.deltaTime; // calculate distance to move
-            transform.position = Vector2.MoveTowards(transform.position, base.target.transform.position, step);
+            float step = base.speed * Time.deltaTime; // calculate distance to move
+            Vector3 pos = Vector2.MoveTowards(transform.position, base.target.transform.position, step);
+            transform.position = pos + transform.up * Mathf.Sin(Time.time * base.hopFrequency) * base.hopMagnitude;
         }
     }
 

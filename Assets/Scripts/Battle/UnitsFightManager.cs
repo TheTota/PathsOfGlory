@@ -117,12 +117,12 @@ public class UnitsFightManager : MonoBehaviour
             if (i % 2 == 0)
             {
                 this.playerUnitAIs[i].SetTarget(this.enemyUnitAIs[i + 1]);
-                this.enemyUnitAIs[i + 1].SetTarget(this.playerUnitAIs[i]);
+                this.enemyUnitAIs[i].SetTarget(this.playerUnitAIs[i]);
             }
             else
             {
-                this.playerUnitAIs[i].SetTarget(this.enemyUnitAIs[i - 1]);
-                this.enemyUnitAIs[i - 1].SetTarget(this.playerUnitAIs[i]);
+                this.playerUnitAIs[i].SetTarget(this.enemyUnitAIs[i]);
+                this.enemyUnitAIs[i].SetTarget(this.playerUnitAIs[i - 1]);
             }
         }
     }

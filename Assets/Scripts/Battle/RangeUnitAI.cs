@@ -8,15 +8,26 @@ public class RangeUnitAI : UnitAI
     public GameObject arrowPrefab;
     public GameObject fireballPrefab;
 
-    private float speed = 5f;
     private Vector2 targetPos;
-    private float offsetX = 5f;
+    private float offsetX;
+    private const float MAGES_OFFSET_X = 7f;
+    private const float ARCHERS_OFFSET_X = 4f;
 
     private bool isInShootingPosition;
     private bool goingRight;
 
-    private void Awake()
+    private void Start()
     {
+        // set offset 
+        if (ut == UnitType.Mages)
+        {
+            offsetX = MAGES_OFFSET_X;
+        }
+        else if (ut == UnitType.Archers)
+        {
+            offsetX = ARCHERS_OFFSET_X;
+        }
+
         isInShootingPosition = false;
         SetShootingPositionTarget();
     }
@@ -49,8 +60,9 @@ public class RangeUnitAI : UnitAI
             if (target != null && transform.position.x != targetPos.x)
             {
                 // Move our position a step closer to the target.
-                float step = speed * Time.deltaTime; // calculate distance to move
-                transform.position = Vector2.MoveTowards(transform.position, targetPos, step);
+                float step = base.speed * Time.deltaTime; // calculate distance to move
+                Vector3 pos = Vector2.MoveTowards(transform.position, targetPos, step);
+                transform.position = pos + transform.up * Mathf.Sin(Time.time * base.hopFrequency) * base.hopMagnitude;
             }
             else
             {
