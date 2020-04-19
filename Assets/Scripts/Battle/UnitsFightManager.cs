@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Manages the course of a units fight : instanciates the battling units, 
+/// handle the life of these units and the end of the fight.
+/// </summary>
 public class UnitsFightManager : MonoBehaviour
 {
     [SerializeField]
@@ -68,7 +72,7 @@ public class UnitsFightManager : MonoBehaviour
                 xSpacer = .3f;
             }
 
-            this.playerUnitAIs.Add(InstantiateUnit(this.bm.PlayerBC, playerUnit, yInc, yIncMultiplicator, -350f, xSpacer, playerUnitsParent));
+            this.playerUnitAIs.Add(InstantiateUnit(this.bm.PlayerBC, playerUnit, yInc, yIncMultiplicator, -170f, xSpacer, playerUnitsParent));
             this.enemyUnitAIs.Add(InstantiateUnit(this.bm.EnemyBC, enemyUnit, yInc, yIncMultiplicator, Screen.width + 170f, xSpacer, enemyUnitsParent));
             xSpacer = 1.6f;
         }
@@ -81,8 +85,23 @@ public class UnitsFightManager : MonoBehaviour
     /// </summary>
     private UnitAI InstantiateUnit(BattleCommander bc, UnitType ut, float yInc, float yIncMultiplicator, float xOffset, float xSpacer, Transform parent)
     {
+        // space knights more to make it look better
+        float minY = this.minBoundY;
+        if (ut == UnitType.Knights)
+        {
+            xSpacer *= 1.7f;
+            yInc += .1f;
+            minY += .1f;
+        }
+
+        // make xSpace negative if units come from the left (allows both units to come from same position out of screen)
+        if (xOffset < 0)
+        {
+            xSpacer *= -1;
+        }
+
         // determine position
-        Vector3 instPos = new Vector3(this.mainCam.ScreenToWorldPoint(new Vector3(xOffset, 0f)).x + xSpacer, this.minBoundY + yInc * yIncMultiplicator, 1f);
+        Vector3 instPos = new Vector3(this.mainCam.ScreenToWorldPoint(new Vector3(xOffset, 0f)).x + xSpacer, minY + yInc * yIncMultiplicator, 1f);
 
         // instantiate sprite
         GameObject instUnit = Instantiate(GetPrefabFromUnitType(ut), instPos, Quaternion.identity, parent);
@@ -122,11 +141,16 @@ public class UnitsFightManager : MonoBehaviour
             else
             {
                 this.playerUnitAIs[i].SetTarget(this.enemyUnitAIs[i]);
-                this.enemyUnitAIs[i].SetTarget(this.playerUnitAIs[i - 1]);
+                this.enemyUnitAIs[i].SetTarget(this.playerUnitAIs[i]);
             }
         }
     }
 
+    /// <summary>
+    /// Called on the death of a unit. Removes it from the lists of alive units and checks if 
+    /// the fight is over (0 units left in one of the parties).
+    /// </summary>
+    /// <param name="unit"></param>
     public void RemoveUnitFromList(UnitAI unit)
     {
         // remove unit from list
@@ -146,6 +170,11 @@ public class UnitsFightManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ends the fight after a delay. Clears the battlefield.
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
     private IEnumerator EndFightAfterDelay(float s)
     {
         yield return new WaitForSeconds(s);

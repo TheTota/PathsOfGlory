@@ -2,32 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script associated to a projectile sent by a range unit during a units fight.
+/// It handles the movement of the projectile, as well as its collision.
+/// </summary>
 public class UnitProjectile : MonoBehaviour
 {
+    // physics vars for projectile movement
     private float projectileSpeed = 30f;
     private Rigidbody2D rb2d;
 
+    // useful vars for projectile behaviours
     public UnitType ProjectileOrigin { get; set; }
-    public float shotTime;
+    private float shotTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        // make the mage's fireballs slower than the arrows
         if (ProjectileOrigin == UnitType.Mages)
         {
             projectileSpeed /= 1.5f;
         }
 
+        // shoot the projectile
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.AddForce(-transform.right * projectileSpeed, ForceMode2D.Impulse);
         shotTime = Time.time;
 
+        // auto destroy it in a bit 
         Destroy(this.gameObject, 2.5f);
     }
 
+    /// <summary>
+    /// Handles the collision of the projectile and the actions to take depending on who it comes from
+    /// and who got touched by it.
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Time.time - shotTime >= .1f)
+        // Wait for the projectile to be out of its own unit's collider
+        if (Time.time - shotTime >= .1f) 
         {
             // ARCHER SHOOTING
             if (ProjectileOrigin == UnitType.Archers)
@@ -38,7 +53,7 @@ public class UnitProjectile : MonoBehaviour
                     collision.transform.GetComponent<UnitAI>().Die();
                     Destroy(this.gameObject);
                 }
-                else
+                else // ARCHER NOT MEANT TO WIN
                 {
                     // block arrow on target
                     this.rb2d.Sleep();
@@ -55,8 +70,9 @@ public class UnitProjectile : MonoBehaviour
                     collision.transform.GetComponent<UnitAI>().Die();
                     Destroy(this.gameObject);
                 }
-                else
+                else // MAGE NOT MEANT TO WIN
                 {
+                    // kill fireball
                     Destroy(this.gameObject);
                 }
             }
