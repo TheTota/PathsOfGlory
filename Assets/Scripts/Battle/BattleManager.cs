@@ -439,7 +439,7 @@ public class BattleManager : MonoBehaviour
         enemyDialogPanel.SetActive(true);
 
         // Replaces WaitForSeconds, but allows to stop it with a bool condition
-        for (float timer = line.Length / 20f; timer >= 0; timer -= Time.deltaTime)
+        for (float timer = line.Length; timer >= 0; timer -= Time.deltaTime)
         {
             if (skipReactionLine)
             {
