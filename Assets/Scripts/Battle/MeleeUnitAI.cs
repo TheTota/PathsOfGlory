@@ -14,20 +14,32 @@ public class MeleeUnitAI : UnitAI
 {
     private void Update()
     {
-        if (target != null)
+        // Demo mode : walk towards a certain point
+        if (DemoMode)
         {
-            Move();
+            Move(base.targetPos);
+            if (this.transform.position.x >= base.targetPos.x)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+        // Fight mode : walk towards and enemy target
+        else if (base.targetEnemy != null)
+        {
+            Move(base.targetEnemy.transform.position);
         }
     }
+
+
 
     /// <summary>
     /// Moves the unit towards its target, while applying a hop effect.
     /// </summary>
-    private void Move()
+    private void Move(Vector3 target)
     {
         // Move our position a step closer to the target.
         float step = base.speed * Time.deltaTime; // calculate distance to move
-        Vector3 pos = Vector2.MoveTowards(transform.position, base.target.transform.position, step);
+        Vector3 pos = Vector2.MoveTowards(transform.position, target, step);
         transform.position = pos + transform.up * Mathf.Sin(Time.time * base.hopFrequency) * base.hopMagnitude;
     }
 
@@ -53,7 +65,7 @@ public class MeleeUnitAI : UnitAI
             collision.gameObject.GetComponent<UnitAI>().Die();
         }
         // DRAW
-        else if (this.transform.CompareTag(collision.transform.tag) && this.transform.parent != collision.transform.parent) 
+        else if (this.transform.CompareTag(collision.transform.tag) && this.transform.parent != collision.transform.parent)
         {
             collision.gameObject.GetComponent<UnitAI>().Die();
             base.Die();

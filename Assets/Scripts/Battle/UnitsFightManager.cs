@@ -31,6 +31,9 @@ public class UnitsFightManager : MonoBehaviour
     [SerializeField]
     private Transform playerUnitsParent, enemyUnitsParent;
 
+    [SerializeField]
+    private bool introMode;
+
     public bool FightIsOver { get; internal set; }
 
     // store the units on the battlefield
@@ -40,9 +43,66 @@ public class UnitsFightManager : MonoBehaviour
     private Camera mainCam;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         this.mainCam = Camera.main;
+        if (introMode)
+        {
+            StartCoroutine(StartIntroMode());
+        }
+    }
+
+    private IEnumerator StartIntroMode()
+    {
+        int i = Random.Range(0, 5);
+        while (true)
+        {
+            InstanciateUnitsForIntro((UnitType)i);
+            yield return new WaitForSeconds(7f);
+
+            // go to next unit
+            if (i + 1 >= 5)
+            {
+                i = 0;
+            }
+            else
+            {
+                i++;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Instancie des unités pour l'intro (côté joueur seulement).
+    /// </summary>
+    /// <param name="unitTypeToSpawn"></param>
+    private void InstanciateUnitsForIntro(UnitType unitTypeToSpawn)
+    {
+        // init vars
+        int unitsAmount = 18;
+        int unitsPerColumn = 3;
+        float yInc = this.maxBoundY - ((this.maxBoundY + this.minBoundY) / 2f);
+        float yIncMultiplicator = 0f;
+        this.playerUnitAIs = new List<UnitAI>();
+        this.enemyUnitAIs = new List<UnitAI>();
+
+        float xSpacer = .3f;
+
+        // Instantiate player units : row per row
+        for (int i = 0; i < unitsAmount; i++)
+        {
+            // reached limit of unit per row, go down
+            if (i != 0 && i % (unitsAmount / unitsPerColumn) == 0)
+            {
+                yIncMultiplicator++;
+                xSpacer = .3f;
+            }
+
+            this.playerUnitAIs.Add(InstantiateUnit(true, true, GameManager.Instance.Player.Color, unitTypeToSpawn, yInc, yIncMultiplicator, -170f, xSpacer, playerUnitsParent));
+            this.playerUnitAIs[i].SetTargetPos(new Vector3(mainCam.ScreenToWorldPoint(new Vector3(Screen.width + 500f, 0f, 0f)).x, this.playerUnitAIs[i].transform.position.y, 1f));
+            
+            xSpacer += 1.3f;
+        }
     }
 
     /// <summary>
@@ -72,8 +132,8 @@ public class UnitsFightManager : MonoBehaviour
                 xSpacer = .3f;
             }
 
-            this.playerUnitAIs.Add(InstantiateUnit(this.bm.PlayerBC, playerUnit, yInc, yIncMultiplicator, -170f, xSpacer, playerUnitsParent));
-            this.enemyUnitAIs.Add(InstantiateUnit(this.bm.EnemyBC, enemyUnit, yInc, yIncMultiplicator, Screen.width + 170f, xSpacer, enemyUnitsParent));
+            this.playerUnitAIs.Add(InstantiateUnit(true, false, this.bm.PlayerBC.Commander.Color, playerUnit, yInc, yIncMultiplicator, -170f, xSpacer, playerUnitsParent));
+            this.enemyUnitAIs.Add(InstantiateUnit(false, false, this.bm.EnemyBC.Commander.Color, enemyUnit, yInc, yIncMultiplicator, Screen.width + 170f, xSpacer, enemyUnitsParent));
             xSpacer = 1.6f;
         }
 
@@ -83,7 +143,7 @@ public class UnitsFightManager : MonoBehaviour
     /// <summary>
     /// Instantiates a unit and fills some of its attributes.
     /// </summary>
-    private UnitAI InstantiateUnit(BattleCommander bc, UnitType ut, float yInc, float yIncMultiplicator, float xOffset, float xSpacer, Transform parent)
+    private UnitAI InstantiateUnit(bool isPlayer, bool isDemoMode, Color unitColor, UnitType ut, float yInc, float yIncMultiplicator, float xOffset, float xSpacer, Transform parent)
     {
         // space knights more to make it look better
         float minY = this.minBoundY;
@@ -107,7 +167,7 @@ public class UnitsFightManager : MonoBehaviour
         GameObject instUnit = Instantiate(GetPrefabFromUnitType(ut), instPos, Quaternion.identity, parent);
 
         // turn sprite for the player
-        if (bc == this.bm.PlayerBC)
+        if (isPlayer)
         {
             instUnit.transform.localScale = new Vector3(-instUnit.transform.localScale.x, instUnit.transform.localScale.y, instUnit.transform.localScale.z);
         }
@@ -117,10 +177,10 @@ public class UnitsFightManager : MonoBehaviour
         }
 
         // color the sprite
-        instUnit.transform.Find("Body").GetComponent<SpriteRenderer>().color = bc.Commander.Color;
+        instUnit.transform.Find("Body").GetComponent<SpriteRenderer>().color = unitColor;
 
         // init the ai script 
-        instUnit.GetComponent<UnitAI>().Init(this, ut);
+        instUnit.GetComponent<UnitAI>().Init(this, ut, isDemoMode);
 
         // return the instantiated GO
         return instUnit.GetComponent<UnitAI>();
@@ -135,13 +195,13 @@ public class UnitsFightManager : MonoBehaviour
         {
             if (i % 2 == 0)
             {
-                this.playerUnitAIs[i].SetTarget(this.enemyUnitAIs[i + 1]);
-                this.enemyUnitAIs[i].SetTarget(this.playerUnitAIs[i + 1]);
+                this.playerUnitAIs[i].SetTargetEnemy(this.enemyUnitAIs[i + 1]);
+                this.enemyUnitAIs[i].SetTargetEnemy(this.playerUnitAIs[i + 1]);
             }
             else
             {
-                this.playerUnitAIs[i].SetTarget(this.enemyUnitAIs[i]);
-                this.enemyUnitAIs[i].SetTarget(this.playerUnitAIs[i]);
+                this.playerUnitAIs[i].SetTargetEnemy(this.enemyUnitAIs[i]);
+                this.enemyUnitAIs[i].SetTargetEnemy(this.playerUnitAIs[i]);
             }
         }
     }
@@ -180,6 +240,14 @@ public class UnitsFightManager : MonoBehaviour
         yield return new WaitForSeconds(s);
         this.FightIsOver = true;
 
+        ClearField();
+    }
+
+    /// <summary>
+    /// Destroys every unit on the field.
+    /// </summary>
+    private void ClearField()
+    {
         // destroy every child to end the fight
         foreach (Transform child in this.playerUnitsParent)
             Destroy(child.gameObject);

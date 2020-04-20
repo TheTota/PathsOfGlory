@@ -19,7 +19,7 @@ public class RangeUnitAI : UnitAI
     public GameObject fireballPrefab;
 
     // movement vars
-    private Vector2 targetPos;
+    private Vector2 rangeUnitTargetPos;
     private float offsetX;
     private const float MAGES_OFFSET_X = 7f;
     private const float ARCHERS_OFFSET_X = 4f;
@@ -45,14 +45,21 @@ public class RangeUnitAI : UnitAI
         if (!isInShootingPosition) // check to only start the ShootTarget coroutine once
         {
             // if we haven't reached target pos, keep moving
-            if (target != null && transform.position.x != targetPos.x) 
+            if (transform.position.x != rangeUnitTargetPos.x)
             {
                 Move();
             }
             else // once target pos is reached, start the target shooting coroutine 
             {
-                StartCoroutine(ShootTarget(2f));
-                isInShootingPosition = true;
+                if (DemoMode)
+                {
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    StartCoroutine(ShootTarget(2f));
+                    isInShootingPosition = true;
+                }
             }
         }
     }
@@ -62,24 +69,31 @@ public class RangeUnitAI : UnitAI
     /// </summary>
     private void SetShootingPositionTarget()
     {
-        isInShootingPosition = false;
-
-        Camera mainCam = Camera.main;
-        float targetXPos;
-
-        // going to the right
-        if (mainCam.WorldToScreenPoint(this.transform.position).x < 0f)
+        if (base.DemoMode)
         {
-            targetXPos = this.transform.position.x + offsetX;
-            goingRight = true;
+            rangeUnitTargetPos = base.targetPos;
         }
-        else // going to the left
+        else
         {
-            targetXPos = this.transform.position.x - offsetX;
-            goingRight = false;
-        }
+            isInShootingPosition = false;
 
-        targetPos = new Vector2(targetXPos, this.transform.position.y);
+            Camera mainCam = Camera.main;
+            float targetXPos;
+
+            // going to the right
+            if (mainCam.WorldToScreenPoint(this.transform.position).x < 0f)
+            {
+                targetXPos = this.transform.position.x + offsetX;
+                goingRight = true;
+            }
+            else // going to the left
+            {
+                targetXPos = this.transform.position.x - offsetX;
+                goingRight = false;
+            }
+
+            rangeUnitTargetPos = new Vector2(targetXPos, this.transform.position.y);
+        }
     }
 
     /// <summary>
@@ -89,7 +103,7 @@ public class RangeUnitAI : UnitAI
     {
         // Move our position a step closer to the target.
         float step = base.speed * Time.deltaTime; // calculate distance to move
-        Vector3 pos = Vector2.MoveTowards(transform.position, targetPos, step);
+        Vector3 pos = Vector2.MoveTowards(transform.position, rangeUnitTargetPos, step);
         transform.position = pos + transform.up * Mathf.Sin(Time.time * base.hopFrequency) * base.hopMagnitude;
     }
 
@@ -101,7 +115,7 @@ public class RangeUnitAI : UnitAI
     private IEnumerator ShootTarget(float delayBetweenShots)
     {
         yield return new WaitForSeconds(.5f);
-        while (this.target != null)
+        while (this.targetEnemy != null)
         {
             Shoot();
             yield return new WaitForSeconds(delayBetweenShots);
