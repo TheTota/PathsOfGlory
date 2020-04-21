@@ -18,54 +18,27 @@ MonoBehaviour:
   AiType: 2
   PortraitElementToUnlock: {fileID: 11400000, guid: 9d60edea14034274998533b835cf19c1,
     type: 2}
-  preBattleFirstTimeLine: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+  preBattleFirstTimeLine: 'L''Horloger vous salue. '
   preBattleWonLastLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "Malgr\xE9 votre d\xE9faite, vous venez d\xE9fier l'horloger \xE0 nouveau. Ainsi
+    soit-il, mais n'esp\xE9rez pas un r\xE9sultat diff\xE9rent."
   preBattleLostLastLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "L'Horloger sera \xE0 la hauteur cette fois ci. Vous n'avez aucune chance."
   postBattleWinLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "L'issue de cette bataille \xE9tait \xE9vidente. Si vous ne le croyez pas commandant,
+    l'Horloger sera ravi de vous le rappeler."
   postBattleLossLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "Contre toutes attentes, vous avez vaincu l'Horloger, qui ne peut d\xE9sormais
+    que s'incliner face \xE0 vous."
   postUnitsFightLossLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "Le r\xE9sultat ne semble pas id\xE9al, mais l'Horloger persistera dans sa voie."
+  - Votre victoire n'est que temporaire, ne vous emportez pas trop.
+  - "L'Horloger n'a que faire de votre strat\xE9gie. Elle se finira par se r\xE9v\xE9ler
+    inf\xE9rieure."
   postUnitsFightWinLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "Sans surprise, la strat\xE9gie de l'Horloger apporte une victoire."
+  - 'La boucle se referme sur vous commandant, prenez garde. '
+  - Une horloge se lit dans plusieurs sens commandant. Vous ne l'avez toujours pas
+    compris.
   postUnitsFightDrawLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "Quel issue int\xE9ressante..."
