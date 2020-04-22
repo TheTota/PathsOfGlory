@@ -54,8 +54,8 @@ public class MenuManager : MonoBehaviour
     private TextMeshProUGUI commanderNameText;
 
     // Intro texts 
-    private const string INTRO_GAME_MSG = "Bienvenue dans la ligue des commandants...";
-    private const string INTRO_GRID_INSTRUCTIONS = "Ici vous verrez les commandants que vous pouvez affronter afin de gravir les échelons de la ligue.";
+    private const string INTRO_GAME_MSG = "<size=120%><b>Bienvenue dans la Ligue des Commandants d'Elite de l'Empire.</b></size>\n\nIl s'agit d'une compétition entre nos plus fins stratèges permettant de déterminer le meilleur commandant de l'Empire.\n\nVos exploits passés ont impressionné l'Empereur en personne, qui vous invite à rejoindre la Ligue en tant que challenger.";
+    private const string INTRO_GRID_INSTRUCTIONS = "Ici vous verrez un tableau récapitulatif des commandants de la Ligue. A tout moment vous pouvez affronter un concurrent disponible, même si vous l'avez déjà vaincu.";
     private const string INTRO_GRID_MSG = "La grille que vous avez vu...";
     private const string INTRO_MY_COMMANDER_MSG = "Vous pouvez personnaliser votre commandant...";
     private const string INTRO_FINAL_MSG = "Venez m'affronter maintenant...";
