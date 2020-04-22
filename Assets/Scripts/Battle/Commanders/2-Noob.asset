@@ -20,10 +20,11 @@ MonoBehaviour:
     type: 2}
   preBattleFirstTimeLine: 'L''Horloger vous salue. '
   preBattleWonLastLines:
-  - "Malgr\xE9 votre d\xE9faite, vous venez d\xE9fier l'horloger \xE0 nouveau. Ainsi
+  - "Malgr\xE9 votre d\xE9faite, vous venez d\xE9fier l'Horloger \xE0 nouveau. Ainsi
     soit-il, mais n'esp\xE9rez pas un r\xE9sultat diff\xE9rent."
   preBattleLostLastLines:
-  - "L'Horloger sera \xE0 la hauteur cette fois ci. Vous n'avez aucune chance."
+  - "C'est un honneur pour l'Horloger de pouvoir vous affronter \xE0 nouveau. cette
+    fois ci."
   postBattleWinLines:
   - "L'issue de cette bataille \xE9tait \xE9vidente. Si vous ne le croyez pas commandant,
     l'Horloger sera ravi de vous le rappeler."
@@ -41,4 +42,4 @@ MonoBehaviour:
   - Une horloge se lit dans plusieurs sens commandant. Vous ne l'avez toujours pas
     compris.
   postUnitsFightDrawLines:
-  - "Quel issue int\xE9ressante..."
+  - "Quel issue int\xE9ressante... ou plut\xF4t inint\xE9ressante."

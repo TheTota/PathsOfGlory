@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 /// <summary>
 /// Handles the main menu interactions and behaviours. 
@@ -25,12 +26,48 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private RectTransform commandersGrid;
 
+    [Header("(First start) Focus Backgrounds")]
+    // black almost transparent backgrounds to focus on UI
+    [SerializeField]
+    private GameObject fbgPlayerCommander;
+    [SerializeField]
+    private GameObject fbgCommanderGrid;
+    [SerializeField]
+    private GameObject fbgBoth;
+
+    [Header("(First start) Main UI Elements")]
+    [SerializeField]
+    private GameObject commanderGridPopup;
+    [SerializeField]
+    private TextMeshProUGUI commanderGridInstructions;
+    [SerializeField]
+    private GameObject playerCommanderTopLeft;
+
+    [Header("(First start) Text Panel")]
+    [SerializeField]
+    private GameObject introTextPanel;
+    [SerializeField]
+    private TextMeshProUGUI introText;
+    [SerializeField]
+    private Image reactionTextSeal;
+    [SerializeField]
+    private TextMeshProUGUI commanderNameText;
+
+    // Intro texts 
+    private const string INTRO_GAME_MSG = "Bienvenue dans la ligue des commandants...";
+    private const string INTRO_GRID_INSTRUCTIONS = "Ici vous verrez les commandants que vous pouvez affronter afin de gravir les échelons de la ligue.";
+    private const string INTRO_GRID_MSG = "La grille que vous avez vu...";
+    private const string INTRO_MY_COMMANDER_MSG = "Vous pouvez personnaliser votre commandant...";
+    private const string INTRO_FINAL_MSG = "Venez m'affronter maintenant...";
+
+    private bool isInGridIntro = false;
+
     private bool isInTitleScreen;
 
     private void Start()
     {
         // skip title screen if not first time on scene
-        if (GameManager.Instance.GameHasBeenInit) 
+        if (GameManager.Instance.GameHasBeenInit)
         {
             GoToMainMenu();
             isInTitleScreen = false;
@@ -72,6 +109,88 @@ public class MenuManager : MonoBehaviour
         RenderCommandersGrid();
 
         mainMenuUI.SetActive(true);
+        if (GameManager.Instance.FirstStart) // cas premier lancement => intro/tuto
+        {
+            StartCoroutine(HandleFirstStart());
+        }
+        else
+        {
+            this.playerCommanderTopLeft.SetActive(true);
+            this.commanderGridPopup.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Handles the intro/tutorial on first start of the game.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator HandleFirstStart()
+    {
+        // init intro message elements such as seal and name
+        this.reactionTextSeal.color = GameManager.Instance.Enemies[0].Color;
+        this.commanderNameText.text = GameManager.Instance.Enemies[0].CommanderName;
+
+        // 1rst msg : intro to game
+        this.fbgCommanderGrid.SetActive(true);
+        DisplayIntroMessage(INTRO_GAME_MSG);
+        yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
+
+        // display commander grid
+        this.commandersGrid.GetComponentInChildren<Button>().enabled = false;
+        this.commanderGridPopup.SetActive(true);
+        string normalText = this.commanderGridInstructions.text;
+        this.commanderGridInstructions.text = INTRO_GRID_INSTRUCTIONS;
+
+        isInGridIntro = true;
+        yield return new WaitUntil(() => !this.commanderGridPopup.activeInHierarchy); // wait until grid popup is unactive
+
+        this.commanderGridInstructions.text = normalText;
+        this.commanderGridPopup.SetActive(false);
+
+        // 2nd msg : commander grid
+        DisplayIntroMessage(INTRO_GRID_MSG);
+        yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
+
+        // display player commander + 3rd msg : player commander
+        this.fbgCommanderGrid.SetActive(false);
+        this.fbgPlayerCommander.SetActive(true);
+        this.playerCommanderTopLeft.SetActive(true);
+
+        DisplayIntroMessage(INTRO_MY_COMMANDER_MSG);
+        yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
+
+        this.fbgPlayerCommander.SetActive(false);
+
+        // 4th msg : come fight me
+        this.fbgBoth.SetActive(true);
+        this.commanderGridPopup.SetActive(true);
+
+        DisplayIntroMessage(INTRO_FINAL_MSG);
+        yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
+
+        this.fbgBoth.SetActive(false);
+        this.commandersGrid.GetComponentInChildren<Button>().enabled = true;
+    }
+
+    /// <summary>
+    /// Displays a given message on the screen.
+    /// </summary>
+    /// <param name="msg"></param>
+    private void DisplayIntroMessage(string msg)
+    {
+        this.introText.text = msg;
+        this.introTextPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// SetActive(false) on grid popup if in intro mode.
+    /// </summary>
+    public void HandleClickOnPopup()
+    {
+        if (isInGridIntro)
+        {
+            this.commanderGridPopup.SetActive(false);
+        }
     }
 
     /// <summary>

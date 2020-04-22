@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public bool GameHasBeenInit { get; set; }
     public PortraitElement LastUnlockedPortraitElement { get; internal set; }
 
+    public bool FirstStart { get; set; }
+
     private void Awake()
     {
         // init singleton
@@ -90,6 +92,8 @@ public class GameManager : MonoBehaviour
         // IF WE HAVE SAVES, load portrait from them
         if (PlayerPrefs.HasKey("player_saves"))
         {
+            FirstStart = false;
+
             playerPortrait = new Portrait(
                 PortraitGenerator.Instance.availableHair[PlayerPrefs.GetInt("player_portrait_hair")],
                 PortraitGenerator.Instance.availableEyes[PlayerPrefs.GetInt("player_portrait_eyes")],
@@ -100,6 +104,8 @@ public class GameManager : MonoBehaviour
         }
         else // IF WE DO NOT HAVE SAVES, generate a portrait and save it 
         {
+            FirstStart = true;
+
             playerPortrait = PortraitGenerator.Instance.GenerateRandomPortraitFromUnlockedElements();
 
             // save the portrait
