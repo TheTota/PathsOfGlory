@@ -56,8 +56,8 @@ public class MenuManager : MonoBehaviour
     // Intro texts 
     private const string INTRO_GAME_MSG = "<size=120%><b>Bienvenue dans la Ligue des Commandants d'Elite de l'Empire.</b></size>\n\nIl s'agit d'une compétition entre nos plus fins stratèges permettant de déterminer le meilleur commandant de l'Empire.\n\nVos exploits passés ont impressionné l'Empereur en personne, qui vous invite à rejoindre la Ligue en tant que challenger.";
     private const string INTRO_GRID_INSTRUCTIONS = "Ici vous verrez un tableau récapitulatif des commandants de la Ligue. A tout moment vous pouvez affronter un concurrent disponible, même si vous l'avez déjà vaincu.";
-    private const string INTRO_GRID_MSG = "<size=120%><b>La Ligue se limite à 10 commandants, classés par ordre de compétence sur le champs de bataille.</b></size>\n\nEn tant que challenger, vous devrez vaincre chaque commandant un par un en commençant par le 10ème jusqu'à triompher du Grand Champion de la Ligue.";
-    private const string INTRO_MY_COMMANDER_MSG = "Vous pouvez personnaliser votre commandant...";
+    private const string INTRO_GRID_MSG = "<size=110%><b>La Ligue se limite à 10 commandants, classés par ordre de compétence sur le champs de bataille.</b></size>\n\nEn tant que challenger, vous devrez vaincre chaque commandant un par un en commençant par le 10ème jusqu'à triompher du Grand Champion de la Ligue.";
+    private const string INTRO_MY_COMMANDER_MSG = "<size=110%><b>Vos victoires sur le champs de bataille vous permettront de débloquer des éléments de personnalisation de votre apparence.</b></size>\n\nChaque commandant de la Ligue possède un trait d'apparence unique qui vous sera octroyé si l'emportez.\n\nLes meilleurs mages de l'Empire seront capable d'altérer votre apparence à tout moment avec ce que vous aurez débloqué.";
     private const string INTRO_FINAL_MSG = "Venez m'affronter maintenant...";
 
     private bool isInGridIntro = false;
@@ -112,6 +112,7 @@ public class MenuManager : MonoBehaviour
         if (GameManager.Instance.FirstStart) // cas premier lancement => intro/tuto
         {
             StartCoroutine(HandleFirstStart());
+            GameManager.Instance.FirstStart = false;
         }
         else
         {
