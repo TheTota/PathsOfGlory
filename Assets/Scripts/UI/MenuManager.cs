@@ -58,7 +58,7 @@ public class MenuManager : MonoBehaviour
     private const string INTRO_GRID_INSTRUCTIONS = "Ici vous verrez un tableau récapitulatif des commandants de la Ligue. A tout moment vous pouvez affronter un concurrent disponible, même si vous l'avez déjà vaincu.";
     private const string INTRO_GRID_MSG = "<size=110%><b>La Ligue se limite à 10 commandants, classés par ordre de compétence sur le champs de bataille.</b></size>\n\nEn tant que challenger, vous devrez vaincre chaque commandant un par un en commençant par le 10ème jusqu'à triompher du Grand Champion de la Ligue.";
     private const string INTRO_MY_COMMANDER_MSG = "<size=110%><b>Vos victoires sur le champs de bataille vous permettront de débloquer des éléments de personnalisation de votre apparence.</b></size>\n\nChaque commandant de la Ligue possède un trait d'apparence unique qui vous sera octroyé si l'emportez.\n\nLes meilleurs mages de l'Empire seront capable d'altérer votre apparence à tout moment avec ce que vous aurez débloqué.";
-    private const string INTRO_FINAL_MSG = "Venez m'affronter maintenant...";
+    private const string INTRO_FINAL_MSG = "<size=120%><b>Commandant, l'arène de combat vous attend.</b></size>\n\nJe serai votre premier adversaire. Ce sera l'occasion de vous expliquer le fonctionnement des batailles au sein de la Ligue.\n\nJ'ai hate de pouvoir me mesurer à vous sur le champs de bataille.";
 
     private bool isInGridIntro = false;
 
