@@ -53,6 +53,13 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI commanderNameText;
 
+    [Header("Game Completed UI")]
+    [SerializeField]
+    private GameObject ggPanel;
+    [SerializeField]
+    private GameObject creditsPanel;
+
+
     // Intro texts 
     private const string INTRO_GAME_MSG = "<size=120%><b>Bienvenue dans la Ligue des Commandants d'Elite de l'Empire.</b></size>\n\nIl s'agit d'une compétition entre nos plus fins stratèges permettant de déterminer le meilleur commandant de l'Empire.\n\nVos exploits passés ont impressionné l'Empereur en personne, qui vous invite à rejoindre la Ligue en tant que challenger.";
     private const string INTRO_GRID_INSTRUCTIONS = "Ici vous verrez un tableau récapitulatif des commandants de la Ligue. A tout moment vous pouvez affronter un concurrent disponible, même si vous l'avez déjà vaincu.";
@@ -114,6 +121,11 @@ public class MenuManager : MonoBehaviour
             StartCoroutine(HandleFirstStart());
             GameManager.Instance.FirstStart = false;
         }
+        else if (GameManager.Instance.JustCompletedGame)
+        {
+            StartCoroutine(HandleGGScreens());
+            GameManager.Instance.JustCompletedGame = false;
+        }
         else
         {
             this.playerCommanderTopLeft.SetActive(true);
@@ -171,6 +183,25 @@ public class MenuManager : MonoBehaviour
 
         this.fbgBoth.SetActive(false);
         this.commandersGrid.GetComponentInChildren<Button>().enabled = true;
+    }
+
+    /// <summary>
+    /// Handles the display of gg letter from emperor and the credits.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator HandleGGScreens()
+    {
+        // display emperor's letter and wait for user to skip it 
+        this.ggPanel.SetActive(true);
+        yield return new WaitUntil(() => !this.ggPanel.activeInHierarchy);
+
+        // display credits 
+        this.creditsPanel.SetActive(true);
+        yield return new WaitUntil(() => !this.creditsPanel.activeInHierarchy);
+
+        // return to normal menu
+        this.playerCommanderTopLeft.SetActive(true);
+        this.commanderGridPopup.SetActive(true);
     }
 
     /// <summary>

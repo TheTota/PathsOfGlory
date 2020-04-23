@@ -2057,9 +2057,9 @@ MonoBehaviour:
   m_text: "<size=150%>MERCI D'AVOIR JOU\xC9 !</size>\n\nJeu r\xE9alis\xE9 par une
     \xE9quipe d'\xE9tudiants de deuxi\xE8me ann\xE9e d'\xE9cole d'ing\xE9nieurs du
     CNAM PACA : \n\nThomas CIANFARANI\nVanessa ASEJO CASPILLO\nAlexandre TOMASIA\nOc\xE9ane
-    CARPENTIER\n\nRemerciement \xE9galement aux professeurs ayant encadr\xE9 ce projet
-    : \nSt\xE9phane NATKIN, Philippe BONFILS et Antoine GONOT\n<alpha=#00>\nLead
-    game developer \nTHOMAS CIANFARANI \n\n..... TODO: scroll and display the credits\n</alpha>"
+    CARPENTIER\n\nRemerciements aux professeurs ayant encadr\xE9 ce projet : \nSt\xE9phane
+    NATKIN, Philippe BONFILS et Antoine GONOT\n<alpha=#00>\nLead game developer \nTHOMAS
+    CIANFARANI \n\n..... TODO: scroll and display the credits\n</alpha>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b94a3fc999b18a43a16136e7f0b2af3, type: 2}
   m_sharedMaterial: {fileID: 6424746533781510342, guid: 1b94a3fc999b18a43a16136e7f0b2af3,
@@ -3162,6 +3162,8 @@ MonoBehaviour:
   introText: {fileID: 1703231463}
   reactionTextSeal: {fileID: 944586083}
   commanderNameText: {fileID: 422305357}
+  ggPanel: {fileID: 1018849788}
+  creditsPanel: {fileID: 1695603064}
 --- !u!1 &1142147964
 GameObject:
   m_ObjectHideFlags: 0
@@ -4590,6 +4592,7 @@ GameObject:
   - component: {fileID: 1695603065}
   - component: {fileID: 1695603067}
   - component: {fileID: 1695603066}
+  - component: {fileID: 1695603068}
   m_Layer: 5
   m_Name: CreditsPanel
   m_TagString: Untagged
@@ -4614,7 +4617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -72}
+  m_AnchoredPosition: {x: 0, y: -90}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695603066
@@ -4656,7 +4659,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1695603068}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4679,6 +4682,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695603064}
   m_CullTransparentMesh: 0
+--- !u!114 &1695603068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695603064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1703231461
 GameObject:
   m_ObjectHideFlags: 0
@@ -4924,7 +4955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1777593387
 RectTransform:
   m_ObjectHideFlags: 0

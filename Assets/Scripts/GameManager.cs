@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     public PortraitElement LastUnlockedPortraitElement { get; internal set; }
 
     public bool FirstStart { get; set; }
+    public bool JustCompletedGame { get; set; }
+    public bool CompletedGame { get; set; }
 
     private void Awake()
     {
@@ -87,6 +89,16 @@ public class GameManager : MonoBehaviour
     private void InitPlayer()
     {
         Color playercolor = new Color(.2f, .6f, .86f);
+
+        // Check if game has been completed
+        if (PlayerPrefs.HasKey("completed_game"))
+        {
+            this.CompletedGame = true;
+        }
+        else
+        {
+            this.CompletedGame = false;
+        }
 
         Portrait playerPortrait;
         // IF WE HAVE SAVES, load portrait from them
@@ -221,8 +233,10 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt(Enemies[Enemies.Length - 1].PortraitElementToUnlock.name, 0);
             LastUnlockedPortraitElement = Enemies[Enemies.Length - 1].PortraitElementToUnlock;
 
-            // TODO: gg 
-            Debug.Log("Every commander has been unlocked already.");
+            // GG 
+            JustCompletedGame = true;
+            CompletedGame = true;
+            PlayerPrefs.SetInt("completed_game", 1);
         }
     }
 }
