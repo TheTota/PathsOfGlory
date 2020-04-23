@@ -5726,6 +5726,7 @@ MonoBehaviour:
   - {fileID: 1857061773}
   - {fileID: 1255193192}
   - {fileID: 2131102909}
+  refightBtn: {fileID: 54713237}
   resultText: {fileID: 672891007}
   recapRoundTextPrefab: {fileID: 4324195849340163189, guid: 1614739ceacf08141b3d29dddd61fe23,
     type: 3}
@@ -5736,6 +5737,7 @@ MonoBehaviour:
   enemyRowParent: {fileID: 1993887941}
   rewardsParent: {fileID: 1422235921}
   rewardsText: {fileID: 162515638}
+  unlockedCommanderText: {fileID: 978238454}
   unlockedCommanderPR: {fileID: 1207254951}
   unlockedElementPR: {fileID: 8834367749559655479}
 --- !u!1 &1159798438
@@ -7111,6 +7113,7 @@ MonoBehaviour:
   maxBoundY: -3.4
   playerUnitsParent: {fileID: 1484931999}
   enemyUnitsParent: {fileID: 1892612982}
+  introMode: 0
 --- !u!4 &1273028789
 Transform:
   m_ObjectHideFlags: 0

@@ -61,6 +61,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("DEBUG: Clearing player prefs.");
             PlayerPrefs.DeleteAll();
         }
+        else if (Input.GetKeyDown(KeyCode.F2))
+        {
+            Debug.Log("DEBUG: Unlock next commander.");
+            UnlockRewards();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     /// <summary>

@@ -17,6 +17,8 @@ public class PostBattleHandler : MonoBehaviour
     private UIPlaysHistoryHandler playsHistoryHandler;
     [SerializeField]
     private GameObject[] uiToHide;
+    [SerializeField]
+    private GameObject refightBtn;
 
     [Header("Result")]
     [SerializeField]
@@ -40,9 +42,12 @@ public class PostBattleHandler : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI rewardsText;
     [SerializeField]
+    private GameObject unlockedCommanderText;
+    [SerializeField]
     private PortraitRenderer unlockedCommanderPR;
     [SerializeField]
     private PortraitRenderer unlockedElementPR;
+    [SerializeField]
 
     private void Awake()
     {
@@ -200,7 +205,17 @@ public class PostBattleHandler : MonoBehaviour
                 this.rewardsParent.gameObject.SetActive(true);
 
                 // display unlocked commander
-                this.unlockedCommanderPR.RenderPortrait(GameManager.Instance.Enemies[Array.IndexOf(GameManager.Instance.Enemies, this.bm.EnemyBC.Commander) + 1]);
+                int unlockedCommanderIndex = Array.IndexOf(GameManager.Instance.Enemies, this.bm.EnemyBC.Commander) + 1;
+                if (unlockedCommanderIndex < GameManager.Instance.Enemies.Length)
+                {
+                    this.unlockedCommanderPR.RenderPortrait(GameManager.Instance.Enemies[unlockedCommanderIndex]);
+                }
+                else // if it's last commander 
+                {
+                    this.unlockedCommanderPR.gameObject.SetActive(false);
+                    this.unlockedCommanderText.SetActive(false);
+                    this.refightBtn.SetActive(false);
+                }
 
                 // display unlocked portrait element
                 this.unlockedElementPR.RenderElement(GameManager.Instance.LastUnlockedPortraitElement);
