@@ -43,7 +43,7 @@ public class RangeUnitAI : UnitAI
     // Update is called once per frame
     void Update()
     {
-        if (!isInShootingPosition) // check to only start the ShootTarget coroutine once
+        if (!isInShootingPosition && base.IsAlive) // check to only start the ShootTarget coroutine once
         {
             // if we haven't reached target pos, keep moving
             if (transform.position.x != rangeUnitTargetPos.x)
@@ -58,7 +58,7 @@ public class RangeUnitAI : UnitAI
                 }
                 else
                 {
-                    StartCoroutine(ShootTarget(2f));
+                    StartCoroutine(ShootTarget(1.25f));
                     isInShootingPosition = true;
                 }
             }
@@ -116,7 +116,7 @@ public class RangeUnitAI : UnitAI
     private IEnumerator ShootTarget(float delayBetweenShots)
     {
         yield return new WaitForSeconds(Random.Range(.5f,1f));
-        while (this.targetEnemy != null)
+        while (this.targetEnemy.IsAlive && base.IsAlive) // if we're alive and enemy target is alive
         {
             Shoot();
             yield return new WaitForSeconds(delayBetweenShots);

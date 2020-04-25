@@ -52,6 +52,10 @@ public class UnitProjectile : MonoBehaviour
             // ARCHER SHOOTING
             if (ProjectileOrigin == UnitType.Archers)
             {
+                // block arrow on target
+                this.rb2d.Sleep();
+                this.transform.parent = collision.transform;
+
                 // ARCHER WINS/DRAW
                 if (collision.transform.CompareTag("Mage") || collision.transform.CompareTag("Spearman") || collision.transform.CompareTag("Archer"))
                 {
@@ -59,16 +63,11 @@ public class UnitProjectile : MonoBehaviour
                     targetEffectiveHitSound.Play();
 
                     collision.transform.GetComponent<UnitAI>().Die();
-                    Destroy(this.gameObject);
                 }
                 else // ARCHER NOT MEANT TO WIN
                 {
                     // play fail hit sound
                     targetIneffectiveHitSound.Play();
-
-                    // block arrow on target
-                    this.rb2d.Sleep();
-                    this.transform.parent = collision.transform;
                 }
             }
 
@@ -76,7 +75,7 @@ public class UnitProjectile : MonoBehaviour
             else if (ProjectileOrigin == UnitType.Mages)
             {
                 // MAGE WINS/DRAW
-                if (collision.transform.CompareTag("Spearman") || collision.transform.CompareTag("Shield") || collision.transform.CompareTag("Mage"))
+                if (!collision.transform.CompareTag("Knight"))
                 {
                     // play gg hit sound
                     targetEffectiveHitSound.Play();

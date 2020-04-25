@@ -24,7 +24,7 @@ public class MeleeUnitAI : UnitAI
             }
         }
         // Fight mode : walk towards and enemy target
-        else if (base.targetEnemy != null)
+        else if (base.targetEnemy.IsAlive && base.IsAlive) // if we're alive and enemy target is alive
         {
             Move(base.targetEnemy.transform.position);
         }

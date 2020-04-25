@@ -9,7 +9,12 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class UnitAI : MonoBehaviour
 {
+    [Header("Unit death")]
+    public GameObject[] limbs;
+    public GameObject[] limbsDead;
+
     // useful infos
+    public bool IsAlive { get; set; }
     protected UnitsFightManager unitsFightMgr;
     protected UnitType ut;
     protected UnitAI targetEnemy;
@@ -68,10 +73,22 @@ public class UnitAI : MonoBehaviour
         this.DemoMode = isDemoMode;
         if (isDemoMode)
         {
+            this.IsAlive = true;
             this.speed /= 2f;
             this.hopFrequency /= 1.5f;
         }
+        else
+        {
+            StartCoroutine(SetAliveAfterRandomTime(0f, .07f));
+        }
     }
+
+    private IEnumerator SetAliveAfterRandomTime(float minSecBound, float maxSecBound)
+    {
+        yield return new WaitForSeconds(Random.Range(minSecBound, maxSecBound));
+        this.IsAlive = true;
+    }
+
     public void SetTargetEnemy(UnitAI target)
     {
         this.targetEnemy = target;
@@ -81,7 +98,8 @@ public class UnitAI : MonoBehaviour
     /// Assigns a target to this unit.
     /// </summary>
     /// <param name="target"></param>
-    public void SetTargetPos(Vector3 target) {
+    public void SetTargetPos(Vector3 target)
+    {
         this.targetPos = target;
     }
 
@@ -90,7 +108,43 @@ public class UnitAI : MonoBehaviour
     /// </summary>
     public void Die()
     {
+        // stop moving
+        this.IsAlive = false;
+
+        // inform units fight manager
         unitsFightMgr.RemoveUnitFromList(this);
-        Destroy(this.gameObject);
+
+        // change sprites to dead sprites
+        for (int i = 0; i < limbs.Length; i++)
+        {
+            limbs[i].SetActive(false);
+            limbsDead[i].SetActive(true);
+        }
+
+        // disable collider
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        // if not knight, take dead position
+        if (ut != UnitType.Knights)
+        {
+            this.transform.rotation = Quaternion.Euler(0f, 0f, this.transform.localScale.x > 0 ? -90f : 90f);
+
+            if (ut == UnitType.Spearmen)
+            {
+                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - .16f, this.transform.position.z);
+            }
+            else if (ut == UnitType.Shields)
+            {
+                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - .4f, this.transform.position.z);
+            }
+            else if (ut == UnitType.Mages)
+            {
+                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.434f, this.transform.position.z);
+            }
+            else if (ut == UnitType.Archers)
+            {
+                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.329f, this.transform.position.z);
+            }
+        }
     }
 }
