@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// Handles the AI of range units during a units fight.
@@ -114,7 +115,7 @@ public class RangeUnitAI : UnitAI
     /// <returns></returns>
     private IEnumerator ShootTarget(float delayBetweenShots)
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(Random.Range(.5f,1f));
         while (this.targetEnemy != null)
         {
             Shoot();

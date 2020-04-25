@@ -8,6 +8,11 @@ using UnityEngine;
 /// </summary>
 public class UnitProjectile : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource targetEffectiveHitSound;
+    [SerializeField]
+    private AudioSource targetIneffectiveHitSound;
+
     // physics vars for projectile movement
     private float projectileSpeed = 30f;
     private Rigidbody2D rb2d;
@@ -50,11 +55,17 @@ public class UnitProjectile : MonoBehaviour
                 // ARCHER WINS/DRAW
                 if (collision.transform.CompareTag("Mage") || collision.transform.CompareTag("Spearman") || collision.transform.CompareTag("Archer"))
                 {
+                    // play gg hit sound
+                    targetEffectiveHitSound.Play();
+
                     collision.transform.GetComponent<UnitAI>().Die();
                     Destroy(this.gameObject);
                 }
                 else // ARCHER NOT MEANT TO WIN
                 {
+                    // play fail hit sound
+                    targetIneffectiveHitSound.Play();
+
                     // block arrow on target
                     this.rb2d.Sleep();
                     this.transform.parent = collision.transform;
@@ -67,11 +78,17 @@ public class UnitProjectile : MonoBehaviour
                 // MAGE WINS/DRAW
                 if (collision.transform.CompareTag("Spearman") || collision.transform.CompareTag("Shield") || collision.transform.CompareTag("Mage"))
                 {
+                    // play gg hit sound
+                    targetEffectiveHitSound.Play();
+
                     collision.transform.GetComponent<UnitAI>().Die();
                     Destroy(this.gameObject);
                 }
                 else // MAGE NOT MEANT TO WIN
                 {
+                    // play fail hit sound
+                    targetIneffectiveHitSound.Play();
+
                     // kill fireball
                     Destroy(this.gameObject);
                 }
