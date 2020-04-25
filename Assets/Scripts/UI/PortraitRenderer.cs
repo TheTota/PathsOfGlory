@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.EventSystems;
 
 public enum PortraitMood
 {
@@ -35,6 +36,8 @@ public class PortraitRenderer : MonoBehaviour
     private TextMeshProUGUI winsText;
     [SerializeField]
     private TextMeshProUGUI lossText;
+    [SerializeField]
+    private EventTrigger btnSFXEventTrigger;
 
     /// <summary>
     /// Renders the portrait with the given values.
@@ -64,18 +67,23 @@ public class PortraitRenderer : MonoBehaviour
                 winsText.text = "W" + commander.WinsCount;
                 lossText.text = "L" + commander.LossesCount;
             }
+
+            // enable btn audio
+            btnSFXEventTrigger.enabled = true;
         }
         else // if locked
         {
             background.color = new Color(.5f, .5f, .5f);
             winsText.gameObject.SetActive(false);
             lossText.gameObject.SetActive(false);
+
+            // disable btn audio
+            btnSFXEventTrigger.enabled = false;
         }
 
         // Button
         btn.onClick.AddListener(onClickAction);
         btn.interactable = !commander.Locked;
-
 
         // hide the face if commander is locked
         face.SetActive(!commander.Locked);

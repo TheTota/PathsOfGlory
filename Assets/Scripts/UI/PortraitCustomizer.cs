@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
@@ -94,36 +95,54 @@ public class PortraitCustomizer : MonoBehaviour
         if (PortraitGenerator.Instance.GetUnlockedHair().Length <= 1)
         {
             nextHairBtn.interactable = false;
+            nextHairBtn.GetComponent<EventTrigger>().enabled = false;
+
             prevHairBtn.interactable = false;
+            prevHairBtn.GetComponent<EventTrigger>().enabled = false;
         }
         else
         {
             nextHairBtn.interactable = true;
+            nextHairBtn.GetComponent<EventTrigger>().enabled = true;
+
             prevHairBtn.interactable = true;
+            prevHairBtn.GetComponent<EventTrigger>().enabled = true;
         }
 
         // disable eyes buttons if only 1 unlocked eyes
         if (PortraitGenerator.Instance.GetUnlockedEyes().Length <= 1)
         {
             nextEyesBtn.interactable = false;
+            nextEyesBtn.GetComponent<EventTrigger>().enabled = false;
+
             prevEyesBtn.interactable = false;
+            prevEyesBtn.GetComponent<EventTrigger>().enabled = false;
         }
         else
         {
             nextEyesBtn.interactable = true;
+            nextEyesBtn.GetComponent<EventTrigger>().enabled = true;
+
             prevEyesBtn.interactable = true;
+            prevEyesBtn.GetComponent<EventTrigger>().enabled = true;
         }
 
         // disable mouth buttons if only 1 unlocked mouth
         if (PortraitGenerator.Instance.GetUnlockedMouth().Length <= 1)
         {
             nextMouthBtn.interactable = false;
+            nextMouthBtn.GetComponent<EventTrigger>().enabled = false;
+
             prevMouthBtn.interactable = false;
+            prevMouthBtn.GetComponent<EventTrigger>().enabled = false;
         }
         else
         {
             nextMouthBtn.interactable = true;
+            nextMouthBtn.GetComponent<EventTrigger>().enabled = true;
+
             prevMouthBtn.interactable = true;
+            prevMouthBtn.GetComponent<EventTrigger>().enabled = true;
         }
     }
 

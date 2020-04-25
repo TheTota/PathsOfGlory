@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Handles the main menu interactions and behaviours. 
@@ -150,6 +151,7 @@ public class MenuManager : MonoBehaviour
 
         // display commander grid
         this.commandersGrid.GetComponentInChildren<Button>().enabled = false;
+        this.commandersGrid.GetComponentInChildren<EventTrigger>().enabled = false;
         this.commanderGridPopup.SetActive(true);
         string normalText = this.commanderGridInstructions.text;
         this.commanderGridInstructions.text = INTRO_GRID_INSTRUCTIONS;
@@ -177,12 +179,14 @@ public class MenuManager : MonoBehaviour
         // 4th msg : come fight me
         this.fbgBoth.SetActive(true);
         this.commanderGridPopup.SetActive(true);
+        isInGridIntro = false;
 
         DisplayIntroMessage(INTRO_FINAL_MSG);
         yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
 
         this.fbgBoth.SetActive(false);
         this.commandersGrid.GetComponentInChildren<Button>().enabled = true;
+        this.commandersGrid.GetComponentInChildren<EventTrigger>().enabled = true;
     }
 
     /// <summary>
