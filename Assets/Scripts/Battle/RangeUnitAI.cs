@@ -29,6 +29,8 @@ public class RangeUnitAI : UnitAI
     private bool isInShootingPosition;
     private bool goingRight;
 
+    private Coroutine shootingCoroutine;
+
     private void Start()
     {
         // sets how far the unit will have to go to be in shooting position
@@ -61,7 +63,7 @@ public class RangeUnitAI : UnitAI
                     }
                     else
                     {
-                        StartCoroutine(ShootTarget(1.25f));
+                        shootingCoroutine = StartCoroutine(ShootTarget(1.25f));
                         isInShootingPosition = true;
                     }
                 }
@@ -71,6 +73,7 @@ public class RangeUnitAI : UnitAI
             {
                 if (!base.turnedBack)
                 {
+                    StopCoroutine(shootingCoroutine);
                     base.TurnBack();
                 }
                 base.Move(base.spawnPos);

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// Handles the AI of melee units during a units fight.
@@ -12,6 +14,10 @@ using UnityEngine;
 /// </summary>
 public class MeleeUnitAI : UnitAI
 {
+    [Header("Melee SFX")]
+    public AudioClip[] hitArmoredTargetClips;
+    public AudioClip[] hitFleshTargetClips;
+
     private void Update()
     {
         // unit only does something if alive, makes sens right?
@@ -48,26 +54,38 @@ public class MeleeUnitAI : UnitAI
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Knight wins
-        if (this.transform.CompareTag("Knight") && (collision.transform.CompareTag("Archer") || collision.transform.CompareTag("Mage")))
+        if (this.transform.parent != collision.transform.parent)
         {
-            collision.gameObject.GetComponent<UnitAI>().Die();
+            PlaySFXFromCollision(collision);
+            ActFromCollisionAfterSFX(collision);
         }
-        // Spearman wins
-        else if (this.transform.CompareTag("Spearman") && (collision.transform.CompareTag("Knight") || collision.transform.CompareTag("Shield")))
+    }
+
+    private void PlaySFXFromCollision(Collider2D collision)
+    {
+        // sword hits armor
+        if (collision.CompareTag("Knight") || collision.CompareTag("Shield") || collision.CompareTag("Spearman"))
         {
-            collision.gameObject.GetComponent<UnitAI>().Die();
+            audioSource.clip = hitArmoredTargetClips[Random.Range(0, hitArmoredTargetClips.Length)];
+            audioSource.Play();
         }
-        // Shield wins
-        else if (this.transform.CompareTag("Shield") && (collision.transform.CompareTag("Knight") || collision.transform.CompareTag("Archer")))
+        // sword hits flesh
+        else if (collision.CompareTag("Archer") || collision.CompareTag("Mage"))
         {
-            collision.gameObject.GetComponent<UnitAI>().Die();
+            audioSource.clip = hitFleshTargetClips[Random.Range(0, hitFleshTargetClips.Length)];
+            audioSource.Play();
         }
-        // DRAW
-        else if (this.transform.CompareTag(collision.transform.tag) && this.transform.parent != collision.transform.parent)
+    }
+
+    private void ActFromCollisionAfterSFX(Collider2D collision)
+    {
+        // Knight/spearman/shield WINS
+        if ((this.transform.CompareTag("Knight") && (collision.transform.CompareTag("Archer") || collision.transform.CompareTag("Mage"))) // knight wins
+         || (this.transform.CompareTag("Spearman") && (collision.transform.CompareTag("Knight") || collision.transform.CompareTag("Shield"))) // spearman wins
+         || (this.transform.CompareTag("Shield") && (collision.transform.CompareTag("Knight") || collision.transform.CompareTag("Archer"))) // shield wins
+         || this.transform.CompareTag(collision.transform.tag)) // draw
         {
             collision.gameObject.GetComponent<UnitAI>().Die();
-            base.Die();
         }
     }
 }

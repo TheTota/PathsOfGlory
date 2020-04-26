@@ -21,6 +21,8 @@ public class UnitAI : MonoBehaviour
     protected UnitAI targetEnemy;
     protected Vector3 targetPos;
 
+    protected AudioSource audioSource;
+
     // units movement and hop effect (better looking than linear movement)
     protected float speed;
     protected float hopFrequency = 30f;
@@ -43,6 +45,7 @@ public class UnitAI : MonoBehaviour
     {
         spawnPos = this.transform.position;
         turnedBack = false;
+        audioSource = GetComponent<AudioSource>();
 
         if (ut == UnitType.Knights)
         {
