@@ -15,6 +15,7 @@ public class UnitAI : MonoBehaviour
 
     // useful infos
     public bool IsAlive { get; set; }
+    protected Vector3 spawnPos;
     protected UnitsFightManager unitsFightMgr;
     protected UnitType ut;
     protected UnitAI targetEnemy;
@@ -24,6 +25,7 @@ public class UnitAI : MonoBehaviour
     protected float speed;
     protected float hopFrequency = 30f;
     protected float hopMagnitude = .01f;
+    protected bool turnedBack;
 
     // units move speed constants
     private const float SPEARMAN_SPEED = 2f;
@@ -39,6 +41,9 @@ public class UnitAI : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        spawnPos = this.transform.position;
+        turnedBack = false;
+
         if (ut == UnitType.Knights)
         {
             speed = KNIGHT_SPEED;
@@ -101,6 +106,28 @@ public class UnitAI : MonoBehaviour
     public void SetTargetPos(Vector3 target)
     {
         this.targetPos = target;
+    }
+
+    /// <summary>
+    /// Turns the unit around and makes it go faster!
+    /// </summary>
+    protected void TurnBack()
+    {
+        transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
+        turnedBack = true;
+        speed *= 1.5f;
+        hopFrequency *= 1.5f;
+    }
+
+    /// <summary>
+    /// Moves the unit towards a target position, while apply a "hop" effect.
+    /// </summary>
+    protected void Move(Vector3 target)
+    {
+        // Move our position a step closer to the target.
+        float step = speed * Time.deltaTime; // calculate distance to move
+        Vector3 pos = Vector2.MoveTowards(transform.position, target, step);
+        transform.position = pos + transform.up * Mathf.Sin(Time.time * hopFrequency) * hopMagnitude;
     }
 
     /// <summary>

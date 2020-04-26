@@ -14,33 +14,32 @@ public class MeleeUnitAI : UnitAI
 {
     private void Update()
     {
-        // Demo mode : walk towards a certain point
-        if (DemoMode)
+        // unit only does something if alive, makes sens right?
+        if (base.IsAlive)
         {
-            Move(base.targetPos);
-            if (this.transform.position.x >= base.targetPos.x)
+            // Demo mode : walk towards a certain point
+            if (DemoMode)
             {
-                Destroy(this.gameObject);
+                base.Move(base.targetPos);
+                if (this.transform.position.x >= base.targetPos.x)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            // Fight mode : walk towards and enemy target
+            else if (base.targetEnemy.IsAlive) // if we're alive and enemy target is alive
+            {
+                base.Move(base.targetEnemy.transform.position);
+            }
+            else if (base.unitsFightMgr.playerUnitAIs.Count == 0 || base.unitsFightMgr.enemyUnitAIs.Count == 0)
+            {
+                if (!base.turnedBack)
+                {
+                    base.TurnBack();
+                }
+                base.Move(base.spawnPos);
             }
         }
-        // Fight mode : walk towards and enemy target
-        else if (base.targetEnemy.IsAlive && base.IsAlive) // if we're alive and enemy target is alive
-        {
-            Move(base.targetEnemy.transform.position);
-        }
-    }
-
-
-
-    /// <summary>
-    /// Moves the unit towards its target, while applying a hop effect.
-    /// </summary>
-    private void Move(Vector3 target)
-    {
-        // Move our position a step closer to the target.
-        float step = base.speed * Time.deltaTime; // calculate distance to move
-        Vector3 pos = Vector2.MoveTowards(transform.position, target, step);
-        transform.position = pos + transform.up * Mathf.Sin(Time.time * base.hopFrequency) * base.hopMagnitude;
     }
 
     /// <summary>

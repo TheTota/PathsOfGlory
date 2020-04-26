@@ -6,6 +6,7 @@ using UnityEngine;
 /// Script associated to a projectile sent by a range unit during a units fight.
 /// It handles the movement of the projectile, as well as its collision.
 /// </summary>
+[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class UnitProjectile : MonoBehaviour
 {
     [SerializeField]
@@ -16,6 +17,7 @@ public class UnitProjectile : MonoBehaviour
     // physics vars for projectile movement
     private float projectileSpeed = 30f;
     private Rigidbody2D rb2d;
+    private BoxCollider2D bc2d;
 
     // useful vars for projectile behaviours
     public UnitType ProjectileOrigin { get; set; }
@@ -24,6 +26,8 @@ public class UnitProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bc2d = GetComponent<BoxCollider2D>();
+
         // make the mage's fireballs slower than the arrows
         if (ProjectileOrigin == UnitType.Mages)
         {
@@ -36,7 +40,7 @@ public class UnitProjectile : MonoBehaviour
         shotTime = Time.time;
 
         // auto destroy it in a bit 
-        Destroy(this.gameObject, 1.5f);
+        Destroy(this.gameObject, 3f);
     }
 
     /// <summary>
@@ -47,8 +51,10 @@ public class UnitProjectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Wait for the projectile to be out of its own unit's collider
-        if (Time.time - shotTime >= .1f) 
+        if (Time.time - shotTime >= .1f)
         {
+            this.bc2d.enabled = false;
+
             // ARCHER SHOOTING
             if (ProjectileOrigin == UnitType.Archers)
             {
@@ -81,16 +87,14 @@ public class UnitProjectile : MonoBehaviour
                     targetEffectiveHitSound.Play();
 
                     collision.transform.GetComponent<UnitAI>().Die();
-                    Destroy(this.gameObject);
                 }
                 else // MAGE NOT MEANT TO WIN
                 {
                     // play fail hit sound
                     targetIneffectiveHitSound.Play();
-
-                    // kill fireball
-                    Destroy(this.gameObject);
                 }
+
+                transform.Find("GFX").GetComponent<SpriteRenderer>().enabled = false;
             }
         }
     }

@@ -43,24 +43,37 @@ public class RangeUnitAI : UnitAI
     // Update is called once per frame
     void Update()
     {
-        if (!isInShootingPosition && base.IsAlive) // check to only start the ShootTarget coroutine once
+        // unit only does something if alive, makes sens right?
+        if (base.IsAlive)
         {
-            // if we haven't reached target pos, keep moving
-            if (transform.position.x != rangeUnitTargetPos.x)
+            if (!isInShootingPosition) // check to only start the ShootTarget coroutine once
             {
-                Move();
-            }
-            else // once target pos is reached, start the target shooting coroutine 
+                // if we haven't reached target pos, keep moving
+                if (transform.position.x != rangeUnitTargetPos.x)
+                {
+                    base.Move(rangeUnitTargetPos);
+                }
+                else // once target pos is reached, start the target shooting coroutine 
+                {
+                    if (DemoMode)
+                    {
+                        Destroy(this.gameObject);
+                    }
+                    else
+                    {
+                        StartCoroutine(ShootTarget(1.25f));
+                        isInShootingPosition = true;
+                    }
+                }
+            } 
+            // if all targets are dead, turn back
+            else if (base.unitsFightMgr.playerUnitAIs.Count == 0 || base.unitsFightMgr.enemyUnitAIs.Count == 0)
             {
-                if (DemoMode)
+                if (!base.turnedBack)
                 {
-                    Destroy(this.gameObject);
+                    base.TurnBack();
                 }
-                else
-                {
-                    StartCoroutine(ShootTarget(1.25f));
-                    isInShootingPosition = true;
-                }
+                base.Move(base.spawnPos);
             }
         }
     }
@@ -98,24 +111,13 @@ public class RangeUnitAI : UnitAI
     }
 
     /// <summary>
-    /// Moves the unit towards a target position, while apply a "hop" effect.
-    /// </summary>
-    private void Move()
-    {
-        // Move our position a step closer to the target.
-        float step = base.speed * Time.deltaTime; // calculate distance to move
-        Vector3 pos = Vector2.MoveTowards(transform.position, rangeUnitTargetPos, step);
-        transform.position = pos + transform.up * Mathf.Sin(Time.time * base.hopFrequency) * base.hopMagnitude;
-    }
-
-    /// <summary>
     /// Waits a bit and handles the periodic shooting.
     /// </summary>
     /// <param name="delayBetweenShots"></param>
     /// <returns></returns>
     private IEnumerator ShootTarget(float delayBetweenShots)
     {
-        yield return new WaitForSeconds(Random.Range(.5f,1f));
+        yield return new WaitForSeconds(Random.Range(.5f, 1f));
         while (this.targetEnemy.IsAlive && base.IsAlive) // if we're alive and enemy target is alive
         {
             Shoot();

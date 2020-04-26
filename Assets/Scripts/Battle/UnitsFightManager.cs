@@ -226,7 +226,7 @@ public class UnitsFightManager : MonoBehaviour
         // check if battle is over
         if (this.playerUnitAIs.Count == 0 || this.enemyUnitAIs.Count == 0)
         {
-            StartCoroutine(EndFightAfterDelay(1f));
+            StartCoroutine(EndFightAfterDelay(2f));
         }
     }
 
