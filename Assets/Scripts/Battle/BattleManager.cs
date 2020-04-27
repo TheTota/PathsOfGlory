@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// Inits and manages the course of a battle!
@@ -93,6 +94,12 @@ public class BattleManager : MonoBehaviour
     private Image enemySeal;
     [SerializeField]
     private TextMeshProUGUI enemyNameNearSealText;
+    [SerializeField]
+    private AudioSource reactionsAS;
+    [SerializeField]
+    private AudioClip[] messageOpenSFX;
+    [SerializeField]
+    private AudioClip[] messageCloseSFX;
 
     // Player units pick
     private bool playerAllowedToPick;
@@ -436,17 +443,16 @@ public class BattleManager : MonoBehaviour
         enemyDialogText.text = line;
         enemyDialogPanel.SetActive(true);
 
-        // Replaces WaitForSeconds, but allows to stop it with a bool condition
-        for (float timer = line.Length; timer >= 0; timer -= Time.deltaTime)
-        {
-            if (skipReactionLine)
-            {
-                skipReactionLine = false;
-                yield break;
-            }
-            yield return null;
-        }
+        // play open msg SFX
+        reactionsAS.clip = this.messageOpenSFX[Random.Range(0, this.messageOpenSFX.Length)];
+        reactionsAS.Play();
 
+        yield return new WaitUntil(() => skipReactionLine);
+        skipReactionLine = false;
+
+        // play close msg SFX
+        reactionsAS.clip = this.messageCloseSFX[Random.Range(0, this.messageCloseSFX.Length)];
+        reactionsAS.Play();
         enemyDialogPanel.SetActive(false);
     }
 
