@@ -9,6 +9,10 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class UnitAI : MonoBehaviour
 {
+    [Header("Fight shouts")]
+    public AudioSource shoutsAudioSource;
+    public AudioClip[] preFightShouts;
+    public AudioClip[] postFightShouts;
     [Header("Unit death")]
     public GameObject[] limbs;
     public GameObject[] limbsDead;
@@ -21,7 +25,7 @@ public class UnitAI : MonoBehaviour
     protected UnitAI targetEnemy;
     protected Vector3 targetPos;
 
-    protected AudioSource audioSource;
+    protected AudioSource fightAudioSource;
 
     // units movement and hop effect (better looking than linear movement)
     protected float speed;
@@ -36,6 +40,8 @@ public class UnitAI : MonoBehaviour
     private const float MAGE_SPEED = 3f;
     private const float ARCHER_SPEED = 3f;
 
+    private const float SHOUT_PROBABILITY = .2f;
+
     public bool DemoMode { get; internal set; }
 
     /// <summary>
@@ -45,7 +51,7 @@ public class UnitAI : MonoBehaviour
     {
         spawnPos = this.transform.position;
         turnedBack = false;
-        audioSource = GetComponent<AudioSource>();
+        fightAudioSource = GetComponent<AudioSource>();
 
         if (ut == UnitType.Knights)
         {
@@ -95,6 +101,13 @@ public class UnitAI : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(minSecBound, maxSecBound));
         this.IsAlive = true;
+
+        // mae some units shout pre fight
+        if (Random.Range(0f, 1f) <= SHOUT_PROBABILITY)
+        {
+            shoutsAudioSource.clip = this.preFightShouts[Random.Range(0, this.preFightShouts.Length)];
+            shoutsAudioSource.Play();
+        }
     }
 
     public void SetTargetEnemy(UnitAI target)
@@ -120,6 +133,13 @@ public class UnitAI : MonoBehaviour
         turnedBack = true;
         speed *= 1.5f;
         hopFrequency *= 1.5f;
+
+        // make some units shout post fight
+        if (Random.Range(0f, 1f) <= SHOUT_PROBABILITY)
+        {
+            shoutsAudioSource.clip = this.postFightShouts[Random.Range(0, this.postFightShouts.Length)];
+            shoutsAudioSource.Play();
+        }
     }
 
     /// <summary>

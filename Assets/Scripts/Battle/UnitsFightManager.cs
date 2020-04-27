@@ -13,6 +13,12 @@ public class UnitsFightManager : MonoBehaviour
     [SerializeField]
     private BattleManager bm;
 
+    [Header("Global Battle Sounds")]
+    [SerializeField]
+    private AudioSource mainMusic;
+    [SerializeField]
+    private AudioSource fightDrums;
+
     [Header("Units Instanciation")]
     [SerializeField]
     private GameObject archerPrefab;
@@ -42,6 +48,9 @@ public class UnitsFightManager : MonoBehaviour
 
     private Camera mainCam;
 
+    private float lowMainMusicVol;
+    private float normalMainMusicVol;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +58,11 @@ public class UnitsFightManager : MonoBehaviour
         if (introMode)
         {
             StartCoroutine(StartIntroMode());
+        }
+        else // if not in intro, set min and max volumes for music, used to switch it up during unit fights
+        {
+            normalMainMusicVol = mainMusic.volume;
+            lowMainMusicVol = mainMusic.volume / 2f;
         }
     }
 
@@ -100,7 +114,7 @@ public class UnitsFightManager : MonoBehaviour
 
             this.playerUnitAIs.Add(InstantiateUnit(true, true, GameManager.Instance.Player.Color, unitTypeToSpawn, yInc, yIncMultiplicator, -170f, xSpacer, playerUnitsParent));
             this.playerUnitAIs[i].SetTargetPos(new Vector3(mainCam.ScreenToWorldPoint(new Vector3(Screen.width + 500f, 0f, 0f)).x, this.playerUnitAIs[i].transform.position.y, 1f));
-            
+
             xSpacer += 1.3f;
         }
     }
@@ -113,6 +127,8 @@ public class UnitsFightManager : MonoBehaviour
     public void StartUnitsFight(UnitType playerUnit, UnitType enemyUnit)
     {
         this.FightIsOver = false;
+
+        SwitchBattleSoundsMode();
 
         // init vars
         int unitsAmount = 6;
@@ -138,6 +154,25 @@ public class UnitsFightManager : MonoBehaviour
         }
 
         AttributeTargets();
+    }
+
+    /// <summary>
+    /// Handles global sounds switching when units fights starts and ends.
+    /// </summary>
+    /// <param name="fightActive"></param>
+    private void SwitchBattleSoundsMode()
+    {
+        // fight starts
+        if (!this.FightIsOver)
+        {
+            this.mainMusic.volume = this.lowMainMusicVol;
+            this.fightDrums.Play();
+        }
+        else // fight ends
+        {
+            this.mainMusic.volume = this.normalMainMusicVol;
+            this.fightDrums.Stop();
+        }
     }
 
     /// <summary>
@@ -239,6 +274,7 @@ public class UnitsFightManager : MonoBehaviour
     {
         yield return new WaitForSeconds(s);
         this.FightIsOver = true;
+        SwitchBattleSoundsMode();
 
         ClearField();
     }

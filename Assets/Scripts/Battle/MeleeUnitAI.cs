@@ -66,14 +66,14 @@ public class MeleeUnitAI : UnitAI
         // sword hits armor
         if (collision.CompareTag("Knight") || collision.CompareTag("Shield") || collision.CompareTag("Spearman"))
         {
-            audioSource.clip = hitArmoredTargetClips[Random.Range(0, hitArmoredTargetClips.Length)];
-            audioSource.Play();
+            fightAudioSource.clip = hitArmoredTargetClips[Random.Range(0, hitArmoredTargetClips.Length)];
+            fightAudioSource.Play();
         }
         // sword hits flesh
         else if (collision.CompareTag("Archer") || collision.CompareTag("Mage"))
         {
-            audioSource.clip = hitFleshTargetClips[Random.Range(0, hitFleshTargetClips.Length)];
-            audioSource.Play();
+            fightAudioSource.clip = hitFleshTargetClips[Random.Range(0, hitFleshTargetClips.Length)];
+            fightAudioSource.Play();
         }
     }
 
@@ -86,6 +86,10 @@ public class MeleeUnitAI : UnitAI
          || this.transform.CompareTag(collision.transform.tag)) // draw
         {
             collision.gameObject.GetComponent<UnitAI>().Die();
+        }
+        else if (collision.transform.CompareTag("Mage") || collision.transform.CompareTag("Archer")) 
+        {
+            this.gameObject.GetComponent<UnitAI>().Die();
         }
     }
 }

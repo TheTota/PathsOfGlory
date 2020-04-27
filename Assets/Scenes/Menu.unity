@@ -3251,6 +3251,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bm: {fileID: 0}
+  mainMusic: {fileID: 0}
+  fightDrums: {fileID: 0}
   archerPrefab: {fileID: 2452395991669127364, guid: d6fcd0c1538419648851a89db28c35e7,
     type: 3}
   knightPrefab: {fileID: 2524595155055774964, guid: 860f0c7ee7d894b4689a53900283938c,
