@@ -585,6 +585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 329528982}
   - component: {fileID: 329528983}
+  - component: {fileID: 329528984}
   m_Layer: 5
   m_Name: PortraitCustomizer
   m_TagString: Untagged
@@ -636,6 +637,25 @@ MonoBehaviour:
   skinToneBtnParent: {fileID: 173437246}
   skinToneBtnPrefab: {fileID: 3074391505665544245, guid: 0d5104281389fd8418b0aa0b78d59879,
     type: 3}
+--- !u!95 &329528984
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329528981}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15bfc38552aeaf640bf5a3ca0603c4c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &376623148
 GameObject:
   m_ObjectHideFlags: 0

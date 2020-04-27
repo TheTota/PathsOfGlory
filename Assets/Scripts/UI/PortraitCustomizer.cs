@@ -44,6 +44,13 @@ public class PortraitCustomizer : MonoBehaviour
 
     private bool skinTonesBtnsGenerated;
 
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     private void OnEnable()
     {
         if (!skinTonesBtnsGenerated)
@@ -168,6 +175,14 @@ public class PortraitCustomizer : MonoBehaviour
 
         // Go back to menu
         mainMenuUI.SetActive(true);
+
+        animator.Play("PortraitCustomizerClose");
+        StartCoroutine(SetWindowUnactiveAfterDelay(animator.runtimeAnimatorController.animationClips[0].length));
+    }
+
+    private IEnumerator SetWindowUnactiveAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         this.gameObject.SetActive(false);
     }
 
