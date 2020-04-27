@@ -60,6 +60,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private GameObject creditsPanel;
 
+    [Header("SFX")]
+    [SerializeField]
+    private AudioSource pressKeySwooshSFX;
+
 
     // Intro texts 
     private const string INTRO_GAME_MSG = "<size=120%><b>Bienvenue dans la Ligue des Commandants d'Elite de l'Empire.</b></size>\n\nIl s'agit d'une compétition entre nos plus fins stratèges permettant de déterminer le meilleur commandant de l'Empire.\n\nVos exploits passés ont impressionné l'Empereur en personne, qui vous invite à rejoindre la Ligue en tant que challenger.";
@@ -91,10 +95,19 @@ public class MenuManager : MonoBehaviour
         // handle that "press any key" thing
         if (isInTitleScreen && Input.anyKeyDown)
         {
-            GoToMainMenu();
-            isInTitleScreen = false;
-            GameManager.Instance.GameHasBeenInit = true;
+            StartCoroutine(DoPressAnyKeyAction());
         }
+    }
+
+    private IEnumerator DoPressAnyKeyAction()
+    {
+        isInTitleScreen = false;
+        this.pressKeySwooshSFX.Play();
+
+        yield return new WaitForSeconds(.1f);
+
+        GoToMainMenu();
+        GameManager.Instance.GameHasBeenInit = true;
     }
 
     /// <summary>
