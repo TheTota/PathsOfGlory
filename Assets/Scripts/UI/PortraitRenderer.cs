@@ -64,8 +64,8 @@ public class PortraitRenderer : MonoBehaviour
             {
                 winsText.gameObject.SetActive(true);
                 lossText.gameObject.SetActive(true);
-                winsText.text = "W" + commander.WinsCount;
-                lossText.text = "L" + commander.LossesCount;
+                winsText.text = "V" + commander.WinsCount;
+                lossText.text = "D" + commander.LossesCount;
             }
 
             // enable btn audio
