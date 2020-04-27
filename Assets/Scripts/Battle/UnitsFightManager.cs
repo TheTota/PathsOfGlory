@@ -212,7 +212,7 @@ public class UnitsFightManager : MonoBehaviour
         }
 
         // color the sprite
-        instUnit.transform.Find("Body").GetComponent<SpriteRenderer>().color = unitColor;
+        instUnit.transform.Find("GFX").Find("Body").GetComponent<SpriteRenderer>().color = unitColor;
 
         // init the ai script 
         instUnit.GetComponent<UnitAI>().Init(this, ut, isDemoMode);
