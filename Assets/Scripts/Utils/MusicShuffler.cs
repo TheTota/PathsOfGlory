@@ -33,6 +33,7 @@ public class MusicShuffler : MonoBehaviour
 
             // wait until music is done
             yield return new WaitUntil(() => !audioSource.isPlaying);
+            Debug.Log("Next music");
             i++;
         }
     }
