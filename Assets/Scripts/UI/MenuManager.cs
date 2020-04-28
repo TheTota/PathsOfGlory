@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
     private GameObject titleUI;
     [SerializeField]
     private GameObject mainMenuUI;
+    private Animator mainMenuAnimator;
     [SerializeField]
     private GameObject portraitCustomizerPopup;
 
@@ -70,6 +71,8 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        mainMenuAnimator = this.mainMenuUI.GetComponent<Animator>();
+
         // skip title screen if not first time on scene
         if (GameManager.Instance.GameHasBeenInit)
         {
@@ -121,20 +124,26 @@ public class MenuManager : MonoBehaviour
         RenderPlayerPortrait();
         RenderCommandersGrid();
 
-        mainMenuUI.SetActive(true);
         if (GameManager.Instance.FirstStart) // cas premier lancement => intro/tuto
         {
+            mainMenuUI.SetActive(true);
+            mainMenuAnimator.SetBool("IntroMode", true);
+
             introTextPanelAnimator = this.introTextPanel.GetComponent<Animator>();
             StartCoroutine(HandleFirstStart());
             GameManager.Instance.FirstStart = false;
         }
         else if (GameManager.Instance.JustCompletedGame)
         {
+            mainMenuUI.SetActive(true);
+
             StartCoroutine(HandleGGScreens());
             GameManager.Instance.JustCompletedGame = false;
         }
         else
         {
+            mainMenuUI.SetActive(true);
+
             this.playerCommanderTopLeft.SetActive(true);
             this.commanderGridPopup.SetActive(true);
         }
@@ -160,11 +169,14 @@ public class MenuManager : MonoBehaviour
         this.commandersGrid.GetComponentInChildren<Button>().enabled = false;
         this.commandersGrid.GetComponentInChildren<EventTrigger>().enabled = false;
         this.commanderGridPopup.SetActive(true);
+        mainMenuAnimator.Play("MainMenuCommandersGrid");
+
         string normalText = this.commanderGridInstructions.text;
         this.commanderGridInstructions.text = INTRO_GRID_INSTRUCTIONS;
 
-        isInGridIntro = true;
-        yield return new WaitUntil(() => !this.commanderGridPopup.activeInHierarchy); // wait until grid popup is unactive
+        isInGridIntro = true; 
+         yield return new WaitUntil(() => this.mainMenuAnimator.GetBool("CloseGridPopup")); // wait until grid popup is unactive
+        yield return new WaitForSeconds(this.mainMenuAnimator.runtimeAnimatorController.animationClips[2].length);
 
         this.commanderGridInstructions.text = normalText;
         this.commanderGridPopup.SetActive(false);
@@ -176,19 +188,23 @@ public class MenuManager : MonoBehaviour
 
         // display player commander + 3rd msg : player commander
         this.playerCommanderTopLeft.SetActive(true);
+        mainMenuAnimator.Play("MainMenuCommanderBtn");
 
         DisplayIntroMessage(INTRO_MY_COMMANDER_MSG);
         yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
         yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
         // 4th msg : come fight me
-        isInGridIntro = false;
+        isInGridIntro = false; 
 
         DisplayIntroMessage(INTRO_FINAL_MSG);
         yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
         yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
         this.commanderGridPopup.SetActive(true);
+        mainMenuAnimator.Play("MainMenuCommandersGrid");
+        mainMenuAnimator.SetBool("IntroMode", false);
+
         this.commandersGrid.GetComponentInChildren<Button>().enabled = true;
         this.commandersGrid.GetComponentInChildren<EventTrigger>().enabled = true;
     }
@@ -234,7 +250,7 @@ public class MenuManager : MonoBehaviour
     {
         if (isInGridIntro)
         {
-            this.commanderGridPopup.SetActive(false);
+            this.mainMenuAnimator.SetBool("CloseGridPopup", true);
         }
     }
 
@@ -264,7 +280,6 @@ public class MenuManager : MonoBehaviour
     private void OpenPortraitCustomizer()
     {
         this.portraitCustomizerPopup.SetActive(true);
-        //this.mainMenuUI.SetActive(false);
     }
 
     /// <summary>

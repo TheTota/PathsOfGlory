@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MainMenuCommandersGrid
+  m_Name: MainMenuCommandersGridOpen
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -58,7 +58,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: CommandersGridPopup
+    path: CommandersGridPopup/SFXs/Open
     classID: 82
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -77,7 +77,7 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3650997975
+      path: 1174191682
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 82
@@ -205,7 +205,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: CommandersGridPopup
+    path: CommandersGridPopup/SFXs/Open
     classID: 82
     script: {fileID: 0}
   m_EulerEditorCurves: []
