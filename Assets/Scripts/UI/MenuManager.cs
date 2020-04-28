@@ -27,15 +27,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private RectTransform commandersGrid;
 
-    [Header("(First start) Focus Backgrounds")]
-    // black almost transparent backgrounds to focus on UI
-    [SerializeField]
-    private GameObject fbgPlayerCommander;
-    [SerializeField]
-    private GameObject fbgCommanderGrid;
-    [SerializeField]
-    private GameObject fbgBoth;
-
     [Header("(First start) Main UI Elements")]
     [SerializeField]
     private GameObject commanderGridPopup;
@@ -158,7 +149,6 @@ public class MenuManager : MonoBehaviour
         this.commanderNameText.text = GameManager.Instance.Enemies[0].CommanderName;
 
         // 1rst msg : intro to game
-        this.fbgCommanderGrid.SetActive(true);
         DisplayIntroMessage(INTRO_GAME_MSG);
         yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
 
@@ -180,24 +170,18 @@ public class MenuManager : MonoBehaviour
         yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
 
         // display player commander + 3rd msg : player commander
-        this.fbgCommanderGrid.SetActive(false);
-        this.fbgPlayerCommander.SetActive(true);
         this.playerCommanderTopLeft.SetActive(true);
 
         DisplayIntroMessage(INTRO_MY_COMMANDER_MSG);
         yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
 
-        this.fbgPlayerCommander.SetActive(false);
-
         // 4th msg : come fight me
-        this.fbgBoth.SetActive(true);
-        this.commanderGridPopup.SetActive(true);
         isInGridIntro = false;
 
         DisplayIntroMessage(INTRO_FINAL_MSG);
         yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
 
-        this.fbgBoth.SetActive(false);
+        this.commanderGridPopup.SetActive(true);
         this.commandersGrid.GetComponentInChildren<Button>().enabled = true;
         this.commandersGrid.GetComponentInChildren<EventTrigger>().enabled = true;
     }
