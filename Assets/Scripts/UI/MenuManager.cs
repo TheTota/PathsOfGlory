@@ -252,7 +252,7 @@ public class MenuManager : MonoBehaviour
     private void OpenPortraitCustomizer()
     {
         this.portraitCustomizerPopup.SetActive(true);
-        this.mainMenuUI.SetActive(false);
+        //this.mainMenuUI.SetActive(false);
     }
 
     /// <summary>
