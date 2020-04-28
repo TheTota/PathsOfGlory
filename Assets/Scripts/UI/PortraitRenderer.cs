@@ -38,6 +38,8 @@ public class PortraitRenderer : MonoBehaviour
     private TextMeshProUGUI lossText;
     [SerializeField]
     private EventTrigger btnSFXEventTrigger;
+    [SerializeField]
+    private GameObject gameCompletedMedal;
 
     /// <summary>
     /// Renders the portrait with the given values.
@@ -87,6 +89,12 @@ public class PortraitRenderer : MonoBehaviour
 
         // hide the face if commander is locked
         face.SetActive(!commander.Locked);
+
+        // display medal if player & completed game
+        if (commander == GameManager.Instance.Player && GameManager.Instance.CompletedGame)
+        {
+            this.gameCompletedMedal.SetActive(true);
+        }
     }
 
     /// <summary>
