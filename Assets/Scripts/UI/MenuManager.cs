@@ -16,7 +16,6 @@ public class MenuManager : MonoBehaviour
     private GameObject titleUI;
     [SerializeField]
     private GameObject mainMenuUI;
-    private Animator mainMenuAnimator;
     [SerializeField]
     private GameObject portraitCustomizerPopup;
 
@@ -39,7 +38,6 @@ public class MenuManager : MonoBehaviour
     [Header("(First start) Text Panel")]
     [SerializeField]
     private GameObject introTextPanel;
-    private Animator introTextPanelAnimator;
     [SerializeField]
     private TextMeshProUGUI introText;
     [SerializeField]
@@ -57,6 +55,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private AudioSource pressKeySwooshSFX;
 
+    private Animator mainMenuAnimator;
+    private Animator introTextPanelAnimator;
+    private Animator ggPanelAnimator;
+    private Animator creditsPanelAnimator;
 
     // Intro texts 
     private const string INTRO_GAME_MSG = "<size=120%><b>Bienvenue dans la Ligue des Commandants d'Elite de l'Empire.</b></size>\n\nIl s'agit d'une compétition entre nos plus fins stratèges permettant de déterminer le meilleur commandant de l'Empire.\n\nVos exploits passés ont impressionné l'Empereur en personne, qui vous invite à rejoindre la Ligue en tant que challenger.";
@@ -72,6 +74,8 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         mainMenuAnimator = this.mainMenuUI.GetComponent<Animator>();
+        ggPanelAnimator = ggPanel.GetComponent<Animator>();
+        creditsPanelAnimator = creditsPanel.GetComponent<Animator>();
 
         // skip title screen if not first time on scene
         if (GameManager.Instance.GameHasBeenInit)
@@ -135,8 +139,6 @@ public class MenuManager : MonoBehaviour
         }
         else if (GameManager.Instance.JustCompletedGame)
         {
-            mainMenuUI.SetActive(true);
-
             StartCoroutine(HandleGGScreens());
             GameManager.Instance.JustCompletedGame = false;
         }
@@ -214,6 +216,15 @@ public class MenuManager : MonoBehaviour
         introTextPanelAnimator.SetBool("Opened", false);
     }
 
+    public void HideGGPanel()
+    {
+        ggPanelAnimator.SetBool("Opened", false);
+    }
+    public void HideCreditsPanel()
+    {
+        creditsPanelAnimator.SetBool("Opened", false);
+    }
+
     /// <summary>
     /// Handles the display of gg letter from emperor and the credits.
     /// </summary>
@@ -222,13 +233,16 @@ public class MenuManager : MonoBehaviour
     {
         // display emperor's letter and wait for user to skip it 
         this.ggPanel.SetActive(true);
-        yield return new WaitUntil(() => !this.ggPanel.activeInHierarchy);
+        yield return new WaitUntil(() => !this.ggPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
+        yield return new WaitForSeconds(this.ggPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
         // display credits 
         this.creditsPanel.SetActive(true);
-        yield return new WaitUntil(() => !this.creditsPanel.activeInHierarchy);
+        yield return new WaitUntil(() => !this.creditsPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
+        yield return new WaitForSeconds(this.creditsPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
         // return to normal menu
+        mainMenuUI.SetActive(true);
         this.playerCommanderTopLeft.SetActive(true);
         this.commanderGridPopup.SetActive(true);
     }
