@@ -38,6 +38,7 @@ public class MenuManager : MonoBehaviour
     [Header("(First start) Text Panel")]
     [SerializeField]
     private GameObject introTextPanel;
+    private Animator introTextPanelAnimator;
     [SerializeField]
     private TextMeshProUGUI introText;
     [SerializeField]
@@ -123,6 +124,7 @@ public class MenuManager : MonoBehaviour
         mainMenuUI.SetActive(true);
         if (GameManager.Instance.FirstStart) // cas premier lancement => intro/tuto
         {
+            introTextPanelAnimator = this.introTextPanel.GetComponent<Animator>();
             StartCoroutine(HandleFirstStart());
             GameManager.Instance.FirstStart = false;
         }
@@ -149,8 +151,10 @@ public class MenuManager : MonoBehaviour
         this.commanderNameText.text = GameManager.Instance.Enemies[0].CommanderName;
 
         // 1rst msg : intro to game
+        this.introTextPanel.SetActive(true);
         DisplayIntroMessage(INTRO_GAME_MSG);
-        yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
+        yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
+        yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
         // display commander grid
         this.commandersGrid.GetComponentInChildren<Button>().enabled = false;
@@ -167,23 +171,31 @@ public class MenuManager : MonoBehaviour
 
         // 2nd msg : commander grid
         DisplayIntroMessage(INTRO_GRID_MSG);
-        yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
+        yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
+        yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
         // display player commander + 3rd msg : player commander
         this.playerCommanderTopLeft.SetActive(true);
 
         DisplayIntroMessage(INTRO_MY_COMMANDER_MSG);
-        yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
+        yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
+        yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
         // 4th msg : come fight me
         isInGridIntro = false;
 
         DisplayIntroMessage(INTRO_FINAL_MSG);
-        yield return new WaitUntil(() => !this.introTextPanel.activeInHierarchy); // wait until user skips msg with a clic
+        yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
+        yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
         this.commanderGridPopup.SetActive(true);
         this.commandersGrid.GetComponentInChildren<Button>().enabled = true;
         this.commandersGrid.GetComponentInChildren<EventTrigger>().enabled = true;
+    }
+
+    public void HideIntroTextPanel()
+    {
+        introTextPanelAnimator.SetBool("Opened", false);
     }
 
     /// <summary>
@@ -212,7 +224,7 @@ public class MenuManager : MonoBehaviour
     private void DisplayIntroMessage(string msg)
     {
         this.introText.text = msg;
-        this.introTextPanel.SetActive(true);
+        introTextPanelAnimator.SetBool("Opened", true);
     }
 
     /// <summary>
