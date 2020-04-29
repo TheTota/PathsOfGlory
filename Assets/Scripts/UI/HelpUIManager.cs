@@ -5,10 +5,11 @@ using UnityEngine;
 public class HelpUIManager : MonoBehaviour
 {
     public GameObject unitsRecapPanel;
+    public Animator helperAnimator;
 
     public void SwitchUnitsRecapUIVisibility()
     {
-        unitsRecapPanel.SetActive(!unitsRecapPanel.activeInHierarchy);
+        helperAnimator.SetBool("Opened", !helperAnimator.GetBool("Opened"));
     }
 
 }
