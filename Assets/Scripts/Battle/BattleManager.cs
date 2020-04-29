@@ -505,10 +505,30 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            this.scoreSlider.value = (float)PlayerBC.Score / ((float)PlayerBC.Score + (float)EnemyBC.Score);
+            //this.scoreSlider.value = (float)PlayerBC.Score / ((float)PlayerBC.Score + (float)EnemyBC.Score);
+            float targetValue = (float)PlayerBC.Score / ((float)PlayerBC.Score + (float)EnemyBC.Score);
+            StartCoroutine(SmoothlyUpdateScore(targetValue));
             this.playerScoreText.text = PlayerBC.Score.ToString();
             this.enemyScoreText.text = EnemyBC.Score.ToString();
         }
+    }
+
+    private IEnumerator SmoothlyUpdateScore(float targetValue)
+    {
+        float startValue = this.scoreSlider.value;
+        float t = 0.0f;
+
+        while (this.scoreSlider.value != targetValue)
+        {
+            float newValue = Mathf.Lerp(startValue, targetValue, t);
+            this.scoreSlider.value = newValue;
+
+            t += 3f * Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return null;
     }
 
     /// <summary>

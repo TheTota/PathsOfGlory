@@ -47,7 +47,13 @@ public class PostBattleHandler : MonoBehaviour
     private PortraitRenderer unlockedCommanderPR;
     [SerializeField]
     private PortraitRenderer unlockedElementPR;
+
+    [Header("Audio")]
     [SerializeField]
+    private AudioSource victoryAS;
+    [SerializeField]
+    private AudioSource defeatAS;
+
 
     private void Awake()
     {
@@ -86,10 +92,12 @@ public class PostBattleHandler : MonoBehaviour
     {
         if (this.bm.BattleWinner == this.bm.PlayerBC)
         {
+            victoryAS.Play();
             resultText.text = "VICTOIRE";
         }
         else
         {
+            defeatAS.Play();
             resultText.text = "DEFAITE";
         }
     }
