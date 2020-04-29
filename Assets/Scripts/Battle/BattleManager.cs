@@ -101,6 +101,7 @@ public class BattleManager : MonoBehaviour
 
     // Animators
     private Animator enemyDialogAnimator;
+    private Animator unitsPickPopupAnimator;
 
     // Player units pick
     private bool playerAllowedToPick;
@@ -209,6 +210,7 @@ public class BattleManager : MonoBehaviour
         BattleWinner = null;
         UnlockedRewards = false;
         enemyDialogAnimator = this.enemyDialogPanel.GetComponent<Animator>();
+        unitsPickPopupAnimator = this.unitPickPopup.GetComponent<Animator>();
 
         // Init Player
         PlayerBC = (BattleCommander)playerPR.gameObject.AddComponent(typeof(BattleCommander));
@@ -262,11 +264,14 @@ public class BattleManager : MonoBehaviour
             // After some time, get the AI pick 
             timerRenderer.StartRenderingTimer(remainingTime);
             yield return new WaitUntil(() => remainingTime == 0f);
+            this.unitsPickPopupAnimator.SetBool("Opened", false);
+            yield return new WaitForSeconds(this.unitsPickPopupAnimator.runtimeAnimatorController.animationClips[0].length);
+            unitPickPopup.SetActive(false);
             timerRenderer.StopRenderingTimer();
 
             // Handle Player pick
             playerAllowedToPick = false;
-            unitPickPopup.SetActive(false);
+
             if (!playerHasPicked)
             {
                 Debug.Log("Player didn't pick or tried to pick something out of stock, sending random available unit");
@@ -288,7 +293,7 @@ public class BattleManager : MonoBehaviour
 
             // TODO: play fight animation instead
             this.unitsFightManager.StartUnitsFight(playerPickedUnit, aiPickedUnit);
-            yield return new WaitUntil(() => this.unitsFightManager.FightIsOver); // TODO: wait for fight to end
+            yield return new WaitUntil(() => this.unitsFightManager.FightIsOver);
 
             // Update score
             if (winner)
