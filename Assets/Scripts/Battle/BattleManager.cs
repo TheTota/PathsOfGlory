@@ -243,6 +243,7 @@ public class BattleManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Battle()
     {
+        yield return new WaitForSeconds(.5f);
         yield return StartCoroutine(DisplayPreBattleLine());
         // Display battle UI
         uiPlaysHistoryHandler.gameObject.SetActive(true);
@@ -268,9 +269,6 @@ public class BattleManager : MonoBehaviour
             yield return new WaitForSeconds(this.unitsPickPopupAnimator.runtimeAnimatorController.animationClips[0].length);
             unitPickPopup.SetActive(false);
             timerRenderer.StopRenderingTimer();
-
-            // Handle Player pick
-            playerAllowedToPick = false;
 
             if (!playerHasPicked)
             {
