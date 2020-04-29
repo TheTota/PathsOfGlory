@@ -95,11 +95,12 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI enemyNameNearSealText;
     [SerializeField]
-    private AudioSource reactionsAS;
+    private AudioSource enemyDialogCloseAS;
     [SerializeField]
-    private AudioClip[] messageOpenSFX;
-    [SerializeField]
-    private AudioClip[] messageCloseSFX;
+    private AudioClip[] enemyDialogCloseClips;
+
+    // Animators
+    private Animator enemyDialogAnimator;
 
     // Player units pick
     private bool playerAllowedToPick;
@@ -115,11 +116,6 @@ public class BattleManager : MonoBehaviour
 
     public BattleCommander BattleWinner { get; set; }
     public bool UnlockedRewards { get; set; }
-
-    /// <summary>
-    /// Indicates whether or not the reaction line should be skipped.
-    /// </summary>
-    private bool skipReactionLine;
 
     /// <summary>
     /// Gives the BC that won the round n at the index n-1.
@@ -212,6 +208,7 @@ public class BattleManager : MonoBehaviour
         RoundsWinnersHistory = new List<BattleCommander>();
         BattleWinner = null;
         UnlockedRewards = false;
+        enemyDialogAnimator = this.enemyDialogPanel.GetComponent<Animator>();
 
         // Init Player
         PlayerBC = (BattleCommander)playerPR.gameObject.AddComponent(typeof(BattleCommander));
@@ -444,15 +441,11 @@ public class BattleManager : MonoBehaviour
         enemyDialogPanel.SetActive(true);
 
         // play open msg SFX
-        reactionsAS.clip = this.messageOpenSFX[Random.Range(0, this.messageOpenSFX.Length)];
-        reactionsAS.Play();
-
-        yield return new WaitUntil(() => skipReactionLine);
-        skipReactionLine = false;
+        yield return new WaitUntil(() => !this.enemyDialogAnimator.GetBool("Opened")); // wait until user skips msg with a clic
+        yield return new WaitForSeconds(this.enemyDialogAnimator.runtimeAnimatorController.animationClips[0].length);
 
         // play close msg SFX
-        reactionsAS.clip = this.messageCloseSFX[Random.Range(0, this.messageCloseSFX.Length)];
-        reactionsAS.Play();
+        enemyDialogCloseAS.clip = this.enemyDialogCloseClips[Random.Range(0, this.enemyDialogCloseClips.Length)];
         enemyDialogPanel.SetActive(false);
     }
 
@@ -461,7 +454,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public void SkipReactionLine()
     {
-        skipReactionLine = true;
+        enemyDialogAnimator.SetBool("Opened", false);
     }
 
     /// <summary>
