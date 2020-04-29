@@ -82,6 +82,7 @@ public class BattleManager : MonoBehaviour
     private UnitsFightManager unitsFightManager;
 
     [Header("Plays History UI")]
+
     [SerializeField]
     private UIPlaysHistoryHandler uiPlaysHistoryHandler;
 
@@ -102,6 +103,7 @@ public class BattleManager : MonoBehaviour
     // Animators
     private Animator enemyDialogAnimator;
     private Animator unitsPickPopupAnimator;
+    private Animator playsHistoryAnimator;
 
     // Player units pick
     private bool playerAllowedToPick;
@@ -211,6 +213,7 @@ public class BattleManager : MonoBehaviour
         UnlockedRewards = false;
         enemyDialogAnimator = this.enemyDialogPanel.GetComponent<Animator>();
         unitsPickPopupAnimator = this.unitPickPopup.GetComponent<Animator>();
+        playsHistoryAnimator = this.uiPlaysHistoryHandler.gameObject.GetComponent<Animator>();
 
         // Init Player
         PlayerBC = (BattleCommander)playerPR.gameObject.AddComponent(typeof(BattleCommander));
@@ -285,11 +288,14 @@ public class BattleManager : MonoBehaviour
             EnemyBC.Army.RemoveUnitFromStock(aiPickedUnit);
 
             // Units fight
+            playsHistoryAnimator.SetBool("Opened", false);
+            yield return new WaitForSeconds(this.playsHistoryAnimator.runtimeAnimatorController.animationClips[0].length);
             uiPlaysHistoryHandler.gameObject.SetActive(false);
+
             BattleCommander winner = GetWinnerFromUnitsFight();
             unitsRecapPanel.SetActive(false);
 
-            // TODO: play fight animation instead
+            // Play fight animation instead
             this.unitsFightManager.StartUnitsFight(playerPickedUnit, aiPickedUnit);
             yield return new WaitUntil(() => this.unitsFightManager.FightIsOver);
 

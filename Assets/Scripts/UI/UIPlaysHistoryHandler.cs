@@ -11,9 +11,13 @@ public class UIPlaysHistoryHandler : MonoBehaviour
     private BattleManager battleManager;
 
     [SerializeField]
-    private RectTransform playerPlaysHistory;
+    private Image playerPlaysHistoryImg;
     [SerializeField]
-    private RectTransform enemyPlaysHistory;
+    private RectTransform playerPlaysParent;
+    [SerializeField]
+    private Image enemyPlaysHistoryImg;
+    [SerializeField]
+    private RectTransform enemyPlaysParent;
 
     [SerializeField]
     private GameObject playsHistoryItemPrefab;
@@ -37,10 +41,10 @@ public class UIPlaysHistoryHandler : MonoBehaviour
     {
         // set background color for player
         Color playerColor = battleManager.PlayerBC.Commander.Color;
-        playerPlaysHistory.GetComponent<Image>().color = new Color(playerColor.r, playerColor.g, playerColor.b, .4f);
+        playerPlaysHistoryImg.color = new Color(playerColor.r, playerColor.g, playerColor.b, .4f);
         // set background color for enemy
         Color enemyColor = battleManager.EnemyBC.Commander.Color;
-        enemyPlaysHistory.GetComponent<Image>().color = new Color(enemyColor.r, enemyColor.g, enemyColor.b, .4f);
+        enemyPlaysHistoryImg.color = new Color(enemyColor.r, enemyColor.g, enemyColor.b, .4f);
     }
 
     /// <summary>
@@ -52,22 +56,22 @@ public class UIPlaysHistoryHandler : MonoBehaviour
     public void RenderPlaysHistoryUI(UnitType playerUnit, UnitType enemyUnit, BattleCommander winner)
     {
         // Remove old items to make room
-        if (playerPlaysHistory.childCount == 8)
+        if (playerPlaysParent.childCount == 8)
         {
-            Destroy(playerPlaysHistory.GetChild(7).gameObject);
-            Destroy(enemyPlaysHistory.GetChild(7).gameObject);
+            Destroy(playerPlaysParent.GetChild(7).gameObject);
+            Destroy(enemyPlaysParent.GetChild(7).gameObject);
         }
 
         // if not a draw
         if (battleManager.PlayerBC == winner || battleManager.EnemyBC == winner)
         {
-            RenderPlayHistory(playerPlaysHistory, playerUnit, battleManager.PlayerBC == winner);
-            RenderPlayHistory(enemyPlaysHistory, enemyUnit, battleManager.EnemyBC == winner);
+            RenderPlayHistory(playerPlaysParent, playerUnit, battleManager.PlayerBC == winner);
+            RenderPlayHistory(enemyPlaysParent, enemyUnit, battleManager.EnemyBC == winner);
         }
         else // if draw
         {
-            RenderPlayHistory(playerPlaysHistory, playerUnit, false, true);
-            RenderPlayHistory(enemyPlaysHistory, enemyUnit, false, true);
+            RenderPlayHistory(playerPlaysParent, playerUnit, false, true);
+            RenderPlayHistory(enemyPlaysParent, enemyUnit, false, true);
         }
     }
 
