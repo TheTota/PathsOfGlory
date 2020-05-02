@@ -1116,8 +1116,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -5.6, y: -432.4}
-  m_SizeDelta: {x: 528.3, y: 369.3}
+  m_AnchoredPosition: {x: 4.3, y: -454.8}
+  m_SizeDelta: {x: 580.2, y: 399.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99971294
 MonoBehaviour:
@@ -1137,8 +1137,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.
+  m_text: "<b>Bienvenue sur le champs de bataille !</b>\\n\\nJe vous attendais commandant
+    !\\nNous allons nous affronter selon les r\xE8gles de la Ligue.\\n\\nJe vous
+    expliquerai celles-\xE7i tout au long de la bataille, alors commen\xE7ons."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b94a3fc999b18a43a16136e7f0b2af3, type: 2}
   m_sharedMaterial: {fileID: 6424746533781510342, guid: 1b94a3fc999b18a43a16136e7f0b2af3,
@@ -1182,7 +1183,7 @@ MonoBehaviour:
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0
+  m_wordWrappingRatios: 0.5
   m_overflowMode: 0
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
@@ -1208,12 +1209,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 99971294}
-    characterCount: 123
+    characterCount: 204
     spriteCount: 0
-    spaceCount: 18
-    wordCount: 19
+    spaceCount: 35
+    wordCount: 32
     linkCount: 0
-    lineCount: 4
+    lineCount: 8
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1743,7 +1744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -111.2, y: -680.2}
+  m_AnchoredPosition: {x: -111.2, y: -743}
   m_SizeDelta: {x: 135.7, y: 135.70001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &178626446
@@ -2755,8 +2756,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -527}
-  m_SizeDelta: {x: 787.8, y: 786.2}
+  m_AnchoredPosition: {x: 0, y: -553.8}
+  m_SizeDelta: {x: 884.4, y: 839.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &356348400
 MonoBehaviour:
@@ -8788,7 +8789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 114.2, y: -687.1}
+  m_AnchoredPosition: {x: 114.2, y: -749.89996}
   m_SizeDelta: {x: 315.1, y: 57.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1298501448

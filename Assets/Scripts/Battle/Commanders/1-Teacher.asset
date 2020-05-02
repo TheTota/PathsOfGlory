@@ -18,54 +18,67 @@ MonoBehaviour:
   AiType: 1
   PortraitElementToUnlock: {fileID: 11400000, guid: 1b80c1eda3055ae4e9b4b42fd74e1169,
     type: 2}
-  preBattleFirstTimeLine: "Bienvenue recrue, je vais vous former \xE0 l'art du commandement.
-    Cliquer sur les messages tels que celui-ci vous permettra de les passer. Bref,
-    que la bataille commence !"
+  preBattleFirstTimeLine: "<b>Bienvenue sur le champs de bataille !</b>\\n\\nJe vous
+    attendais commandant !\\nNous allons nous affronter selon les r\xE8gles de la
+    Ligue.\\n\\nJe vous expliquerai celles-ci tout au long de la bataille, alors
+    commen\xE7ons."
   preBattleWonLastLines:
-  - "Pr\xE9parez-vous recrue. N'oubliez pas qu'une fois que vous avez identifi\xE9
-    la strat\xE9gie de l'adversaire, vous serez en mesure de le contrer et le vaincre."
+  - "Content de vous revoir commandant.\\nSi vous voulez devenir le nouveau Grand
+    Champion de la Ligue, ils vous faudra pers\xE9verer.\\n\\nQue la bataille commence
+    !"
   preBattleLostLastLines:
-  - "Vous m'avez d\xE9ja vaincu, le vrai champs de bataille vous attend... Enfin,
-    voyons si vous \xEAtes capable de me battre \xE0 nouveau."
-  - "Je vois que vous avez besoin d'un rappel des bases. Soldats, pr\xE9parez-vous
-    \xE0 la bataille !"
-  - Vous devriez affronter de vrais adversaires au lieu de moi en ce moment !
+  - "Commandant, vous m'avez d\xE9j\xE0 vaincu.\\nVous devriez affronter les adversaires
+    de rang sup\xE9rieur de la Ligue, \xE0 moins que cela ne soit d\xE9j\xE0 fait
+    !\\n\\nBref, commen\xE7ons."
   postBattleWinLines:
-  - "Vous n'\xEAtes pas pr\xEAt recrue, mais pers\xE9verez. Revenez m'affronter et
-    n'oubliez pas que pour r\xE9ussir, il est primordial d'\xE9tudier son adversaire
-    et identifier sa strat\xE9gie."
+  - "Ne craignez rien de cette d\xE9faite commandant, les r\xE8gles de la Ligue sont
+    nouvelles pour vous.\\n\\nVenez donc m'affronter \xE0 nouveau, mais cette fois
+    ci, concentrez vous sur ma strat\xE9gie plut\xF4t que mes instructions."
   postBattleLossLines:
-  - "F\xE9licitations pour votre victoire ! Le vrai champs de bataille vous attend
-    d\xE9sormais, bonne chance commandant !"
+  - "<b>F\xE9licitations pour votre victoire !</b>\\n\\nVous \xEAtes d\xE9sormais
+    lanc\xE9 sur la Ligue, 9 adversaires suppl\xE9mentaires vous attendent.\\n\\nBonne
+    chance commandant !"
   postUnitsFightLossLines:
-  - "Vous disposez de 5 types d'unit\xE9s qui se contrent les unes les autres en
-    suivant le sch\xE9ma strat\xE9gique \xE0 votre disposition."
-  - "Au d\xE9but de chaque bataille, vous disposez d'un stock limit\xE9 de chaque
-    type d'unit\xE9s \xE0 g\xE9rer  intelligement."
-  - "Chaque commandant que vous affronterez utilise sa propre strat\xE9gie unique
-    que vous devrez identifier afin de pouvoir la contrer."
-  - "Entre chaque affrontement d'unit\xE9s, vous avez un temps limit\xE9 pour choisir
-    qui vous enverrez sur le champs de bataille."
-  - "Une bataille est compos\xE9e de nombreuses manches, dont l'impact sur l'\xE9quilibre
-    de la bataille augmentera progressivement."
-  - "Une fois la derni\xE8re manche pass\xE9e, le commandant qui domine la bataille
-    l'emporte."
-  - "Les premi\xE8res manches n'impactent pas l'\xE9quilibre de la bataille. Servez-vous-en
-    pour commencer \xE0 \xE9tudier votre adversaire."
-  - "La plupart des commandants sont bavards et r\xE9v\xE8lent des informations utiles
-    sur leur strat\xE9gie. Soyez \xE0 leur \xE9coute."
-  - "Vous disposez d'un rapport continu sur la bataille. La strat\xE9gie d'un adversaire
-    peut y appa\xEEtre de mani\xE8re flagrante !"
-  - "Vaincre un commandant pour la premi\xE8re fois vous permettra d'obtenir un de
-    ses traits uniques que vous pourrez utiliser pour modifier votre apparence aupr\xE8s
-    de nos mages chirurgiens."
-  - "Certains commandants basent leur strat\xE9gie sur vos actions, ou pas du tout
-    ! Soyez vigilants et exp\xE9rimentez avec votre adversaire."
-  - "Lorsque deux unit\xE9s identiques s'affrontent, aucune ne peut prendre le dessus
-    et l'\xE9quilibre de la bataille reste inchang\xE9."
-  - "La victoire imm\xE9diate ne sera pas toujours possible, n'ayez pas peur de perdre."
-  - "Je vous laisse un indice exceptionnel me concernant : je ne parle pas de ma
-    strat\xE9gie mais elle est tr\xE8s facile \xE0 identifier en regardant l'historique
-    des manches."
+  - "<b>Vous venez de jouer une manche de la bataille.</b>\\n\\nChaque bataille est
+    compos\xE9e de 15 manches comme celles-ci.\\n\\nAu d\xE9but de chaque manche,
+    vous choisissez une unit\xE9 \xE0 envoyer sur le champs de bataille."
+  - "<b>Chaque commandant dispose de 5 types d'unit\xE9s, avec un stock de 3 chacunes.</b>\\n\\nChaque
+    type d'unit\xE9 contre et se fait contrer par les autres types d'unit\xE9s.\\nR\xE9f\xE9rez-vous
+    au sch\xE9ma r\xE9capitulatif."
+  - "<b>Gagner une manche permet d'impacter l'\xE9quilibre de la bataille en sa faveur.</b>\\n\\nLes
+    3 premi\xE8res manches n'ont aucun impact.\\nPlus la bataille progr\xE8sse, plus
+    l'impacte des manches sera \xE9lev\xE9."
+  - "<b>A la fin de la derni\xE8re manche, le commandant qui domine l'\xE9quilibre
+    remporte la bataille.</b>\\n\\nJe pr\xE9cise \xE9galement que chaque commandant
+    combat \xE0 armes \xE9gales."
+  - "<b>Au sein de la Ligue, chaque commandant est unique.</b>\\n\\nChacun de vos
+    concurrent utilisera sa propre strat\xE9gie.\\nEvidemment, les meilleurs commandants
+    de la Ligue utilisent les meilleures strat\xE9gies."
+  - "<b>La cl\xE9 pour vaincre votre adversaire est d'identifier sa strat\xE9gie.</b>\\n\\nVous
+    ne gravirez pas les plus hauts \xE9chelons tant que vous n'aurez pas int\xE9gr\xE9
+    une m\xE9thodologie d'analyse de votre adversaire."
+  - "<b>La strat\xE9gie de votre adversaire concerne la mani\xE8re dont il utilise
+    ses unit\xE9s.</b>\\n\\nParfois, il vous faudra affronter un m\xEAme adversaire
+    plusieurs fois afin de le cerner."
+  - "<b>Vous disposez de plusieurs outils pour identifier la strat\xE9gie de votre
+    adversaire.</b>\\n\\nJ'utilise moi-m\xEAme ma propre strat\xE9gie actuellement."
+  - "<b>Premier outil : l'historique des manches.</b>\\n\\nPendant une bataille,
+    vous disposez d'un historique des manches pr\xE9c\xE9dentes."
+  - "<b>Second outil : les dialogues.</b>\\n\\nLes commandants de la Ligue sont assez
+    bavards et vous parleront entre chaque manches.\\nParfois, leurs messages contiendront
+    des informations importantes sur leur strat\xE9gie."
+  - "<b>Troisi\xE8me outil : le r\xE9capitulatif de la bataille.</b>\\n\\nA l'issue
+    d'une bataille, vous recevrez toujours un r\xE9capitulatif de celle-ci.\\nLorsque
+    vous doutez de la strat\xE9gie d'un adversaire qui vous a vaincu, penchez-vous
+    dessus pendant un moment."
+  - "<b>En r\xE9sum\xE9,</b> chaque commandant dispose d'un stock d'unit\xE9 \xE0
+    d\xE9penser pendant 15 manches.\\n\\nChaque commandant utilisera sa propre strat\xE9gie
+    pour vous vaincre, qu'il sera souvent indispensable d'identifier avec les outils
+    \xE0 votre disposition."
+  - "<b>D\xE9sormais, vous savez tout commandant.</b>\\n\\nAvec l'exp\xE9rience et
+    quelques batailles, je suis s\xFBr que vous serez pr\xEAts \xE0 challenger n'importe
+    quel adversaire !"
+  - "La formation est termin\xE9e, mais vous devez me vaincre pour progresser.\\n\\nLe
+    vieux Warfield fait quand m\xEAme partie de la Ligue apr\xE8s tout !"
   postUnitsFightWinLines: []
   postUnitsFightDrawLines: []

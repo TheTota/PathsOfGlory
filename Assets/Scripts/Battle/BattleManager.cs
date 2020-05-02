@@ -446,7 +446,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private IEnumerator DisplayReactionLine(string line)
     {
-        enemyDialogText.text = line;
+        enemyDialogText.text = line.Replace("\\n", "\n");
         enemyDialogPanel.SetActive(true);
 
         // play open msg SFX
