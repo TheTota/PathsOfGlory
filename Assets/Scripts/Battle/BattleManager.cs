@@ -116,7 +116,6 @@ public class BattleManager : MonoBehaviour
     private UnitType aiPickedUnit;
 
     // Timer logic & display
-    private float pickTimer;
     private float remainingTime;
 
     public BattleCommander BattleWinner { get; set; }
@@ -139,8 +138,6 @@ public class BattleManager : MonoBehaviour
         if (playerAllowedToPick)
         {
             PlayerKeyboardPick();
-
-            remainingTime = Mathf.Clamp(pickTimer - Time.time, 0f, ai.SecondsBeforeAction);
         }
 
         // close units dialog with space
@@ -268,18 +265,16 @@ public class BattleManager : MonoBehaviour
             nextRoundValueText.text = "Valeur de la manche : " + scoreDefinitionTable[CurrentRound - 1];
 
             // Allow the player to pick
-            pickTimer = Time.time + ai.SecondsBeforeAction;
             remainingTime = ai.SecondsBeforeAction;
             playerAllowedToPick = true;
             UpdateAndShowUnitPickPopup();
 
             // After some time, get the AI pick 
             timerRenderer.StartRenderingTimer(remainingTime);
-            yield return new WaitUntil(() => remainingTime == 0f);
+            yield return new WaitUntil(() => timerRenderer.TimeIsUp);
             this.unitsPickPopupAnimator.SetBool("Opened", false);
             yield return new WaitForSeconds(this.unitsPickPopupAnimator.runtimeAnimatorController.animationClips[0].length);
             unitPickPopup.SetActive(false);
-            timerRenderer.StopRenderingTimer();
 
             if (!playerHasPicked)
             {
@@ -295,15 +290,16 @@ public class BattleManager : MonoBehaviour
             EnemyBC.AddToPlaysHistory(aiPickedUnit);
             EnemyBC.Army.RemoveUnitFromStock(aiPickedUnit);
 
-            // Units fight
+            // Close units pick
             playsHistoryAnimator.SetBool("Opened", false);
             yield return new WaitForSeconds(this.playsHistoryAnimator.runtimeAnimatorController.animationClips[0].length);
             uiPlaysHistoryHandler.gameObject.SetActive(false);
+            this.timerRenderer.ResetTimer();
 
             BattleCommander winner = GetWinnerFromUnitsFight();
             this.helpUIManager.CloseUnitsRecapUI();
 
-            // Play fight animation instead
+            // Start units fight 
             this.unitsFightManager.StartUnitsFight(playerPickedUnit, aiPickedUnit);
             yield return new WaitUntil(() => this.unitsFightManager.FightIsOver);
 

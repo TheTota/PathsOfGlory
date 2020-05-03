@@ -16,7 +16,7 @@ public class TimerRenderer : MonoBehaviour
     private float startPosX, targetPosX;
     private float t = 0.0f;
 
-    private bool canRenderTimer = false;
+    public bool TimeIsUp { get; set; }
 
     private void Awake()
     {
@@ -29,13 +29,18 @@ public class TimerRenderer : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (this.canRenderTimer)
+        if (!this.TimeIsUp)
         {
             float newX = Mathf.Lerp(startPosX, targetPosX, t);
             flag.anchoredPosition = new Vector2(newX, flag.anchoredPosition.y);
             line.offsetMin = new Vector2(newX + 30f, line.offsetMin.y);
 
-            t += (1f / seconds) * Time.deltaTime;
+            t += Time.deltaTime / seconds;
+
+            if (flag.anchoredPosition.x == targetPosX)
+            {
+                this.TimeIsUp = true;
+            }
         }
     }
 
@@ -43,26 +48,24 @@ public class TimerRenderer : MonoBehaviour
     /// Starts rendering the timer.
     /// </summary>
     /// <param name="time">Render time.</param>
-    internal void StartRenderingTimer(float time)
+    public void StartRenderingTimer(float time)
     {
         this.seconds = time;
-        this.canRenderTimer = true;
+        this.TimeIsUp = false;
     }
 
     /// <summary>
     /// Stops rendering the timer : resets positions and stuff.
     /// </summary>
-    internal void StopRenderingTimer()
+    public void ResetTimer()
     {
-        this.canRenderTimer = false;
         t = 0.0f;
-
         // reset flag pos
         flag.anchoredPosition = new Vector2(startPosX, flag.anchoredPosition.y);
     }
 
     public void SkipTimer()
     {
-        this.seconds = .1f;
+        this.seconds = .5f;
     }
 }
