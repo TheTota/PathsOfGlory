@@ -4394,6 +4394,7 @@ MonoBehaviour:
   enemyPR: {fileID: 2122098272}
   roundText: {fileID: 1534181704}
   unitsRecapPanel: {fileID: 2131102909}
+  helpUIManager: {fileID: 171489212}
   scoreAndRoundUI: {fileID: 781093300}
   scoreSlider: {fileID: 68912359}
   scoreSliderPlayerImg: {fileID: 778729952}

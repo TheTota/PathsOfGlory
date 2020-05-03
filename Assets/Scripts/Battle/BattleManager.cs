@@ -36,6 +36,8 @@ public class BattleManager : MonoBehaviour
     private TextMeshProUGUI roundText;
     [SerializeField]
     private GameObject unitsRecapPanel;
+    [SerializeField]
+    private HelpUIManager helpUIManager;
 
     // score
     private int[] scoreDefinitionTable;
@@ -293,7 +295,8 @@ public class BattleManager : MonoBehaviour
             uiPlaysHistoryHandler.gameObject.SetActive(false);
 
             BattleCommander winner = GetWinnerFromUnitsFight();
-            unitsRecapPanel.SetActive(false);
+            this.helpUIManager.CloseUnitsRecapUI();
+            //unitsRecapPanel.SetActive(false);
 
             // Play fight animation instead
             this.unitsFightManager.StartUnitsFight(playerPickedUnit, aiPickedUnit);
@@ -323,6 +326,7 @@ public class BattleManager : MonoBehaviour
             uiPlaysHistoryHandler.gameObject.SetActive(true);
             uiPlaysHistoryHandler.RenderPlaysHistoryUI(playerPickedUnit, aiPickedUnit, winner);
             unitsRecapPanel.SetActive(true);
+            this.helpUIManager.OpenUnitsRecapIfWasOpened();
 
             CurrentRound++;
         }
