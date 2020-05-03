@@ -14,7 +14,7 @@ public class AIDrunkResilient : AI
     public AIDrunkResilient(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 10f;
+        base.SecondsBeforeAction = 16f;
         this.goingResilient = false;
     }
 

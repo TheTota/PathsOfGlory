@@ -63,6 +63,6 @@ public class TimerRenderer : MonoBehaviour
 
     public void SkipTimer()
     {
-        this.seconds = 1f;
+        this.seconds = .1f;
     }
 }
