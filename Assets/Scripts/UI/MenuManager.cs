@@ -39,6 +39,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private GameObject introTextPanel;
     [SerializeField]
+    private GameObject commanderGridSkippable;
+    [SerializeField]
     private TextMeshProUGUI introText;
     [SerializeField]
     private Image reactionTextSeal;
@@ -170,18 +172,20 @@ public class MenuManager : MonoBehaviour
         // display commander grid
         this.commandersGrid.GetComponentInChildren<Button>().enabled = false;
         this.commandersGrid.GetComponentInChildren<EventTrigger>().enabled = false;
+        this.commanderGridSkippable.SetActive(true);
         this.commanderGridPopup.SetActive(true);
         mainMenuAnimator.Play("MainMenuCommandersGrid");
 
         string normalText = this.commanderGridInstructions.text;
         this.commanderGridInstructions.text = INTRO_GRID_INSTRUCTIONS;
 
-        isInGridIntro = true; 
-         yield return new WaitUntil(() => this.mainMenuAnimator.GetBool("CloseGridPopup")); // wait until grid popup is unactive
+        isInGridIntro = true;
+        yield return new WaitUntil(() => this.mainMenuAnimator.GetBool("CloseGridPopup")); // wait until grid popup is unactive
         yield return new WaitForSeconds(this.mainMenuAnimator.runtimeAnimatorController.animationClips[2].length);
 
         this.commanderGridInstructions.text = normalText;
         this.commanderGridPopup.SetActive(false);
+        this.commanderGridSkippable.SetActive(false);
 
         // 2nd msg : commander grid
         DisplayIntroMessage(INTRO_GRID_MSG);
@@ -197,7 +201,7 @@ public class MenuManager : MonoBehaviour
         yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
         // 4th msg : come fight me
-        isInGridIntro = false; 
+        isInGridIntro = false;
 
         DisplayIntroMessage(INTRO_FINAL_MSG);
         yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
