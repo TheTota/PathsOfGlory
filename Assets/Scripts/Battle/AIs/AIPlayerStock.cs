@@ -12,7 +12,7 @@ public class AIPlayerStock : AI
     public AIPlayerStock(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 10f;
+        base.SecondsBeforeAction = 7f;
     }
 
     /// <summary>

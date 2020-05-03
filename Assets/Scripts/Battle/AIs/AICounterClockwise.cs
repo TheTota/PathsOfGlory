@@ -13,7 +13,7 @@ public class AICounterClockwise : AI
     public AICounterClockwise(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 10f;
+        base.SecondsBeforeAction = 18f;
         counterClockwiseIndex = 4;
     }
 

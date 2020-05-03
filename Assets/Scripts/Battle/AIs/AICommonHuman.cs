@@ -14,7 +14,7 @@ public class AICommonHuman : AI
     public AICommonHuman(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 10f;
+        base.SecondsBeforeAction = 8f;
         this.hasDoneFirstPick = false;
     }
 

@@ -60,4 +60,9 @@ public class TimerRenderer : MonoBehaviour
         // reset flag pos
         flag.anchoredPosition = new Vector2(startPosX, flag.anchoredPosition.y);
     }
+
+    public void SkipTimer()
+    {
+        this.seconds = 1f;
+    }
 }
