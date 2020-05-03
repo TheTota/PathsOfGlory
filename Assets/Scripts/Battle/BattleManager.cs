@@ -142,6 +142,12 @@ public class BattleManager : MonoBehaviour
 
             remainingTime = Mathf.Clamp(pickTimer - Time.time, 0f, ai.SecondsBeforeAction);
         }
+
+        // close units dialog with space
+        if (enemyDialogPanel.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
+        {
+            this.enemyDialogAnimator.SetBool("Opened", false);
+        }
     }
 
     /// <summary>
@@ -296,7 +302,6 @@ public class BattleManager : MonoBehaviour
 
             BattleCommander winner = GetWinnerFromUnitsFight();
             this.helpUIManager.CloseUnitsRecapUI();
-            //unitsRecapPanel.SetActive(false);
 
             // Play fight animation instead
             this.unitsFightManager.StartUnitsFight(playerPickedUnit, aiPickedUnit);
@@ -325,7 +330,6 @@ public class BattleManager : MonoBehaviour
             // update plays history UI
             uiPlaysHistoryHandler.gameObject.SetActive(true);
             uiPlaysHistoryHandler.RenderPlaysHistoryUI(playerPickedUnit, aiPickedUnit, winner);
-            unitsRecapPanel.SetActive(true);
             this.helpUIManager.OpenUnitsRecapIfWasOpened();
 
             CurrentRound++;
