@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: 1-Teacher
   m_EditorClassIdentifier: 
-  commanderName: Arthur "l'Ancien" Warfield
+  commanderName: Arthur "L'Ancien" Warfield
   Locked: 1
   Color: {r: 0.6698113, g: 0.28751335, b: 0.54304945, a: 1}
   AiType: 1
@@ -36,8 +36,8 @@ MonoBehaviour:
     ci, concentrez vous sur ma strat\xE9gie plut\xF4t que mes instructions."
   postBattleLossLines:
   - "<b>F\xE9licitations pour votre victoire !</b>\\n\\nVous \xEAtes d\xE9sormais
-    lanc\xE9 sur la Ligue, 9 adversaires suppl\xE9mentaires vous attendent.\\n\\nBonne
-    chance commandant !"
+    lanc\xE9 sur la Ligue, 9 adversaires suppl\xE9mentaires vous attendent.\\n\\nD'ailleurs,
+    le prochain est mon fils, bonne chance commandant !"
   postUnitsFightLossLines:
   - "<b>Vous venez de jouer une manche de la bataille.</b>\\n\\nChaque bataille est
     compos\xE9e de 15 manches comme celles-ci.\\n\\nAu d\xE9but de chaque manche,
