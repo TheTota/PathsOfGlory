@@ -42,9 +42,9 @@ MonoBehaviour:
     est sens\xE9 boire ou se battre ?\\nOu alors... les deux peut \xEAtre..."
   - "L'\xE9l\xE9gance et... le professionnalisme des soldats de la Ligue... m'a toujours
     impressionn\xE9.\\n\\nSi vous ne le savez pas... ils ne meurent \xE9videmment
-    pas... l'Empire a des mages tr\xE8s... tr\xE8\xE8\xE8\xE8\xE8s...\\n\\n.................................................."
-  - "J'ai gagn\xE9 !\\nAh non... j'ai regard\xE9 la mauvais couleur... d\xE9sol\xE9."
-  - "Non... pas maintenant... nooooooooooooooooooooooooooooooooooooooon !\\n\\nHein...
+    pas... l'Empire a des mages tr\xE8s... tr\xE8\xE8\xE8\xE8\xE8s...\\n.................................................."
+  - "J'ai gagn\xE9 !\\nAh non... j'ai regard\xE9 la mauvaise couleur... d\xE9sol\xE9."
+  - "Non... pas maintenant... nooooooon... nooooooooooooooooooooooooon !\\n\\nHein...
     quoi ? Calmez vous commandant... je vous trouve tr\xE8s excit\xE9 aujourd'hui...
     hein oui je crois..."
   - "Si vous voulez... je vois offre une bonne chope de mon alcool pr\xE9f\xE9r\xE9
@@ -63,5 +63,5 @@ MonoBehaviour:
     de cette Ligue... je peux me d\xE9fendre ATTENTION !"
   postUnitsFightDrawLines:
   - "Je ne comprend plus les r\xE8gles de Ligue... avant il n'y avait pas d'\xE9galit\xE9s...\\n\\nOn
-    se battait tous... comme de vrais hommes... et...\\n\\n......................................................"
+    se battait tous... comme de vrais hommes... et...\\n......................................................"
   - Oui un beau... combat...\n\nDommage que personne n'ai pu l'emporter...
