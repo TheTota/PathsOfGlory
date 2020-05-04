@@ -12,60 +12,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: 3-Stubborn
   m_EditorClassIdentifier: 
-  commanderName: To "Be" Determined
+  commanderName: "Tineron \"Le Pistonn\xE9\" Andfrid"
   Locked: 1
   Color: {r: 0.15294118, g: 0.68235296, b: 0.3764706, a: 1}
   AiType: 3
   PortraitElementToUnlock: {fileID: 11400000, guid: f01cb2926221e2a4385ce99d3141d0e4,
     type: 2}
-  preBattleFirstTimeLine: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+  preBattleFirstTimeLine: "<b>Vous qui OSEZ d\xE9fier le neveu de l'Empereur, EN
+    GARDE !</b>\\n\\nAvant de vous infliger une IMMENSE D\xC9FAITE qui apportera
+    D\xC9SHONNEUR \xE0 votre nom, choisissez la RETRAITE.\\n\\nIMM\xC9DIATEMENT !"
   preBattleWonLastLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Vous revenez faire face au POURFENDEUR DE... MONDES !</b>\\n\\nN'esp\xE9rez
+    pas un r\xE9sultat diff\xE9rent, choisissez la RETRAITE IMM\xC9DIATE pour sauvez
+    ce qu'il vous reste d'HONNEUR !"
   preBattleLostLastLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Ainsi vous \xEAtes de RETOUR !</b>\\n\\n Je ne sais pas pourquoi vous revenez,
+    non vraiment.\\n\\n S'il vous plait, n'y allez pas trop fort..."
   postBattleWinLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Et ainsi le GRAND Tineron Anfrid l'EMPORTE pour la GLOIRE DE L'EMPIRE !</b>\\n\\nJe
+    vous avais pr\xE9venu, maintenant ne revenez PLUS JAMAIS sous peine de... PERDRE
+    ENCORE !"
   postBattleLossLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Quel issue INCROYABLE et... IMPROBABLE.</b>\\n\\nVous m'avez vaincu et humili\xE9,
+    vous pouvez progresser au sein de Ligue alors s'il vous plait ne revenez pas,
+    je ne veux pas que mon oncle l'Empereur ait vent de mes d\xE9faites."
   postUnitsFightLossLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "Un v\xE9ritable COUP DE CHANCE !\\n\\nCela ne se reproduira probablement pas
+    !"
+  - "Vous l'emportez maintenant, oui bravo.\\n\\nAttention, car je vais CONTRE-ATTAQUER
+    !\\n\\n<size=70%>j'ai aucune id\xE9e de ce que je fais...</size>"
+  - "Je dois faire une aveu commandant.\\n\\nJe n'ai pas ma place ici.\\n\\nMon oncle
+    voulait un membre de la famille imp\xE9riale au sein de la Ligue et c'est tomb\xE9
+    sur moi car j'ai un peu trop parl\xE9 \xE0 propos de mes comp\xE9tences en commandement...\\n\\nEn
+    r\xE9alit\xE9, je n'y connais vraiment RIEN !"
+  - "INT\xC9RESSANT !\\n\\nJe saurai r\xE9agir la prochaine fois que vous... <size=70%>j'ai
+    oubli\xE9 la suite...</size>"
   postUnitsFightWinLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - SURPRENANT !\n\nJ'ai apparement PLUS d'un COUP D'AVANCE sur vous !
+  - ET UNE PETITE VICTOIRE DE PLUS !\n\nIncroyable et... vraiment, vraiment exceptionnel
+    !
+  - "QUELLE INGENIOSIT\xC9 !\\n\\n<size=70%>mais plus s\xE9rieusement, j'ai vraiment
+    gagn\xE9 ce coup l\xE0 ?</size>"
+  - INCLINEZ VOUS et choisissez la RETRAITE avant qu'il ne soit trop TARD !\n\n<size=70%>pour
+    moi en tout cas...</size>
   postUnitsFightDrawLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "QUELLE... ERM... UNE ISSUE SI PREDICTIBLE...\\n\\n<size=70%>je n'ai pas compris,
+    qui a gagn\xE9 ?</size>"
