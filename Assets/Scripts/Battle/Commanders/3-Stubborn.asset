@@ -26,7 +26,7 @@ MonoBehaviour:
     pas un r\xE9sultat diff\xE9rent, choisissez la RETRAITE IMM\xC9DIATE pour sauvez
     ce qu'il vous reste d'HONNEUR !"
   preBattleLostLastLines:
-  - "<b>Ainsi vous \xEAtes de RETOUR !</b>\\n\\n Je ne sais pas pourquoi vous revenez,
+  - "<b>Ainsi vous \xEAtes de RETOUR !</b>\\n\\nJe ne sais pas pourquoi vous revenez,
     non vraiment.\\n\\n S'il vous plait, n'y allez pas trop fort..."
   postBattleWinLines:
   - "<b>Et ainsi le GRAND Tineron Anfrid l'EMPORTE pour la GLOIRE DE L'EMPIRE !</b>\\n\\nJe
@@ -41,10 +41,10 @@ MonoBehaviour:
     !"
   - "Vous l'emportez maintenant, oui bravo.\\n\\nAttention, car je vais CONTRE-ATTAQUER
     !\\n\\n<size=70%>j'ai aucune id\xE9e de ce que je fais...</size>"
-  - "Je dois faire une aveu commandant.\\n\\nJe n'ai pas ma place ici.\\n\\nMon oncle
-    voulait un membre de la famille imp\xE9riale au sein de la Ligue et c'est tomb\xE9
-    sur moi car j'ai un peu trop parl\xE9 \xE0 propos de mes comp\xE9tences en commandement...\\n\\nEn
-    r\xE9alit\xE9, je n'y connais vraiment RIEN !"
+  - "Je dois faire une aveu commandant.\\n\\nMon oncle voulait un membre de la famille
+    imp\xE9riale au sein de la Ligue et c'est tomb\xE9 sur moi car j'ai un peu trop
+    parl\xE9 \xE0 propos de mes comp\xE9tences en commandement...\\n\\nEn r\xE9alit\xE9,
+    je n'y connais vraiment RIEN !"
   - "INT\xC9RESSANT !\\n\\nJe saurai r\xE9agir la prochaine fois que vous... <size=70%>j'ai
     oubli\xE9 la suite...</size>"
   postUnitsFightWinLines:
@@ -56,5 +56,5 @@ MonoBehaviour:
   - INCLINEZ VOUS et choisissez la RETRAITE avant qu'il ne soit trop TARD !\n\n<size=70%>pour
     moi en tout cas...</size>
   postUnitsFightDrawLines:
-  - "QUELLE... ERM... UNE ISSUE SI PREDICTIBLE...\\n\\n<size=70%>je n'ai pas compris,
+  - "ERM... OUI, UNE ISSUE SI PREDICTIBLE...\\n\\n<size=70%>je n'ai pas compris,
     qui a gagn\xE9 ?</size>"
