@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: 6-Observer
   m_EditorClassIdentifier: 
-  commanderName: To "Be" Determined
+  commanderName: "Samuel \"L'\xC9rudit\" Miord"
   Locked: 1
   Color: {r: 0.506461, g: 0.25164652, b: 0.6132076, a: 1}
   AiType: 6
