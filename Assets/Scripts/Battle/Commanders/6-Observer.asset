@@ -18,38 +18,48 @@ MonoBehaviour:
   AiType: 6
   PortraitElementToUnlock: {fileID: 11400000, guid: 829187e0f4e220d4cac41628c570ca30,
     type: 2}
-  preBattleFirstTimeLine: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+  preBattleFirstTimeLine: "<b>Salutations commandant !</b>\\n\\nQuel plaisir de 
+    vous rencontrer enfin, vos r\xE9centes victoires commencent \xE0 faire du bruit
+    au sein de l'Empire.\\n\\nJe suis Samuel Miord, professeur \xE0 l'Acad\xE9mie
+    Imp\xE9riale. Je ne suis pas commandant de profession, mais plut\xF4t par passion.
+    En avant !"
   preBattleWonLastLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Salutations commandant !</b>\\n\\nJ'avais h\xE2te de vous retrouver sur le
+    champs de bataille, pour \xE9manciper mes doutes sur ma pr\xE9c\xE9dente victoire.\\n\\nQue
+    la bataille commence !"
   preBattleLostLastLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Salutations commandant !</b>\\n\\nVous m'offrez une bien belle opportunit\xE9
+    pour faire mes preuves face \xE0 vous.\\n\\nNe perdons pas de temps, commen\xE7ons."
   postBattleWinLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Ah, je m'en sors bien !</b>\\n\\nQuelle bataille passionnante, je l'emporte
+    cette fois mais revenez donc !\\nJe veux m'assurer que je m\xE9rite vraiment
+    cette victoire."
   postBattleLossLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - <b>Je m'incline commandant</b>\n\nQuel affrontement palpitant, mais je dois avouer
+    que votre talent m'impressionne.\n\nVous pouvez vraiment aller loin dans cette
+    ligue, bonne continuation.
   postUnitsFightLossLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "Int\xE9ressant, je pensais que cette manche passerait sans probl\xE8me.\\n\\nVous
+    me forcez \xE0 redoubler de vigilance."
+  - "Vous m'avez vaincu avec cette unit\xE9...\\n\\nJ'en prend note, pr\xE9parez-vous
+    pour des repr\xE9sailles commandant."
+  - "Eh bien, on ne ment pas sur vous.\\n\\nVous avez vraiment du potentiel, j'aurais
+    ador\xE9 vous avoir en tant qu'\xE9l\xE8ve dans une de mes classes."
+  - "En \xE9tudiant votre fa\xE7on de jouer, j'aurais vraiment cru l'emporter cette
+    fois-ci..."
   postUnitsFightWinLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "La Ligue m'offre une telle distraction de ma routine \xE0 l'Acad\xE9mie.\\n\\nDe
+    plus, cela me permets de mettre en oeuvre mon savoir au service de l'Empire."
+  - J'essaie de toujours garder un coup d'avance sur mon adversaire.\n\nCa m'a bien
+    servi cette fois-ci.
+  - "Je me demande bien comment vous allez r\xE9agir apr\xE8s cela commandant.\\n\\nJ'ai
+    ma petite id\xE9e, mais nous verrons bien."
+  - "Quelle joie de voir ses unit\xE9s vaincre sur le champs de bataille.\\n\\nJe
+    ne m'en lasserai jamais, jamais !"
   postUnitsFightDrawLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "C'est vraiment fascinant.\\n\\nDes unit\xE9s de deux arm\xE9es diff\xE9rentes,
+    poss\xE8dant le m\xEAme nombre et le m\xEAme \xE9quipement, donnant une \xE9galit\xE9
+    parfaite."
+  - "L'Acad\xE9mie Imp\xE9riale forme les meilleurs soldats, mages et commandants
+    de l'Empire.\\n\\nSi vous progressez encore, vous rencontrerez un de ses \xE9l\xE8ves
+    prodiges.\\nVraiment, vraiment talentueux."
