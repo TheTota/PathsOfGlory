@@ -16,7 +16,7 @@ MonoBehaviour:
   Locked: 1
   Color: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}
   AiType: 7
-  PortraitElementToUnlock: {fileID: 11400000, guid: 568e5ce85452e7641a860980a38f7d04,
+  PortraitElementToUnlock: {fileID: 11400000, guid: c806b437774719f4f8f629099ac0ccbb,
     type: 2}
   preBattleFirstTimeLine: "<b>BIENVENUE DANS l'AR\xC8NE.</b>\\n\\nAujourd'hui, je
     vais REPEINDRE LE CHAMPS DE BATAILLE DU SANG DE VOS UNIT\xC9S !\\n\\nEnfin, pas

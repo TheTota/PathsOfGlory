@@ -16,7 +16,7 @@ MonoBehaviour:
   Locked: 1
   Color: {r: 0.101960786, g: 0.7372549, b: 0.6117647, a: 1}
   AiType: 9
-  PortraitElementToUnlock: {fileID: 11400000, guid: e204e6f738e0b7d42a9bb9d7c7c85a13,
+  PortraitElementToUnlock: {fileID: 11400000, guid: 9d711e6b7cf7a7049a82ee8e137c3ef7,
     type: 2}
   preBattleFirstTimeLine: "<b>Bienvenue commandant !</b>\\n\\nMarco Poulet, ancien
     explorateur de renom et d\xE9sormais un des plus fins strat\xE8ges de l'Empire.\\n\\nTout

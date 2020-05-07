@@ -16,7 +16,7 @@ MonoBehaviour:
   Locked: 1
   Color: {r: 0.1723033, g: 0.23709506, b: 0.3018868, a: 1}
   AiType: 10
-  PortraitElementToUnlock: {fileID: 11400000, guid: 9d711e6b7cf7a7049a82ee8e137c3ef7,
+  PortraitElementToUnlock: {fileID: 11400000, guid: e204e6f738e0b7d42a9bb9d7c7c85a13,
     type: 2}
   preBattleFirstTimeLine: "<b>Nos chemins se croisent enfin.</b>\\n\\nJ'ai observ\xE9
     votre ascension au sein de la Ligue. D\xE8s vos premi\xE8res victoire, j'ai pr\xE9ssenti
