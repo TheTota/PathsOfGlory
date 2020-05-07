@@ -25,8 +25,8 @@ public class MusicShuffler : MonoBehaviour
     private IEnumerator PlayMusics()
     {
         int i = Random.Range(0, clips.Length);
-        
-        while(true)
+
+        while (true)
         {
             audioSource.clip = clips[i];
             audioSource.Play();
@@ -34,7 +34,14 @@ public class MusicShuffler : MonoBehaviour
             // wait until music is done
             yield return new WaitUntil(() => !audioSource.isPlaying);
             Debug.Log("Next music");
-            i++;
+            if (i + 1 >= clips.Length)
+            {
+                i = 0;
+            }
+            else
+            {
+                i++;
+            }
         }
     }
 }
