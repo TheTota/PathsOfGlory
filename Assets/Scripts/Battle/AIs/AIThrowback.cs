@@ -14,7 +14,7 @@ public class AIThrowback : AI
     public AIThrowback(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 6f;
+        base.SecondsBeforeAction = 15f;
         this.hasDoneFirstPick = false;
         this.hasDoneSecondPick = false;
     }

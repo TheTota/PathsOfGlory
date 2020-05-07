@@ -13,7 +13,7 @@ public class AIClockwise : AI
     public AIClockwise(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 20f;
+        base.SecondsBeforeAction = 15f;
         clockwiseIndex = 0;
     }
 

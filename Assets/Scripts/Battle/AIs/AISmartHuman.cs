@@ -13,7 +13,7 @@ public class AISmartHuman : AI
     public AISmartHuman(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 5f;
+        base.SecondsBeforeAction = 15f;
         this.hasDoneFirstPick = false;
     }
 

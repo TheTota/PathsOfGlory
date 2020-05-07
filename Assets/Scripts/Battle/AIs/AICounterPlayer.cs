@@ -13,7 +13,7 @@ public class AICounterPlayer : AI
     public AICounterPlayer(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 10f;
+        base.SecondsBeforeAction = 15f;
         this.hasDoneFirstPick = false;
     }
 

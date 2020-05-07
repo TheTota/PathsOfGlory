@@ -11,7 +11,7 @@ public class AIDrunk : AI
     public AIDrunk(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 14f;
+        base.SecondsBeforeAction = 15f;
     }
 
     /// <summary>

@@ -12,44 +12,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: 9-TimeTraveler
   m_EditorClassIdentifier: 
-  commanderName: To "Be" Determined
+  commanderName: Marco "L'Aventurier" Poulet
   Locked: 1
   Color: {r: 0.101960786, g: 0.7372549, b: 0.6117647, a: 1}
   AiType: 9
   PortraitElementToUnlock: {fileID: 11400000, guid: e204e6f738e0b7d42a9bb9d7c7c85a13,
     type: 2}
-  preBattleFirstTimeLine: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+  preBattleFirstTimeLine: "<b>Bienvenue commandant !</b>\\n\\nMarco Poulet, ancien
+    explorateur de renom et d\xE9sormais un des plus fins strat\xE8ges de l'Empire.\\n\\nTout
+    le monde ne parle plus que de vous, \"un nouveau Grand Champion de la Ligue\".
+    Voyons si vous en avez le potentiel."
   preBattleWonLastLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Soyez \xE0 la hauteur cette fois-ci.</b>\\n\\nJe sens votre immense potentiel,
+    commandant. Donnez tout aujourd'hui, vous approchez du bout d'un illustre chemin
+    vers la gloire."
   preBattleLostLastLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Content de vous revoir.</b>\\n\\nJ'ai surv\xE9cu \xE0 bien des choses, mais
+    je ne sais pas si je vais survivre \xE0 une d\xE9faite de plus face \xE0 vous
+    !\\n\\nAllons, commen\xE7ons !"
   postBattleWinLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Vous y \xEAtes presque, mais pas encore.</b>\\n\\nSi vous voulez avoir une
+    chance de conqu\xE9rir cette Ligue, il vous faudra \xE9lever encore votre niveau.\\n\\nPers\xE9v\xE9rez
+    et vous deviendrez un des plus grands !"
   postBattleLossLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "<b>Vous \xEAtes donc digne de votre r\xE9putation.</b>\\n\\nToutes mes f\xE9licitations,
+    vous disposez d'un talent hors norme. Cependant, je ne suis pas s\xFBr que cela
+    ne suffise pour vaincre votre prochain adversaire.\\n\\nTout le monde sera pr\xE9sent
+    commandant, bonne chance !"
   postUnitsFightLossLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "Je me suis d\xE9j\xE0 perdu dans une jungle, une for\xEAt, un labyrinthe et
+    la chambre d'amis du palais imp\xE9rial... \\nMais jamais pendant le cours d'une
+    bataille !"
+  - "J'ai beau essayer d'anticiper vos coups, cela n'a pas fonctionn\xE9 cette fois-ci...
+    Mais je suis convaincu que \xE7a marchera ! Oui oui oui !"
+  - "Ma strat\xE9gie me fait d\xE9faut.\\n\\nPourtant il y deux manches vous... Je
+    suis trop bavard.\\nD'ailleurs, je pense que tous le commandants dans cette Ligue
+    sont trop bavards, non ?"
+  - "Cette d\xE9faite me donne des flashbacks de la fois o\xF9 j'ai d\xE9fi\xE9 le
+    Grand Champion... \\n\\nMon honneur ne s'est toujours pas r\xE9tabli depuis cette
+    bataille."
   postUnitsFightWinLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "Cette victoire me rappelle que j'aurai pu devenir commandant, mais mon r\xEAve
+    a toujours \xE9t\xE9 d'aller au-del\xE0 des confins du monde connu. "
+  - "Un seul coup d'avance sur son adversaire ne suffit pas !\\n\\nJe l'ai bien appris
+    \xE0 mes d\xE9pends dans une exp\xE9dition dont... je ne souhaiterais pas parler."
+  - "Avec toutes les personnes que j'ai pu rencontr\xE9, j'ai une certitude.\\nVotre
+    actes pass\xE9s d\xE9finissent vos actes pr\xE9sents, m\xEAme lors d'une bataille
+    !"
+  - "Depuis que j'ai pris ma retraite, la Ligue m'a bien occup\xE9.\\n\\nJ'ai vaincu
+    chaque adversaire sur mon chemin, mais je ne suis jamais venu \xE0 bout du Grand
+    Champion."
   postUnitsFightDrawLines:
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
-  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. '
+  - "Cela me fait penser \xE0 une confrontation avec des aborig\xE8nes bien au-del\xE0
+    des fronti\xE8res de l'Empire, il y a longtemps.\\n\\nUn combat \xE0 mains nues,
+    moi contre leur chef selon leurs coutumes. On avait fini par terre tous les deux
+    !"
+  - "Des fois les r\xE8gles de la Ligue me font penser \xE0 une version plus complexe
+    du jeu de Pierre-Papier-Ciseaux..."

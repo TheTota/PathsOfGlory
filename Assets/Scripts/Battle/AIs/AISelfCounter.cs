@@ -14,7 +14,7 @@ public class AISelfCounter : AI
     public AISelfCounter(BattleManager bm)
     {
         base.battleManager = bm;
-        base.SecondsBeforeAction = 12f;
+        base.SecondsBeforeAction = 15f;
         this.hasDoneFirstPick = false;
     }
 
