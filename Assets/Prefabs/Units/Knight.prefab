@@ -216,18 +216,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3bfbf88e837c15743aebe55f8b4f22a4, type: 3}
   - {fileID: 8300000, guid: 41cc884113fff9d4192bdf475c03329d, type: 3}
   - {fileID: 8300000, guid: 71a441fbd107d4d45ad4a909e9b814a7, type: 3}
-  - {fileID: 8300000, guid: 28c7229323f1f3d49b69211caaad2782, type: 3}
-  - {fileID: 8300000, guid: a72a84244cb7d3b4cbf1706e76f6b9d0, type: 3}
-  - {fileID: 8300000, guid: a617f49274879474199ab11a2b9ace15, type: 3}
-  - {fileID: 8300000, guid: 59b5ba45c8da3f24489240726dca5ca0, type: 3}
+  - {fileID: 8300000, guid: 6e581c7fceb8b3847a21f95764f895e8, type: 3}
+  - {fileID: 8300000, guid: ce7f7d1abddc206488aeaa7f9a004ab7, type: 3}
   postFightShouts:
   - {fileID: 8300000, guid: d5dd3e983e67eba4eaebd71223d65753, type: 3}
   - {fileID: 8300000, guid: dbcea24012e534840b7105275e8c7c2d, type: 3}
   - {fileID: 8300000, guid: d72c9a0cd7e3e0d4186e681a48cabeeb, type: 3}
-  - {fileID: 8300000, guid: 945b2455e6a84db4fa62c91eb3209845, type: 3}
-  - {fileID: 8300000, guid: f04f00943a4272b44938d1a645690479, type: 3}
-  - {fileID: 8300000, guid: f967e2d23fa04924eae93a0deaf77b64, type: 3}
-  - {fileID: 8300000, guid: 4dce1c3a2546c284fa294d61e4dbecda, type: 3}
+  - {fileID: 8300000, guid: 6e581c7fceb8b3847a21f95764f895e8, type: 3}
+  - {fileID: 8300000, guid: ce7f7d1abddc206488aeaa7f9a004ab7, type: 3}
   limbs:
   - {fileID: 7634190098386071707}
   - {fileID: 2524595154812672443}

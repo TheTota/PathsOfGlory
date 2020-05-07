@@ -50,6 +50,7 @@ public class UnitsFightManager : MonoBehaviour
 
     private float lowMainMusicVol;
     private float normalMainMusicVol;
+    private Coroutine fightEndCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -127,6 +128,7 @@ public class UnitsFightManager : MonoBehaviour
     public void StartUnitsFight(UnitType playerUnit, UnitType enemyUnit)
     {
         this.FightIsOver = false;
+        this.fightEndCoroutine = StartCoroutine(EndFightAfterDelay(10f));
 
         SwitchBattleSoundsMode();
 
@@ -261,6 +263,7 @@ public class UnitsFightManager : MonoBehaviour
         // check if battle is over
         if (this.playerUnitAIs.Count == 0 || this.enemyUnitAIs.Count == 0)
         {
+            StopCoroutine(this.fightEndCoroutine);
             StartCoroutine(EndFightAfterDelay(2f));
         }
     }
