@@ -55,13 +55,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_EDITOR
         // DEBUG KEYS 
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.F1) && Input.GetKeyDown(KeyCode.F2) && Input.GetKeyDown(KeyCode.F3))
         {
             Debug.Log("DEBUG: Clearing player prefs.");
             PlayerPrefs.DeleteAll();
         }
+#if UNITY_EDITOR
         else if (Input.GetKeyDown(KeyCode.F2))
         {
             Debug.Log("DEBUG: Unlock next commander.");
