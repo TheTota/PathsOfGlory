@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_EDITOR
         // DEBUG KEYS 
         if (Input.GetKeyDown(KeyCode.F1))
         {
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
             UnlockRewards();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+#endif
     }
 
     /// <summary>
