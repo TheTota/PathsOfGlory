@@ -24,10 +24,11 @@ MonoBehaviour:
     jamais enregistr\xE9. Mais tr\xE8ve de vantardises, affrontons-nous !"
   preBattleWonLastLines:
   - "<b>Venu retenter votre chance ?</b>\\n\\nAllons-y sans plus attendre, j'ai une
-    conf\xE9rence avec les tr\xE9soriers de l'Empire pr\xE9vue apr\xE8s la bataille."
+    r\xE9union avec les tr\xE9soriers de l'Empire pr\xE9vue apr\xE8s la bataille."
   preBattleLostLastLines:
   - "<b>Un revanche en vue !</b>\\n\\nHonn\xEAtement, je ne suis pas habitu\xE9 \xE0
-    l'\xE9chec. J'ai repens\xE9 \xE0 notre dernier affrontement, j'ai ma chance."
+    l'\xE9chec.\\nJe ne supporte pas \xE7a \xE0 vrai dire. Je dois gagner aujourd'hui
+    !"
   postBattleWinLines:
   - "<b>Il s'en est fallu de peu.</b>\\n\\nVous avez un style tr\xE8s int\xE9ressant,
     mais vous n'avez pas \xE9t\xE9 d\xE9cisif cette fois-ci."
@@ -53,4 +54,4 @@ MonoBehaviour:
   postUnitsFightDrawLines:
   - "Non... j'ai du faire preuve d'inattention.\\n\\nImpossible, ma facult\xE9 de
     concentration ne connait d'\xE9gale au sein de l'Empire."
-  - Une anomalie dans les chiffres...
+  - Une anomalie dans les chiffres...\n\nJe suis confus, mais bon ce n'est pas grave.
