@@ -30,7 +30,9 @@ public class UnitAI : MonoBehaviour
     // units movement and hop effect (better looking than linear movement)
     protected float speed;
     protected float hopFrequency = 30f;
-    protected float hopMagnitude = .01f;
+    protected float hopMagnitude;
+    protected float battleHopMagnitude = 2.5f;
+    protected float introHopMagnitude = 2f;
     protected bool turnedBack;
 
     // units move speed constants
@@ -95,6 +97,16 @@ public class UnitAI : MonoBehaviour
         {
             StartCoroutine(SetAliveAfterRandomTime(0f, .07f));
         }
+
+        // Change hop magnitude depending on if intro mode or not
+        if (DemoMode)
+        {
+            hopMagnitude = introHopMagnitude;
+        }
+        else
+        {
+            hopMagnitude = battleHopMagnitude;
+        }
     }
 
     private IEnumerator SetAliveAfterRandomTime(float minSecBound, float maxSecBound)
@@ -150,7 +162,7 @@ public class UnitAI : MonoBehaviour
         // Move our position a step closer to the target.
         float step = speed * Time.deltaTime; // calculate distance to move
         Vector3 pos = Vector2.MoveTowards(transform.position, target, step);
-        transform.position = pos + transform.up * Mathf.Sin(Time.time * hopFrequency) * hopMagnitude;
+        transform.position = pos + transform.up * Mathf.Sin(Time.time * hopFrequency) * hopMagnitude * Time.deltaTime;
     }
 
     /// <summary>
