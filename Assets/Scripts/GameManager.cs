@@ -100,8 +100,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void CheckVersion()
     {
-        // Delete player prefs if new version of the game and tester mode 
-        if (testerMode && PlayerPrefs.HasKey("version") && PlayerPrefs.GetString("version") != Application.version)
+        // If tester mode build, and no recorded version pref (old old version previouvsly played) or recorded version but doesn't match current one 
+        // => delete player prefs
+        if (testerMode && (!PlayerPrefs.HasKey("version") || (PlayerPrefs.HasKey("version") && PlayerPrefs.GetString("version") != Application.version)))
         {
             Debug.Log("Different version than previously, deleting all player prefs");
             PlayerPrefs.DeleteAll();

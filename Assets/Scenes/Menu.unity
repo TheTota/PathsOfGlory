@@ -6223,7 +6223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246dfc4afc19418458110aa20e364d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testerMode: 0
+  testerMode: 1
   enemyCommandersElements:
   - {fileID: 11400000, guid: 4b408c0d1255b0c499d667dd9b6821c2, type: 2}
   - {fileID: 11400000, guid: d2e234e07aba2f14bb56309c20008ee1, type: 2}
