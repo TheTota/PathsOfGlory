@@ -9,6 +9,9 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private bool testerMode = true; // Turn it off to stop deleting prefs when new version comes out (might want player to keep his saves)
+
     [Header("Mettre dans l'ordre de difficulté")]
     /// <summary>
     /// Elements that define the commanders. Used for initialisation purposes (index 0 = easy, 9 = max difficulty).
@@ -86,9 +89,25 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void InitGame()
     {
+        CheckVersion();
         PortraitGenerator.Instance.InitPortraitElements();
         InitPlayer();
         InitEnemies();
+    }
+
+    /// <summary>
+    /// Checks current version, compares to previously recorded one, takes action if needed.
+    /// </summary>
+    private void CheckVersion()
+    {
+        // Delete player prefs if new version of the game and tester mode 
+        if (testerMode && PlayerPrefs.HasKey("version") && PlayerPrefs.GetString("version") != Application.version)
+        {
+            Debug.Log("Different version than previously, deleting all player prefs");
+            PlayerPrefs.DeleteAll();
+        }
+
+        PlayerPrefs.SetString("version", Application.version);
     }
 
     /// <summary>
