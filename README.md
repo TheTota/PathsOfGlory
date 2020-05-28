@@ -19,9 +19,10 @@ Revision: 10/03/2020
 - Android, Mac, Linux are future possibilities (later)
 
 ### The elevator Pitch
-__FR:__ Vous êtes un général néophyte et aspirez à devenir le plus grand commandant de tous les temps. Pour cela vous allez devoir défier un par un tous les plus puissants généraux du monde, chacun utilisant une stratégie de combat différente. 
-Vous disposez d'une armée que vous allez devoir commander intelligemment en déployant les bonnes unités au bon moment afin de contrer vos ennemis et triompher de la bataille. Il sera impossible de vaincre sans connaître son adversaire et savoir le vaincre.
-Chaque commandant vaincu permettra d’accéder au suivant, et de débloquer un de ses traits d’apparence pour personnaliser votre propre commandant.
+__FR:__ Path of Glory est un jeu de stratégie “tour par tour”.
+Le joueur incarne un commandant qui a été sélectionné pour prendre part à la Ligue des commandants d'Élite de l’Empire.
+Son objectif sera de devenir le nouveau champion de la Ligue en venant à bout des 10 commandants en faisant partie. 
+Le joueur fera donc face à une difficulté progressive lors de batailles de 15 manches dont chacune s’appuiera sur le système de Shi-Fu-Mi étendu.
 
 ### Monetization model (Brief/Document)
 - No monetization for this project.
