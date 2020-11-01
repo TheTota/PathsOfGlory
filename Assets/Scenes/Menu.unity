@@ -1624,6 +1624,7 @@ GameObject:
   - component: {fileID: 462594649}
   - component: {fileID: 462594651}
   - component: {fileID: 462594650}
+  - component: {fileID: 462594652}
   m_Layer: 5
   m_Name: PressKeyToPlay
   m_TagString: Untagged
@@ -1769,6 +1770,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462594648}
   m_CullTransparentMesh: 0
+--- !u!114 &462594652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462594648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: Appuyez sur une touche...
+  EN: Press any key to start playing...
 --- !u!1001 &492119449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6224,6 +6239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testerMode: 1
+  language: 1
   enemyCommandersElements:
   - {fileID: 11400000, guid: 4b408c0d1255b0c499d667dd9b6821c2, type: 2}
   - {fileID: 11400000, guid: d2e234e07aba2f14bb56309c20008ee1, type: 2}

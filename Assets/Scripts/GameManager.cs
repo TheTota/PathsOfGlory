@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum Lang
+{
+    FR,
+    EN
+}
+
 /// <summary>
 /// Game Manager 
 /// </summary>
@@ -11,6 +17,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private bool testerMode = true; // Turn it off to stop deleting prefs when new version comes out (might want player to keep his saves)
+
+    [SerializeField]
+    private Lang language = Lang.EN;
+    public Lang Language { get { return language; } set { language = value; } }
 
     [Header("Mettre dans l'ordre de difficulté")]
     /// <summary>
