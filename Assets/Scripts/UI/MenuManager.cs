@@ -47,6 +47,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI commanderNameText;
 
+    [Header("(First start) Language Panel")]
+    [SerializeField]
+    private GameObject languagePanel;
+    private bool languagePicked = false;
+
     [Header("Game Completed UI")]
     [SerializeField]
     private GameObject ggPanel;
@@ -79,6 +84,33 @@ public class MenuManager : MonoBehaviour
         ggPanelAnimator = ggPanel.GetComponent<Animator>();
         creditsPanelAnimator = creditsPanel.GetComponent<Animator>();
 
+        // make first start 
+        if (GameManager.Instance.FirstStart)
+        {
+            GameManager.Instance.Language = Lang.NULL;
+            this.languagePanel.SetActive(true);
+            StartCoroutine(WaitForLanguage());
+        }
+        else
+        {
+            Debug.Log(PlayerPrefs.GetString("lang"));
+            // Load language
+            if (PlayerPrefs.GetString("lang") == "FR")
+            {
+                GameManager.Instance.SetFrenchLang();
+                languagePicked = true;
+            }
+            else if (PlayerPrefs.GetString("lang") == "EN")
+            {
+                GameManager.Instance.SetEnglishLang();
+                languagePicked = true;
+            }
+            else
+            {
+                throw new Exception("Unknown language");
+            }
+        }
+
         // skip title screen if not first time on scene
         if (GameManager.Instance.GameHasBeenInit)
         {
@@ -94,8 +126,9 @@ public class MenuManager : MonoBehaviour
     private void Update()
     {
         // handle that "press any key" thing
-        if (isInTitleScreen && Input.anyKeyDown)
+        if (isInTitleScreen && languagePicked && Input.anyKeyDown)
         {
+            this.languagePanel.SetActive(false);
             StartCoroutine(DoPressAnyKeyAction());
         }
     }
@@ -103,6 +136,7 @@ public class MenuManager : MonoBehaviour
     private IEnumerator DoPressAnyKeyAction()
     {
         isInTitleScreen = false;
+
         this.pressKeySwooshSFX.Play();
 
         yield return new WaitForSeconds(.1f);
@@ -151,6 +185,17 @@ public class MenuManager : MonoBehaviour
             this.playerCommanderTopLeft.SetActive(true);
             this.commanderGridPopup.SetActive(true);
         }
+    }
+
+    /// <summary>
+    /// Wait for a.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator WaitForLanguage()
+    {
+        yield return new WaitUntil(() => GameManager.Instance.Language != Lang.NULL);
+        languagePicked = true;
+        PlayerPrefs.SetString("lang", GameManager.Instance.Language.ToString());
     }
 
     /// <summary>

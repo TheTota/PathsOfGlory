@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public enum Lang
 {
+    NULL,
     FR,
     EN
 }
@@ -19,8 +20,10 @@ public class GameManager : MonoBehaviour
     private bool testerMode = true; // Turn it off to stop deleting prefs when new version comes out (might want player to keep his saves)
 
     [SerializeField]
-    private Lang language = Lang.EN;
-    public Lang Language { get { return language; } set { language = value; } }
+    private Lang language = Lang.NULL;
+    public Lang Language { get {  return language; } set { language = value; } }
+    public void SetEnglishLang() { this.Language = Lang.EN; }
+    public void SetFrenchLang() { this.Language = Lang.FR; }
 
     [Header("Mettre dans l'ordre de difficulté")]
     /// <summary>
