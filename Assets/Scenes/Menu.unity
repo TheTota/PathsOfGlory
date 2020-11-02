@@ -1140,6 +1140,7 @@ GameObject:
   - component: {fileID: 431834228}
   - component: {fileID: 431834230}
   - component: {fileID: 431834229}
+  - component: {fileID: 431834231}
   m_Layer: 5
   m_Name: CommandersGridInstructions
   m_TagString: Untagged
@@ -1285,6 +1286,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431834227}
   m_CullTransparentMesh: 0
+--- !u!114 &431834231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431834227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: "Choisir un commandant \xE0 affronter"
+  EN: Choose a commander to face
 --- !u!1 &445207158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,6 +2611,7 @@ GameObject:
   - component: {fileID: 667942993}
   - component: {fileID: 667942995}
   - component: {fileID: 667942994}
+  - component: {fileID: 667942996}
   m_Layer: 5
   m_Name: PlayerCommanderText
   m_TagString: Untagged
@@ -2741,6 +2757,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667942992}
   m_CullTransparentMesh: 0
+--- !u!114 &667942996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667942992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: Personnaliser l'apparence
+  EN: Customize look
 --- !u!1 &777043509
 GameObject:
   m_ObjectHideFlags: 0
@@ -6994,6 +7024,7 @@ GameObject:
   - component: {fileID: 1672186072}
   - component: {fileID: 1672186074}
   - component: {fileID: 1672186073}
+  - component: {fileID: 1672186075}
   m_Layer: 5
   m_Name: CustomiserInstructions
   m_TagString: Untagged
@@ -7139,6 +7170,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672186071}
   m_CullTransparentMesh: 0
+--- !u!114 &1672186075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672186071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: Personnalisation du commandant
+  EN: Commander customisation
 --- !u!1 &1703231461
 GameObject:
   m_ObjectHideFlags: 0
