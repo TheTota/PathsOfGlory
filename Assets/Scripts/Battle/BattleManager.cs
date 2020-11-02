@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -117,6 +118,10 @@ public class BattleManager : MonoBehaviour
 
     // Timer logic & display
     private float remainingTime;
+
+    // Translation needs 
+    private string sampleRoundText;
+    private string sampleNextRoundValueText;
 
     public BattleCommander BattleWinner { get; set; }
     public bool UnlockedRewards { get; set; }
@@ -251,6 +256,7 @@ public class BattleManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Battle()
     {
+
         yield return new WaitForSeconds(.5f);
         yield return StartCoroutine(DisplayPreBattleLine());
         // Display battle UI
@@ -261,8 +267,18 @@ public class BattleManager : MonoBehaviour
         // Start the battle
         while (CurrentRound <= MAX_ROUNDS)
         {
-            roundText.text = "Manche : " + CurrentRound + " / " + MAX_ROUNDS;
-            nextRoundValueText.text = "Valeur de la manche : " + scoreDefinitionTable[CurrentRound - 1];
+            // Translation for round text
+            // Super weird but it works and we got no time to waste
+            if (CurrentRound >= 2)
+            {
+                if (string.IsNullOrEmpty(sampleRoundText) || string.IsNullOrEmpty(sampleNextRoundValueText))
+                {
+                    sampleRoundText = roundText.text;
+                    sampleNextRoundValueText = nextRoundValueText.text;
+                }
+
+                SetRoundTextValues(CurrentRound.ToString(), scoreDefinitionTable[CurrentRound - 1].ToString());
+            }
 
             // Allow the player to pick
             remainingTime = ai.SecondsBeforeAction;
@@ -338,6 +354,13 @@ public class BattleManager : MonoBehaviour
 
         // display end battle panel that will be handled by attached script
         postBattleScreen.SetActive(true);
+    }
+
+    private void SetRoundTextValues(string currentRound, string roundValue)
+    {
+        var regex = new Regex(Regex.Escape("1"));
+        roundText.text = regex.Replace(sampleRoundText, currentRound, 1).Replace("15", MAX_ROUNDS.ToString());
+        nextRoundValueText.text = sampleNextRoundValueText.Replace("0", roundValue);
     }
 
     #region Reaction Moods
