@@ -15,7 +15,7 @@ PlayerSettings:
   companyName: TOVA
   productName: PathsOfGlory
   defaultCursor: {fileID: 2800000, guid: 20157c0b17a889748bc1f307e99915eb, type: 3}
-  cursorHotspot: {x: 90, y: 0}
+  cursorHotspot: {x: 4, y: 4}
   m_SplashScreenBackgroundColor: {r: 0.53333336, g: 0.7803922, b: 0.95294124, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
