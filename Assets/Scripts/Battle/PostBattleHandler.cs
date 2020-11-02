@@ -93,12 +93,31 @@ public class PostBattleHandler : MonoBehaviour
         if (this.bm.BattleWinner == this.bm.PlayerBC)
         {
             victoryAS.Play();
-            resultText.text = "VICTOIRE";
+
+            // translation
+            if (GameManager.Instance.Language == Lang.FR)
+            {
+                resultText.text = "VICTOIRE";
+            }
+            else if (GameManager.Instance.Language == Lang.EN)
+            {
+                resultText.text = "VICTORY";
+            }
+
         }
         else
         {
             defeatAS.Play();
-            resultText.text = "DEFAITE";
+
+            // translation
+            if (GameManager.Instance.Language == Lang.FR)
+            {
+                resultText.text = "DEFAITE";
+            }
+            else if (GameManager.Instance.Language == Lang.EN)
+            {
+                resultText.text = "DEFEAT";
+            }
         }
     }
 

@@ -1387,6 +1387,7 @@ GameObject:
   - component: {fileID: 162515637}
   - component: {fileID: 162515639}
   - component: {fileID: 162515638}
+  - component: {fileID: 162515640}
   m_Layer: 5
   m_Name: RewardsTitle
   m_TagString: Untagged
@@ -1532,6 +1533,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162515636}
   m_CullTransparentMesh: 0
+--- !u!114 &162515640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162515636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: "R\xE9compenses"
+  EN: Rewards
 --- !u!1 &171489211
 GameObject:
   m_ObjectHideFlags: 0
@@ -3485,6 +3500,7 @@ GameObject:
   - component: {fileID: 469081651}
   - component: {fileID: 469081653}
   - component: {fileID: 469081652}
+  - component: {fileID: 469081654}
   m_Layer: 5
   m_Name: IndicationsUnlockedElement
   m_TagString: Untagged
@@ -3630,6 +3646,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469081650}
   m_CullTransparentMesh: 0
+--- !u!114 &469081654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469081650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: "Nouvel \xE9l\xE9ment de personnalisation"
+  EN: New customization element
 --- !u!1 &488106296
 GameObject:
   m_ObjectHideFlags: 0
@@ -6547,6 +6577,7 @@ GameObject:
   - component: {fileID: 978238455}
   - component: {fileID: 978238457}
   - component: {fileID: 978238456}
+  - component: {fileID: 978238458}
   m_Layer: 5
   m_Name: IndicationsUnlockedCommander
   m_TagString: Untagged
@@ -6692,6 +6723,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978238454}
   m_CullTransparentMesh: 0
+--- !u!114 &978238458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978238454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: "Nouveau commandant  \xE0 affronter"
+  EN: New commander to face
 --- !u!1 &992828985
 GameObject:
   m_ObjectHideFlags: 0
@@ -11437,6 +11482,7 @@ GameObject:
   - component: {fileID: 1560193623}
   - component: {fileID: 1560193625}
   - component: {fileID: 1560193624}
+  - component: {fileID: 1560193626}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -11582,6 +11628,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560193622}
   m_CullTransparentMesh: 0
+--- !u!114 &1560193626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560193622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: "Retourner \xE0 la caserne"
+  EN: Back to the barracks
 --- !u!1 &1563368415
 GameObject:
   m_ObjectHideFlags: 0
@@ -15284,6 +15344,7 @@ GameObject:
   - component: {fileID: 2131639512}
   - component: {fileID: 2131639514}
   - component: {fileID: 2131639513}
+  - component: {fileID: 2131639515}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -15429,6 +15490,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131639511}
   m_CullTransparentMesh: 0
+--- !u!114 &2131639515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131639511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: "Affronter \xE0 nouveau"
+  EN: Face again
 --- !u!222 &156826377458717695
 CanvasRenderer:
   m_ObjectHideFlags: 0
