@@ -7255,6 +7255,7 @@ GameObject:
   - component: {fileID: 1504280730}
   - component: {fileID: 1504280732}
   - component: {fileID: 1504280731}
+  - component: {fileID: 1504280733}
   m_Layer: 5
   m_Name: IntroText
   m_TagString: Untagged
@@ -7278,8 +7279,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -38, y: -496}
-  m_SizeDelta: {x: 1409.9, y: 956.3}
+  m_AnchoredPosition: {x: -38, y: -330}
+  m_SizeDelta: {x: 1249.5, y: 624.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504280731
 MonoBehaviour:
@@ -7302,9 +7303,7 @@ MonoBehaviour:
   m_text: "<size=170%>MERCI D'AVOIR JOU\xC9 !</size>\n\nJeu r\xE9alis\xE9 par une
     \xE9quipe d'\xE9tudiants de deuxi\xE8me ann\xE9e d'\xE9cole d'ing\xE9nieurs du
     CNAM PACA : \n\nThomas CIANFARANI\nVanessa ASEJO CASPILLO\nAlexandre TOMASIA\nOc\xE9ane
-    CARPENTIER\n\nRemerciements aux professeurs ayant encadr\xE9 ce projet : \nSt\xE9phane
-    NATKIN, Philippe BONFILS et Antoine GONOT\n<alpha=#00>\nLead game developer \nTHOMAS
-    CIANFARANI \n\n..... TODO: scroll and display the credits\n</alpha>"
+    CARPENTIER"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b94a3fc999b18a43a16136e7f0b2af3, type: 2}
   m_sharedMaterial: {fileID: 6424746533781510342, guid: 1b94a3fc999b18a43a16136e7f0b2af3,
@@ -7405,6 +7404,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504280729}
   m_CullTransparentMesh: 0
+--- !u!114 &1504280733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504280729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: "<size=170%>MERCI D'AVOIR JOU\xC9 !</size><br><br>Merci inifiniment d'avoir
+    jou\xE9 au jeu jusqu'au bout.<br><br>Ce jeu a \xE9t\xE9 r\xE9alis\xE9 dans le
+    cadre d'un projet \xE9tudiant par Thomas CIANFARANI.<br><br>Remerciements \xE0
+    Vanessa ASEJO CASPILLO, Alexandre TOMASIA, Oc\xE9ane CARPENTIER pour leur aide
+    sur le projet."
+  EN: "<size=170%>THANKS FOR PLAYING !</size><br><br>Thank you so much for completing
+    the game.<br><br>This game has been created as part of a student project by Thomas
+    CIANFARANI.<br><br>Thanks to Vanessa ASEJO CASPILLO, Alexandre TOMASIA, Oc\xE9ane
+    CARPENTIER for their help on the project."
 --- !u!1 &1507649445
 GameObject:
   m_ObjectHideFlags: 0
