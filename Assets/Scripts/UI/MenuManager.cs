@@ -29,6 +29,8 @@ public class MenuManager : MonoBehaviour
 
     [Header("(First start) Main UI Elements")]
     [SerializeField]
+    private GameObject keyToPressObj;
+    [SerializeField]
     private GameObject commanderGridPopup;
     [SerializeField]
     private TextMeshProUGUI commanderGridInstructions;
@@ -68,16 +70,27 @@ public class MenuManager : MonoBehaviour
     private Animator ggPanelAnimator;
     private Animator creditsPanelAnimator;
 
-    // Intro texts 
-    private const string INTRO_GAME_MSG = "<size=120%><b>Bienvenue dans la Ligue des Commandants d'Elite.</b></size>\n\nIl s'agit d'une compétition entre nos plus fins stratèges permettant de déterminer le meilleur commandant de l'Empire.\n\nVos exploits passés ont impressionné l'Empereur en personne, qui vous invite à rejoindre la Ligue en tant que challenger.";
-    private const string INTRO_GRID_INSTRUCTIONS = "Ici vous verrez un tableau récapitulatif des commandants de la Ligue. A tout moment vous pouvez affronter un concurrent disponible, même si vous l'avez déjà vaincu.";
-    private const string INTRO_GRID_MSG = "<size=110%><b>La Ligue se limite à 10 commandants, classés par ordre de compétence sur le champs de bataille.</b></size>\n\nEn tant que challenger, vous devrez vaincre chaque commandant un par un en commençant par le 10ème jusqu'à triompher du Grand Champion de la Ligue.";
-    private const string INTRO_MY_COMMANDER_MSG = "<size=110%><b>Vos victoires sur le champs de bataille vous permettront de débloquer des éléments de personnalisation de votre apparence.</b></size>\n\nChaque commandant de la Ligue possède un trait d'apparence unique qui vous sera octroyé si l'emportez.\n\nLes meilleurs mages de l'Empire seront capable d'altérer votre apparence à tout moment avec ce que vous aurez débloqué.";
-    private const string INTRO_FINAL_MSG = "<size=120%><b>Commandant, l'arène de combat vous attend.</b></size>\n\nJe serai votre premier adversaire. Ce sera l'occasion de vous expliquer le fonctionnement des batailles au sein de la Ligue.\n\nJ'ai hate de pouvoir me mesurer à vous sur le champs de bataille.";
+    // Intro texts FR
+    private const string FR_INTRO_GAME_MSG = "<size=120%><b>Bienvenue dans la Ligue des Commandants d'Elite.</b></size>\n\nIl s'agit d'une compétition entre nos plus fins stratèges permettant de déterminer le meilleur commandant de l'Empire.\n\nVos exploits passés ont impressionné l'Empereur en personne, qui vous invite à rejoindre la Ligue en tant que challenger.";
+    private const string FR_INTRO_GRID_INSTRUCTIONS = "Ici vous verrez un tableau récapitulatif des commandants de la Ligue. A tout moment vous pouvez affronter un concurrent disponible, même si vous l'avez déjà vaincu.";
+    private const string FR_INTRO_GRID_MSG = "<size=110%><b>La Ligue se limite à 10 commandants, classés par ordre de compétence sur le champs de bataille.</b></size>\n\nEn tant que challenger, vous devrez vaincre chaque commandant un par un en commençant par le 10ème jusqu'à triompher du Grand Champion de la Ligue.";
+    private const string FR_INTRO_MY_COMMANDER_MSG = "<size=110%><b>Vos victoires sur le champs de bataille vous permettront de débloquer des éléments de personnalisation de votre apparence.</b></size>\n\nChaque commandant de la Ligue possède un trait d'apparence unique qui vous sera octroyé si l'emportez.\n\nLes meilleurs mages de l'Empire seront capable d'altérer votre apparence à tout moment avec ce que vous aurez débloqué.";
+    private const string FR_INTRO_FINAL_MSG = "<size=120%><b>Commandant, l'arène de combat vous attend.</b></size>\n\nJe serai votre premier adversaire. Ce sera l'occasion de vous expliquer le fonctionnement des batailles au sein de la Ligue.\n\nJ'ai hate de pouvoir me mesurer à vous sur le champs de bataille.";
+
+    // Intro texts EN
+    private const string EN_INTRO_GAME_MSG = "<size=120%><b>Welcome to the Elite Commanders League.</b></size>\n\nThe League is a competition between our finest strategists to determine the best commander of the Empire.\n\nYour past exploits have impressed the Emperor himself, who invites you to join the League as a challenger.";
+    private const string EN_INTRO_GRID_INSTRUCTIONS = "Here you will see a summary of the League's commanders. At any time you can face an available competitor, even if you have already defeated him.";
+    private const string EN_INTRO_GRID_MSG = "<size=110%><b>The League is limited to 10 commanders, ranked by their skills on the battlefield.</b></size>\n\nAs a challenger, you will have to defeat each commander one by one starting with the 10th until triumphing over the Grand Champion of the League.";
+    private const string EN_INTRO_MY_COMMANDER_MSG = "<size=110%><b>Your victories on the battlefield will allow you to unlock elements to customize your appearance.</b></size>\n\nEach League Commander has a unique appearance trait that will be awarded to you if you win.\n\nThe best mages in the Empire will be able to alter your appearance at any time with your unlock traits or elements.";
+    private const string EN_INTRO_FINAL_MSG = "<size=120%><b>Commander, the arena awaits you.</b></size>\n\nI will be your first opponent. This will be an opportunity to explain to you how the battles within the League work.\n\nI can't wait to measure myself against you on the battlefield.";
 
     private bool isInGridIntro = false;
-
     private bool isInTitleScreen;
+
+    private void Awake()
+    {
+        this.titleUI.SetActive(true);
+    }
 
     private void Start()
     {
@@ -89,6 +102,7 @@ public class MenuManager : MonoBehaviour
         // make first start 
         if (GameManager.Instance.FirstStart)
         {
+            keyToPressObj.SetActive(false);
             GameManager.Instance.Language = Lang.NULL;
             this.languagePanel.SetActive(true);
             StartCoroutine(WaitForLanguage());
@@ -172,7 +186,6 @@ public class MenuManager : MonoBehaviour
 
             introTextPanelAnimator = this.introTextPanel.GetComponent<Animator>();
             StartCoroutine(HandleFirstStart());
-            GameManager.Instance.FirstStart = false;
         }
         else if (GameManager.Instance.JustCompletedGame)
         {
@@ -219,7 +232,7 @@ public class MenuManager : MonoBehaviour
 
         // 1rst msg : intro to game
         this.introTextPanel.SetActive(true);
-        DisplayIntroMessage(INTRO_GAME_MSG);
+        DisplayIntroMessage(GameManager.Instance.Language == Lang.FR ? FR_INTRO_GAME_MSG : EN_INTRO_GAME_MSG);
         yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
         yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
@@ -231,19 +244,20 @@ public class MenuManager : MonoBehaviour
         mainMenuAnimator.Play("MainMenuCommandersGrid");
 
         string normalText = this.commanderGridInstructions.text;
-        Debug.Log("HEEEEEEEEEEEEEEEEEEEEEEEEEY, we're displaying the wrong message for the commanders grid panel on first start, coz of the new trad system!");
-        this.commanderGridInstructions.text = INTRO_GRID_INSTRUCTIONS;
+        this.commanderGridInstructions.GetComponent<SimpleTranslator>().enabled = false;
+        this.commanderGridInstructions.text = GameManager.Instance.Language == Lang.FR ? FR_INTRO_GRID_INSTRUCTIONS : EN_INTRO_GRID_INSTRUCTIONS;
 
         isInGridIntro = true;
         yield return new WaitUntil(() => this.mainMenuAnimator.GetBool("CloseGridPopup")); // wait until grid popup is unactive
         yield return new WaitForSeconds(this.mainMenuAnimator.runtimeAnimatorController.animationClips[2].length);
+        this.commanderGridInstructions.GetComponent<SimpleTranslator>().enabled = true;
 
         this.commanderGridInstructions.text = normalText;
         this.commanderGridPopup.SetActive(false);
         this.commanderGridSkippable.SetActive(false);
 
         // 2nd msg : commander grid
-        DisplayIntroMessage(INTRO_GRID_MSG);
+        DisplayIntroMessage(GameManager.Instance.Language == Lang.FR ? FR_INTRO_GRID_MSG : EN_INTRO_GRID_MSG);
         yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
         yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
@@ -251,14 +265,14 @@ public class MenuManager : MonoBehaviour
         this.playerCommanderTopLeft.SetActive(true);
         mainMenuAnimator.Play("MainMenuCommanderBtn");
 
-        DisplayIntroMessage(INTRO_MY_COMMANDER_MSG);
+        DisplayIntroMessage(GameManager.Instance.Language == Lang.FR ? FR_INTRO_MY_COMMANDER_MSG : EN_INTRO_MY_COMMANDER_MSG);
         yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
         yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
         // 4th msg : come fight me
         isInGridIntro = false;
 
-        DisplayIntroMessage(INTRO_FINAL_MSG);
+        DisplayIntroMessage(GameManager.Instance.Language == Lang.FR ? FR_INTRO_FINAL_MSG : EN_INTRO_FINAL_MSG);
         yield return new WaitUntil(() => !this.introTextPanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
         yield return new WaitForSeconds(this.introTextPanelAnimator.runtimeAnimatorController.animationClips[0].length);
 
@@ -268,6 +282,10 @@ public class MenuManager : MonoBehaviour
 
         this.commandersGrid.GetComponentInChildren<Button>().enabled = true;
         this.commandersGrid.GetComponentInChildren<EventTrigger>().enabled = true;
+
+        // first start
+        GameManager.Instance.FirstStart = false;
+        PlayerPrefs.SetInt("player_saves", 1); // used to check if we have saves for the player, that first start is OK
     }
     public void HideLanguagePanel()
     {
