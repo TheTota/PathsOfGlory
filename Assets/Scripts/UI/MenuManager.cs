@@ -141,16 +141,32 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        // handle that "press any key" thing
-        if (isInTitleScreen && ((GameManager.Instance.FirstStart && languagePicked) || (!GameManager.Instance.FirstStart && languagePicked && Input.anyKeyDown)))
+        // Pick language and go to press key panel
+        if ((GameManager.Instance.FirstStart && languagePicked))
+        {
+            StartCoroutine(PickLanguageAction());
+        }
+
+        // Handle that "press any key" thing
+        if (isInTitleScreen && languagePicked && Input.anyKeyDown)
         {
             StartCoroutine(DoPressAnyKeyAction());
         }
     }
 
+    private IEnumerator PickLanguageAction()
+    {
+        // language panel closing
+        yield return new WaitUntil(() => !this.languagePanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
+        yield return new WaitForSeconds(this.languagePanelAnimator.runtimeAnimatorController.animationClips[0].length);
+        this.languagePanel.SetActive(false);
+        keyToPressObj.SetActive(true);
+    }
+
     private IEnumerator DoPressAnyKeyAction()
     {
         isInTitleScreen = false;
+        keyToPressObj.SetActive(false);
 
         this.pressKeySwooshSFX.Play();
 
@@ -202,7 +218,7 @@ public class MenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Wait for a.
+    /// Wait for language pick from player.
     /// </summary>
     /// <returns></returns>
     private IEnumerator WaitForLanguage()
@@ -218,14 +234,6 @@ public class MenuManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator HandleFirstStart()
     {
-        // language panel closing
-        if (GameManager.Instance.FirstStart)
-        {
-            yield return new WaitUntil(() => !this.languagePanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
-            yield return new WaitForSeconds(this.languagePanelAnimator.runtimeAnimatorController.animationClips[0].length);
-            this.languagePanel.SetActive(false);
-        }
-
         // init intro message elements such as seal and name
         this.reactionTextSeal.color = GameManager.Instance.Enemies[0].Color;
         this.commanderNameText.text = GameManager.Instance.Enemies[0].CommanderName;

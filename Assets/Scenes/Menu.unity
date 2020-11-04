@@ -7837,7 +7837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FR: Personnalisation du commandant
-  EN: Commander customisation
+  EN: Commander customization
 --- !u!1 &1674568725
 GameObject:
   m_ObjectHideFlags: 0
