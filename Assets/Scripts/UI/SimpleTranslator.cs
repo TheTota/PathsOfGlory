@@ -10,6 +10,22 @@ public class SimpleTranslator : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.Instance != null)
+        {
+            UpdateText();
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (GameManager.Instance != null)
+        {
+            UpdateText();
+        }
+    }
+
+    private void UpdateText()
+    {
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
         if (GameManager.Instance.Language == Lang.FR)
         {
@@ -20,5 +36,4 @@ public class SimpleTranslator : MonoBehaviour
             text.text = EN;
         }
     }
-
 }
