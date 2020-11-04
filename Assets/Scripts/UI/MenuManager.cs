@@ -63,6 +63,7 @@ public class MenuManager : MonoBehaviour
     private AudioSource pressKeySwooshSFX;
 
     private Animator mainMenuAnimator;
+    private Animator languagePanelAnimator;
     private Animator introTextPanelAnimator;
     private Animator ggPanelAnimator;
     private Animator creditsPanelAnimator;
@@ -80,6 +81,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        languagePanelAnimator = this.languagePanel.GetComponent<Animator>();
         mainMenuAnimator = this.mainMenuUI.GetComponent<Animator>();
         ggPanelAnimator = ggPanel.GetComponent<Animator>();
         creditsPanelAnimator = creditsPanel.GetComponent<Animator>();
@@ -126,9 +128,8 @@ public class MenuManager : MonoBehaviour
     private void Update()
     {
         // handle that "press any key" thing
-        if (isInTitleScreen && languagePicked && Input.anyKeyDown)
+        if (isInTitleScreen && ((GameManager.Instance.FirstStart && languagePicked) || (!GameManager.Instance.FirstStart && languagePicked && Input.anyKeyDown)))
         {
-            this.languagePanel.SetActive(false);
             StartCoroutine(DoPressAnyKeyAction());
         }
     }
@@ -204,6 +205,14 @@ public class MenuManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator HandleFirstStart()
     {
+        // language panel closing
+        if (GameManager.Instance.FirstStart)
+        {
+            yield return new WaitUntil(() => !this.languagePanelAnimator.GetBool("Opened")); // wait until user skips msg with a clic
+            yield return new WaitForSeconds(this.languagePanelAnimator.runtimeAnimatorController.animationClips[0].length);
+            this.languagePanel.SetActive(false);
+        }
+
         // init intro message elements such as seal and name
         this.reactionTextSeal.color = GameManager.Instance.Enemies[0].Color;
         this.commanderNameText.text = GameManager.Instance.Enemies[0].CommanderName;
@@ -222,6 +231,7 @@ public class MenuManager : MonoBehaviour
         mainMenuAnimator.Play("MainMenuCommandersGrid");
 
         string normalText = this.commanderGridInstructions.text;
+        Debug.Log("HEEEEEEEEEEEEEEEEEEEEEEEEEY, we're displaying the wrong message for the commanders grid panel on first start, coz of the new trad system!");
         this.commanderGridInstructions.text = INTRO_GRID_INSTRUCTIONS;
 
         isInGridIntro = true;
@@ -259,6 +269,10 @@ public class MenuManager : MonoBehaviour
         this.commandersGrid.GetComponentInChildren<Button>().enabled = true;
         this.commandersGrid.GetComponentInChildren<EventTrigger>().enabled = true;
     }
+    public void HideLanguagePanel()
+    {
+        languagePanelAnimator.SetBool("Opened", false);
+    }
 
     public void HideIntroTextPanel()
     {
@@ -269,6 +283,7 @@ public class MenuManager : MonoBehaviour
     {
         ggPanelAnimator.SetBool("Opened", false);
     }
+
     public void HideCreditsPanel()
     {
         creditsPanelAnimator.SetBool("Opened", false);
