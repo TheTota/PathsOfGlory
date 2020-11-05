@@ -6399,6 +6399,7 @@ GameObject:
   - component: {fileID: 1312338016}
   - component: {fileID: 1312338018}
   - component: {fileID: 1312338017}
+  - component: {fileID: 1312338019}
   m_Layer: 5
   m_Name: CommanderName
   m_TagString: Untagged
@@ -6443,7 +6444,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'L''Empereur,
+  m_text: 'The Emperor,
 
     Grim Andfrid'
   m_isRightToLeft: 0
@@ -6546,6 +6547,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312338015}
   m_CullTransparentMesh: 0
+--- !u!114 &1312338019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312338015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: L'empereur,<br>Grim Andfrid
+  EN: The Emperor,<br>Grim Andfrid
 --- !u!1 &1318213818
 GameObject:
   m_ObjectHideFlags: 0
@@ -8710,6 +8725,7 @@ GameObject:
   - component: {fileID: 1855265108}
   - component: {fileID: 1855265110}
   - component: {fileID: 1855265109}
+  - component: {fileID: 1855265111}
   m_Layer: 5
   m_Name: IntroText
   m_TagString: Untagged
@@ -8861,6 +8877,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855265107}
   m_CullTransparentMesh: 0
+--- !u!114 &1855265111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855265107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a4a25cbeb9974aaa612b11e75187e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FR: "<align=\"center\"><size=220%>F\xE9licitations !</size></align><br><br>Commandant,
+    vous avez triomph\xE9 des meilleurs strat\xE8ges et tacticiens de l'Empire.<br><br>J'ai
+    l'honneur de vous proclamer :  <b>Grand Champion de la Ligue des Commandants
+    d'Elite</b>.<br><br>Bient\xF4t, vous serez connu de tous au sein de l'Empire
+    et m\xEAme au-del\xE0 de ses fronti\xE8res. En cas de conflits, vous serez notre
+    premi\xE8re option sur le champs de bataille.<br><br>Vous repr\xE9sentez l'excellence
+    pour l'Empire, f\xE9licitations."
+  EN: '<align="center"><size=220%>Congratulations !</size></align><br><br>Commander,
+    you have triumphed over the best strategists and tacticians of the Empire.<br><br>I
+    have the honor to proclaim you: <b>Grand Champion of the Elite Commanders League</b>.<br><br>Soon
+    you will be known to everyone within the Empire and even beyond its borders.
+    In case of conflict, you will be our first option on the battlefield.<br><br>You
+    are a symbol of excellence for the Empire, congratulations.'
 --- !u!1 &1867257208
 GameObject:
   m_ObjectHideFlags: 0
