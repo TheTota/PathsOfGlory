@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
+  m_Name: EN_8-Economist
+  m_EditorClassIdentifier: 
+  commanderName: Lee "Le Prodige" Detmold
+  Locked: 1
+  Color: {r: 0.7411765, g: 0.7647059, b: 0.78039217, a: 1}
+  AiType: 8
+  PortraitElementToUnlock: {fileID: 11400000, guid: 19013eeac06aa1848b7f1c4b76139483,
+    type: 2}
+  preBattleFirstTimeLine: "<b>Enchant\xE9 commandant.</b>\\n\\nJe me pr\xE9sente,
+    Lee Detmold, jeune diplom\xE9 de l'Acad\xE9mie Imp\xE9riale en Sciences \xC9conomiques.\\n\\nJ'ai
+    pass\xE9 les examens de fin d'\xE9tudes avec le r\xE9sultat le plus \xE9lev\xE9
+    jamais enregistr\xE9. Mais tr\xE8ve de vantardises, affrontons-nous !"
+  preBattleWonLastLines:
+  - "<b>Venu retenter votre chance ?</b>\\n\\nAllons-y sans plus attendre, j'ai une
+    r\xE9union avec les tr\xE9soriers de l'Empire pr\xE9vue apr\xE8s la bataille."
+  preBattleLostLastLines:
+  - "<b>Un revanche en vue !</b>\\n\\nHonn\xEAtement, je ne suis pas habitu\xE9 \xE0
+    l'\xE9chec.\\nJe ne supporte pas \xE7a \xE0 vrai dire. Je dois gagner aujourd'hui
+    !"
+  postBattleWinLines:
+  - "<b>Il s'en est fallu de peu.</b>\\n\\nVous avez un style tr\xE8s int\xE9ressant,
+    mais vous n'avez pas \xE9t\xE9 d\xE9cisif cette fois-ci."
+  postBattleLossLines:
+  - "<b>Vous excellez dans votre domaine.</b>\\n\\nJe suis vraiment impressionn\xE9.
+    Vous savez lire votre adversaire et vous adapter de mani\xE8re exceptionnelle.\\n\\nVous
+    avez m\xE9rit\xE9 votre position au sein de la Ligue, f\xE9licitations."
+  postUnitsFightLossLines:
+  - 'J''ai du faire une erreur de calcul...\n\nMais pourtant je ne me trompe jamais
+    ! '
+  - "Chaque strat\xE9gie implique une part de risque.\\n\\nDans mon cas, la voici."
+  - "Bien jou\xE9 commandant.\\n\\nJe me demande si vous avez r\xE9ussi \xE0 percer
+    mon esprit...\\n\\nAvec tout ce que l'on dit sur vous, ce serait possible..."
+  - "Int\xE9ressant.\\n\\nVous faites un usage tr\xE8s particulier de vos ressources..."
+  postUnitsFightWinLines:
+  - "Exactement ce que j'attendais.\\n\\nComme tout, la cl\xE9 est dans les chiffres
+    et les probabilit\xE9s."
+  - "Un coup de ma\xEEtre !\\n\\nUne mise en \xE9chec sans pr\xE9c\xE9dent, \xE7a
+    me donne m\xEAme des frissons !"
+  - "La r\xE9compense surpasse le risque.\\n\\nAinsi, je l'emporte sur cette manche. "
+  - "Un calcul parfait, un r\xE9sultat \xE9vident.\\n\\nD\xE9sormais, j'imagine que
+    vous devez r\xE9aliser le talent de votre adversaire..."
+  postUnitsFightDrawLines:
+  - "Non... j'ai du faire preuve d'inattention.\\n\\nImpossible, ma facult\xE9 de
+    concentration ne connait d'\xE9gale au sein de l'Empire."
+  - Une anomalie dans les chiffres...\n\nJe suis confus, mais bon ce n'est pas grave.

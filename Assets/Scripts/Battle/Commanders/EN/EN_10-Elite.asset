@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
+  m_Name: EN_10-Elite
+  m_EditorClassIdentifier: 
+  commanderName: Julius "Le Grand Champion" Alexander
+  Locked: 1
+  Color: {r: 0.1723033, g: 0.23709506, b: 0.3018868, a: 1}
+  AiType: 10
+  PortraitElementToUnlock: {fileID: 11400000, guid: e204e6f738e0b7d42a9bb9d7c7c85a13,
+    type: 2}
+  preBattleFirstTimeLine: "<b>Nos chemins se croisent enfin.</b>\\n\\nJ'ai observ\xE9
+    votre ascension au sein de la Ligue. D\xE8s vos premi\xE8res victoire, j'ai pr\xE9ssenti
+    quelque chose en vous.\\n\\nCe quelque chose vous a men\xE9 jusqu'\xE0 moi aujourd'hui.
+    Le destin nous d\xE9partagera, et le plus grand commandant \xE9manera victorieux."
+  preBattleWonLastLines:
+  - "<b>Le destin vous place une fois de plus sur mon chemin.</b>\\n\\nComme la fois
+    pr\xE9c\xE9dente, je saurai d\xE9fendre mon titre.\\n\\nJamais vous n'incarnerez
+    plus que le r\xF4le de second au sein de la Ligue."
+  preBattleLostLastLines:
+  - "<b>Laissez moi vous montrer qui est le vrai champion.</b>\\n\\nBien que la succession
+    de titre ne puisse se faire avant qu'un an soit \xE9coul\xE9 depuis son changement
+    de propri\xE9taire, je persiste \xE0 vous d\xE9montrer ma sup\xE9riorit\xE9 sur
+    le champs de bataille."
+  postBattleWinLines:
+  - "<b>Des ann\xE9es sans aucun d\xE9faite.</b>\\n\\nEt cela se poursuit aujourd'hui.
+    Tel est la volont\xE9 du destin.\\n\\n\xC0 jamais, je resterai le num\xE9ro un
+    de l'Empire, le plus grand commandant de tous les temps."
+  postBattleLossLines:
+  - "<b>Ainsi, le destin vous a choisi.</b>\\n\\nVous d\xE9tenez d\xE9sormais le
+    titre le plus illustre que tout commandant puisse poss\xE9der.\\n\\nCependant,
+    cette d\xE9faite ne change rien pour moi. Je me consid\xE8rerai toujours comme
+    le plus grand commandant de tous les temps, le Grand Champion... Adieu."
+  postUnitsFightLossLines:
+  - "Une d\xE9faite pour moi et une victoire pour vous.\\n\\nLes deux sont \xE9ph\xE9m\xE8res,
+    l'\xE9quilibre finit toujours par se r\xE9tablir."
+  - "Un coup int\xE9ressant, mais je sais m'adapter \xE0 toutes les situations.\\n\\nQuand
+    je perds, je r\xE9plique. Quand je gagne, je renforce mon avantage."
+  - "Vous \xEAtes un grand commandant, en effet. Mais vous ne serez jamais le plus
+    grand que l'Empire n'ai jamais connu."
+  - "Bri\xE8vement surpass\xE9, aussi vite relev\xE9 et d\xE9j\xE0 pr\xEAt \xE0 contre-attaquer."
+  - "Vous ma\xEEtrisez le commandement, mais vous n'\xEAtes pas un v\xE9t\xE9ran
+    comme moi.\\n\\nVous ne disposez pas du recul que j'ai sur chaque coup et chaque
+    issue d'un affrontement."
+  postUnitsFightWinLines:
+  - "Depuis le jour o\xF9 je suis entr\xE9 dans la Ligue, je n'ai jamais \xE9t\xE9
+    vaincu.\\n\\nPas une seule fois, un adversaire n'a r\xE9ussi \xE0 l'emporter
+    sur moi. Cela ne va pas changer aujourd'hui."
+  - "Mon titre est amplement m\xE9rit\xE9.\\nLe jour o\xF9 quelque viendra me le
+    d\xE9rob\xE9, n'est certainement pas arriv\xE9."
+  - "Ne vous attendez pas \xE0 ce que je vous r\xE9v\xE8le le moindre indice sur
+    ma strat\xE9gie.\\n\\nJamais je ne me trahirai."
+  - "Le Grand Champion dispose de la confiance totale de l'Empereur.\\n\\nJamais
+    je ne me s\xE9parerai de ce privil\xE8ge."
+  - "Vous n'\xEAtes pas \xE0 la hauteur.\\n\\nVos succ\xE8s vous sont mont\xE9 \xE0
+    la t\xEAte, personne ne me bat !"
+  postUnitsFightDrawLines:
+  - "Vous vous en sortez bien, tr\xE8s bien m\xEAme.\\n\\nCombien de fois allez-vous
+    donc \xE9chapper au destin ?"
+  - "Je me demande s'il s'agit de la volont\xE9 du destin, ou bien de chance.\\n\\nLes
+    deux peuvent-ils \xEAtre confondus, pour former un unique concept ? "

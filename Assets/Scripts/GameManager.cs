@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool testerMode = true; // Turn it off to stop deleting prefs when new version comes out (might want player to keep his saves)
 
-    [SerializeField]
     private Lang language = Lang.NULL;
     public Lang Language { get {  return language; } set { language = value; } }
     public void SetEnglishLang() { this.Language = Lang.EN; }
@@ -27,9 +26,18 @@ public class GameManager : MonoBehaviour
 
     [Header("Mettre dans l'ordre de difficulté")]
     /// <summary>
-    /// Elements that define the commanders. Used for initialisation purposes (index 0 = easy, 9 = max difficulty).
+    /// Elements that define the commanders (in french).
     /// </summary>
     [SerializeField]
+    private CommanderElement[] enemyCommandersElementsFrench;
+    /// <summary>
+    /// Elements that define the commanders (in english).
+    /// </summary>
+    [SerializeField]
+    private CommanderElement[] enemyCommandersElementsEnglish;
+    /// <summary>
+    /// Elements that define the commanders. Used for initialisation purposes (index 0 = easy, 9 = max difficulty).
+    /// </summary>
     private CommanderElement[] enemyCommandersElements;
 
     private static GameManager _instance;
@@ -105,7 +113,7 @@ public class GameManager : MonoBehaviour
         CheckVersion();
         PortraitGenerator.Instance.InitPortraitElements();
         InitPlayer();
-        InitEnemies();
+        StartCoroutine(InitEnemies());
     }
 
     /// <summary>
@@ -177,8 +185,25 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Inits enemy commanders by loading their attributes or init + save them.
     /// </summary>
-    private void InitEnemies()
+    private IEnumerator InitEnemies()
     {
+        yield return new WaitUntil(() => language != Lang.NULL);
+        // Get right commanders from language
+        switch (language)
+        {
+            case Lang.FR:
+                enemyCommandersElements = enemyCommandersElementsFrench;
+                break;
+
+            case Lang.EN:
+                enemyCommandersElements = enemyCommandersElementsEnglish;
+                break;
+
+            case Lang.NULL:
+            default:
+                throw new Exception("No language or invalid language : " + language);
+        }
+
         // Init the array
         int amountOfCommanders = enemyCommandersElements.Length;
         Enemies = new Commander[amountOfCommanders];

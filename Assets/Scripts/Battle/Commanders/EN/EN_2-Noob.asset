@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
+  m_Name: EN_2-Noob
+  m_EditorClassIdentifier: 
+  commanderName: Mordred "Le Jeune" Warfield
+  Locked: 1
+  Color: {r: 0.9205077, g: 1, b: 0.5613208, a: 1}
+  AiType: 2
+  PortraitElementToUnlock: {fileID: 11400000, guid: 9d60edea14034274998533b835cf19c1,
+    type: 2}
+  preBattleFirstTimeLine: "<b>Salutations, commandant.</b>\\n\\nJe suis Mordred Warfield,
+    fils de Arthur Warfield et plus jeune commandant de la Ligue.\\n\\nVotre pr\xE9sence
+    indique que vous avez vaincu mon p\xE8re, mais le vieux fait partie du pass\xE9.
+    En avant !"
+  preBattleWonLastLines:
+  - "<b>Salutations, commandant.</b>\\n\\nL'issue de notre derni\xE8re bataille m'a
+    \xE9t\xE9 favorable, mais je dois encore progresser.\\n\\nDonnez-moi votre meilleure
+    performance commandant !"
+  preBattleLostLastLines:
+  - "<b>Salutations, commandant.</b>\\n\\nJe vous remercie de me redonner une chance
+    de faire mes preuves.\\n\\nLa bataille s'annonce int\xE9ressante !"
+  postBattleWinLines:
+  - "<b>Quelle victoire !</b>\\n\\nMon p\xE8re sera ravi vraiment d'apprendre que
+    je vous ai vaincu.\\n\\nAllons, remettons cela commandant, je me sens d'attaque
+    pour une autre bataille !"
+  postBattleLossLines:
+  - "<b>Bien jou\xE9 commandant !</b>\\n\\nJe suis d\xE9\xE7u de ma d\xE9faite, mais
+    j'ai encore beaucoup \xE0 apprendre.\\n\\nVous avez excell\xE9 aujourd'hui, et
+    ce fut une lesson m\xE9morable. Bonne chance pour la suite !"
+  postUnitsFightLossLines:
+  - "Quel dommage, j'\xE9tais si s\xFBr de mon coup.\\n\\nEnfin j'ai manqu\xE9 de
+    prudence, bien jou\xE9."
+  - "Ce ne peut \xEAtre que chance !\\n\\nA moins que vous m'ayez cern\xE9... Pardonnez
+    mon impulsivit\xE9 commandant."
+  - "Commandant, vous m'avez eu.\\n\\nRien \xE0 dire sur ce coup l\xE0, mais ne baissez
+    pas votre garde !"
+  - "Peut-\xEAtre que j'aurais du en rester \xE0 la strat\xE9gie que mon P\xE8re
+    m'a apprise au lieu de l'inverser...\\n\\nIl est trop tard d\xE9sormais."
+  postUnitsFightWinLines:
+  - "P\xE8re m'a bien appris.\\n\\nJ'ai su cependant ajuster ses enseignements pour
+    me garantir ces r\xE9sultats."
+  - "Excellent !\\n\\nJe pr\xE9pare d\xE9j\xE0 la suite, tenez-vous pr\xEAt commandant,
+    \xE7a va faire du bruit !"
+  - "Je suis sur la bonne voie, je sens.\\n\\nJ'ai confiance en ma strat\xE9gie et
+    ma planification pour cette bataille."
+  - "Quelle coup de ma\xEEtre !\\n\\nC'est ce genre de petite victoire qui me rapprochera
+    du titre de Grand Champion un jour, commandant."
+  postUnitsFightDrawLines:
+  - "Un r\xE9sultat compr\xE9hensible.\\n\\nApr\xE8s tout, nous combattons \xE0 armes
+    \xE9gales et la Ligue est tr\xE8s stricte \xE0 ce sujet."
+  - "Quel ennuyeux r\xE9sultat.\\n\\nAllons, soyons plus cr\xE9atifs que cela !"
+  - "Je vous raconterai bien une blague pour se distraire de ce r\xE9sultat, mais
+    il faut rester concentr\xE9s."

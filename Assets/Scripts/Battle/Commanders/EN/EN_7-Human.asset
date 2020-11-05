@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
+  m_Name: EN_7-Human
+  m_EditorClassIdentifier: 
+  commanderName: Baron "Le Brutal" Leonard
+  Locked: 1
+  Color: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}
+  AiType: 7
+  PortraitElementToUnlock: {fileID: 11400000, guid: c806b437774719f4f8f629099ac0ccbb,
+    type: 2}
+  preBattleFirstTimeLine: "<b>BIENVENUE DANS l'AR\xC8NE.</b>\\n\\nAujourd'hui, je
+    vais REPEINDRE LE CHAMPS DE BATAILLE DU SANG DE VOS UNIT\xC9S !\\n\\nEnfin, pas
+    vraiment \xE0 cause des sorts de protection individuels impos\xE9s par la Ligue...
+    MAIS VOUS AVEZ COMPRIS L'ID\xC9E !"
+  preBattleWonLastLines:
+  - "<b>Vous avez pris go\xFBt au MASSACRE !</b>\\n\\nPr\xE9parez-vous \xE0 voir
+    vos unit\xE9s MOURIR...\\n<size=70%>en fait non...</size>\\nTOMBER UNE FOIS DE
+    PLUS !"
+  preBattleLostLastLines:
+  - "<b>JE VAIS AVOIR MA VENGEANCE !</b>\\n\\nQue l'Empereur EN PERSONNE soit t\xE9moin
+    DE LA GRANDE, IMPOSANTE, HUMILIANTE... IMMENSE........\\n\\nTRES GRANDE D\xC9FAITE
+    que je vais vous infliger."
+  postBattleWinLines:
+  - "<b>JE ME BAIGNE DANS VOS LARMES !</b>\\n\\nQuelle r\xE9jouissance de regarder
+    de haut son ennemi VAINCU.\\n\\nVenez donc prendre votre revanche, JE VOUS ATTENDS
+    !"
+  postBattleLossLines:
+  - "<b>JE SUIS FINI !</b>\\n\\nCette Ligue \xE9tait TOUTE MA VIE. Je n'ai plus AUCUNE
+    RAISON D'EXISTER dans ce monde...\\n\\n<size=60%>En fait, j'avais oubli\xE9 que
+    je fais toujours partie de la Ligue, d\xE9sol\xE9 je me suis encore emport\xE9.
+    F\xE9licitations commandant, c'\xE9tait une belle bataille. Bonne chance pour
+    la suite, ne m'oubliez pas.</size>"
+  postUnitsFightLossLines:
+  - NOOOOOOOOOON !\nNON, NON, NON.\nNOOOOOOOOOOON !\n\nEuh.... OUI ?
+  - "CA NE VA PAS !\\n\\nUn seul mot, CHANGEMENT, CHANGEMENT ! Seul un FOU r\xE9p\xE8te
+    ses \xE9checs en s'attendant \xE0 un r\xE9sultat diff\xE9rent !"
+  - "J'ai perdu...\\n\\nQUOI ? J'AI PERDU... NOOOON ! JE NE SUIS QU'UN \xC9CHEC,
+    UNE LOQUE INCABABLE C'EST TOUT...\\n\\n<size=50%>Ah. La bataille est pas finie,
+    je me suis embrouill\xE9 avec les manches...</size>"
+  - "GUERRIERS INCAPABLES !\\n\\nIls sont si L\xC2CHES et si MOUS, arrivant \xE0
+    peine \xE0 TENIR LEUR ARME et... Je m'emporte."
+  postUnitsFightWinLines:
+  - "QUEL COUP FATAL !\\n\\nLe contr\xF4le de la bataille vous \xE9chappe, vous TREMBLEZ,
+    PLEUREZ \xE0 cause de cette humiliation !\\nEnfin, c'est ce que ferais \xE0 votre
+    place..."
+  - "OUI, OUI ! C'EST PARFAIT !\\n\\nOn ne touche \xE0 rien quand c'est parfait BON
+    SANG !"
+  - "J'ADORE CES GUERRIERS !\\n\\nIls sont si BRAVES et si F\xC9ROCES, arrachant
+    le COEUR de leur ENNEMI pour leur mettre dans... Je m'emporte."
+  - QUEL MASSACRE !\n\nJe veux la MEME CHOSE, ENCORE !
+  postUnitsFightDrawLines:
+  - "L'ENTRECHOQUEMENT SIMULTAN\xC9 DES ARMES !\\n\\nQuelle adr\xE9naline, je ne
+    m'en lasserai donc jamais."
+  - NON, NON, NON !\n\nCela ne convient pas, il faut changer tout de suite !

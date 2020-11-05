@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
+  m_Name: EN_5-WannaBeSlick
+  m_EditorClassIdentifier: 
+  commanderName: Fridard "Le Vaniteux" Donsam
+  Locked: 1
+  Color: {r: 0.9019608, g: 0.49411765, b: 0.13333334, a: 1}
+  AiType: 5
+  PortraitElementToUnlock: {fileID: 11400000, guid: 61e195c24c454d540a9c7bac8eb2db28,
+    type: 2}
+  preBattleFirstTimeLine: "<b>Encore un challenger...</b>\\n\\nF\xE9licitations pour
+    \xEAtre arriv\xE9 aussi loin dans la Ligue, mais votre ascension va prendre fin.\\n\\nA
+    partir d'ici, fini les clowns. Pr\xE9parez-vous \xE0 la bataille."
+  preBattleWonLastLines:
+  - "<b>Je vous avais pr\xE9venu commandant.</b>\\n\\nMais je vois que vous en voulez
+    encore. Apr\xE8s tout, un telle d\xE9termination est... admirable."
+  preBattleLostLastLines:
+  - "<b>Il est temps d'arranger les choses.</b>\\n\\nVous m'avez vaincu gr\xE2ce
+    \xE0 un miracle totalement improbable.\\nJe vous remercie de me donner l'occasion
+    de vous le d\xE9montrer."
+  postBattleWinLines:
+  - "<b>Aucune surprise.</b>\\n\\nJe comprends votre ambition mais il semblerait
+    que votre intellecte ait montr\xE9 ses limites.\\n\\nAdieu, commandant."
+  postBattleLossLines:
+  - "<b>Un v\xE9ritable miracle.</b>\\n\\nJe ne sais pas ce qui s'est pass\xE9, mais
+    il ne peut s'agir que d'un coup de chance.\\n\\nJe ne vois pas d'autre explication... "
+  postUnitsFightLossLines:
+  - "Je n'avais pas imagin\xE9 cette issue.\\n\\nJe me laisserai pas perturber pour
+    autant, je sais tr\xE8s bien ce que je fais."
+  - "Quelle erreur de ma part.\\n\\nPeut-\xEAtre ai-je fais une confusion en consultant
+    le r\xE9capitulatif des unit\xE9s."
+  - "La chance est de votre c\xF4t\xE9 je vois.\\n\\nMais vous savez, la chance tourne,
+    alors ne comptez pas trop dessus."
+  - "Tout m'as sembl\xE9 clair par rapport \xE0 mon coup pr\xE9c\xE9dent.\\n\\nComment
+    ai-je pu \xE9chouer ce coup-ci."
+  postUnitsFightWinLines:
+  - "Voil\xE0 qui va faire pencher l'\xE9quilibre de la bataille en ma faveur.\\n\\nJe
+    vous conseille de vous concentrer commandant, si vous voulez avoir une chance."
+  - "J'en \xE9tais s\xFBr.\\n\\nMa strat\xE9gie est vraiment sans faille !"
+  - "Ce n'est qu'avec une totale ma\xEEtrise strat\xE9gique des tous les \xE9l\xE9ments
+    impliqu\xE9 dans une bataille, que l'on devient un des meilleurs."
+  - "J'aurais cru que l'\xE9toile montante de la Ligue opposerait davantage de r\xE9sistance.\\n\\nQuelle
+    d\xE9ception..."
+  postUnitsFightDrawLines:
+  - "Vous allez peut-\xEAtre vous satisfaire de ce genre de r\xE9sultat, mais pas
+    moi."
+  - "C'est bien triste.\\n\\nCela ne nous m\xE8ne vraiment nulle part."
