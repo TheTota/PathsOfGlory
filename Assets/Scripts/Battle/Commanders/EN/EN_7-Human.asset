@@ -12,53 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: EN_7-Human
   m_EditorClassIdentifier: 
-  commanderName: Baron "Le Brutal" Leonard
+  commanderName: Baron "The Brutal" Leonard
   Locked: 1
   Color: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}
   AiType: 7
   PortraitElementToUnlock: {fileID: 11400000, guid: c806b437774719f4f8f629099ac0ccbb,
     type: 2}
-  preBattleFirstTimeLine: "<b>BIENVENUE DANS l'AR\xC8NE.</b>\\n\\nAujourd'hui, je
-    vais REPEINDRE LE CHAMPS DE BATAILLE DU SANG DE VOS UNIT\xC9S !\\n\\nEnfin, pas
-    vraiment \xE0 cause des sorts de protection individuels impos\xE9s par la Ligue...
-    MAIS VOUS AVEZ COMPRIS L'ID\xC9E !"
+  preBattleFirstTimeLine: <b>WELCOME IN THE ARENA.</b>\n\nToday, I will PAINT THE
+    BATTLEFIELD WITH THE BLOOD OF YOUR SOLDIERS!\n\nWell not really because of the
+    protection spells applied by the League's mages... BUT YOU GET THE IDEA!
   preBattleWonLastLines:
-  - "<b>Vous avez pris go\xFBt au MASSACRE !</b>\\n\\nPr\xE9parez-vous \xE0 voir
-    vos unit\xE9s MOURIR...\\n<size=70%>en fait non...</size>\\nTOMBER UNE FOIS DE
-    PLUS !"
+  - <b>You seem to love a good SLAUGHTER!</b>\n\nPrepare your units to DIE!\n<size=70%>actually
+    not...</size>\nTO FALL ONCE MORE!
   preBattleLostLastLines:
-  - "<b>JE VAIS AVOIR MA VENGEANCE !</b>\\n\\nQue l'Empereur EN PERSONNE soit t\xE9moin
-    DE LA GRANDE, IMPOSANTE, HUMILIANTE... IMMENSE........\\n\\nTRES GRANDE D\xC9FAITE
-    que je vais vous infliger."
+  - <b>I WILL HAVE MY REVENGE!</b>\n\nMay the Emperor HIMSELF witness the GREAT,
+    IMPRESSIVE, HUMILIATING... IMMENSE........\n\nGREAT DEFEAT that I will inflict
+    on you.
   postBattleWinLines:
-  - "<b>JE ME BAIGNE DANS VOS LARMES !</b>\\n\\nQuelle r\xE9jouissance de regarder
-    de haut son ennemi VAINCU.\\n\\nVenez donc prendre votre revanche, JE VOUS ATTENDS
-    !"
+  - <b>I BATHE IN YOUR TEARS!</b>\n\nWhat a joy to look down on my defeated enemies.\n\nCome
+    and take your revenge, if you're foolish enough. I'm waiting for you!
   postBattleLossLines:
-  - "<b>JE SUIS FINI !</b>\\n\\nCette Ligue \xE9tait TOUTE MA VIE. Je n'ai plus AUCUNE
-    RAISON D'EXISTER dans ce monde...\\n\\n<size=60%>En fait, j'avais oubli\xE9 que
-    je fais toujours partie de la Ligue, d\xE9sol\xE9 je me suis encore emport\xE9.
-    F\xE9licitations commandant, c'\xE9tait une belle bataille. Bonne chance pour
-    la suite, ne m'oubliez pas.</size>"
+  - <b>I AM DONE!</b>\n\nThis League was my whole LIFE. I have no more reasons to
+    EXIST IN THIS WORLD...\n\n<size=60%>In fact, I forgot that I am still part of
+    the League, sorry I got carried away again. Congratulations Commander, it was
+    a great battle. Good luck in the future, don't forget me.</size>
   postUnitsFightLossLines:
-  - NOOOOOOOOOON !\nNON, NON, NON.\nNOOOOOOOOOOON !\n\nEuh.... OUI ?
-  - "CA NE VA PAS !\\n\\nUn seul mot, CHANGEMENT, CHANGEMENT ! Seul un FOU r\xE9p\xE8te
-    ses \xE9checs en s'attendant \xE0 un r\xE9sultat diff\xE9rent !"
-  - "J'ai perdu...\\n\\nQUOI ? J'AI PERDU... NOOOON ! JE NE SUIS QU'UN \xC9CHEC,
-    UNE LOQUE INCABABLE C'EST TOUT...\\n\\n<size=50%>Ah. La bataille est pas finie,
-    je me suis embrouill\xE9 avec les manches...</size>"
-  - "GUERRIERS INCAPABLES !\\n\\nIls sont si L\xC2CHES et si MOUS, arrivant \xE0
-    peine \xE0 TENIR LEUR ARME et... Je m'emporte."
+  - NOOOOOOOOOO!\nNO, NO, NO.\nNOOOOOOOOOOO!\n\nOr.... YES?
+  - IT'S NOT RIGHT!\n\nOne word, CHANGE, CHANGE! Only a MADMAN repeats his failures
+    expecting a different result!
+  - I lost...\n\nWHAT? I LOST... NOOOO! I'M A FAILURE, A TOTAL MESS...\n\n<size=50%>Oh.
+    The battle isn't over, I might have got confused with the rounds... whoops.</size>
+  - USELESS WARRIORS!\n\nThey're such SOFT COWARDS, barely able to keep their WEAPON
+    IN HAND... I'm getting carried away.
   postUnitsFightWinLines:
-  - "QUEL COUP FATAL !\\n\\nLe contr\xF4le de la bataille vous \xE9chappe, vous TREMBLEZ,
-    PLEUREZ \xE0 cause de cette humiliation !\\nEnfin, c'est ce que ferais \xE0 votre
-    place..."
-  - "OUI, OUI ! C'EST PARFAIT !\\n\\nOn ne touche \xE0 rien quand c'est parfait BON
-    SANG !"
-  - "J'ADORE CES GUERRIERS !\\n\\nIls sont si BRAVES et si F\xC9ROCES, arrachant
-    le COEUR de leur ENNEMI pour leur mettre dans... Je m'emporte."
-  - QUEL MASSACRE !\n\nJe veux la MEME CHOSE, ENCORE !
+  - WHAT A FATAL BLOW!\n\nThe control of the battle eludes you, you're SHAKING, CRYING
+    because of this humiliation!\nWell, at least that's how I would react if I were
+    you.
+  - YES, YES! IT'S PERFECT!\n\nAin't nothing changing when it's all WORKING!
+  - I LOVE THESE WARRIORS!\n\nRipping out the HEART of their ENEMIES to put it in
+    their... I'm getting carried away.
+  - WHAT A SLAUGHTER!\n\nI want it AGAIN, and AGAIN!
   postUnitsFightDrawLines:
-  - "L'ENTRECHOQUEMENT SIMULTAN\xC9 DES ARMES !\\n\\nQuelle adr\xE9naline, je ne
-    m'en lasserai donc jamais."
-  - NON, NON, NON !\n\nCela ne convient pas, il faut changer tout de suite !
+  - THE SIMULTANEOUS CLASHING OF WEAPONS!\n\nWhat a rush, I'll never get tired of
+    it.
+  - NO, NO, NO !\n\nThis won't do it, I have to make some changes RIGHT AWAY!
