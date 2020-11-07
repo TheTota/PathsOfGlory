@@ -12,54 +12,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: EN_6-Observer
   m_EditorClassIdentifier: 
-  commanderName: "Samuel \"L'\xC9rudit\" Miord"
+  commanderName: Samuel "The Scholar" Miord
   Locked: 1
   Color: {r: 0.506461, g: 0.25164652, b: 0.6132076, a: 1}
   AiType: 6
   PortraitElementToUnlock: {fileID: 11400000, guid: 829187e0f4e220d4cac41628c570ca30,
     type: 2}
-  preBattleFirstTimeLine: "<b>Salutations commandant !</b>\\n\\nQuel plaisir de 
-    vous rencontrer enfin, vos r\xE9centes victoires commencent \xE0 faire du bruit
-    au sein de l'Empire.\\n\\nJe suis Samuel Miord, professeur \xE0 l'Acad\xE9mie
-    Imp\xE9riale. Je ne suis pas commandant de profession, mais plut\xF4t par passion.
-    En avant !"
+  preBattleFirstTimeLine: <b>Greetings commander!</b>\n\nWhat a pleasure to finally
+    meet you, your recent victories are starting to make some noise within the Empire.\n\nI
+    am not a commander by profession, but rather by passion. Let's battle!
   preBattleWonLastLines:
-  - "<b>Salutations commandant !</b>\\n\\nJ'avais h\xE2te de vous retrouver sur le
-    champs de bataille, pour \xE9manciper mes doutes sur ma pr\xE9c\xE9dente victoire.\\n\\nQue
-    la bataille commence !"
+  - <b>Greetings commander!</b>\n\nI was looking forward to seeing you on the battlefield,
+    to emancipate my doubts about my previous victory.\n\nLet the battle begin!
   preBattleLostLastLines:
-  - "<b>Salutations commandant !</b>\\n\\nVous m'offrez une bien belle opportunit\xE9
-    pour faire mes preuves face \xE0 vous.\\n\\nNe perdons pas de temps, commen\xE7ons."
+  - <b>Greetings commander!</b>\n\nBy coming back, you're offering me a great opportunity
+    to prove myself.\n\nLet's not waste anytime and get started.
   postBattleWinLines:
-  - "<b>Ah, je m'en sors bien !</b>\\n\\nQuelle bataille passionnante, je l'emporte
-    cette fois mais revenez donc !\\nJe veux m'assurer que je m\xE9rite vraiment
-    cette victoire."
+  - <b>What a close call!</b>\n\nIt was an exciting battle, I win this time but please,
+    come back!\nI want to make sure I really deserve this victory.
   postBattleLossLines:
-  - <b>Je m'incline commandant</b>\n\nQuel affrontement palpitant, mais je dois avouer
-    que votre talent m'impressionne.\n\nVous pouvez vraiment aller loin dans cette
-    ligue, bonne continuation.
+  - <b>I bow, commander.</b>\n\nWhat a thrilling confrontation, I must confess that
+    I am impressed by your talent.\n\nYou can really go far in this league, good
+    luck.
   postUnitsFightLossLines:
-  - "Int\xE9ressant, je pensais que cette manche passerait sans probl\xE8me.\\n\\nVous
-    me forcez \xE0 redoubler de vigilance."
-  - "Vous m'avez vaincu avec cette unit\xE9...\\n\\nJ'en prend note, pr\xE9parez-vous
-    pour des repr\xE9sailles commandant."
-  - "Eh bien, on ne ment pas sur vous.\\n\\nVous avez vraiment du potentiel, j'aurais
-    ador\xE9 vous avoir en tant qu'\xE9l\xE8ve dans une de mes classes."
-  - "En \xE9tudiant votre fa\xE7on de jouer, j'aurais vraiment cru l'emporter cette
-    fois-ci..."
+  - Interesting, I thought this round would go by without a problem.\n\nI must be
+    more vigilant.
+  - You have defeated me with this unit...\n\nI take note, prepare for retaliation
+    commander.
+  - Well, we don't lie about you.\n\nYou really have potential, I would have loved
+    to have you as a student in one of my classes.
+  - Looking at the way you play, I really thought I would win this time...
   postUnitsFightWinLines:
-  - "La Ligue m'offre une telle distraction de ma routine \xE0 l'Acad\xE9mie.\\n\\nDe
-    plus, cela me permets de mettre en oeuvre mon savoir au service de l'Empire."
-  - J'essaie de toujours garder un coup d'avance sur mon adversaire.\n\nCa m'a bien
-    servi cette fois-ci.
-  - "Je me demande bien comment vous allez r\xE9agir apr\xE8s cela commandant.\\n\\nJ'ai
-    ma petite id\xE9e, mais nous verrons bien."
-  - "Quelle joie de voir ses unit\xE9s vaincre sur le champs de bataille.\\n\\nJe
-    ne m'en lasserai jamais, jamais !"
+  - The League offers me such a distraction from my routine at the Academy.\n\nMoreover,
+    it allows me to use my knowledge in the service of the Empire.
+  - I always try to stay one step ahead of my opponent.\n\nIt served me well this
+    time.
+  - I wonder how you will react after that, Commander.\n\nI have my own little idea,
+    but we'll see.
+  - What a joy to see my units victorious on the battlefield.\n\nI will never get
+    tired of it!
   postUnitsFightDrawLines:
-  - "C'est vraiment fascinant.\\n\\nDes unit\xE9s de deux arm\xE9es diff\xE9rentes,
-    poss\xE8dant le m\xEAme nombre et le m\xEAme \xE9quipement, donnant une \xE9galit\xE9
-    parfaite."
-  - "L'Acad\xE9mie Imp\xE9riale forme les meilleurs soldats, mages et commandants
-    de l'Empire.\\n\\nSi vous progressez encore, vous rencontrerez un de ses \xE9l\xE8ves
-    prodiges.\\nVraiment, vraiment talentueux."
+  - How fascinating!\n\nTow units from two different armies, with the same amount
+    of troops and the same equipment, giving a perfect equality.
+  - The Imperial Academy trains the best soldiers, mages and commanders of the Empire.\n\nIf
+    you make further progress in the League, you will meet one of its prodigy students.\nA
+    really, really talented individual.
