@@ -12,56 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: EN_4-Drunk
   m_EditorClassIdentifier: 
-  commanderName: Trimar "L'Ivrogne" Robless
+  commanderName: Trimar "The Drunkard" Robless
   Locked: 1
   Color: {r: 0.58431375, g: 0.64705884, b: 0.6509804, a: 1}
   AiType: 4
   PortraitElementToUnlock: {fileID: 11400000, guid: 568e5ce85452e7641a860980a38f7d04,
     type: 2}
-  preBattleFirstTimeLine: "<b>Ah oui une.. belle victoire commandant, f\xE9licitations
-    !</b>\\n\\nHein... non \xE7a n'a pas commenc\xE9 pardon, je suis Trimar Robless...
-    autrefois Grand Champion de la Ligue.\\n\\nC'\xE9tait il y a tr\xE8s longtemps
-    oui..."
+  preBattleFirstTimeLine: <b>Ahh yeees... nice victory commander, great job..</b>\n\nWait...
+    it ain't started yet sorry, I'm Trimar Robless... ex Grand Champion of the League.\n\nOh
+    it was a looong time ago..
   preBattleWonLastLines:
-  - "<b>Vous voulez vraiment... remettre \xE7a... maintenant ?</b>\\n\\nJe n'ai m\xEAme
-    pas fini ma chope... ni le tonneau d'ailleurs...\\n\\nGRRRRR... EN AVANT TOUTES,
-    AU COMBAT !"
+  - <b>You really wanna... do this again... now?</b>\n\nSure, just let me finish
+    my mug... or the whole barrel actually...\n\nGRRRRR... LET'S GET READY TO RUMBLE!
   preBattleLostLastLines:
-  - "<b>Hein... mais on vient juste de finir de se battre... et je crois avec bien
-    perdu...</b>\\n\\nAlors grand seigneur, pr\xE9parez votre arm\xE9e pour une...
-    seconde tourn\xE9e !"
+  - <b>Huh... didn't we just battle... and I'm pretty sure I didn't win this one...</b>\n\nSo
+    commander, prepare your army for a... another round! It's on you tho...
   postBattleWinLines:
-  - "<b>Ah oui euh... bon moi je retourne \xE0 la tarverne.</b>\\n\\nQue les bons...
-    vents vous guident, oui c'est \xE7a... ou bien allez au diable je sais plus trop..."
+  - <b>Ah yeah huh... well I'm going back to the tarvern.</b>\n\nMay the good...
+    winds guide you, yes that's it... or go to hell actually I'm not sure anymore...
   postBattleLossLines:
-  - "<b>Quelle performance... je m'incline Monsieur l'Empereur.</b>\\n\\nNous somme
-    tous entre de... bonnes mains depuis que vous \xEAtes devenu... commandant, \xE7a
-    oui...\\n\\nGloire \xE0 l'Empire !"
+  - <b>What a performance... I bow, mister the Emperor.</b>\n\nWe are all in... good,
+    good hand since you've become a... commander, yes for sure...\n\nGlory to the
+    Empire!
   postUnitsFightLossLines:
-  - "Ah vraiment... j'ai cru que... ah non en fait...\\n\\nJ'ai pas compris... on
-    est sens\xE9 boire ou se battre ?\\nOu alors... les deux peut \xEAtre..."
-  - "L'\xE9l\xE9gance et... le professionnalisme des soldats de la Ligue... m'a toujours
-    impressionn\xE9.\\n\\nSi vous ne le savez pas... ils ne meurent \xE9videmment
-    pas... l'Empire a des mages tr\xE8s... tr\xE8\xE8\xE8\xE8\xE8s...\\n.................................................."
-  - "J'ai gagn\xE9 !\\nAh non... j'ai regard\xE9 la mauvaise couleur... d\xE9sol\xE9."
-  - "Non... pas maintenant... nooooooon... nooooooooooooooooooooooooon !\\n\\nHein...
-    quoi ? Calmez vous commandant... je vous trouve tr\xE8s excit\xE9 aujourd'hui...
-    hein oui je crois..."
-  - "Si vous voulez... je vois offre une bonne chope de mon alcool pr\xE9f\xE9r\xE9
-    et... on oublie cette manche...\\n\\nVous \xEAtes partant ?"
+  - Oh really... I thought that... nevermind...\n\nI'm confused... are we here to
+    drink or to fight?\nWhy not... both?
+  - I've always been impressed by the... professionalism of the League's soliders\n\nWhat
+    would they be without... our healing mages... yes the Empire's mages areee...
+    veeery...\n..................................................
+  - I did it !\nOh no... wrong color... sorry.
+  - No... not like this... nooooooo... nooooooooooooooooooooooooo!\n\nHuh... what?
+    Stop screaming commander I'm trying to focus here...
+  - Listen to me... let me pay for a round of drinks ... and we forget this round
+    of battle...\n\nAre you in?
   postUnitsFightWinLines:
-  - "Une belle victoire... comme dans le temps !\\n\\nVous savez... je combat depuis
-    si longtemps... au bout d'un moment \xE7a vous fait quelque chose..."
-  - "Ah oui j'ai toujours pr\xE9f\xE9r\xE9 les archers aux... boucliers...\\n\\nEnfin
-    je sais plus... j'ai envoy\xE9 qui l\xE0 ?"
-  - "Oui... ah oui... je vous aime bien vous...\\nVous \xEAtes pas trop dur \xE0
-    battre... c'est agr\xE9able."
-  - "Je ne sais m\xEAme pas qui j'envoie... et je gagne quand m\xEAme...\\n\\nJ'ai
-    vraiment rien perdu, le commandement a toujours... \xE9t\xE9 fait pour moi.\\nJe
-    devrais \xEAtre... Empereur..."
-  - "Pour quoi... pardon... pour qui me prenez-vous ?\\n\\nJ'ai fait partie des fondateurs...
-    de cette Ligue... je peux me d\xE9fendre ATTENTION !"
+  - A nice victory... just like it was back in the days!\n\nYou know... I've been
+    fighting for so long... most of my battles weren't practice... it really does
+    something to you...
+  - Ah yees I always prefered archers to... spearmen...\n\nActually I'm not sure
+    about who even I even sent on the battlefield...
+  - Yes... oh yes... I like you...\nYou're not to hard to beat... I'll soon be back
+    to the tavern...
+  - I don't even know who I'm sending... and yet I keep winning...\n\nI haven't lost
+    anything... I should try to become the new Emperor...
+  - Who do you think I am?\n\nI'm part of the founders... of this League... I can
+    defend myself, BEWARE!
   postUnitsFightDrawLines:
-  - "Je ne comprend plus les r\xE8gles de Ligue... avant il n'y avait pas d'\xE9galit\xE9s...\\n\\nOn
-    se battait tous... comme de vrais hommes... et...\\n......................................................"
-  - Oui un beau... combat...\n\nDommage que personne n'ai pu l'emporter...
+  - I don't get the rules of the League anymore... before there were no ties...\n\nWe
+    were all fighting... like real... and...\n......................................................
+  - Sometimes one escapes... yet it's still called a tie...\n\nIt's completly messed
+    up isn't it?

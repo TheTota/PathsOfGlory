@@ -12,46 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: EN_5-WannaBeSlick
   m_EditorClassIdentifier: 
-  commanderName: Fridard "Le Vaniteux" Donsam
+  commanderName: Fridard "The Vain" Donsam
   Locked: 1
   Color: {r: 0.9019608, g: 0.49411765, b: 0.13333334, a: 1}
   AiType: 5
   PortraitElementToUnlock: {fileID: 11400000, guid: 61e195c24c454d540a9c7bac8eb2db28,
     type: 2}
-  preBattleFirstTimeLine: "<b>Encore un challenger...</b>\\n\\nF\xE9licitations pour
-    \xEAtre arriv\xE9 aussi loin dans la Ligue, mais votre ascension va prendre fin.\\n\\nA
-    partir d'ici, fini les clowns. Pr\xE9parez-vous \xE0 la bataille."
+  preBattleFirstTimeLine: <b>Another challenger...</b>\n\nCongratulations for making
+    it this far in the League, but I'm afraid that your rise is about to end now.\n\nFrom
+    here, there's no more clowning. Prepare for battle.
   preBattleWonLastLines:
-  - "<b>Je vous avais pr\xE9venu commandant.</b>\\n\\nMais je vois que vous en voulez
-    encore. Apr\xE8s tout, un telle d\xE9termination est... admirable."
+  - <b>I warned you, commander.</b>\n\nBut I can see taht you still want some more.
+    After all, such determination is... admirable.
   preBattleLostLastLines:
-  - "<b>Il est temps d'arranger les choses.</b>\\n\\nVous m'avez vaincu gr\xE2ce
-    \xE0 un miracle totalement improbable.\\nJe vous remercie de me donner l'occasion
-    de vous le d\xE9montrer."
+  - <b>It's time to make things right</b>\n\nYou have defeated me thanks to some
+    kind of miracle.\nThank you for giving me the opportunity to prove it was pure
+    luck.
   postBattleWinLines:
-  - "<b>Aucune surprise.</b>\\n\\nJe comprends votre ambition mais il semblerait
-    que votre intellecte ait montr\xE9 ses limites.\\n\\nAdieu, commandant."
+  - <b>No surprises.</b>\n\nI understand your ambition but it seems that your intellect
+    has shown its limits.\n\nFarewell, commander.
   postBattleLossLines:
-  - "<b>Un v\xE9ritable miracle.</b>\\n\\nJe ne sais pas ce qui s'est pass\xE9, mais
-    il ne peut s'agir que d'un coup de chance.\\n\\nJe ne vois pas d'autre explication... "
+  - <b>What a miracle.</b>\n\nI don't really know what just happened, but it can
+    only be a storke of luck.\n\nI can't see any other explanation...
   postUnitsFightLossLines:
-  - "Je n'avais pas imagin\xE9 cette issue.\\n\\nJe me laisserai pas perturber pour
-    autant, je sais tr\xE8s bien ce que je fais."
-  - "Quelle erreur de ma part.\\n\\nPeut-\xEAtre ai-je fais une confusion en consultant
-    le r\xE9capitulatif des unit\xE9s."
-  - "La chance est de votre c\xF4t\xE9 je vois.\\n\\nMais vous savez, la chance tourne,
-    alors ne comptez pas trop dessus."
-  - "Tout m'as sembl\xE9 clair par rapport \xE0 mon coup pr\xE9c\xE9dent.\\n\\nComment
-    ai-je pu \xE9chouer ce coup-ci."
+  - I had not imagined this outcome.\n\nI won't let myself be troubled, I know perfectly
+    what I'm doing.
+  - What a mistake on my part.\n\nPerhaps I've mistaken a type of soldier for another
+    on the units recap.
+  - Luck seems to be on your side.\n\nBut, you know, luck turns, so don't count on
+    it too much.
+  - Everything seemed clear to me from my previous move.\n\nHow could I fail this
+    time?
   postUnitsFightWinLines:
-  - "Voil\xE0 qui va faire pencher l'\xE9quilibre de la bataille en ma faveur.\\n\\nJe
-    vous conseille de vous concentrer commandant, si vous voulez avoir une chance."
-  - "J'en \xE9tais s\xFBr.\\n\\nMa strat\xE9gie est vraiment sans faille !"
-  - "Ce n'est qu'avec une totale ma\xEEtrise strat\xE9gique des tous les \xE9l\xE9ments
-    impliqu\xE9 dans une bataille, que l'on devient un des meilleurs."
-  - "J'aurais cru que l'\xE9toile montante de la Ligue opposerait davantage de r\xE9sistance.\\n\\nQuelle
-    d\xE9ception..."
+  - This will tip the balance of the battle in my favour.\n\nI suggest that you focus,
+    commander, if you want to have a chance here.
+  - I knew it.\n\nMy strategy is really flawless!
+  - It is only with a complete strategic mastery of all the elements involved in
+    a battle that one becomes one of the best.
+  - I would have thought that the League's rising star would put up more resistance.\n\nWhat
+    a disappointment...
   postUnitsFightDrawLines:
-  - "Vous allez peut-\xEAtre vous satisfaire de ce genre de r\xE9sultat, mais pas
-    moi."
-  - "C'est bien triste.\\n\\nCela ne nous m\xE8ne vraiment nulle part."
+  - You may be satisfied with this kind of result, but I'm not.
+  - It's a pretty disappointing outcome.\n\nThis isn't getting us anywhere.

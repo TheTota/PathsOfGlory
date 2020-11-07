@@ -12,49 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: EN_3-Stubborn
   m_EditorClassIdentifier: 
-  commanderName: "Tineron \"Le Pistonn\xE9\" Andfrid"
+  commanderName: Tineron "The Lucky One" Andfrid
   Locked: 1
   Color: {r: 0.15294118, g: 0.68235296, b: 0.3764706, a: 1}
   AiType: 3
   PortraitElementToUnlock: {fileID: 11400000, guid: f01cb2926221e2a4385ce99d3141d0e4,
     type: 2}
-  preBattleFirstTimeLine: "<b>Vous qui OSEZ d\xE9fier le neveu de l'Empereur, EN
-    GARDE !</b>\\n\\nAvant de vous infliger une IMMENSE D\xC9FAITE qui apportera
-    D\xC9SHONNEUR \xE0 votre nom, choisissez la RETRAITE.\\n\\nIMM\xC9DIATEMENT !"
+  preBattleFirstTimeLine: <b>You DARE to challenge the Emperor's nephew, BEWARE!</b>\n\nRETREAT
+    IMMEDIATLY before I DEFEAT you and bring an immense DISHONOR to your name.
   preBattleWonLastLines:
-  - "<b>Vous revenez faire face au POURFENDEUR DE... MONDES !</b>\\n\\nN'esp\xE9rez
-    pas un r\xE9sultat diff\xE9rent, choisissez la RETRAITE IMM\xC9DIATE pour sauvez
-    ce qu'il vous reste d'HONNEUR !"
+  - <b>So you're back to face the DESTROYER OF... WORLDS!</b>\n\nDon't expect a different
+    result, RETREAT IMMEDIATLY to save what's left of your HONOR!
   preBattleLostLastLines:
-  - "<b>Ainsi vous \xEAtes de RETOUR !</b>\\n\\nJe ne sais pas pourquoi vous revenez,
-    non vraiment.\\n\\n S'il vous plait, n'y allez pas trop fort..."
+  - <b>So you're BACK!</b>\n\nI really don't know why you're coming back. Please
+    go easy on me...
   postBattleWinLines:
-  - "<b>Et ainsi le GRAND Tineron Anfrid l'EMPORTE pour la GLOIRE DE L'EMPIRE !</b>\\n\\nJe
-    vous avais pr\xE9venu, maintenant ne revenez PLUS JAMAIS sous peine de... PERDRE
-    ENCORE !"
+  - <b>And so the GREAT Tineron Anfrid WINS for the GLORY OF THE EMPIRE!</b>\n\nI
+    warned you, now don't ever come back or... or else...
   postBattleLossLines:
-  - "<b>Quel issue INCROYABLE et... IMPROBABLE.</b>\\n\\nVous m'avez vaincu et humili\xE9,
-    vous pouvez progresser au sein de Ligue alors s'il vous plait ne revenez pas,
-    je ne veux pas que mon oncle l'Empereur ait vent de mes d\xE9faites."
+  - <b>What an INCREDIBLE and... UNLIKELY outcome.</b>\n\nYou have defeated and humiliated
+    me, you can now move up in the League so please don't come back, I don't want
+    my uncle the Emperor to hear about my losses.
   postUnitsFightLossLines:
-  - "Un v\xE9ritable COUP DE CHANCE !\\n\\nCela ne se reproduira probablement pas
-    !"
-  - "Vous l'emportez maintenant, oui bravo.\\n\\nAttention, car je vais CONTRE-ATTAQUER
-    !\\n\\n<size=70%>j'ai aucune id\xE9e de ce que je fais...</size>"
-  - "Je dois faire une aveu commandant.\\n\\nMon oncle voulait un membre de la famille
-    imp\xE9riale au sein de la Ligue et c'est tomb\xE9 sur moi car j'ai un peu trop
-    parl\xE9 \xE0 propos de mes comp\xE9tences en commandement...\\n\\nEn r\xE9alit\xE9,
-    je n'y connais vraiment RIEN !"
-  - "INT\xC9RESSANT !\\n\\nJe saurai r\xE9agir la prochaine fois que vous... <size=70%>j'ai
-    oubli\xE9 la suite...</size>"
+  - What a LUCKY BREAK!\n\nIt probably won't happen again!
+  - You win now, yes congrats.\n\nBut beware, because I'm about to COUNTER-ATTACK!\n\n<size=70%>i
+    have no idea what im doing...</size>
+  - I have to make a confession commander.\n\nMy uncle wanted a member of the imperial
+    family in the League and it came down to me because I might have talked a little
+    too much about my skills...\n\nIn reality, I'm completly lost...
+  - HOW INTERESTING!\n\nI'll ready next time you... <size=70%>i don't know...</size>
   postUnitsFightWinLines:
-  - SURPRENANT !\n\nJ'ai apparement PLUS d'un COUP D'AVANCE sur vous !
-  - ET UNE PETITE VICTOIRE DE PLUS !\n\nIncroyable et... vraiment, vraiment exceptionnel
-    !
-  - "QUELLE INGENIOSIT\xC9 !\\n\\n<size=70%>mais plus s\xE9rieusement, j'ai vraiment
-    gagn\xE9 ce coup l\xE0 ?</size>"
-  - INCLINEZ VOUS et choisissez la RETRAITE avant qu'il ne soit trop TARD !\n\n<size=70%>pour
-    moi en tout cas...</size>
+  - HOW SURPRISING!\n\nApparently, I'm more than ONE STEP AHEAD of you!
+  - ANOTHER  SMALL VICTORY!\n\nIncredible and... really, really extraordinary.
+  - WHAT A GENIUS!\n\n<size=70%>for real though, how did I win this?</size>
+  - BOW DOWN and RETREAT before it's too late!\n\n<size=70%>too late for you or me...</size>
   postUnitsFightDrawLines:
-  - "ERM... OUI, UNE ISSUE SI PREDICTIBLE...\\n\\n<size=70%>je n'ai pas compris,
-    qui a gagn\xE9 ?</size>"
+  - ERM... YES I KNEW IT...\n\n<size=70%>what happened? i think i won...</size>
