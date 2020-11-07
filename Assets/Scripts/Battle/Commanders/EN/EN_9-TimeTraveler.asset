@@ -12,60 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910aa517eefa4a54481ac2bf61d8cac2, type: 3}
   m_Name: EN_9-TimeTraveler
   m_EditorClassIdentifier: 
-  commanderName: Marco "L'Aventurier" Poulet
+  commanderName: Marco "The Adventurer" Poulet
   Locked: 1
   Color: {r: 0.101960786, g: 0.7372549, b: 0.6117647, a: 1}
   AiType: 9
   PortraitElementToUnlock: {fileID: 11400000, guid: 9d711e6b7cf7a7049a82ee8e137c3ef7,
     type: 2}
-  preBattleFirstTimeLine: "<b>Bienvenue commandant !</b>\\n\\nMarco Poulet, ancien
-    explorateur de renom et d\xE9sormais un des plus fins strat\xE8ges de l'Empire.\\n\\nTout
-    le monde ne parle plus que de vous, \"un nouveau Grand Champion de la Ligue\".
-    Voyons si vous en avez le potentiel."
+  preBattleFirstTimeLine: <b>Welcome commander!</b>\n\nMarco Poulet, former renowned
+    explorer and now one of the finest strategists of the Empire.\n\nEverybody's
+    talking about you now, "a potential new Great Champion". Let's see if you have
+    the potential.
   preBattleWonLastLines:
-  - "<b>Soyez \xE0 la hauteur cette fois-ci.</b>\\n\\nJe sens votre immense potentiel,
-    commandant. Donnez tout aujourd'hui, vous approchez du bout d'un illustre chemin
-    vers la gloire."
+  - <b>Be up to the challenge this time.</b>\n\nI sense your immense potential, commander.
+    Give it all you have today, you are approaching the end of an illustrious path
+    to glory.
   preBattleLostLastLines:
-  - "<b>Content de vous revoir.</b>\\n\\nJ'ai surv\xE9cu \xE0 bien des choses, mais
-    je ne sais pas si je vais survivre \xE0 une d\xE9faite de plus face \xE0 vous
-    !\\n\\nAllons, commen\xE7ons !"
+  - <b>Good to see you again.</b>\n\nI have survived many things, but I don't know
+    if I will survive losing to you once more!\n\nCome on, let's get started!
   postBattleWinLines:
-  - "<b>Vous y \xEAtes presque, mais pas encore.</b>\\n\\nSi vous voulez avoir une
-    chance de conqu\xE9rir cette Ligue, il vous faudra \xE9lever encore votre niveau.\\n\\nPers\xE9v\xE9rez
-    et vous deviendrez un des plus grands !"
+  - <b>You're almost there, but not yet.</b>\n\nIf you want to conquer this League,
+    you will have to step up your game.\n\nPersevere and you will become one of the
+    greatest!
   postBattleLossLines:
-  - "<b>Vous \xEAtes donc digne de votre r\xE9putation.</b>\\n\\nToutes mes f\xE9licitations,
-    vous disposez d'un talent hors norme. Cependant, je ne suis pas s\xFBr que cela
-    ne suffise pour vaincre votre prochain adversaire.\\n\\nTout le monde sera pr\xE9sent
-    commandant, bonne chance !"
+  - <b>You are worthy of your reputation.</b>\n\nHowever, I am not sure that this
+    is enough to defeat your next opponent.\n\nThe whole Empire will attend your
+    next battle, may luck be on your side.
   postUnitsFightLossLines:
-  - "Je me suis d\xE9j\xE0 perdu dans une jungle, une for\xEAt, un labyrinthe et
-    la chambre d'amis du palais imp\xE9rial... \\nMais jamais pendant le cours d'une
-    bataille !"
-  - "J'ai beau essayer d'anticiper vos coups, cela n'a pas fonctionn\xE9 cette fois-ci...
-    Mais je suis convaincu que \xE7a marchera ! Oui oui oui !"
-  - "Ma strat\xE9gie me fait d\xE9faut.\\n\\nPourtant il y deux manches vous... Je
-    suis trop bavard.\\nD'ailleurs, je pense que tous le commandants dans cette Ligue
-    sont trop bavards, non ?"
-  - "Cette d\xE9faite me donne des flashbacks de la fois o\xF9 j'ai d\xE9fi\xE9 le
-    Grand Champion... \\n\\nMon honneur ne s'est toujours pas r\xE9tabli depuis cette
-    bataille."
+  - I have already lost myself in a jungle, a forest, a labyrinth and the guest room
+    of the imperial palace... \nBut never during the course of a battle!
+  - No matter how hard I tried to anticipate your move, it didn't work this time...
+    But I'm convinced it will work next time! Yes yes yes!
+  - My strategy is failing me.\n\nYet two rounds ago you... I'm talking too much.\nBy
+    the way, I think all the commanders in this League are too chatty, aren't they?
+  - This defeat gives me flashbacks of the time I challenged the Great Champion...
+    \n\nI'm not sure I've fully recovered from it.
   postUnitsFightWinLines:
-  - "Cette victoire me rappelle que j'aurai pu devenir commandant, mais mon r\xEAve
-    a toujours \xE9t\xE9 d'aller au-del\xE0 des confins du monde connu. "
-  - "Un seul coup d'avance sur son adversaire ne suffit pas !\\n\\nJe l'ai bien appris
-    \xE0 mes d\xE9pends dans une exp\xE9dition dont... je ne souhaiterais pas parler."
-  - "Avec toutes les personnes que j'ai pu rencontr\xE9, j'ai une certitude.\\nVotre
-    actes pass\xE9s d\xE9finissent vos actes pr\xE9sents, m\xEAme lors d'une bataille
-    !"
-  - "Depuis que j'ai pris ma retraite, la Ligue m'a bien occup\xE9.\\n\\nJ'ai vaincu
-    chaque adversaire sur mon chemin, mais je ne suis jamais venu \xE0 bout du Grand
-    Champion."
+  - 'This victory reminds me that I could have become a commander, but my dream has
+    always been to go beyond the confines of the known world. '
+  - Being only one move ahead of your opponent is not enough! \n\nI learned this
+    at my own expense in an expedition that... I would rather not talk about.
+  - With all the people I've been able to meet, I have a certainty.\nYour past actions
+    define your present actions, even in battle!
+  - Since I retired, the League has kept me busy.\n\nI have defeated every opponent
+    on my way, but I have never defeated the Great Champion. He truly is on another
+    level.
   postUnitsFightDrawLines:
-  - "Cela me fait penser \xE0 une confrontation avec des aborig\xE8nes bien au-del\xE0
-    des fronti\xE8res de l'Empire, il y a longtemps.\\n\\nUn combat \xE0 mains nues,
-    moi contre leur chef selon leurs coutumes. On avait fini par terre tous les deux
-    !"
-  - "Des fois les r\xE8gles de la Ligue me font penser \xE0 une version plus complexe
-    du jeu de Pierre-Papier-Ciseaux..."
+  - It reminds me of a confrontation with natives far beyond the borders of the Empire,
+    a long time ago.\n\nA fight with my bare hands, me against their chief according
+    to their customs. We both ended up on the floor!
+  - Sometimes the rules of the League make me think of a more complex version of
+    the game of Rock-Paper-Scissors...\n\nThink about it for a moment.
