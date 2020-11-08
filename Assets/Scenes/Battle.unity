@@ -1177,13 +1177,13 @@ MonoBehaviour:
   m_fontStyle: 0
   m_textAlignment: 520
   m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_wordSpacing: 2.5
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.5
+  m_wordWrappingRatios: 0
   m_overflowMode: 0
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
