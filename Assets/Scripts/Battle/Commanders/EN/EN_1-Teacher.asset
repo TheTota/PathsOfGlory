@@ -20,7 +20,7 @@ MonoBehaviour:
     type: 2}
   preBattleFirstTimeLine: <b>Welcome on the battlefield!</b>\n\nI was waiting for
     you commander!\nWe will compete according to the rules of the League.\n\nI will
-    explain these throughout the battle, so let's get started.
+    explain them throughout the battle, so let's get started.
   preBattleWonLastLines:
   - Good to see you again, Commander.\nIf you want to be successful in this League,
     you will have to persevere.\n\nLet the battle begin!
@@ -31,9 +31,9 @@ MonoBehaviour:
   - Fear nothing of this defeat commander, the rules of the League are new to you.\n\nCome
     and face me again, but this time focus on my strategy rather than my instructions.
   postBattleLossLines:
-  - <b>Congratulations for your victory !</b>\n\nYou are really a part of the League,
-    9 more opponents are waiting for you.\n\nBy the way, the next one is my son,
-    good luck commander!
+  - <b>Congratulations for your victory!</b>\n\nYou are really a part of the League
+    now, 9 more opponents are waiting for you.\n\nBy the way, the next one is my
+    son, good luck commander!
   postUnitsFightLossLines:
   - <b>You have just played one round of the battle.</b>\n\nEach battle consists
     of 15 rounds like these.\n\nAt the beginning of each round, you choose a unit
