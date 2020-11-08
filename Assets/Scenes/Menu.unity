@@ -2752,8 +2752,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61e195c24c454d540a9c7bac8eb2db28, type: 2}
   - {fileID: 11400000, guid: 9d60edea14034274998533b835cf19c1, type: 2}
   availableSkinTones:
-  - {r: 1, g: 0.8392157, b: 0.77254903, a: 1}
   - {r: 1, g: 0.8862745, b: 0.7882353, a: 1}
+  - {r: 1, g: 0.8392157, b: 0.77254903, a: 1}
   - {r: 1, g: 0.79607844, b: 0.6392157, a: 1}
   - {r: 0.84705883, g: 0.5647059, b: 0.37254903, a: 1}
   - {r: 0.53333336, g: 0.31764707, b: 0.22745098, a: 1}
@@ -6736,7 +6736,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testerMode: 1
-  language: 1
   enemyCommandersElementsFrench:
   - {fileID: 11400000, guid: 4b408c0d1255b0c499d667dd9b6821c2, type: 2}
   - {fileID: 11400000, guid: d2e234e07aba2f14bb56309c20008ee1, type: 2}
