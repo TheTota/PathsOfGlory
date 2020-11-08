@@ -1,6 +1,6 @@
 # Paths Of Glory
 
-// TODO: add itch.io link
+Game uploaded on itch.io and playable for free : https://thetota.itch.io/paths-of-glory
 
 Path of Glory is a turn-based strategy game.
 
